@@ -72,8 +72,8 @@ class IzinController extends Controller
     public function store(Request $request)
     {
         Izin::create([
-            'id_bpw' => auth()->id_bpw(),
             'no_izin' => request('no_izin'),
+            'id_bpw' => Auth::guard('bpw')->user()->id_bpw,
             'ms_berlaku' => request('ms_berlaku'),
             'file_izin' => request('file_izin'),
             'sts_verifikasi' => request('sts_verifikasi'),
