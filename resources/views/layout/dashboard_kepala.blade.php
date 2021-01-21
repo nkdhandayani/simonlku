@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layouts.master')
 @section('title', 'Dashboard | Kepala Seksi Jasa')
 @section('topbaraccount')
 @section('sidemenu')

@@ -81,7 +81,7 @@
             <tr>
               <td width="200px">Foto</td>
               <td width="5px">:</td>
-              <td>{{$detailUserAdmin->foto_user}}</td>
+              <td>@if($detailUserAdmin->foto_user) <img width="50px" src="data:image/png;base64,{{ base64_encode($detailUserAdmin->foto_user) }}"/> @else - @endif</td>
             </tr>
             <tr> 
               <td>Nama Pengguna</td>

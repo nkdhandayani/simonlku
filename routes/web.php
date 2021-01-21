@@ -16,6 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('auth.login');
 });
+Route::get('/coba', function () {
+    return view('layouts.master');
+});
+Route::get('/lte', function () {
+    return view('adminLTE');
+});
+
+Route::get('/dash', function () {
+    return view('dashboard.index');
+});
+
 
 
 	Route::post('/logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
