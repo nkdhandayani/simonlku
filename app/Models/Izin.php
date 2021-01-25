@@ -10,6 +10,7 @@ class Izin extends Model
     use HasFactory;
 
 	protected $table = "izin";
+    public $timestamps = true;
     public $fillable = [
     	'id_bpw',
         'no_izin',
@@ -24,7 +25,7 @@ class Izin extends Model
 
     public function bpw()
     {
-        return $this->belongsTo(BPW::class);
+        return $this->belongsTo(BPW::class, 'id_bpw', 'id_bpw');
     }
 
     public function lku()

@@ -1,8 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-	 <!-- Content Header (Page header) -->
-    <section class="content-header">
+	<section class="content-header">
       <h1>
         Dashboard
       </h1>
@@ -22,6 +21,9 @@
               <h3>100</h3>
               <p>Biro Perjalanan Wisata</p>
             </div>
+            <div class="icon">
+              <i class="ion ion-person"></i>
+            </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
@@ -32,6 +34,9 @@
             <div class="inner">
               <h3>100</h3>
               <p>Tanda Daftar Usaha Pariwisata</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-document"></i>
             </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -44,6 +49,9 @@
               <h3>100</h3>
               <p>Izin Operasional</p>
             </div>
+            <div class="icon">
+              <i class="ion ion-document"></i>
+            </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
@@ -55,6 +63,9 @@
               <h3>100</h3>
               <p>Laporan Kegiatan Usaha</p>
             </div>
+            <div class="icon">
+              <i class="ion ion-document"></i>
+            </div>
             <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
@@ -62,7 +73,7 @@
 
 
         <div class="row">
-		<section class="content-header" style="padding-bottom: 10px;">
+		<section class="content-header format-kumpul">
 	      <h1>
 	        Format Pengumpulan Laporan
 	      </h1>
@@ -70,15 +81,15 @@
 
 	  	<div class="col-lg-12">
 	    	<div class="box">
-	      		<div class="box-body table-responsive" style="padding-left: 20px; padding-right: 20px; padding-bottom: 20px;">
+	      		<div class="table-top box-body table-responsive">
 		      
-	    	      <p style="text-align: center; margin-bottom: 0px;"><strong>PEMERINTAH PROVINSI BALI</strong></p>
-	    	      <p style="text-align: center; margin-bottom: 0px;"><strong>DINAS PARIWISATA</strong></p>
-	    	      <p style="text-align: center; margin-bottom: 0px;"><strong>(BALI GOVERNMENT TOURISM OFFICE)</strong></p>
-	    	      <p style="text-align: center; margin-bottom: 0px"><small>Addres: JL. S. Parman Niti Mandala, Renon Phone: (0361) 222387, Fax (0361) 226313</small></p><br>
+	    	      <p class="top"><strong>PEMERINTAH PROVINSI BALI</strong></p>
+	    	      <p class="top"><strong>DINAS PARIWISATA</strong></p>
+	    	      <p class="top"><strong>(BALI GOVERNMENT TOURISM OFFICE)</strong></p>
+	    	      <p class="top"><small>Addres: JL. S. Parman Niti Mandala, Renon Phone: (0361) 222387, Fax (0361) 226313</small></p><br>
 
-	        	  <p style="margin-bottom: 0px;"><strong>Laporan Kegiatan Usaha (LKU)</strong></p>
-	        	  <p style="margin-bottom: 0px;"><strong>Biro Perjalanan Wisata</strong></p>
+	        	  <p class="lku-bpw"><strong>Laporan Kegiatan Usaha (LKU)</strong></p>
+	        	  <p class="lku-bpw"><strong>Biro Perjalanan Wisata</strong></p>
 
 	        	  <tr>
 	        	  	<td>Periode</td>
@@ -111,35 +122,36 @@
 	        	  	<td></td>
 	        	  </tr>
 
-	        	  <div class="table-responsive">
+	        	  <div class="table-responsive square">
 	        	  <table border="1" class="col-lg-12">
 				  <tr>
 				  	<td class="col-lg-6">
 				  		<strong>Ketentuan:</strong>
-				  		<ol style="padding-left: 15px;">
+				  		<ol class="term">
 				  			<li>Laporan Kegiatan yang harus diisi serta disampaikan secara benar dan lengkap.</li>
 				  			<li>Penyampaian Laporan Kegiatan Usaha dilakukan setiap semester:</li>
-					  			<ol type="a" style="padding-left: 15px;">
+					  			<ol type="a" class="term">
 					  				<li>Semester I, meliputi Laporan Kegiatan Usaha bulan Januari s/d Juni.<br>
 				  					Disampaikan selambat-lambatnya tanggal <strong>31 Juli.</strong></li>
 					  				<li>Semester II, meliputi Laporan Kegiatan Usaha bulan Juli s/d Desember.<br>
-				  					Disampaikan selambat-lambatnya tanggal <strong>31 Januari</strong> tahun berikutnya disertai dengan <italic>Confidential Tarif</italic> dan bahan-bahan promosi yang dikelurkan.</li>
+				  					Disampaikan selambat-lambatnya tanggal <strong>31 Januari</strong> tahun berikutnya disertai dengan Confidential Tarif dan bahan-bahan promosi yang dikelurkan.</li>
 					  			</ol>
 				  			<li>Laporan Kegiatan Usaha disampaikan dengan Surat Pengantar dari perusahaan pelapor kepada Kepala Dinas Pariwisata Provinsi Bali cq. Kepala Biro Perekonomian dan Pembangunan Setda Provinsi Bali.</li>
 				  			<li>Silakan beri nama file sebagai berikut: <strong>(Nama Travel)_Per(Periode)_Tahun</strong> dalam format <strong  style="color: red;">PDF</strong><strong>. Contoh: PT. Makmur Tour_Per1_2021.pdf</p></strong></li>
 				  		</ol>
 				  		<br>
-				  		<p style="margin-bottom: 0px;">Tembusan disampaikan kepada Yth.</p>
-				  		<ol type="a" style="padding-left: 15px;">
-							<li>Kepala Dinas Pariwisata Provinsi Bali</li>				  	<li>Bpk. Gubernur Bali cq. Kepala Biro Perekonomian dan Pembangunan Provinsi Bali</li>
+				  		<p class="tembusan">Tembusan disampaikan kepada Yth.</p>
+				  		<ol type="a" class="term">
+							<li>Kepala Dinas Pariwisata Provinsi Bali</li>				  	
+							<li>Bpk. Gubernur Bali cq. Kepala Biro Perekonomian dan Pembangunan Provinsi Bali</li>
 							<li>Arsip</li>		
 				  		</ol>
 				  	</td>
 				  	
-				  	<td class="col-lg-4" style="padding-bottom: 80px;">
+				  	<td class="col-lg-4 jml-pegawai">
 				  		<strong>Jumlah Karyawan Tetap</strong>
-				  		<p>Ketentuan:</p>
-				  		<ol style="padding-left: 15px;">
+				  		<p>Keterangan:</p>
+				  		<ol class="term">
 				  			<li>Pimpinan / Management</li>
 				  			<li>Rencana Tour (Tour Planner)</li>
 				  			<li>Penyusun Harga Tour (Tour Quatitation)</li>
@@ -155,11 +167,11 @@
 				  		</ol>
 				  	</td>
 				  	
-				  	<td class="col-lg-1" style="padding-bottom: 360px; text-align: center;">
+				  	<td class="col-lg-1 bottom">
 				  		<strong>Pria</strong>
 				  	</td>
 				  	
-				  	<td class="col-lg-1" style="padding-bottom: 360px; text-align: center;">
+				  	<td class="col-lg-1 bottom">
 				  		<strong>Wanita</strong>
 				  	</td>
 				  </tr>

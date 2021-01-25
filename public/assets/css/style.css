@@ -1,0 +1,50 @@
+.format-kumpul {
+  padding-bottom: 10px;
+}
+
+.square {
+  margin-top: 1rem;
+}
+
+.table-top {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.top {
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.lku-bpw {
+  margin-bottom: 0px;
+}
+
+.term {
+  padding-left: 15px;
+}
+
+.bottom {
+  padding-bottom: 360px;
+  text-align: center;
+}
+
+.tembusan {
+	margin-bottom: 0px;
+}
+
+.jml-pegawai {
+	padding-bottom: 80px;
+}
+
+.example-modal .modal {
+      position: relative;
+      top: auto;
+      bottom: auto;
+      right: auto;
+      left: auto;
+      display: block;
+      z-index: 1;
+      background: transparent !important;
+    }

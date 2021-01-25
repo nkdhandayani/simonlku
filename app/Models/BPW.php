@@ -12,6 +12,7 @@ class BPW extends Authenticatable
     use HasFactory;
 
     protected $table = "bpw";
+    public $timestamps = true;
     protected $primaryKey = "id_bpw";
 
     public $fillable = [
@@ -39,7 +40,7 @@ class BPW extends Authenticatable
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'id_user', 'id_user');
     }
 
     public function tdup()

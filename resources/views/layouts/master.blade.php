@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="{{url('adminLTE/bower_components/bootstrap-daterangepicker/daterangepicker.css')}}">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="{{url('adminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="../../assets/css/style.css">
   <link rel="icon" type="img/png" href="../../assets/images/Logo Dinas Pariwisata.png">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -101,6 +102,7 @@
     $('.sidebar-menu').tree()
   })
 </script>
+
 
 </body>
 </html>

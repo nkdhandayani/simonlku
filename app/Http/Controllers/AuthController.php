@@ -19,23 +19,13 @@ class AuthController extends Controller
         if($request->login_as == "jasa_pariwisata"){
             if (Auth::guard('user')->attempt($request->only('username', 'password'))) {
                 $user = \App\Models\User::where('username', $request->username)->first();
-                if ($user->level == '0') {
-                    return response()->view('layout/dashboard_admin');
-                } elseif ($user->level == '1') {
-                    return response()->view('layout/dashboard_staf');
-                } elseif ($user->level == '2') {
-                    return response()->view('layout/dashboard_kepala');
-                }
-                else
-                {
-                    return response()->view('auth.login');
-                }
+                return redirect('/dashboard');
             }
         }
         else if($request->login_as == "biro_perjalanan_wisata"){
             if (Auth::guard('bpw')->attempt($request->only('username', 'password'))) {
                 $bpd = \App\Models\BPW::where('username', $request->username)->first();
-                return redirect('/dashboard_bpw');
+                return redirect('/dashboard');
             }
         }
 

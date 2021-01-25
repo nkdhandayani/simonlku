@@ -12,6 +12,7 @@ class TDUP extends Model
     use HasFactory;
 
     protected $table = "tdup";
+    public $timestamps = true;
     protected $primaryKey = "id_tdup";
 
     public $fillable = [
@@ -28,7 +29,7 @@ class TDUP extends Model
 
     public function bpw()
     {
-        return $this->belongsTo(BPW::class);
+        return $this->belongsTo(BPW::class, 'id_bpw', 'id_bpw');
     }
 
     public function lku()

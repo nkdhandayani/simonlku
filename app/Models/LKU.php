@@ -10,6 +10,7 @@ class LKU extends Model
     use HasFactory;
 
     protected $table = "lku";
+    public $timestamps = true;
     public $fillable = [
     	'id_tdup',
     	'id_izin',
@@ -25,11 +26,11 @@ class LKU extends Model
 
     public function tdup()
     {
-        return $this->belongsTo(TDUP::class);
+        return $this->belongsTo(TDUP::class, 'id_tdup', 'id_tdup');
     }
 
     public function izin()
     {
-        return $this->belongsTo(Izin::class);
+        return $this->belongsTo(Izin::class, 'id_izin', 'id_izin');
     }
 }
