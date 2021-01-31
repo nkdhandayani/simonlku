@@ -22,7 +22,7 @@ class UserController extends Controller
         $users = User::all();
         return view('users/index', compact('users'));
     }
-
+ 
     
     public function create()
     {
@@ -40,11 +40,11 @@ class UserController extends Controller
             'email' => request('email'),
             'no_telp' => request('no_telp'),
             'jns_kelamin' => request('jns_kelamin'),
-            'foto_user' => file_get_contents($request->file('foto_user')->getRealPath()),
+            'foto_user' => request(''),
             'level' => request('level'),
             'status' => request('status'),
         ]);
-        return view('users/index');
+        return redirect('/user');
     }
     
 
@@ -64,21 +64,26 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        DB::table('users')->where('id_user', $id)
-            -> update([
-                'username' => request('username'),
-                'password' => Hash::make(request('password')),
-                'nm_user' => request('nm_user'),
-                'nik' => request('nik'),
-                'email' => request('email'),
-                'no_telp' => request('no_telp'),
-                'jns_kelamin' => request('jns_kelamin'),
-                'foto_user' => file_get_contents($request->file('foto_user')->getRealPath()),
-                'level' => request('level'),
-                'status' => request('status'),
-            ]);
+        $user=\App\Models\User::find($id);
+        $data = $request->all();
+        $data['password'] = bcrypt($request->password);
+        $user->update($data);
+
+        return redirect('/user');
+        // DB::table('users')->where('id_user', $id)
+        //     -> update([
+        //         'username' => request('username'),
+        //         'password' => Hash::make(request('password')),
+        //         'nm_user' => request('nm_user'),
+        //         'nik' => request('nik'),
+        //         'email' => request('email'),
+        //         'no_telp' => request('no_telp'),
+        //         'jns_kelamin' => request('jns_kelamin'),
+        //         'foto_user' => request('foto_user'),
+        //         'level' => request('level'),
+        //         'status' => request('status'),
+        //     ]);
             
-        return view('user/index');
     }
 
 

@@ -33,7 +33,7 @@ Route::get('/dashboard', function () {
 	Route::post('/logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
 	Route::post('/postlogin', 'App\Http\Controllers\AuthController@postlogin');
 	
-
+ 	
 	//	Route oleh Administrator
 	Route::group(['middleware' => 'isAdminUser'], function(){
 	// 	Route User
@@ -45,7 +45,13 @@ Route::get('/dashboard', function () {
 		Route::get('/user/{id}/detail_user','App\Http\Controllers\UserController@show');
 
 	// 	Route BPW
-		
+		Route::get('/bpw', 'App\Http\Controllers\BPWController@index');
+		Route::get('/bpw/create', 'App\Http\Controllers\BPWController@create');
+		Route::post('/bpw/store', 'App\Http\Controllers\BPWController@store');
+		Route::get('/bpw/{id}/edit','App\Http\Controllers\BPWController@edit');
+		Route::patch('/bpw/{id}/update','App\Http\Controllers\BPWController@update');
+		Route::get('/bpw/{id}/detail_bpw','App\Http\Controllers\BPWController@show');
+
 	// 	Route TDUP
 
 	// 	Route Izin
@@ -59,7 +65,7 @@ Route::get('/dashboard', function () {
 	// 	Route oleh Staf Jasa
 	Route::group(['middleware' => 'isStaffUser'], function(){
 	// 	Route BPW
-		
+		// Route::get('/bpw', 'App\Http\Controllers\BPWController@index');
 	// 	Route TDUP
 
 	// 	Route Izin
@@ -84,7 +90,7 @@ Route::get('/dashboard', function () {
 	// 	Route oleh BPW
 	Route::group(['middleware' => 'isBPWUser'], function(){
 	// 	Route BPW
-	
+		Route::get('/bpw', 'App\Http\Controllers\BPWController@index');
 	// 	Route TDUP
 
 	// 	Route Izin

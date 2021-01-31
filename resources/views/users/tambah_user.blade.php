@@ -14,7 +14,7 @@
     </section>
 
 
-    <form action="{{ route('user.store') }}" method="post" enctype="multipart/form-data">
+    <form action="/user/store" method="post" enctype="multipart/form-data">
 	{{csrf_field()}}
 	<section class="content">
 	<div class="box">

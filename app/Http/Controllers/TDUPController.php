@@ -44,7 +44,7 @@ class TDUPController extends Controller
             'status' => '',
         ]);
 
-        return redirect('tdup/index');
+        return redirect('/tdup');
     }
 
 

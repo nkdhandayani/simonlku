@@ -29,7 +29,7 @@
       		<a href="bpw/create" class="btn btn-primary btn-sm"><i class="fa fa-pencil"> Add</i></a>
        		<a href="#" class="btn bg-purple btn-sm"><i class="fa fa-print"> Print</i></a>
 		  	  </div>
-		 	  @endif
+       	@endif 	 
 
 		  	</div>
 		  </div>
@@ -79,7 +79,7 @@
               <a href="#" class="fa fa-eye btn-danger btn-sm"></a>
 
               @if(auth()->guard('user')->user()->level == 0)
-              <a href="#" class="fa fa-edit btn-warning btn-sm"></a>
+              <a href="/bpw/{id}/edit" class="fa fa-edit btn-warning btn-sm"></a>
               <a href="#"><i class="fa fa-print btn-success btn-sm"></i></a>
               @endif
               

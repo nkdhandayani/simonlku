@@ -10,7 +10,7 @@
         <li class="active"><a href="/user"></i>Kelola Pengguna</a></li>
       </ol>
     </section>
-
+ 
 
   <section class="content">
 	<div class="row">
@@ -46,23 +46,23 @@
             @php
               $i=1;
             @endphp
-            @foreach ($users as $user)
+            @foreach ($users as $pengguna)
               <tr>
                 <td>{{ $i }}</td>
-                <td>@if($user->foto_user) <img width="50px" src="data:image/png;base64,{{ base64_encode($user->foto_user) }}"/> @else - @endif</td>
-                <td>{{ $user->nm_user }}</td>
-                <td>{{ $user->email }}</td>
-                <td>{{ $user->no_telp }}</td>
+                <td>@if($pengguna->foto_user) <img width="50px" src="data:image/png;base64,{{ base64_encode($pengguna->foto_user) }}"/> @else - @endif</td>
+                <td>{{ $pengguna->nm_user }}</td>
+                <td>{{ $pengguna->email }}</td>
+                <td>{{ $pengguna->no_telp }}</td>
                 <td> 
-                <?php if($user->level == 0)
+                <?php if($pengguna->level == 0)
                 {
                   echo "Administrator";
                 }
-                  elseif($user->level == 1)
+                  elseif($pengguna->level == 1)
                 {
                   echo "Staf Jasa Pariwisata";
                 }
-                elseif($user->level == 2)
+                elseif($pengguna->level == 2)
                 {
                   echo "Kepala Seksi Jasa Pariwisata";
                 }
@@ -73,11 +73,11 @@
                 ?>
                 </td>
                 <td>
-                <?php if($user->status == 0)
+                <?php if($pengguna->status == 0)
                 {
                   echo "Tidak Aktif";
                 }
-                  elseif($user->status == 1)
+                  elseif($pengguna->status == 1)
                 {
                   echo "Aktif";
                 }

@@ -14,7 +14,7 @@
       </ol>
     </section>
 
-    <form action="#" method="post" enctype="multipart/form-data">
+    <form action="/bpw/store" method="post" enctype="multipart/form-data">
 	{{csrf_field()}}
 
 	<section class="content" style="padding-top: 0;">
@@ -124,5 +124,6 @@
 
 	</div>
     </form>
+	</div>
 	</div>
 @endsection
