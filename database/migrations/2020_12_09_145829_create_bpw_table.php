@@ -18,7 +18,7 @@ class CreateBpwTable extends Migration
             $table->unsignedInteger('id_user');
             $table->string('nm_bpw', 50);
             $table->string('username', 20)->unique();
-            $table->string('password', 100);
+            $table->string('password', 60);
             $table->string('email', 50);
             $table->string('alamat');
             $table->enum('kabupaten', ["Kota Denpasar", "Badung", "Gianyar", "Bangli", "Tabanan", "Jembrana", "Buleleng", "Klungkung", "Karangasem"]);
@@ -29,14 +29,12 @@ class CreateBpwTable extends Migration
             $table->enum('jns_bpw', ["BPW", "MICE", "Lanjut Usia"]);
             $table->enum('sts_kantor', ["Hak Pribadi", "Kontrak"]);
             $table->string('nib', 20);
-            $table->binary('foto_bpw');
+            $table->string('foto_bpw', 100);
             $table->integer('status')->unsigned();
             $table->timestamps();
 
             $table->foreign('id_user')->references('id_user')->on('users');
         });
-
-        DB::statement("ALTER TABLE bpw MODIFY COLUMN foto_bpw MEDIUMBLOB");
     }
 
     /**

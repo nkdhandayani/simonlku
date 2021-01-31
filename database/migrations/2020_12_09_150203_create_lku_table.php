@@ -20,7 +20,7 @@ class CreateLkuTable extends Migration
             $table->string('no_surat', 20);
             $table->string('tahun', 4);
             $table->enum('periode', ["I", "II"]);
-            $table->binary('file_lku');
+            $table->string('file_lku', 100);
             $table->integer('sts_verifikasi')->unsigned();
             $table->string('keterangan');
             $table->date('tgl_verifikasi');
@@ -30,8 +30,6 @@ class CreateLkuTable extends Migration
             $table->foreign('id_tdup')->references('id_tdup')->on('tdup');
             $table->foreign('id_izin')->references('id_izin')->on('izin');
         });
-
-        DB::statement("ALTER TABLE lku MODIFY COLUMN file_lku MEDIUMBLOB");
     }
 
     /**

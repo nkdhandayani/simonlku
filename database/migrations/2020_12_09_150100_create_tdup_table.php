@@ -19,7 +19,7 @@ class CreateTdupTable extends Migration
             $table->string('no_tdup', 20);
             $table->date('tanggal');
             $table->date('ms_berlaku');
-            $table->binary('file_tdup');
+            $table->string('file_tdup', 100);
             $table->integer('sts_verifikasi')->unsigned();
             $table->string('keterangan');
             $table->date('tgl_verifikasi');
@@ -28,8 +28,6 @@ class CreateTdupTable extends Migration
 
             $table->foreign('id_bpw')->references('id_bpw')->on('bpw');
         });
-
-        DB::statement("ALTER TABLE tdup MODIFY COLUMN file_tdup MEDIUMBLOB");
     }
 
     /**

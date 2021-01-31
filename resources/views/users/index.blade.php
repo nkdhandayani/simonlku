@@ -15,32 +15,36 @@
   <section class="content">
 	<div class="row">
   	<div class="col-xs-12">
-    <div class="box">
-      	
-      	<div class="table-responsive">
-        <div class="box-header" style="padding-right: 0px;">
-        	<div class="box-body">
-              <h3 class="box-title" style="font-size: 25px;"><i class="fa fa-user"></i> Daftar Pengguna</h3>
-          		<div style="float: right;">
-          		<div style="clear: both;"></div>
-          			<a href="user/create" class="btn btn-primary btn-sm"><i class="fa fa-pencil"> Add</i></a>
-          			<a href="#" class="btn bg-purple btn-sm"><i class="fa fa-print"> Print</i></a>
-		  		</div>
-		  	</div>
-		</div>
+    <div class="box box-primary">
 
+      <div class="box-header">
+      <div class="box-body pad table-responsive">        	
+        <h3 class="box-title" style="font-size: 25px;"><i class="fa fa-user"></i> Daftar Pengguna</h3>
+        <div style="float: right;">
+        <div style="clear: both;"></div>
+        	<a href="user/create" class="btn btn-primary btn-sm"><i class="fa fa-pencil"> Add</i></a>
+        	<a href="#" class="btn bg-purple btn-sm"><i class="fa fa-print"> Print</i></a> 
+		    </div>
+		  </div>
     
-      <div class="box-body">
-        <table id = "dataTable" class="table table-bordered table-striped">
+      <div class="box-body" id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+        <div class="row">      
+      </div>
+
+      <div class="row">
+      <div class="col-xs-12">
+        <table id='example1' class="table table-hover table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
           <thead>
-            <th>No.</th>
-            <th>Foto Pengguna</th>
-            <th>Nama Pengguna</th>
-            <th>Email</th>
-            <th>No. Telp</th>
-            <th>Level</th>
-            <th>Status</th>
-            <th>Aksi</th>
+            <tr role="row">
+              <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Foto Pengguna</th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Nama Pengguna</th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Email</th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">No. Telp</th>
+              <th style="width: 0.5rem" class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Level</th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Status</th>
+              <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Aksi</th>
+            </tr>
           </thead>
         <tbody>
             @php
@@ -49,7 +53,7 @@
             @foreach ($users as $pengguna)
               <tr>
                 <td>{{ $i }}</td>
-                <td>@if($pengguna->foto_user) <img width="50px" src="data:image/png;base64,{{ base64_encode($pengguna->foto_user) }}"/> @else - @endif</td>
+                <td>{{ $pengguna->foto_user }}</td>
                 <td>{{ $pengguna->nm_user }}</td>
                 <td>{{ $pengguna->email }}</td>
                 <td>{{ $pengguna->no_telp }}</td>
@@ -100,11 +104,12 @@
           </tbody>
         </table>
       </div>
-    
+      </div>
+    </div>
     </div>
   </div>
-</div>
-</div>
+  </div>
+  </div>
 </div>
 </section>
 

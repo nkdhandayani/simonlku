@@ -28,6 +28,8 @@ Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
 
+Route::get('/regis', 'App\Http\Controllers\InsertRegister@insert');
+
 
 
 	Route::post('/logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
@@ -90,7 +92,7 @@ Route::get('/dashboard', function () {
 	// 	Route oleh BPW
 	Route::group(['middleware' => 'isBPWUser'], function(){
 	// 	Route BPW
-		Route::get('/bpw', 'App\Http\Controllers\BPWController@index');
+		// Route::get('/bpw', 'App\Http\Controllers\BPWController@index');
 	// 	Route TDUP
 
 	// 	Route Izin

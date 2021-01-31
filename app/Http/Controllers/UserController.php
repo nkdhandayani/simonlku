@@ -40,7 +40,7 @@ class UserController extends Controller
             'email' => request('email'),
             'no_telp' => request('no_telp'),
             'jns_kelamin' => request('jns_kelamin'),
-            'foto_user' => request(''),
+            'foto_user' => '',
             'level' => request('level'),
             'status' => request('status'),
         ]);

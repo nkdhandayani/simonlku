@@ -19,7 +19,7 @@ class CreateIzinTable extends Migration
             $table->string('no_izin', 20);
             $table->date('tanggal');
             $table->date('ms_berlaku');
-            $table->binary('file_izin');
+            $table->string('file_izin', 100);
             $table->integer('sts_verifikasi')->unsigned();
             $table->string('keterangan');
             $table->date('tgl_verifikasi');
@@ -28,8 +28,6 @@ class CreateIzinTable extends Migration
 
             $table->foreign('id_bpw')->references('id_bpw')->on('bpw');
         });
-
-        DB::statement("ALTER TABLE izin MODIFY COLUMN file_izin MEDIUMBLOB");
     }
 
     /**
