@@ -17,13 +17,13 @@
     <form action="/user/store" method="post" enctype="multipart/form-data">
 	{{csrf_field()}}
 	<section class="content">
-	<div class="box">
+	<div class="box box-primary">
 
 	    <form role="form">
 	    <div class="box-body">
 
 	    	<div>
-	    		<a href="/user" class="btn btn-primary" style="float: right;">Back</a>
+	    		<a href="/user" class="btn btn-primary btn-sm" style="float: right;">Back</a>
 	  		</div>
 	  		<div style="clear: both;"></div>
 	  		
@@ -90,11 +90,13 @@
 			</div>
 
 			<div>
-				<button type="submit" class="btn btn-primary">Save</button>
+				<button type="submit" class="btn btn-primary btn-sm">Save</button>
 			</div>
 		
 		</div>
 	   	</form>
 	</div>
+</div>
+</section>
 	
 @endsection

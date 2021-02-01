@@ -47,7 +47,7 @@ class BPWController extends Controller
             'jns_bpw' => request('jns_bpw'),
             'sts_kantor' => request('sts_kantor'),
             'nib' => request('nib'),
-            'foto_bpw' => request(''),
+            'foto_bpw' => '',
             'status' => request('status'),
         ]);
 
@@ -57,41 +57,39 @@ class BPWController extends Controller
 
     public function show($id)
     {
-        $detailBPW = BPW::find($id);
-        return view ('bpw/detail_bpw',['detailBPW' => $detailBPW]);
+        $bpws = BPW::find($id);
+        return view ('bpw/detail_bpw', compact('bpws'));
     }
 
 
     public function edit($id)
     {
-        $bpw = BPW::find($id);
-        return view ('bpw/edit_bpw', compact('bpw'));
+        $bpws = BPW::find($id);
+        return view ('bpw/edit_bpw', compact('bpws'));
     }
 
 
     public function update(Request $request, $id)
-    {
-        DB::table('bpw')->where('id_bpw', $id)
-            -> update([
-                'id_user' => Auth::user()->id_user,
-                'nm_bpw' => request('nm_bpw'),
-                'username' => request('username'),
-                'password' => Hash::make(request('password')),
-                'email' => request('email'),
-                'alamat' => request('alamat'),
-                'kabupaten' => request('kabupaten'),
-                'no_telp' => request('no_telp'),
-                'no_fax' => request('no_fax'),
-                'nm_pic' => request('nm_pic'),
-                'nm_pimpinan' => request('nm_pimpinan'),
-                'jns_bpw' => request('jns_bpw'),
-                'sts_kantor' => request('sts_kantor'),
-                'nib' => request('nib'),
-                'foto_bpw' => file_get_contents($request->file('foto_bpw')->getRealPath()),
-                'status' => request('status'),
-                ]);
+    { 
+        $bpws = BPW::find($id);
 
-        return redirect('bpw/index');
+        $bpws->nm_bpw = $request->nm_bpw;
+        $bpws->username = $request->username;
+        $bpws->password = $request->password;
+        $bpws->email = $request->email;
+        $bpws->kabupaten = $request->kabupaten;
+        $bpws->no_telp = $request->no_telp;
+        $bpws->no_fax = $request->no_fax;
+        $bpws->nm_pic = $request->nm_pic;
+        $bpws->nm_pimpinan = $request->nm_pimpinan;
+        $bpws->jns_bpw = $request->jns_bpw;
+        $bpws->sts_kantor = $request->sts_kantor;
+        $bpws->nib = $request->nib;
+        $bpws->foto_bpw = $request->foto_bpw;
+        $bpws->status = $request->status;
+        $bpws->save();
+
+        return redirect('/bpw');
     }
     
 

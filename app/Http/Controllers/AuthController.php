@@ -24,7 +24,7 @@ class AuthController extends Controller
         }
         else if($request->login_as == "biro_perjalanan_wisata"){
             if (Auth::guard('bpw')->attempt($request->only('username', 'password'))) {
-                $bpd = \App\Models\BPW::where('username', $request->username)->first();
+                $bpw = \App\Models\BPW::where('username', $request->username)->first();
                 return redirect('/dashboard');
             }
         }

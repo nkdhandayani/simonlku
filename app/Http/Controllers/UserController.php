@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\BPW;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -50,40 +49,34 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $detail_user = User::find($id);
-        return view ('users/detail_user', compact('detail_user'));
+        $users = User::find($id);
+        return view ('users/detail_user', compact('users'));
     }
     
 
     public function edit($id)
     {
-        $user = User::find($id);
-        return view('users/edit_user', compact('user'));
+        $users = User::find($id);
+        return view('users/edit_user', compact('users'));
     }
     
 
     public function update(Request $request, $id)
     {
-        $user=\App\Models\User::find($id);
-        $data = $request->all();
-        $data['password'] = bcrypt($request->password);
-        $user->update($data);
-
+        $users = User::find($id);
+        $users->username = $request->username;
+        $users->password = $request->password;
+        $users->nm_user = $request->nm_user;
+        $users->nik = $request->nik;
+        $users->email = $request->email;
+        $users->no_telp = $request->no_telp;
+        $users->jns_kelamin = $request->jns_kelamin;
+        $users->foto_user = $request->foto_user;
+        $users->level = $request->level;
+        $users->status = $request->status;
+        $users->save();
+        
         return redirect('/user');
-        // DB::table('users')->where('id_user', $id)
-        //     -> update([
-        //         'username' => request('username'),
-        //         'password' => Hash::make(request('password')),
-        //         'nm_user' => request('nm_user'),
-        //         'nik' => request('nik'),
-        //         'email' => request('email'),
-        //         'no_telp' => request('no_telp'),
-        //         'jns_kelamin' => request('jns_kelamin'),
-        //         'foto_user' => request('foto_user'),
-        //         'level' => request('level'),
-        //         'status' => request('status'),
-        //     ]);
-            
     }
 
 
@@ -92,90 +85,3 @@ class UserController extends Controller
         //
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // public function index2()
-    // {
-    //     return view('users.tambah_user');
-    // }
-
-
-
-
-    // public function indexDashAdmin()
-    // {
-    //     return view('layout.dashboard_admin');
-    // }
-
-    // public function list()
-    // {
-    //     $users = User::all();
-    //     // dd($users);
-    //     return view('users/list_userAdmin', compact('users'));
-    // }
-
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    
-
-    // public function edit_user (Request $request, $id)
-    // {
-    // }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-
-    // public function detailUserAdmin($id)
-    // {
-    //     $detailUserAdmin = User::find($id);
-    //     return view ('users/detail_userAdmin',['detailUserAdmin' => $detailUserAdmin]);
-    // }
-
-    // public function detail_user($id)
-    // {
-    //     $detail_user = User::find($id);
-    //     return view ('users/detail_user',['detail_user' => $detail_user]);
-    // }
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */

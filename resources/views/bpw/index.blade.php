@@ -27,8 +27,8 @@
       <div style="clear: both;"></div>
         <a href="bpw/create" class="btn btn-primary btn-sm"><i class="fa fa-pencil"> Add</i></a>
         <a href="#" class="btn bg-purple btn-sm"><i class="fa fa-print"> Print</i></a> 
-      @endif 	 
-    </div>
+      </div>
+      @endif 
     </div>
       	
     <div class="box-body" id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
@@ -80,10 +80,10 @@
               ?>
             </td>
             <td>
-              <a href="#" class="fa fa-eye btn-danger btn-sm"></a>
+              <a href="/bpw/show/{{ $bpw->id_bpw }}" class="fa fa-eye btn-danger btn-sm"></a>
 
               @if(auth()->guard('user')->user()->level == 0)
-              <a href="/bpw/{id}/edit" class="fa fa-edit btn-warning btn-sm"></a>
+              <a href="/bpw/edit/{{ $bpw->id_bpw }}" class="fa fa-edit btn-warning btn-sm"></a>
               <a href="#"><i class="fa fa-print btn-success btn-sm"></i></a>
               @endif
               
@@ -103,5 +103,5 @@
   </div>
   </div>
 </div>
-</section> 
+</section>  
 @endsection

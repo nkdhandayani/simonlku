@@ -23,7 +23,7 @@ class LKUController extends Controller
     public function index()
     {
         $lkus = LKU::all();
-        return view('lkuindex', compact('lkus'));
+        return view('lku/index', compact('lkus'));
     }
 
 

@@ -41,7 +41,7 @@
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Nama Pengguna</th>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Email</th>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">No. Telp</th>
-              <th style="width: 0.5rem" class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Level</th>
+              <th style="width: 10rem;" class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Level</th>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Status</th>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Aksi</th>
             </tr>
@@ -92,8 +92,8 @@
                 ?>
                 </td>
                 <td>
-                  <a href="/user/{id}/detail_user"><i class="fa fa-eye btn-danger btn-sm"></i></a>
-                  <a href="/user/{id}/edit"><i class="fa fa-edit btn-warning btn-sm"></i></a>
+                  <a href="/user/show/{{ $pengguna->id_user }}"><i class="fa fa-eye btn-danger btn-sm"></i></a>
+                  <a href="/user/edit/{{ $pengguna->id_user }}"><i class="fa fa-edit btn-warning btn-sm"></i></a>
                   <a href="#"><i class="fa fa-print btn-success btn-sm"></i></a>
                 </td>
               </tr>

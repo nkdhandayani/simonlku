@@ -14,7 +14,7 @@
       </ol>
   </section>
 
-  <form action="#" method="post" enctype="multipart/form-data">
+  <form action="/tdup/update/{{ $tdups -> id_tdup }}" method="post" enctype="multipart/form-data">
   {{csrf_field()}}
   <section class="content">
   <div class="box">

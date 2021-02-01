@@ -33,7 +33,7 @@
                 <a href="/bpw"><i class="fa fa-circle-o"></i><span> Biro Perjalanan Wisata</span></a>
             </li>
     		<li class="{{ (Request()->segment(1) == 'tdup') ? 'active' : ''}}">
-                <a href="/tdup"><i class="fa fa-circle-o"></i><span> Tanda Daftar Usaha</span></a>
+                <a href="/tdup"><i class="fa fa-circle-o"></i><span> TDUP</span></a>
             </li>
             <li class="{{ (Request()->segment(1) == 'izin') ? 'active' : ''}}">
                 <a href="/izin"><i class="fa fa-circle-o"></i><span> Izin Operasional</span></a>
@@ -73,7 +73,7 @@
         </a>
         <ul class="treeview-menu">
             <li class="{{ (Request()->segment(1) == 'tdup') ? 'active' : ''}}">
-                <a href="/tdup"><i class="fa fa-circle-o"></i><span> Tanda Daftar Usaha</span></a>
+                <a href="/tdup"><i class="fa fa-circle-o"></i><span> TDUP</span></a>
             </li>
             <li class="{{ (Request()->segment(1) == 'izin') ? 'active' : ''}}">
                 <a href="/izin"><i class="fa fa-circle-o"></i><span> Izin Operasional</span></a>

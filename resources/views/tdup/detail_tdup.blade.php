@@ -21,42 +21,42 @@
             <tr>
               <td>Nama Biro</td>
               <td>:</td>
-              <td>{{$detailTDUP->bpw->nm_bpw}}</td>
+              <td>{{$tdups->bpw->nm_bpw}}</td>
             </tr>
             <tr> 
               <td>No. Tanda Daftar Usaha Pariwisata</td>
               <td>:</td>
-              <td>{{$detailIzin->no_izin}}</td>
+              <td>{{$tdups->no_izin}}</td>
             </tr>
             <tr>
               <td>Tanggal Tanda Daftar Usaha Pariwisata</td>
               <td>:</td>
-              <td>{{$detailTDUP->tanggal}}</td>
+              <td>{{$tdups->tanggal}}</td>
             </tr>
             <tr>
               <td>Masa Berlaku Tanda Daftar Usaha Pariwisata</td>
               <td>:</td>
-              <td>{{$detailTDUP->ms_berlaku}}</td>
+              <td>{{$tdups->ms_berlaku}}</td>
             </tr>
             <tr>
               <td>File Tanda Daftar Usaha Pariwisata</td>
               <td>:</td>
-              <td>{{$detailTDUP->file_tdup}}</td>
+              <td>{{$tdups->file_tdup}}</td>
             </tr>
             <tr>
               <td>Tanggal Ditambahkan</td>
               <td>:</td>
-              <td>{{$detailTDUP->created_at}}</td>
+              <td>{{$tdups->created_at}}</td>
             </tr>
             <tr>
               <td>Status Verifikasi</td>
               <td>:</td>
               <td>                
-                <?php if($detailTDUP->status == 0)
+                <?php if($tdups->status == 0)
                     {
                        echo "Tidak Disetujui";
                     }
-                      elseif($detailTDUP->status == 1)
+                      elseif($tdups->status == 1)
                     {
                         echo "Disetujui";
                     }
@@ -70,27 +70,27 @@
             <tr>
               <td>Keterangan</td>
               <td>:</td>
-              <td>{{$detailTDUP->keterangan}}</td>
+              <td>{{$tdups->keterangan}}</td>
             </tr>
             <tr>
               <td>Tanggal Verifikasi</td>
               <td>:</td>
-              <td>{{$detailTDUP->tgl_verifikasi}}</td>
+              <td>{{$tdups->tgl_verifikasi}}</td>
             </tr>
             <tr>
               <td>Diverifikasi oleh:</td>
               <td>:</td>
-              <td>{{$detailTDUP->user->nm_user}}</td>
+              <td>{{$tdups->user->nm_user}}</td>
             </tr>
             <tr>
               <td>Status</td>
               <td>:</td>
               <td>
-                <?php if($detailTDUP->status == 0)
+                <?php if($tdups->status == 0)
                     {
                        echo "Tidak Aktif";
                     }
-                      elseif($detailTDUP->status == 1)
+                      elseif($tdups->status == 1)
                     {
                         echo "Aktif";
                     }
@@ -105,7 +105,7 @@
         </div>
 
         <div class="box-footer">
-          <a href="/tdup" class="btn btn-primary">Back</a>
+          <a href="/tdup" class="btn btn-primary btn-sm">Back</a>
         </div>
 
 	</div>

@@ -12,59 +12,59 @@
     </ol>
   </section>
 
-  <section class="content" style="padding-top: 0;">
+  <section class="content">
   <div class="box box-primary">
-    <div class="box-body">
+    <div class="box-body pad table-responsive">
       <table class="table">
         <tr>
           <td width="200px">Foto</td>
           <td width="5px">:</td>
-          <td>{{$detail_user->foto_user}}</td>
+          <td>{{$users->foto_user}}</td>
         </tr>
         <tr> 
           <td>Nama Pengguna</td>
           <td>:</td>
-          <td>{{$detail_user->nm_user}}</td>
+          <td>{{$users->nm_user}}</td>
         </tr>
         <tr>
           <td>Username</td>
           <td>:</td>
-          <td>{{$detail_user->username}}</td>
+          <td>{{$users->username}}</td>
         </tr>
         <tr>
           <td>NIK</td>
           <td>:</td>
-          <td>{{$detail_user->nik}}</td>
+          <td>{{$users->nik}}</td>
         </tr>
         <tr>
           <td>Email</td>
           <td>:</td>
-          <td>{{$detail_user->email}}</td>
+          <td>{{$users->email}}</td>
         </tr>
         <tr>
           <td>No. Telp</td>
           <td>:</td>
-          <td>{{$detail_user->no_telp}}</td>
+          <td>{{$users->no_telp}}</td>
         </tr>
         <tr>
           <td>Jenis Kelamin</td>
           <td>:</td>
-          <td>{{$detail_user->jns_kelamin}}</td>
+          <td>{{$users->jns_kelamin}}</td>
         </tr> 
         <tr>           
           <td>Level</td>
           <td>:</td>
           <td>
             <?php
-            if($detail_user->level == 0)
+            if($users->level == 0)
               {
                 echo "Administrator";
               }
-            elseif($detail_user->level == 1)
+            elseif($users->level == 1)
               {
                 echo "Staf Jasa Pariwisata";
               }
-            elseif($detail_user->level == 2)
+            elseif($users->level == 2)
               {
                 echo "Kepala Seksi Jasa Pariwisata";
               }
@@ -80,11 +80,11 @@
           <td>:</td>
           <td>
             <?php
-            if($detail_user->status == 0)
+            if($users->status == 0)
               {
                 echo "Tidak Aktif";
               }
-            elseif($detail_user->status == 1)
+            elseif($users->status == 1)
               {
                 echo "Aktif";
               }
@@ -99,9 +99,10 @@
     </div>    
 
     <div class="box-footer">
-      <a href="/user" class="btn btn-primary">Back</a>
+      <a href="/user" class="btn btn-primary btn-sm">Back</a>
     </div>
 
+  </div>
   </div>
 	</section>	
 @endsection

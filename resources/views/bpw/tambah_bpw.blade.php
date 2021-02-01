@@ -9,7 +9,7 @@
       <ol class="breadcrumb">
         <li><a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a></li>
         <li> Kelola Data</li>
-        <li> Biro Perjalanan Wisata</li>
+        <li><a href="/bpw"> Biro Perjalanan Wisata</a></li>
         <li class="active"><a href="#"></i>Tambah Biro Perjalanan Wisata</a></li>
       </ol>
     </section>
@@ -17,13 +17,14 @@
     <form action="/bpw/store" method="post" enctype="multipart/form-data">
 	{{csrf_field()}}
 
-	<section class="content" style="padding-top: 0;">
-	<div class="box">
-    <form role="form">
-    <div class="box-body">
+	<section class="content">
+	<div class="box box-primary">
+
+	    <form role="form">
+	    <div class="box-body">
             
         <div>
-    		<a href="/bpw" class="btn btn-primary" style="float: right;">Back</a>
+    		<a href="/bpw" class="btn btn-primary btn-sm" style="float: right;">Back</a>
   		</div>
   		<div style="clear: both;"></div>
   
@@ -119,7 +120,7 @@
 			</div>
 
 		<div>
-			<button type="submit" class="btn btn-primary">Save</button>
+			<button type="submit" class="btn btn-primary btn-sm">Save</button>
 		</div>
 
 	</div>
