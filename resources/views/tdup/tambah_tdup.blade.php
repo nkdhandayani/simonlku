@@ -4,7 +4,7 @@
 
 	<section class="content-header">
     <h1>
-      Data Biro Perjalanan Wisata
+      Tambah Data TDUP
     </h1>
     <ol class="breadcrumb">
         <li><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -14,46 +14,48 @@
       </ol>
   </section>
 
-  <form action="{{ route('tdup.store') }}" method="post" enctype="multipart/form-data">
+  <form action="/tdup/store" method="post" enctype="multipart/form-data">
   {{csrf_field()}}
     <section class="content">
-    <div class="box">
+    <div class="box box-primary">
 
       <form role="form">
       <div class="box-body">
-
+ 
         <div>
-          <a href="tdup" class="btn btn-primary" style="float: right;">Back</a>
+          <a href="/tdup" class="btn btn-primary btn-sm" style="float: right;">Back</a>
         </div>
         <div style="clear: both;"></div>
 
-        <div class="form-group col-md-6">
-          <label for="inputNo_Izin">Nomor Izin Operasional</label>
-          <input name="no_izin" type="text" class="form-control">
+        <div class="form-group">
+          <label for="inputNo_TDUP">Nomor TDUP</label>
+          <input name="no_tdup" type="text" class="form-control">
         </div>
 
-        <div class="form-row col-md-6">
-        <div class="form-group col-md-6">
-          <label for="input_tanggal">Tanggal Izin Operasional</label>
+        <div class="form-row">
+        <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
+          <label for="input_tanggal">Tanggal TDUP</label>
           <input name="tanggal" type="date" class="form-control">
         </div>
-        <div class="form-group col-md-6">
-          <label for="input_ms_berlaku">Masa Berlaku Izin Operasional</label>
+        <div class="form-group col-md-6" style="padding: 0px;">
+          <label for="input_ms_berlaku">Masa Berlaku TDUP</label>
           <input name="ms_berlaku" type="date" class="form-control">
         </div>
         </div>
       
-        <div class="form-group col-md-6">
-          <label for="file_izin">File Izin Operasional</label>
-          <input name="file_izin" type="file" class="form-control-file">
+        <div class="form-group">
+          <label for="file_tdup">File TDUP</label>
+          <input name="file_tdup" type="file" class="form-control-file">
         </div>
       
         <div>
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="submit" class="btn btn-primary btn-sm">Save</button>
         </div>
 
     </div>
     </form>
   </div>
-
+</div>
+</section>
+  
 @endsection

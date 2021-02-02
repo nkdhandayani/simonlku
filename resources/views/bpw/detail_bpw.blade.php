@@ -27,7 +27,7 @@
 	              <td>:</td>
 	              <td>{{$bpws->nm_bpw}}</td>
 	            </tr>
-	            @if(auth()->guard('user')->user()->level == 0)
+	            @if(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 0)
 	            <tr>
 	              <td>Username</td>
 	              <td>:</td>

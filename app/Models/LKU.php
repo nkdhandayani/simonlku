@@ -11,6 +11,8 @@ class LKU extends Model
 
     protected $table = "lku";
     public $timestamps = true;
+    protected $primaryKey = "id_lku";
+    
     public $fillable = [
     	'id_tdup',
     	'id_izin',

@@ -22,7 +22,7 @@
     <div class="box-body pad table-responsive">         
       <h3 class="box-title" style="font-size: 25px;"><i class="fa fa-user"></i> Daftar Biro Perjalanan Wisata</h3>
       
-      @if(auth()->guard('user')->user()->level == 0)
+      @if(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 0)
       <div style="float: right;">
       <div style="clear: both;"></div>
         <a href="bpw/create" class="btn btn-primary btn-sm"><i class="fa fa-pencil"> Add</i></a>
@@ -82,7 +82,7 @@
             <td>
               <a href="/bpw/show/{{ $bpw->id_bpw }}" class="fa fa-eye btn-danger btn-sm"></a>
 
-              @if(auth()->guard('user')->user()->level == 0)
+              @if(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 0)
               <a href="/bpw/edit/{{ $bpw->id_bpw }}" class="fa fa-edit btn-warning btn-sm"></a>
               <a href="#"><i class="fa fa-print btn-success btn-sm"></i></a>
               @endif

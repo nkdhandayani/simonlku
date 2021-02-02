@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-	<section class="content-header">
+	 <section class="content-header">
       <h1>
         Data Pengguna
       </h1>
@@ -11,7 +11,7 @@
       </ol>
     </section>
  
-
+ 
   <section class="content">
 	<div class="row">
   	<div class="col-xs-12">

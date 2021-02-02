@@ -44,13 +44,13 @@ class IzinController extends Controller
             'status' => '',
         ]);
 
-        return redirect('izin/index');
+        return redirect('/izin');
     }
 
 
     public function show($id)
     {
-        $detailIzin = Izin::find($id);
+        $izins = Izin::find($id);
         return view ('izin/detail_izin', compact('izins'));
     }
 
@@ -69,7 +69,7 @@ class IzinController extends Controller
     {
         $izins = Izin::find($id);
 
-        $izins->noizinp = $request->no_izin;
+        $izins->no_izin = $request->no_izin;
         $izins->ms_berlaku = $request->ms_berlaku;
         $izins->file_izin = $request->file_izin;
         $izins->sts_verifikasi = $request->sts_verifikasi;
@@ -77,18 +77,7 @@ class IzinController extends Controller
         $izins->tgl_verifikasi = $request->tgl_verifikasi;
         $izins->status = $request->status;
         $izins->save();
-        return redirect('izin/index');
-
-        // DB::table('izin')->where('id_izin', $id)
-        //     -> update([
-        //         'no_izin' => request('no_izin'),
-        //         'ms_berlaku' => request('ms_berlaku'),
-        //         'file_izin' => file_get_contents($request->file('file_izin')->getRealPath()),
-        //         'sts_verifikasi' => request('sts_verifikasi'),
-        //         'keterangan' => request('keterangan'),
-        //         'tgl_verifikasi' => request('tgl_verifikasi'),
-        //         'status' => request('status'),
-        //         ]);
+        return redirect('/izin');
     }
 
 

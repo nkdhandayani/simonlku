@@ -51,7 +51,7 @@ class TDUPController extends Controller
     public function show($id)
     {
         $tdups = TDUP::find($id);
-        return view ('tdup/detail_tdup', compact('bpws'));
+        return view ('tdup/detail_tdup', compact('tdups'));
     }
 
 
@@ -67,7 +67,7 @@ class TDUPController extends Controller
 
 
     public function update(Request $request, $id)
-    {
+    { 
         $tdups = TDUP::find($id);
 
         $tdups->no_tdup = $request->no_tdup;
@@ -78,7 +78,7 @@ class TDUPController extends Controller
         $tdups->tgl_verifikasi = $request->tgl_verifikasi;
         $tdups->status = $request->status;
         $tdups->save();
-        return redirect('tdup/index');
+        return redirect('/tdup');
         
         // DB::table('tdup')->where('id_tdup', $id)
         //     -> update([

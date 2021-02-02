@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
 	<section class="content-header">
       <h1>
         Data Izin Operasional
@@ -9,9 +8,9 @@
       <ol class="breadcrumb">
         <li><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li> Kelola Data</li>
-        <li class="active"><a href="/izin"></i> Izin Operasional</a></li>
+        <li class="active"><a href="/izin"></i> Tanda Daftar Izin Operasional</a></li>
       </ol>
-    </section>
+  	</section>
 
   	<section class="content">
 	<div class="row">
@@ -26,16 +25,14 @@
 	          	<div style="clear: both;"></div>
 				@if(auth()->guard('bpw')->user())
 	          		<a href="izin/create" class="btn btn-primary btn-sm"><i class="fa fa-pencil"> Add</i></a>
-	          	@elseif(auth()->guard('user')->user()->level == 0)	
+	          	@elseif(auth()->guard('user') && auth()->guard('user')->user()->level == 0)
 	          		<a href="#" class="btn bg-purple btn-sm"><i class="fa fa-print"> Print</i></a>
+				@endif
 			  	</div>
-			  	@endif
-		  	</div>
-		</div>
+			</div>
 
-		<div class="box-body" id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-	      <div class="row">      
-	    </div>
+	    <div class="box-body" id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+	      <div class="row"></div>
  
 	    <div class="row">
     		<div class="col-xs-12">
@@ -51,7 +48,6 @@
 		            	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Aksi</th>
 		            </tr>
 	        	</thead>
-	          
 	          	<tbody>
 	            @php
 	              $i=1;
@@ -61,15 +57,43 @@
 		                <td>{{ $i }}</td>
 		                <td>{{ $izin->no_izin }}</td>
 		                <td>{{ $izin->ms_berlaku }}</td>
-		                <td>@if($izin->file_izin) <img width="50px" src="data:image/png;base64,{{ base64_encode($izin->file_izin) }}"/> @else - @endif</td>
-		                <td>{{ $izin->sts_verifikasi }}</td>
-		                <td>{{ $izin->status }}</td>
+		                <td>@if($izin->file_izin) <img width="50px" src="data:image/png;base64,{{ base64_encode($tdup->file_izin) }}"/> @else - @endif</td>
 		                <td>
-	                  		<a href="#" class="fa fa-eye btn-danger btn-sm"></a>
+		                	<?php if($izin->sts_verifikasi == 0)
+                			{
+                			  echo "Tidak Disetujui";
+                			}
+                			  elseif($izin->sts_verifikasi == 1)
+                			{
+                			  echo "Sudah Disetujui";
+                			}
+                			else
+                			{
+                			  echo "-";
+                			}
+                			?>
+		                </td>
+		                <td>
+		                	<?php if($izin->status == 0)
+                			{
+                			  echo "Tidak Aktif";
+                			}
+                			  elseif($izin->status == 1)
+                			{
+                			  echo "Aktif";
+                			}
+                			else
+                			{
+                			  echo "-";
+                			}
+                			?>
+		                </td>
+		                <td>
+	                  		<a href="/izin/show/{{ $izin->id_izin }}" class="fa fa-eye btn-danger btn-sm"></a>
 
                   			@if(auth()->guard('bpw')->user() ||
                   			   (auth()->guard('user')->user()->level == 1))
-                  			<a href="#" class="fa fa-edit btn-warning btn-sm"></a>
+                  			<a href="/izin/edit/{{ $izin->id_izin }}" class="fa fa-edit btn-warning btn-sm"></a>
 
                   			@elseif(auth()->guard('user')->user()->level == 0)
                   			<a href="#"><i class="fa fa-print btn-success btn-sm"></i></a>
@@ -81,14 +105,14 @@
 	            @endphp
 	            @endforeach
 	        	</tbody>
-        	</table>
+        </table>
+      </div>
       </div>
       </div>
     </div>
-    </div>
-  </div>
-  </div>
-  </div>
+  	</div>
+  	</div>
+  	</div>
+</section>
 </div>
-</section>  
 @endsection

@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
 	<section class="content-header">
       <h1>
         Data Tanda Daftar Usaha Pariwisata
@@ -13,29 +12,27 @@
       </ol>
   	</section>
 
-  	<section class="content">
+  <section class="content">
 	<div class="row">
 	<div class="col-xs-12">
 	<div class="box box-primary">
 
         <div class="box-header">
         	<div class="box-body pad table-responsive">
-              	<h3 class="box-title" style="font-size: 20px;"><i class="fa fa-file"></i> Daftar Tanda Daftar Usaha Pariwisata</h3>
+              <h3 class="box-title" style="font-size: 20px;"><i class="fa fa-file"></i> Daftar Tanda Daftar Usaha Pariwisata</h3>
 			
 	          	<div style="float: right;">
 	          	<div style="clear: both;"></div>
 				@if(auth()->guard('bpw')->user())
 	          		<a href="tdup/create" class="btn btn-primary btn-sm"><i class="fa fa-pencil"> Add</i></a>
-	          	@elseif(auth()->guard('user')->user()->level == 0)
+	          	@elseif(auth()->guard('user') && auth()->guard('user')->user()->level == 0)
 	          		<a href="#" class="btn bg-purple btn-sm"><i class="fa fa-print"> Print</i></a>
+				@endif
 			  	</div>
-			@endif
-		  	</div>
-		</div>
+			</div>
 
 	    <div class="box-body" id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-	      <div class="row">      
-	    </div>
+	      <div class="row"></div>
  
 	    <div class="row">
     		<div class="col-xs-12">
@@ -61,19 +58,46 @@
 		                <td>{{ $tdup->no_tdup }}</td>
 		                <td>{{ $tdup->ms_berlaku }}</td>
 		                <td>@if($tdup->file_tdup) <img width="50px" src="data:image/png;base64,{{ base64_encode($tdup->file_tdup) }}"/> @else - @endif</td>
-		                <td>{{ $tdup->sts_verifikasi }}</td>
-		                <td>{{ $tdup->status }}</td>
+		                <td>
+		                	<?php if($tdup->sts_verifikasi == 0)
+                			{
+                			  echo "Tidak Disetujui";
+                			}
+                			  elseif($tdup->sts_verifikasi == 1)
+                			{
+                			  echo "Sudah Disetujui";
+                			}
+                			else
+                			{
+                			  echo "-";
+                			}
+                			?>
+		                </td>
+		                <td>
+		                	<?php if($tdup->status == 0)
+                			{
+                			  echo "Tidak Aktif";
+                			}
+                			  elseif($tdup->status == 1)
+                			{
+                			  echo "Aktif";
+                			}
+                			else
+                			{
+                			  echo "-";
+                			}
+                			?>
+		                </td>
 		                <td>
 	                  		<a href="/tdup/show/{{ $tdup->id_tdup }}" class="fa fa-eye btn-danger btn-sm"></a>
 
                   			@if(auth()->guard('bpw')->user() ||
                   			   (auth()->guard('user')->user()->level == 1))
-                  			<a href="/tdup/show/{{ $tdup->id_tdup }}" class="fa fa-edit btn-warning btn-sm"></a>
+                  			<a href="/tdup/edit/{{ $tdup->id_tdup }}" class="fa fa-edit btn-warning btn-sm"></a>
 
                   			@elseif(auth()->guard('user')->user()->level == 0)
                   			<a href="#"><i class="fa fa-print btn-success btn-sm"></i></a>
                   			@endif
-
 	                	</td>
 	              	</tr>
 	            @php
@@ -81,14 +105,14 @@
 	            @endphp
 	            @endforeach
 	        	</tbody>
-        	</table>
+        </table>
+      </div>
       </div>
       </div>
     </div>
-    </div>
-  </div>
-  </div>
-  </div>
+  	</div>
+  	</div>
+  	</div>
+</section>
 </div>
-</section>  
 @endsection
