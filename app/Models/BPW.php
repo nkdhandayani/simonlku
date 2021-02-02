@@ -45,16 +45,16 @@ class BPW extends Authenticatable
 
     public function tdup()
     {
-        return $this->hasMany(TDUP::class);
+        return $this->hasMany(TDUP::class, 'id_tdup', 'id_tdup');
     }
 
     public function izin()
     {
-        return $this->hasMany(Izin::class);
+        return $this->hasMany(Izin::class, 'id_izin', 'id_izin');
     }
 
     public function lku()
     {
-        return $this->hasMany(LKU::class);
+        return $this->hasMany(LKU::class, 'id_lku', 'id_lku');
     }
 }

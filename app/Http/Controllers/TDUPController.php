@@ -50,18 +50,22 @@ class TDUPController extends Controller
 
     public function show($id)
     {
+        $user = User::all();
+        $bpw = BPW::all();
         $tdups = TDUP::find($id);
-        return view ('tdup/detail_tdup', compact('tdups'));
+        return view ('tdup/detail_tdup', compact('tdups', 'bpw', 'user'));
     }
 
 
     public function edit($id)
     {
         $bpw = Auth::guard('bpw')->user();
+        $user = Auth::guard('user')->user();
         $tdups = TDUP::find($id);
         return view ('tdup/edit_tdup', [
             'tdup' => $tdups,
-            'bpw' => $bpw
+            'bpw' => $bpw,
+            'user' => $user
         ]);
     }
 
@@ -80,17 +84,7 @@ class TDUPController extends Controller
         $tdups->save();
         return redirect('/tdup');
         
-        // DB::table('tdup')->where('id_tdup', $id)
-        //     -> update([
-        //         'id_bpw' => auth()->id_bpw(),
-        //         'no_tdup' => request('no_tdup'),
-        //         'ms_berlaku' => request('ms_berlaku'),
-        //         'file_tdup' => file_get_contents($request->file('file_tdup')->getRealPath()),
-        //         'sts_verifikasi' => request('sts_verifikasi'),
-        //         'keterangan' => request('keterangan'),
-        //         'tgl_verifikasi' => request('tgl_verifikasi'),
-        //         'status' => request('status'),
-        //     ]);
+
     }
 
 

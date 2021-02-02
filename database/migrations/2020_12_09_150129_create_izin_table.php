@@ -16,6 +16,7 @@ class CreateIzinTable extends Migration
         Schema::create('izin', function (Blueprint $table) {
             $table->increments('id_izin')->unsigned();;
             $table->unsignedInteger('id_bpw');
+            $table->unsignedInteger('id_user');
             $table->string('no_izin', 20);
             $table->date('tanggal');
             $table->date('ms_berlaku');

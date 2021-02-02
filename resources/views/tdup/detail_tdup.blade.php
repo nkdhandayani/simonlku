@@ -77,11 +77,11 @@
               <td>:</td>
               <td>{{$tdups->tgl_verifikasi}}</td>
             </tr>
-            <tr>
+           <!--  <tr>
               <td>Diverifikasi oleh:</td>
               <td>:</td>
               <td>{{$tdups->user->nm_user}}</td>
-            </tr>
+            </tr> -->
             <tr>
               <td>Status</td>
               <td>:</td>

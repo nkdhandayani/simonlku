@@ -32,8 +32,13 @@ class TDUP extends Model
         return $this->belongsTo(BPW::class, 'id_bpw', 'id_bpw');
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id_user');
+    }
+
     public function lku()
     {
-        return $this->hasMany(LKU::class);
+        return $this->hasMany(LKU::class, 'id_lku', 'id_lku');
     }
 }

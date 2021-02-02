@@ -13,7 +13,7 @@
         <li class="active"><a href="#"></i> Tambah TDUP</a></li>
       </ol>
   </section>
-
+ 
   <form action="/tdup/store" method="post" enctype="multipart/form-data">
   {{csrf_field()}}
     <section class="content">
@@ -28,17 +28,17 @@
         <div style="clear: both;"></div>
 
         <div class="form-group">
-          <label for="inputNo_TDUP">Nomor TDUP</label>
+          <label for="no_tdup">Nomor TDUP</label>
           <input name="no_tdup" type="text" class="form-control">
         </div>
 
         <div class="form-row">
         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
-          <label for="input_tanggal">Tanggal TDUP</label>
+          <label for="tanggal">Tanggal TDUP</label>
           <input name="tanggal" type="date" class="form-control">
         </div>
         <div class="form-group col-md-6" style="padding: 0px;">
-          <label for="input_ms_berlaku">Masa Berlaku TDUP</label>
+          <label for="ms_berlaku">Masa Berlaku TDUP</label>
           <input name="ms_berlaku" type="date" class="form-control">
         </div>
         </div>

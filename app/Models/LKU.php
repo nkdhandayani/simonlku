@@ -14,7 +14,7 @@ class LKU extends Model
     protected $primaryKey = "id_lku";
     
     public $fillable = [
-    	'id_tdup',
+        'id_tdup',
     	'id_izin',
         'no_surat',
         'tahun',
@@ -25,6 +25,16 @@ class LKU extends Model
         'tgl_verifikasi',
         'status',
     ];
+
+    public function bpw()
+    {
+        return $this->belongsTo(BPW::class, 'id_bpw', 'id_bpw');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_user', 'id_user');
+    }
 
     public function tdup()
     {

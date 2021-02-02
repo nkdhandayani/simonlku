@@ -43,6 +43,21 @@ class User extends Authenticatable
 
     public function bpw()
     {
-        return $this->hasMany(BPW::class);
+        return $this->hasMany(BPW::class, 'id_bpw', 'id_bpw');
+    }
+
+    public function tdup()
+    {
+        return $this->hasMany(TDUP::class, 'id_btdup', 'id_tdup');
+    }
+
+    public function izin()
+    {
+        return $this->hasMany(Izin::class, 'id_izin', 'id_izin');
+    }
+
+    public function lku()
+    {
+        return $this->hasMany(LKU::class, 'id_lku', 'id_lku');
     }
 }

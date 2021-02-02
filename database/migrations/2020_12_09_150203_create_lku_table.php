@@ -14,7 +14,9 @@ class CreateLkuTable extends Migration
     public function up()
     {
         Schema::create('lku', function (Blueprint $table) {
-            $table->increments('id_lku')->unsigned();;
+            $table->increments('id_lku')->unsigned();
+            $table->unsignedInteger('id_bpw');
+            $table->unsignedInteger('id_user');
             $table->unsignedInteger('id_tdup');
             $table->unsignedInteger('id_izin');
             $table->string('no_surat', 20);
@@ -27,6 +29,7 @@ class CreateLkuTable extends Migration
             $table->integer('status')->unsigned();
             $table->timestamps();
 
+            $table->foreign('id_bpw')->references('id_bpw')->on('bpw');
             $table->foreign('id_tdup')->references('id_tdup')->on('tdup');
             $table->foreign('id_izin')->references('id_izin')->on('izin');
         });
