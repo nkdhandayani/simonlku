@@ -4,12 +4,12 @@
 
 	<section class="content-header">
     <h1>
-      Data Biro Perjalanan Wisata
+      Detail Izin Operasional
     </h1>
     <ol class="breadcrumb">
       <li><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li> Kelola Data</li>
-      <li> Izin Operasional</li>
+      <li><a href="/izin"> Izin Operasional</a></li>
       <li class="active"><a href="#"></i> Detail Izin Operasional</a></li>
     </ol>
   </section>

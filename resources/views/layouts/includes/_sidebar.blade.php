@@ -3,7 +3,7 @@
 <section class="sidebar">
 <ul class="sidebar-menu">
 
-    <li class="header">MAIN NAVIGATION</li>
+    <li class="header">MENU UTAMA</li>
     
     <li class="{{ (Request()->segment(1) == 'dashboard') ? 'active' : ''}}">
       <a href="/dashboard"><i class="fa fa-home"></i><span> Dashboard</span></a>
@@ -11,29 +11,75 @@
 
     @if(auth()->guard('bpw')->user())
     <li class="{{ (Request()->segment(1) == 'bpw') ? 'active' : ''}}">
-      <a href="/bpw"><i class="fa fa-list"></i><span> Biro Perjalanan Wisata</span></a>
+      <a href="/bpw"><i class="fa fa-list"></i><span> Daftar Biro Perjalanan Wisata</span></a>
+    </li>
+
+    <li class="header">KELOLA DATA</li>
+    <li class="treeview">
+        <a href="#">
+        <i class="fa fa-edit"></i><span> Biro Perjalanan Wisata</span>
+            <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="{{ (Request()->segment(1) == 'tdup') ? 'active' : ''}}">
+                <a href="/tdup"><i class="fa fa-circle-o"></i><span> Tanda Daftar Usaha Pariwisata</span></a>
+            </li>
+            <li class="{{ (Request()->segment(1) == 'izin') ? 'active' : ''}}">
+                <a href="/izin"><i class="fa fa-circle-o"></i><span> Izin Operasional</span></a>
+            </li>
+            <li class="{{ (Request()->segment(1) == 'lku') ? 'active' : ''}}">
+                <a href="/lku"><i class="fa fa-circle-o"></i><span> Laporan Kegiatan Usaha</span></a>
+            </li>
+        </ul>
     </li>
 
 
-    @elseif(auth()->guard('user')->user()->level == 0)
+    @elseif(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 0)
+    <li class="header">KELOLA DATA</li>
     <li class="{{ (Request()->segment(1) == 'user') ? 'active' : ''}}">
-        <a href="user"><i class="fa fa-user"></i><span> Kelola Pengguna</span></a>
+        <a href="user"><i class="fa fa-user"></i><span> Data Pegawai</span></a>
+    </li>
+    <li class="treeview">
+        <a href="#">
+        <i class="fa fa-edit"></i><span> Data BPW</span>
+            <span class="pull-right-container">
+            <i class="fa fa-angle-left pull-right"></i>
+            </span>
+        </a>
+        <ul class="treeview-menu">
+            <li class="{{ (Request()->segment(1) == 'bpw') ? 'active' : ''}}">
+                <a href="/bpw"><i class="fa fa-circle-o"></i><span> Biro Perjalanan Wisata</span></a>
+            </li>
+            <li class="{{ (Request()->segment(1) == 'tdup') ? 'active' : ''}}">
+                <a href="/tdup"><i class="fa fa-circle-o"></i><span> Tanda Daftar Usaha Pariwisata</span></a>
+            </li>
+            <li class="{{ (Request()->segment(1) == 'izin') ? 'active' : ''}}">
+                <a href="/izin"><i class="fa fa-circle-o"></i><span> Izin Operasional</span></a>
+            </li>
+            <li class="{{ (Request()->segment(1) == 'lku') ? 'active' : ''}}">
+                <a href="/lku"><i class="fa fa-circle-o"></i><span> Laporan Kegiatan Usaha</span></a>
+            </li>
+        </ul>
     </li>
 
-    @elseif(auth()->guard('user')->user()->level == 1)
+
+    @elseif(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 1)
+    <li class="header">KELOLA DATA</li>
     <li class="treeview">
     	<a href="#">
-   		<i class="fa fa-edit"></i><span> Kelola Data</span>
+   		<i class="fa fa-edit"></i><span> Data BPW</span>
     		<span class="pull-right-container">
     		<i class="fa fa-angle-left pull-right"></i>
     		</span>
     	</a>
     	<ul class="treeview-menu">
     		<li class="{{ (Request()->segment(1) == 'bpw') ? 'active' : ''}}">
-                <a href="/bpw"><i class="fa fa-circle-o"></i><span> Biro Perjalanan Wisata</span></a>
+                <a href="/bpw"><i class="fa fa-circle-o"></i><span> Biro Perjalan Wisata</span></a>
             </li>
     		<li class="{{ (Request()->segment(1) == 'tdup') ? 'active' : ''}}">
-                <a href="/tdup"><i class="fa fa-circle-o"></i><span> TDUP</span></a>
+                <a href="/tdup"><i class="fa fa-circle-o"></i><span> Tanda Daftar Usaha Pariwisata</span></a>
             </li>
             <li class="{{ (Request()->segment(1) == 'izin') ? 'active' : ''}}">
                 <a href="/izin"><i class="fa fa-circle-o"></i><span> Izin Operasional</span></a>
@@ -58,52 +104,6 @@
             </li>
             <li class="{{ (Request()->segment(1) == 'ereport_lku') ? 'active' : ''}}">
                 <a href="/ereport_lku"><i class="fa fa-circle-o"></i><span> Laporan Kegiatan Usaha</span></a>
-            </li>
-        </ul>
-    </li>
-    @endif
-
-    @if(auth()->guard('bpw')->user())
-    <li class="treeview">
-        <a href="#">
-        <i class="fa fa-edit"></i><span> Kelola Data Biro</span>
-            <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li class="{{ (Request()->segment(1) == 'tdup') ? 'active' : ''}}">
-                <a href="/tdup"><i class="fa fa-circle-o"></i><span> TDUP</span></a>
-            </li>
-            <li class="{{ (Request()->segment(1) == 'izin') ? 'active' : ''}}">
-                <a href="/izin"><i class="fa fa-circle-o"></i><span> Izin Operasional</span></a>
-            </li>
-            <li class="{{ (Request()->segment(1) == 'lku') ? 'active' : ''}}">
-                <a href="/lku"><i class="fa fa-circle-o"></i><span> Laporan Kegiatan Usaha</span></a>
-            </li>
-        </ul>
-    </li>
-
-    @elseif(auth()->guard('user')->user()->level == 0)
-    <li class="treeview">
-        <a href="#">
-        <i class="fa fa-edit"></i><span> Kelola Data</span>
-            <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li class="{{ (Request()->segment(1) == 'bpw') ? 'active' : ''}}">
-                <a href="/bpw"><i class="fa fa-circle-o"></i><span> Biro Perjalanan Wisata</span></a>
-            </li>
-            <li class="{{ (Request()->segment(1) == 'tdup') ? 'active' : ''}}">
-                <a href="/tdup"><i class="fa fa-circle-o"></i><span> Tanda Daftar Usaha</span></a>
-            </li>
-            <li class="{{ (Request()->segment(1) == 'izin') ? 'active' : ''}}">
-                <a href="/izin"><i class="fa fa-circle-o"></i><span> Izin Operasional</span></a>
-            </li>
-            <li class="{{ (Request()->segment(1) == 'lku') ? 'active' : ''}}">
-                <a href="/lku"><i class="fa fa-circle-o"></i><span> Laporan Kegiatan Usaha</span></a>
             </li>
         </ul>
     </li>

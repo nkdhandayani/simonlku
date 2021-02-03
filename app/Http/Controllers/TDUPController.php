@@ -25,12 +25,6 @@ class TDUPController extends Controller
     }
 
 
-    public function create()
-    {
-        return view('tdup/tambah_tdup');
-    }
-
-
     public function store(Request $request)
     {
         TDUP::create([

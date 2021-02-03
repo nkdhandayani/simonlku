@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
       <h1>
-        Data Biro Perjalanan Wisata
+        Detail Biro Perjalanan Wisata
       </h1>
       <ol class="breadcrumb">
         <li><a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a></li>

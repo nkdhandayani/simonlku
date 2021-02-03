@@ -80,7 +80,7 @@
 	    </section>
 
 	  	<div class="col-lg-12">
-	    	<div class="box">
+	    	<div class="box box-primary">
 	      		<div class="table-top box-body table-responsive">
 		      
 	    	      <p class="top"><strong>PEMERINTAH PROVINSI BALI</strong></p>

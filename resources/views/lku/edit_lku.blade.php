@@ -4,12 +4,13 @@
 
 	<section class="content-header">
     <h1>
-      Data Biro Perjalanan Wisata
+      Edit Laporan Kegiatan Usaha
     </h1>
     <ol class="breadcrumb">
       <li><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li> Kelola Data</li>
-      <li class="active"><a href="/lku"></i> Laporan Kegiatan Usaha</a></li>
+      <li><a href="/lku"> Laporan Kegiatan Usaha</a></li>
+      <li class="active"><a href="#"></i> Edit LKU</a></li>
     </ol>
   </section>
 

@@ -31,7 +31,6 @@
               </div>
               @endif
           </div>
-        </div>
          
         <div class="box-body" id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
           <div class="row">      
@@ -74,10 +73,8 @@
                     @if(auth()->guard('bpw')->user() ||
                        (auth()->guard('user')->user()->level == 1))
                     <a href="#" class="fa fa-edit btn-warning btn-sm"></a>
-                
-                    @elseif(auth()->guard('user')->user()->level == 0)
-                    <a href="#"><i class="fa fa-print btn-success btn-sm"></i></a>
                     @endif
+                    
                   </td>
                 </tr>
               @php
@@ -85,14 +82,14 @@
               @endphp
               @endforeach
             </tbody>
-          </table>
+        </table>
+      </div>
       </div>
       </div>
     </div>
     </div>
-  </div>
-  </div>
-  </div>
+    </div>
+    </div>
+</section>
 </div>
-</section>  
 @endsection

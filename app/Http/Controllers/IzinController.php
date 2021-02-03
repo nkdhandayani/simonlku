@@ -25,12 +25,6 @@ class IzinController extends Controller
     }
 
 
-    public function create()
-    {
-        return view('izin/tambah_izin');
-    }
-
-
     public function store(Request $request)
     {
         Izin::create([
