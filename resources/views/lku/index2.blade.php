@@ -9,7 +9,7 @@
     <ol class="breadcrumb">
       <li><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li> Kelola Data</li>
-      <li class="active"><a href="/lku_verif"></i> LKU (Sudah Diverifikasi)</a></li>
+      <li class="active"><a href="/lku_nonverif"></i> LKU (Belum Diverifikasi)</a></li>
     </ol>
   </section>
 
@@ -18,19 +18,15 @@
   <div class="col-xs-12">
   <div class="box box-primary">
   
-        <div class="box-header">
-          <div class="box-body pad table-responsive">
-              <h3 class="box-title" style="font-size: 20px;"><i class="fa fa-files-o"></i> Daftar LKU (Sudah Diverifikasi)</h3>
-      
-              <div style="float: right;">
-              <div style="clear: both;"></div>
-              @if(auth()->guard('bpw')->user())
-                <a href="lku/create" class="btn btn-primary btn-sm"><i class="fa fa-pencil"> Add</i></a>
-              @elseif(auth()->guard('user')->user()->level == 0)  
-                <a href="#" class="btn bg-purple btn-sm"><i class="fa fa-print"> Print</i></a>
-              @endif
-              </div>
-          </div>
+        <div style="float: right;">
+          <div style="clear: both;"></div>
+            @if(auth()->guard('bpw')->user())
+              <a href="lku/create" class="btn btn-primary btn-sm"><i class="fa fa-pencil"> Add</i></a>
+            @elseif(auth()->guard('user')->user()->level == 0)  
+              <a href="#" class="btn bg-purple btn-sm"><i class="fa fa-print"> Print</i></a>
+            @endif
+            </div>
+        </div>
          
         <div class="box-body" id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
           <div class="row">      
@@ -66,7 +62,7 @@
                   <td>{{ $lku->periode }}</td>
                   <td>{{ $lku->file_lku }}</td>
                   <td>
-                      <?php if($lku->sts_verifikasi == 0)
+                    <?php if($lku->sts_verifikasi == 0)
                       {
                         echo "Tidak Disetujui";
                       }
@@ -76,12 +72,12 @@
                       }
                       else
                       {
-                        echo "-";
+                        echo "Belum Disetujui";
                       }
                       ?>
                   </td>
                   <td>
-                    <?php if($lku->status == 0)
+                      <?php if($lku->status == 0)
                       {
                         echo "Tidak Aktif";
                       }
@@ -91,7 +87,7 @@
                       }
                       else
                       {
-                        echo "-";
+                        echo "Tidak Aktif";
                       }
                       ?>
                   </td>

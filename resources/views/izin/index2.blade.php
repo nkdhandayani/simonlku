@@ -8,7 +8,7 @@
       <ol class="breadcrumb">
         <li><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li> Kelola Data</li>
-        <li class="active"><a href="/izin_verif"></i> Izin Operasional (Sudah Diverifikasi)</a></li>
+        <li class="active"><a href="/izin_nonverif"></i> Izin Operasional (Belum Diverifikasi)</a></li>
       </ol>
   	</section>
 
@@ -19,7 +19,7 @@
 
         <div class="box-header">
         	<div class="box-body pad table-responsive">
-              	<h3 class="box-title" style="font-size: 20px;"><i class="fa fa-files-o"></i> Daftar Izin Operasional (Sudah Diverifikasi)</h3>
+              	<h3 class="box-title" style="font-size: 20px;"><i class="fa fa-files-o"></i> Daftar Izin Operasional (Belum Diverifikasi)</h3>
 			
 	          	<div style="float: right;">
 	          	<div style="clear: both;"></div>
@@ -69,7 +69,7 @@
                 			}
                 			else
                 			{
-                			  echo "-";
+                			  echo "Belum Disetujui";
                 			}
                 			?>
 		                </td>
@@ -84,7 +84,7 @@
                 			}
                 			else
                 			{
-                			  echo "-";
+                			  echo "Tidak Aktif";
                 			}
                 			?>
 		                </td>

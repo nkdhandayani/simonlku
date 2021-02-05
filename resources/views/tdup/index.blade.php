@@ -8,7 +8,7 @@
       <ol class="breadcrumb">
         <li><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li> Kelola Data</li>
-        <li class="active"><a href="/tdup"></i> Tanda Daftar Usaha Pariwisata</a></li>
+        <li class="active"><a href="/tdup_verif"></i> TDUP (Sudah Diverifikasi)</a></li>
       </ol>
   	</section>
 
@@ -19,15 +19,15 @@
 
         <div class="box-header">
         	<div class="box-body pad table-responsive">
-              <h3 class="box-title" style="font-size: 20px;"><i class="fa fa-file"></i> Daftar Tanda Daftar Usaha Pariwisata</h3>
+              <h3 class="box-title" style="font-size: 20px;"><i class="fa fa-files-o"></i> Daftar TDUP (Sudah Diverifikasi)</h3>
 			
 	          	<div style="float: right;">
 	          	<div style="clear: both;"></div>
-				@if(auth()->guard('bpw')->user())
+				      @if(auth()->guard('bpw')->user())
 	          		<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"> Add</i></button>
 	          	@elseif(auth()->guard('user') && auth()->guard('user')->user()->level == 0)
 	          		<a href="#" class="btn bg-purple btn-sm"><i class="fa fa-print"> Print</i></a>
-				@endif
+				      @endif
 			  	</div>
 			</div>
 

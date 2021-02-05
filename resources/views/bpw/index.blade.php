@@ -20,7 +20,7 @@
 
     <div class="box-header">
     <div class="box-body pad table-responsive">         
-      <h3 class="box-title" style="font-size: 20px;"><i class="fa fa-user"></i> Daftar Biro Perjalanan Wisata</h3>
+      <h3 class="box-title" style="font-size: 20px;"><i class="fa fa-institution"></i> Daftar Biro Perjalanan Wisata</h3>
       
       @if(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 0)
       <div style="float: right;">

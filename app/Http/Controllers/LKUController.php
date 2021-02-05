@@ -26,6 +26,12 @@ class LKUController extends Controller
         return view('lku/index', compact('lkus'));
     }
 
+    public function index2()
+    {
+        $lkus = LKU::all();
+        return view('lku/index2', compact('lkus'));
+    }
+
 
     public function create()
     {
@@ -48,7 +54,7 @@ class LKUController extends Controller
             'status' => request('status'),
         ]);
 
-        return redirect('lku/index');
+        return redirect('/lku_nonverif');
     }
 
 

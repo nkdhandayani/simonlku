@@ -24,6 +24,12 @@ class IzinController extends Controller
         return view('izin/index', compact('izins'));
     }
 
+    public function index2()
+    {
+        $izins = Izin::all();
+        return view('izin/index2', compact('izins'));
+    }
+
 
     public function store(Request $request)
     {
@@ -38,7 +44,7 @@ class IzinController extends Controller
             'status' => '',
         ]);
 
-        return redirect('/izin');
+        return redirect('/izin_nonverif');
     }
 
 

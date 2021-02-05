@@ -24,6 +24,12 @@ class TDUPController extends Controller
         return view('tdup/index', compact('tdups'));
     }
 
+    public function index2()
+    {
+        $tdups = TDUP::all();
+        return view('tdup/index2', compact('tdups'));
+    }
+
 
     public function store(Request $request)
     {
@@ -38,7 +44,7 @@ class TDUPController extends Controller
             'status' => '',
         ]);
 
-        return redirect('/tdup');
+        return redirect('/tdup_nonverif');
     }
 
 
