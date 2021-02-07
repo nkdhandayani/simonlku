@@ -69,7 +69,7 @@ class BPWController extends Controller
 
         $bpws->nm_bpw = $request->nm_bpw;
         $bpws->username = $request->username;
-        $bpws->password = $request->password;
+        $bpws->password = bcrypt($request->password);
         $bpws->email = $request->email;
         $bpws->kabupaten = $request->kabupaten;
         $bpws->no_telp = $request->no_telp;

@@ -35,8 +35,8 @@
 
       <div class="form-row">
       <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
-        <label for="tgl_tdup">Tanggal TDUP</label>
-        <input name="tanggal" type="date" class="form-control" id="tgl_tdup" value ="{{$tdup -> tanggal}}" required="required" autocomplete="off">
+        <label for="tanggal">Tanggal TDUP</label>
+        <input name="tanggal" type="date" class="form-control" id="tanggal" value ="{{$tdup -> tanggal}}" required="required" autocomplete="off">
       </div>
       <div class="form-group col-md-6" style="padding: 0px;">
         <label for="ms_berlaku">Masa Berlaku TDUP</label>
@@ -48,35 +48,68 @@
         <label for="file_tdup">File TDUP</label>
         <input name="file_tdup" type="file" class="form-control-file" id="file_tdup" value ="{{$tdup -> file_tdup}}" required="required" autocomplete="off">
       </div>
+
       <div class="form-group">
         <label for="created_at">Tanggal Ditambahkan</label>
         <input name="created_at" type="text" class="form-control" id="created_at" value ="{{$tdup -> created_at}}" required="required" autocomplete="off" readonly>
       </div>
- 
-      @if(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 1)
+
+      @if(auth()->guard('bpw')->user())
       <div class="form-group">
         <label for="keterangan">Keterangan</label>
-        <input name="keterangan" type="text" class="form-control" id="keterangan" value ="{{$tdup -> keterangan}}" required="required" autocomplete="off">
+        <textarea name="keterangan" type="textarea" class="form-control" id="input_keterangan" rows="6" required="required" autocomplete="off" readonly>{{$tdup -> keterangan}}</textarea>
       </div>
+
       <div class="form-group">
         <label for="tgl_verifikasi">Tanggal Verifikasi</label>
-        <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value ="{{$tdup -> tgl_verifikasi}}" required="required" autocomplete="off">
+        <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value ="{{$tdup -> tgl_verifikasi}}" required="required" autocomplete="off" readonly>
       </div>
+
+      <div class="form-row">
+      <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
+        <label for="sts_verifikasi">Status Verifikasi</label>
+        <select  disabled="true" name="sts_verifikasi" class="form-control" id="sts_verifikasi" value ="{{$tdup -> sts_verifikasi}}" required="required" autocomplete="off">
+          <option value="0" @if($tdup -> sts_verifikasi == "0") selected @endif>Belum Diverifikasi</option>
+          <option value="2" @if($tdup -> sts_verifikasi == "2") selected @endif>Disetujui</option>
+          <option value="1" @if($tdup -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6" style="padding: 0px;">
+        <label for="form_status">Status</label>
+        <select disabled="true" name="status" class="form-control" id="input_status" value ="{{$tdup -> status}}" required="required" autocomplete="off" readonly>
+          <option value="1" @if($tdup -> status == "1") selected @endif>Aktif</option>
+          <option value="0" @if($tdup -> status == "0") selected @endif>Tidak Aktif</option>
+        </select>
+      </div>
+      </div>
+ 
+
+      @elseif(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 1)
+      <div class="form-group">
+        <label for="keterangan">Keterangan</label>
+        <textarea name="keterangan" type="textarea" class="form-control" id="input_keterangan" rows="6" required="required" autocomplete="off" value="{{$tdup -> keterangan}}">{{$tdup -> keterangan}}</textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="tgl_verifikasi">Tanggal Verifikasi</label>
+        <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value="{{$tdup -> tgl_verifikasi}}" required="required" autocomplete="off">
+      </div>
+      
       <div class="form-row">
       <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
         <label for="sts_verifikasi">Status Verifikasi</label>
         <select name="sts_verifikasi" class="form-control" id="sts_verifikasi" value ="{{$tdup -> sts_verifikasi}}" required="required" autocomplete="off">
           <option selected>-- Pilih Status Verifikasi --</option>
-          <option value="1">Disetujui</option>
-          <option value="0">Tidak Disetujui</option>
+          <option value="2" @if($tdup -> sts_verifikasi == "2") selected @endif>Disetujui</option>
+          <option value="1" @if($tdup -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
         </select>
       </div>
       <div class="form-group col-md-6" style="padding: 0px;">
         <label for="form_status">Status</label>
         <select name="status" class="form-control" id="input_status" value ="{{$tdup -> status}}" required="required" autocomplete="off">
           <option selected>-- Pilih Status --</option>
-          <option value="1">Aktif</option>
-          <option value="0">Tidak Aktif</option>
+          <option value="1" @if($tdup -> status == "1") selected @endif>Aktif</option>
+          <option value="0" @if($tdup -> status == "0") selected @endif>Tidak Aktif</option>
         </select>
       </div>
       </div>

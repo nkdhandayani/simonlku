@@ -24,12 +24,6 @@ class TDUPController extends Controller
         return view('tdup/index', compact('tdups'));
     }
 
-    public function index2()
-    {
-        $tdups = TDUP::all();
-        return view('tdup/index2', compact('tdups'));
-    }
-
 
     public function store(Request $request)
     {
@@ -44,7 +38,7 @@ class TDUPController extends Controller
             'status' => '',
         ]);
 
-        return redirect('/tdup_nonverif');
+        return redirect('/tdup');
     }
 
 
@@ -53,7 +47,7 @@ class TDUPController extends Controller
         $user = User::all();
         $bpw = BPW::all();
         $tdups = TDUP::find($id);
-        return view ('tdup/detail_tdup', compact('tdups', 'bpw', 'user'));
+        return view ('/tdup/detail_tdup', compact('tdups', 'bpw', 'user'));
     }
 
 

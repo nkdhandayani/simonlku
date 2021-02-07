@@ -1,6 +1,28 @@
 <aside class="main-sidebar">
 
 <section class="sidebar">
+    <div class="user-panel">
+        <div class="pull-left image">
+          <img src="{{url('adminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+          <p>
+            @if(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '0')
+            Administrator
+            @elseif(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '1')
+            Staf Jasa Pariwisata
+            @elseif(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '2')
+            Kepala Seksi Jasa Pariwisata
+            @endif
+
+            @if(\Auth::guard('bpw')->user())
+            Biro Perjalanan Wisata
+            @endif
+          </p>
+          <small><i class="fa fa-circle text-success"></i> Online</small>
+        </div>
+      </div>
+
 <ul class="sidebar-menu">
 
     <li class="header">MENU UTAMA</li>
@@ -15,55 +37,16 @@
     </li>
 
     <li class="header">KELOLA DATA BIRO</li>
-    <li class="treeview">
-        <a href="#">
-        <i class="fa fa-file-text"></i><span> TDUP</span>
-            <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li class="{{ (Request()->segment(1) == 'tdup_verif') ? 'active' : ''}}">
-                <a href="/tdup_verif"><i class="fa fa-circle-o"></i><span> Sudah Diverifikasi</span></a>
-            </li>
-            <li class="{{ (Request()->segment(1) == 'tdup_nonverif') ? 'active' : ''}}">
-                <a href="/tdup_nonverif"><i class="fa fa-circle-o"></i><span> Belum Diverifikasi</span></a>
-            </li>
-        </ul>
+    <li class="{{ (Request()->segment(1) == 'tdup') ? 'active' : ''}}">
+      <a href="/tdup"><i class="fa fa-file-text"></i><span> TDUP</span></a>
     </li>
 
-    <li class="treeview">
-        <a href="#">
-        <i class="fa fa-file-text"></i><span> Izin Operasional</span>
-            <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li class="{{ (Request()->segment(1) == 'izin_verif') ? 'active' : ''}}">
-                <a href="/izin_verif"><i class="fa fa-circle-o"></i><span> Sudah Diverifikasi</span></a>
-            </li>
-            <li class="{{ (Request()->segment(1) == 'izin_nonverif') ? 'active' : ''}}">
-                <a href="/izin_nonverif"><i class="fa fa-circle-o"></i><span> Belum Diverifikasi</span></a>
-            </li>
-        </ul>
+    <li class="{{ (Request()->segment(1) == 'izin') ? 'active' : ''}}">
+      <a href="/izin"><i class="fa fa-file-text"></i><span> Izin Operasional</span></a>
     </li>
 
-    <li class="treeview">
-        <a href="#">
-        <i class="fa fa-file-text"></i><span> LKU</span>
-            <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li class="{{ (Request()->segment(1) == 'lku_verif') ? 'active' : ''}}">
-                <a href="/lku_verif"><i class="fa fa-circle-o"></i><span> Sudah Diverifikasi</span></a>
-            </li>
-            <li class="{{ (Request()->segment(1) == 'lku_nonverif') ? 'active' : ''}}">
-                <a href="/lku_nonverif"><i class="fa fa-circle-o"></i><span> Belum Diverifikasi</span></a>
-            </li>
-        </ul>
+    <li class="{{ (Request()->segment(1) == 'lku') ? 'active' : ''}}">
+      <a href="/lku"><i class="fa fa-file-text"></i><span> LKU</span></a>
     </li>
 
 
@@ -78,55 +61,16 @@
         <a href="/bpw"><i class="fa fa-institution"></i><span> Biro Perjalanan Wisata</span></a>
     </li>
 
-    <li class="treeview">
-        <a href="#">
-        <i class="fa fa-file-text"></i><span> TDUP</span>
-            <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li class="{{ (Request()->segment(1) == 'tdup_verif') ? 'active' : ''}}">
-                <a href="/tdup_verif"><i class="fa fa-circle-o"></i><span> Sudah Diverifikasi</span></a>
-            </li>
-            <li class="{{ (Request()->segment(1) == 'tdup_nonverif') ? 'active' : ''}}">
-                <a href="/tdup_nonverif"><i class="fa fa-circle-o"></i><span> Belum Diverifikasi</span></a>
-            </li>
-        </ul>
+    <li class="{{ (Request()->segment(1) == 'tdup') ? 'active' : ''}}">
+      <a href="/tdup"><i class="fa fa-file-text"></i><span> TDUP</span></a>
     </li>
 
-    <li class="treeview">
-        <a href="#">
-        <i class="fa fa-file-text"></i><span> Izin Operasional</span>
-            <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li class="{{ (Request()->segment(1) == 'izin_verif') ? 'active' : ''}}">
-                <a href="/izin_verif"><i class="fa fa-circle-o"></i><span> Sudah Diverifikasi</span></a>
-            </li>
-            <li class="{{ (Request()->segment(1) == 'izin_nonverif') ? 'active' : ''}}">
-                <a href="/izin_nonverif"><i class="fa fa-circle-o"></i><span> Belum Diverifikasi</span></a>
-            </li>
-        </ul>
+    <li class="{{ (Request()->segment(1) == 'izin') ? 'active' : ''}}">
+      <a href="/izin"><i class="fa fa-file-text"></i><span> Izin Operasional</span></a>
     </li>
 
-    <li class="treeview">
-        <a href="#">
-        <i class="fa fa-file-text"></i><span> LKU</span>
-            <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li class="{{ (Request()->segment(1) == 'lku_verif') ? 'active' : ''}}">
-                <a href="/lku_verif"><i class="fa fa-circle-o"></i><span> Sudah Diverifikasi</span></a>
-            </li>
-            <li class="{{ (Request()->segment(1) == 'lku_nonverif') ? 'active' : ''}}">
-                <a href="/lku_nonverif"><i class="fa fa-circle-o"></i><span> Belum Diverifikasi</span></a>
-            </li>
-        </ul>
+    <li class="{{ (Request()->segment(1) == 'lku') ? 'active' : ''}}">
+      <a href="/lku"><i class="fa fa-file-text"></i><span> LKU</span></a>
     </li>
 
 
@@ -136,55 +80,16 @@
         <a href="/bpw"><i class="fa fa-institution"></i><span> Biro Perjalanan Wisata</span></a>
     </li>
 
-    <li class="treeview">
-        <a href="#">
-        <i class="fa fa-file-text"></i><span> TDUP</span>
-            <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li class="{{ (Request()->segment(1) == 'tdup_verif') ? 'active' : ''}}">
-                <a href="/tdup_verif"><i class="fa fa-circle-o"></i><span> Sudah Diverifikasi</span></a>
-            </li>
-            <li class="{{ (Request()->segment(1) == 'tdup_nonverif') ? 'active' : ''}}">
-                <a href="/tdup_nonverif"><i class="fa fa-circle-o"></i><span> Belum Diverifikasi</span></a>
-            </li>
-        </ul>
+    <li class="{{ (Request()->segment(1) == 'tdup') ? 'active' : ''}}">
+      <a href="/tdup"><i class="fa fa-file-text"></i><span> TDUP</span></a>
     </li>
 
-    <li class="treeview">
-        <a href="#">
-        <i class="fa fa-file-text"></i><span> Izin Operasional</span>
-            <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li class="{{ (Request()->segment(1) == 'izin_verif') ? 'active' : ''}}">
-                <a href="/izin_verif"><i class="fa fa-circle-o"></i><span> Sudah Diverifikasi</span></a>
-            </li>
-            <li class="{{ (Request()->segment(1) == 'izin_nonverif') ? 'active' : ''}}">
-                <a href="/izin_nonverif"><i class="fa fa-circle-o"></i><span> Belum Diverifikasi</span></a>
-            </li>
-        </ul>
+    <li class="{{ (Request()->segment(1) == 'izin') ? 'active' : ''}}">
+      <a href="/izin"><i class="fa fa-file-text"></i><span> Izin Operasional</span></a>
     </li>
 
-    <li class="treeview">
-        <a href="#">
-        <i class="fa fa-file-text"></i><span> LKU</span>
-            <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-            </span>
-        </a>
-        <ul class="treeview-menu">
-            <li class="{{ (Request()->segment(1) == 'lku_verif') ? 'active' : ''}}">
-                <a href="/lku_verif"><i class="fa fa-circle-o"></i><span> Sudah Diverifikasi</span></a>
-            </li>
-            <li class="{{ (Request()->segment(1) == 'lku_nonverif') ? 'active' : ''}}">
-                <a href="/lku_nonverif"><i class="fa fa-circle-o"></i><span> Belum Diverifikasi</span></a>
-            </li>
-        </ul>
+    <li class="{{ (Request()->segment(1) == 'lku') ? 'active' : ''}}">
+      <a href="/lku"><i class="fa fa-file-text"></i><span> LKU</span></a>
     </li>
 
     @elseif(auth()->guard('user')->user()->level == 2)

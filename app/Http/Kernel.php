@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'isStaffUser' => \App\Http\Middleware\isStaffUser::class,
         'isKepalaUser' => \App\Http\Middleware\isKepalaUser::class,
         'isBPWUser' => \App\Http\Middleware\isBPWUser::class,
+        'CheckRole' => \App\Http\Middleware\CheckRole::class,
     ];
 }

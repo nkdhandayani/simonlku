@@ -32,7 +32,7 @@
       </div>
 
       <div class="row">
-      <div class="col-xs-12">
+      <div class="col-xs-12" style="overflow-x:auto;">
         <table id='example1' class="table table-hover table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
           <thead>
             <tr role="row">
@@ -133,39 +133,39 @@
           
               <div class="form-group">
                 <label for="form_nm_user">Nama Pegawai</label>
-                <input name="nm_user" type="text" class="form-control" id="nm_user">
+                <input name="nm_user" type="text" class="form-control" id="nm_user" placeholder="Masukkan nama pegawai" required="required" autocomplete="off">
               </div>
-      
+       
               <div class="form-row">
               <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
                 <label for="form_username">Username</label>
-                <input name="username" type="username" class="form-control" id="username">
+                <input name="username" type="username" class="form-control" id="username" placeholder="Masukkan Username" required="required" autocomplete="off">
               </div>
               <div class="form-group col-md-6" style="padding: 0px;">
                 <label for="form_password">Password</label>
-                <input name="password" type="password" class="form-control" id="password">
+                <input name="password" type="password" class="form-control" id="password" placeholder="Masukkan Password" required="required" autocomplete="off">
               </div>
               </div>
       
               <div class="form-row">
               <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
                 <label for="form_nik">NIK</label>
-                <input name="nik" type="text" class="form-control" id="nik">
+                <input name="nik" type="text" class="form-control" id="nik" placeholder="Masukkan NIK" required="required" autocomplete="off">
               </div>
               <div class="form-group col-md-6" style="padding: 0;">
                 <label for="form_Email">E-mail</label>
-                <input name="email"type="email" class="form-control" id="email">
+                <input name="email"type="email" class="form-control" id="email" placeholder="Masukkan E-mail" required="required" autocomplete="off">
               </div>
               </div>
       
               <div class="form-row">
               <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
                 <label for="form_no_telp">Nomor Telepon</label>
-                <input name="no_telp" type="text" class="form-control" id="no_telp">
+                <input name="no_telp" type="text" class="form-control" id="no_telp" placeholder="Masukkan Nomor Telepon" required="required" autocomplete="off">
               </div>
               <div class="form-group col-md-6" style="padding: 0;">
                 <label for="form_jns_kelamin">Jenis Kelamin</label>
-                <select name="jns_kelamin" class="form-control" id="jns_kelamin">
+                <select name="jns_kelamin" class="form-control" id="jns_kelamin" required="required" autocomplete="off">
                   <option selected>-- Pilih Jenis Kelamin --</option>
                   <option value="Laki-laki">Laki-laki</option>
                   <option value="Perempuan">Perempuan</option>
@@ -176,7 +176,7 @@
               <div class="form-row">
               <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
                 <label for="form_level">Level</label>
-                  <select name="level" class="form-control" id="level">
+                  <select name="level" class="form-control" id="level" required="required" autocomplete="off">
                     <option selected>-- Pilih Level --</option>
                     <option value="0">Administrator</option>
                     <option value="1">Staf Jasa Pariwisata</option>
@@ -184,7 +184,7 @@
                   </select>
               </div>
               <div class="form-group col-md-6" style="padding: 0;">
-                <label for="form_status">Status</label>
+                <label for="form_status" required="required" autocomplete="off">Status</label>
                   <select name="status" class="form-control" id="status">
                     <option selected>-- Pilih Status --</option>
                     <option value="1">Aktif</option>

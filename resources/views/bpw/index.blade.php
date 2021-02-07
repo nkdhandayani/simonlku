@@ -41,12 +41,11 @@
         <thead>
           <tr role="row">
             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
-            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Foto</th>
             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama BPW</th>
             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Kabupaten</th>
             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Email</th>
             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No. Telp</th>
-            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama Pimpinan</th>
+            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama PIC</th>
             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Status</th>
             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Aksi</th>
           </tr>
@@ -58,12 +57,11 @@
           @foreach ($bpws as $bpw)
           <tr>
             <td>{{ $i }}</td>
-            <td>@if($bpw->foto_bpw) <img width="50px" src="data:image/png;base64,{{ base64_encode($bpw->foto_bpw) }}"/> @else - @endif</td>
             <td>{{ $bpw->nm_bpw }}</td>
             <td>{{ $bpw->kabupaten }}</td>
             <td>{{ $bpw->email }}</td>
             <td>{{ $bpw->no_telp }}</td>
-            <td>{{ $bpw->nm_pimpinan }}</td>
+            <td>{{ $bpw->nm_pic }}</td>
             <td>
               <?php if($bpw->status == 0)
               {
@@ -121,34 +119,34 @@
             <form action="/bpw/store" method="post" enctype="multipart/form-data">{{csrf_field()}}
 
               <div class="form-group">
-                <label for="form_nm_bpw">Nama BPW</label>
-                  <input name="nm_bpw" type="text" class="form-control" id="input_nm_bpw">
+                <label for="nm_bpw">Nama BPW</label>
+                  <input name="nm_bpw" type="text" class="form-control" id="nm_bpw" placeholder="Masukkan Nama BPW" required="required" autocomplete="off">
               </div>
         
               <div class="form-row">
               <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
-                <label for="form_username">Username</label>
-                  <input name="username" type="username" class="form-control" id="input_username">
+                <label for="username">Username</label>
+                  <input name="username" type="username" class="form-control" id="username" placeholder="Masukkan Username" required="required" autocomplete="off">
               </div>
               <div class="form-group col-md-6" style="padding: 0px;">
-                <label for="form_password">Password</label>
-                  <input name="password" type="password" class="form-control" id="input_password">
+                <label for="password">Password</label>
+                  <input name="password" type="password" class="form-control" id="password" placeholder="Masukkan Password" required="required" autocomplete="off">
               </div>
               </div>
               
               <div class="form-group">
-                <label for="form_Email">E-mail</label>
-                  <input name="email"type="email" class="form-control" id="input_email">
+                <label for="email">E-mail</label>
+                  <input name="email"type="email" class="form-control" id="email" placeholder="Masukkan E-mail" required="required" autocomplete="off">
               </div>
               
               <div class="form-group">
-                <label for="for_alamat">Alamat</label>
-                  <textarea name="alamat" type="textarea" class="form-control" id="input_alamat" rows="6"></textarea>
+                <label for="alamat">Alamat</label>
+                  <textarea name="alamat" type="textarea" class="form-control" id="alamat" rows="6" placeholder="Masukkan Alamat" required="required" autocomplete="off"></textarea>
               </div>
       
               <div class="form-group">
                 <label for="form_kabupaten">Kabupaten/Kota</label>
-                  <select name="kabupaten" class="form-control" id="input_kabupaten">
+                  <select name="kabupaten" class="form-control" id="input_kabupaten" required="required" autocomplete="off">
                     <option selected>-- Pilih Kabupaten/Kota --</option>
                     <option value="Kota Denpasar">Kota Denpasar</option>
                     <option value="Badung">Badung</option>
@@ -164,29 +162,29 @@
       
               <div class="form-row">
               <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
-                <label for="form_no_telp">Nomor Telepon</label>
-                  <input name="no_telp" type="text" class="form-control" id="input_no_telp">
+                <label for="no_telp">Nomor Telepon</label>
+                  <input name="no_telp" type="text" class="form-control" id="no_telp" placeholder="Masukkan Nomor Telepon" required="required" autocomplete="off">
               </div>
               <div class="form-group col-md-6" style="padding: 0;">
-                <label for="form_no_fax">Nomor Fax</label>
-                  <input name="no_fax" type="text" class="form-control" id="input_no_fax">
+                <label for="no_fax">Nomor Fax</label>
+                  <input name="no_fax" type="text" class="form-control" id="no_fax" placeholder="Masukkan Nomor Fax" required="required" autocomplete="off">
               </div>
               </div>
       
               <div class="form-group">
-                <label for="form_nm_pic">Nama PIC</label>
-                  <input name="nm_pic" type="text" class="form-control" id="input_nm_pic">
+                <label for="nm_pic">Nama PIC</label>
+                  <input name="nm_pic" type="text" class="form-control" id="nm_pic" placeholder="Masukkan Nama PIC" required="required" autocomplete="off">
               </div>
         
               <div class="form-group">
-                <label for="form_nm_pimpinan">Nama Pimpinan</label>
-                  <input name="nm_pimpinan" type="text" class="form-control" id="input_nm_pimpinan">
+                <label for="nm_pimpinan">Nama Pimpinan</label>
+                  <input name="nm_pimpinan" type="text" class="form-control" id="nm_pimpinan" placeholder="Masukkan Nama Pimpinan" required="required" autocomplete="off">
               </div>
         
               <div class="form-row">
               <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
-                <label for="form_jns_BPW">Jenis BPW</label>
-                  <select name="jns_bpw" class="form-control" id="input_jns_bpw">
+                <label for="jns_BPW">Jenis BPW</label>
+                  <select name="jns_bpw" class="form-control" id="jns_bpw" required="required" autocomplete="off">
                     <option selected>-- Pilih Jenis BPW --</option>
                     <option value="BPW">BPW</option>
                     <option value="MICE">MICE</option>
@@ -194,8 +192,8 @@
                   </select>
               </div>
               <div class="form-group  col-md-6" style="padding: 0;">
-                <label for="form_sts_kantor">Status Kantor</label>
-                  <select name="sts_kantor" class="form-control" id="input_sts_kantor">
+                <label for="sts_kantor">Status Kantor</label>
+                  <select name="sts_kantor" class="form-control" id="sts_kantor" required="required" autocomplete="off">
                     <option selected>-- Pilih Status Kantor --</option>
                     <option value="Hak Pribadi">Hak Pribadi</option>
                     <option value="Kontrak">Kontrak</option>
@@ -204,18 +202,18 @@
               </div>
       
               <div class="form-group">
-                <label for="form_nib">Nomor Induk Berusaha</label>
-                  <input name="nib" type="text" class="form-control" id="input_nib">
+                <label for="nib">Nomor Induk Berusaha</label>
+                  <input name="nib" type="text" class="form-control" id="nib" placeholder="Masukkan Nomor Induk Berusaha" required="required" autocomplete="off">
               </div>
         
               <div class="form-group">
-                <label for="form_foto_bpw">Foto BPW</label>
-                  <input name="foto_bpw" type="file" class="form-control-file" id="input_foto_bpw">
+                <label for="foto_bpw">Foto BPW</label>
+                  <input name="foto_bpw" type="file" class="form-control-file" id="foto_bpw">
               </div>
               
               <div class="form-group">
-                <label for="form_status">Status</label>
-                  <select name="status" class="form-control" id="input_status">
+                <label for="status">Status</label>
+                  <select name="status" class="form-control" id="status" required="required" autocomplete="off">
                     <option selected>-- Pilih Status --</option>
                     <option value="1">Aktif</option>
                     <option value="0">Tidak Aktif</option>

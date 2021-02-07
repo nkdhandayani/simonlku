@@ -18,11 +18,11 @@
   	<div class="box box-primary">
         <div class="box-body">
           <table class="table">
-            <tr>
+            <!-- <tr>
               <td>Nama Biro</td>
               <td>:</td>
               <td>{{$tdups->bpw->nm_bpw}}</td>
-            </tr>
+            </tr> -->
             <tr> 
               <td>No. Tanda Daftar Usaha Pariwisata</td>
               <td>:</td>
@@ -52,19 +52,20 @@
               <td>Status Verifikasi</td>
               <td>:</td>
               <td>                
-                <?php if($tdups->status == 0)
-                    {
-                       echo "Tidak Disetujui";
-                    }
-                      elseif($tdups->status == 1)
-                    {
-                        echo "Disetujui";
-                    }
-                      else
-                    {
-                        echo "-";
-                    }                          
-                    ?>
+                <?php
+                  if($tdups->sts_verifikasi == 0)
+                  {
+                    echo "Belum Diverifikasi";
+                  }
+                  elseif($tdups->sts_verifikasi == 1)
+                  {
+                    echo "Tidak Disetujui";
+                  }
+                  elseif($tdups->sts_verifikasi == 2)
+                  {
+                    echo "Disetujui";
+                  }
+                ?>
               </td>
             </tr>
             <tr>
@@ -86,18 +87,15 @@
               <td>Status</td>
               <td>:</td>
               <td>
-                <?php if($tdups->status == 0)
-                    {
-                       echo "Tidak Aktif";
-                    }
-                      elseif($tdups->status == 1)
-                    {
-                        echo "Aktif";
-                    }
-                      else
-                    {
-                        echo "-";
-                    }                          
+                <?php
+                if($tdups->status == 0)
+                  {
+                    echo "Tidak Aktif";
+                  }
+                    elseif($tdups->status == 1)
+                  {
+                    echo "Aktif";
+                  }                         
                 ?>            
               </td>    
             </tr>

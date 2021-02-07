@@ -4,6 +4,17 @@
 	<section class="content-header">
       <h1>
         Dashboard
+        @if(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '0')
+        Administrator
+        @elseif(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '1')
+        Staf Jasa Pariwisata
+        @elseif(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '2')
+        Kepala Seksi Jasa Pariwisata
+        @endif
+
+        @if(\Auth::guard('bpw')->user())
+        Biro Perjalanan Wisata
+        @endif
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
@@ -18,13 +29,13 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>100</h3>
-              <p>Biro Perjalanan Wisata</p>
+              <h3>{{$bpws = App\Models\BPW::count()}}</h3>
+              <h4>Data BPW</h4>
             </div>
             <div class="icon">
-              <i class="ion ion-person"></i>
+              <i class="fa fa-institution"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/bpw" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         
@@ -32,13 +43,13 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>100</h3>
-              <p>Tanda Daftar Usaha Pariwisata</p>
+              <h3>{{$tdups = App\Models\TDUP::count()}}</h3>
+              <h4>Data TDUP</h4>
             </div>
             <div class="icon">
-              <i class="ion ion-document"></i>
+              <i class="fa fa-file-text"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/tdup" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
@@ -46,13 +57,13 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>100</h3>
-              <p>Izin Operasional</p>
+              <h3>{{$izins = App\Models\Izin::count()}}</h3>
+              <h4>Data Izin Operasional</h4>
             </div>
             <div class="icon">
-              <i class="ion ion-document"></i>
+              <i class="fa fa-file-text"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/izin" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
 
@@ -60,13 +71,13 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>100</h3>
-              <p>Laporan Kegiatan Usaha</p>
+              <h3>{{$lkus = App\Models\LKU::count()}}</h3>
+              <h4>Data LKU</h4>
             </div>
             <div class="icon">
-              <i class="ion ion-document"></i>
+              <i class="fa fa-file-text"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="/lku" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         </div>

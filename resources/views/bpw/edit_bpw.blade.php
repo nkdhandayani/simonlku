@@ -29,93 +29,93 @@
   		<div style="clear: both;"></div>
 	
 			<div class="form-group">
-		    	<label for="form_foto_bpw">Foto BPW</label>
-		    	<input name="foto_bpw" type="file" class="form-control-file" id="input_foto_bpw" value ="{{$bpws -> foto_bpw}}">
+		    	<label for="foto_bpw">Foto BPW</label>
+		    	<input name="foto_bpw" type="file" class="form-control-file" id="foto_bpw" value ="{{$bpws -> foto_bpw}}">
 			</div>
 			<div class="form-group">
-		    	<label for="form_nm_bpw">Nama BPW</label>
-		   		<input name="nm_bpw" type="text" class="form-control" id="input_nm_bpw" value ="{{$bpws -> nm_bpw}}">
+		    	<label for="nm_bpw">Nama BPW</label>
+		   		<input name="nm_bpw" type="text" class="form-control" id="nm_bpw" value ="{{$bpws -> nm_bpw}}" required="required" autocomplete="off">
 		  	</div>
 		  	<div class="form-row">
 		    <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
-		      	<label for="form_sername">Username</label>
-		      	<input name="username" type="username" class="form-control" id="input_username" value ="{{$bpws -> username}}">
+		      	<label for="username">Username</label>
+		      	<input name="username" type="username" class="form-control" id="username" value ="{{$bpws -> username}}" required="required" autocomplete="off">
 		    </div>
 		    <div class="form-group col-md-6" style="padding: 0;">
-		      	<label for="form_assword">Password</label>
-		      	<input name="password" type="password" class="form-control" id="input_password" value ="{{$bpws -> password}}">
+		      	<label for="password">Password</label>
+		      	<input name="password" type="password" class="form-control" id="password" value ="{{$bpws -> password}}" required="required" autocomplete="off">
 		    </div>
 		  	</div>
 		  	<div class="form-group">
-		      	<label for="form_Email">E-mail</label>
-		      	<input name="email"type="email" class="form-control" id="input_email" value ="{{$bpws -> email}}">
+		      	<label for="email">E-mail</label>
+		      	<input name="email"type="email" class="form-control" id="email" value ="{{$bpws -> email}}" required="required" autocomplete="off">
 			</div>
 		  	<div class="form-group">
-			    <label for="for_alamat">Alamat</label>
-			    <textarea name="alamat" type="textarea" class="form-control" id="input_alamat" rows="6" value ="{{$bpws -> alamat}}"></textarea>
+			    <label for="alamat">Alamat</label>
+			    <textarea name="alamat" type="textarea" class="form-control" id="alamat" rows="6" required="required" autocomplete="off">{{$bpws -> alamat}}</textarea>
 		  	</div>
 			<div class="form-group">
-			    <label for="form_kabupaten">Kabupaten/Kota</label>
-			    <select name="kabupaten" class="form-control" id="input_kabupaten" value ="{{$bpws -> kabupaten}}">
+			    <label for="kabupaten">Kabupaten/Kota</label>
+			    <select name="kabupaten" class="form-control" id="kabupaten" required="required" autocomplete="off">
 			    	<option selected>-- Pilih Kabupaten/Kota --</option>
-				    <option value="Kota Denpasar">Kota Denpasar</option>
-				    <option value="Badung">Badung</option>
-				    <option value="Gianyar">Gianyar</option>
-			      <option value="Bangli">Bangli</option>
-				    <option value="Tabanan">Tabanan</option>
-				    <option value="Jembrana">Jembrana</option>
-				    <option value="Buleleng">Buleleng</option>
-				    <option value="Klungkung">Klungkung</option>
-				    <option value="Karangasem">Karangasem</option>
+				    <option value="Kota Denpasar" @if($bpws -> kabupaten == "Kota Denpasar") selected @endif>Kota Denpasar</option>
+				    <option value="Badung" @if($bpws -> kabupaten == "Badung") selected @endif>Badung</option>
+				    <option value="Gianyar" @if($bpws -> kabupaten == "Gianyar") selected @endif>Gianyar</option>
+			      <option value="Bangli" @if($bpws -> kabupaten == "Bangli") selected @endif>Bangli</option>
+				    <option value="Tabanan" @if($bpws -> kabupaten == "Tabanan") selected @endif>Tabanan</option>
+				    <option value="Jembrana" @if($bpws -> kabupaten == "Jembrana") selected @endif>Jembrana</option>
+				    <option value="Buleleng" @if($bpws -> kabupaten == "Buleleng") selected @endif>Buleleng</option>
+				    <option value="Klungkung" @if($bpws -> kabupaten == "Klungkung") selected @endif>Klungkung</option>
+				    <option value="Karangasem" @if($bpws -> kabupaten == "Karangasem") selected @endif>Karangasem</option>
 			    </select>
 			</div>
 			<div class="form-row">
 			<div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
-		      	<label for="form_no_telp">Nomor Telepon</label>
-		      	<input name="no_telp" type="text" class="form-control" id="input_no_telp" value ="{{$bpws -> no_telp}}">
+		      	<label for="no_telp">Nomor Telepon</label>
+		      	<input name="no_telp" type="text" class="form-control" id="no_telp" value ="{{$bpws -> no_telp}}" required="required" autocomplete="off">
 		    </div>
 		    <div class="form-group col-md-6" style="padding: 0;">
-		      	<label for="form_no_fax">Nomor Fax</label>
-		      	<input name="no_fax" type="text" class="form-control" id="input_no_fax" value ="{{$bpws -> no_fax}}">
+		      	<label for="no_fax">Nomor Fax</label>
+		      	<input name="no_fax" type="text" class="form-control" id="no_fax" value ="{{$bpws -> no_fax}}" required="required" autocomplete="off">
 		    </div>
 			</div>
 		    <div class="form-group">
-		    	<label for="form_nm_pic">Nama PIC</label>
-		   		<input name="nm_pic" type="text" class="form-control" id="input_nm_pic" value ="{{$bpws -> nm_pic}}">
+		    	<label for="nm_pic">Nama PIC</label>
+		   		<input name="nm_pic" type="text" class="form-control" id="nm_pic" value ="{{$bpws -> nm_pic}}" required="required" autocomplete="off">
 		  	</div>
 		  	<div class="form-group">
-		    	<label for="form_nm_pimpinan">Nama Pimpinan</label>
-		   		<input name="nm_pimpinan" type="text" class="form-control" id="input_nm_pimpinan" value ="{{$bpws -> nm_pimpinan}}">
+		    	<label for="nm_pimpinan">Nama Pimpinan</label>
+		   		<input name="nm_pimpinan" type="text" class="form-control" id="nm_pimpinan" value ="{{$bpws -> nm_pimpinan}}" required="required" autocomplete="off">
 		  	</div>
 		  	<div class="form-row">
 		  	<div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
-			    <label for="form_jns_BPW">Jenis BPW</label>
-			    <select name="jns_bpw" class="form-control" id="input_jns_bpw" value ="{{$bpws -> jns_bpw}}">
+			    <label for="jns_BPW">Jenis BPW</label>
+			    <select name="jns_bpw" class="form-control" id="jns_bpw" value ="{{$bpws -> jns_bpw}}" required="required" autocomplete="off">
 			    	<option selected>-- Pilih Jenis BPW --</option>
-				    <option value="BPW">BPW</option>
-				    <option value="MICE">MICE</option>
-				    <option value="Lanjut Usia">Lanjut Usia</option>
+				    <option value="BPW" @if($bpws -> jns_bpw == "BPW") selected @endif>BPW</option>
+				    <option value="MICE" @if($bpws -> jns_bpw == "MICE") selected @endif>MICE</option>
+				    <option value="Lanjut Usia" @if($bpws -> jns_bpw == "Lanjut Usia") selected @endif>Lanjut Usia</option>
 			    </select>
 			</div>
 		    <div class="form-group col-md-6" style="padding: 0;">
-			    <label for="form_sts_kantor">Status Kantor</label>
-			    <select name="sts_kantor" class="form-control" id="input_sts_kantor" value ="{{$bpws -> sts_kantor}}">
+			    <label for="sts_kantor">Status Kantor</label>
+			    <select name="sts_kantor" class="form-control" id="sts_kantor" value ="{{$bpws -> sts_kantor}}" required="required" autocomplete="off">
 			    	<option selected>-- Pilih Status Kantor --</option>
-				    <option value="Hak Pribadi">Hak Pribadi</option>
-				    <option value="Kontrak">Kontrak</option>
+				    <option value="Hak Pribadi" @if($bpws -> sts_kantor == "Hak Pribadi") selected @endif>Hak Pribadi</option>
+				    <option value="Kontrak" @if($bpws -> sts_kantor == "Kontrak") selected @endif>Kontrak</option>
 			    </select>
 			</div>
 			</div>
 			<div class="form-group">
-		      	<label for="form_nib">Nomor Induk Berusaha</label>
-		      	<input name="nib" type="text" class="form-control" id="input_nib" value ="{{$bpws -> nib}}">
+		      	<label for="nib">Nomor Induk Berusaha</label>
+		      	<input name="nib" type="text" class="form-control" id="nib" value ="{{$bpws -> nib}}" required="required" autocomplete="off">
 		    </div>
 			<div class="form-group">
-			    <label for="form_status">Status</label>
-			    <select name="status" class="form-control" id="input_status" value ="{{$bpws -> status}}">
+			    <label for="status">Status</label>
+			    <select name="status" class="form-control" id="status" value ="{{$bpws -> status}}" required="required" autocomplete="off">
 			    	<option selected>-- Pilih Status --</option>
-				    <option value="1">Aktif</option>
-				    <option value="0">Tidak Aktif</option>
+				    <option value="1" @if($bpws -> status == "1") selected @endif>Aktif</option>
+				    <option value="0" @if($bpws -> status == "0") selected @endif>Tidak Aktif</option>
 			    </select>
 			</div>
 	

@@ -90,7 +90,7 @@
               }
             else
               {
-                echo "Non Aktif";
+                echo "Tidak Aktif";
               }                          
             ?>            
           </td>    

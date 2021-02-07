@@ -8,7 +8,7 @@
       <ol class="breadcrumb">
         <li><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li> Kelola Data</li>
-        <li class="active"><a href="/tdup_verif"></i> TDUP (Sudah Diverifikasi)</a></li>
+        <li class="active"><a href="/tdup"></i> TDUP</a></li>
       </ol>
   	</section>
 
@@ -19,7 +19,7 @@
 
         <div class="box-header">
         	<div class="box-body pad table-responsive">
-              <h3 class="box-title" style="font-size: 20px;"><i class="fa fa-files-o"></i> Daftar TDUP (Sudah Diverifikasi)</h3>
+              <h3 class="box-title" style="font-size: 20px;"><i class="fa fa-files-o"></i> Daftar TDUP</h3>
 			
 	          	<div style="float: right;">
 	          	<div style="clear: both;"></div>
@@ -35,7 +35,7 @@
 	      <div class="row"></div>
  
 	    <div class="row">
-    		<div class="col-xs-12">
+    		<div class="col-xs-12" style="overflow-x:auto;">
         	<table id='example1' class="table table-hover table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
         		<thead>
           			<tr role="row">
@@ -59,32 +59,30 @@
 		                <td>{{ $tdup->ms_berlaku }}</td>
 		                <td>@if($tdup->file_tdup) <img width="50px" src="data:image/png;base64,{{ base64_encode($tdup->file_tdup) }}"/> @else - @endif</td>
 		                <td>
-		                	<?php if($tdup->sts_verifikasi == 0)
+		                	<?php
+                      if($tdup->sts_verifikasi == 0)
+                			{
+                			  echo "Belum Diverifikasi";
+                			}
+                			elseif($tdup->sts_verifikasi == 1)
                 			{
                 			  echo "Tidak Disetujui";
                 			}
-                			  elseif($tdup->sts_verifikasi == 1)
-                			{
-                			  echo "Sudah Disetujui";
-                			}
-                			else
-                			{
-                			  echo "-";
-                			}
+                			elseif($tdup->sts_verifikasi == 2)
+                      {
+                        echo "Disetujui";
+                      }
                 			?>
 		                </td>
 		                <td>
-		                	<?php if($tdup->status == 0)
+		                	<?php
+                      if($tdup->status == 0)
                 			{
                 			  echo "Tidak Aktif";
                 			}
-                			  elseif($tdup->status == 1)
+                			 elseif($tdup->status == 1)
                 			{
                 			  echo "Aktif";
-                			}
-                			else
-                			{
-                			  echo "-";
                 			}
                 			?>
 		                </td>
@@ -129,23 +127,23 @@
 
               <div class="form-group">
                 <label for="no_tdup">Nomor TDUP</label>
-                <input name="no_tdup" type="text" class="form-control">
+                <input name="no_tdup" type="text" class="form-control" placeholder="Masukkan Nomor TDUP" required="required" autocomplete="off">
               </div>
 
               <div class="form-row">
               <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
                 <label for="tanggal">Tanggal TDUP</label>
-                <input name="tanggal" type="date" class="form-control">
+                <input name="tanggal" type="date" class="form-control" required="required" autocomplete="off">
               </div>
               <div class="form-group col-md-6" style="padding: 0px;">
                 <label for="ms_berlaku">Masa Berlaku TDUP</label>
-                <input name="ms_berlaku" type="date" class="form-control">
+                <input name="ms_berlaku" type="date" class="form-control" required="required" autocomplete="off">
               </div>
               </div>
       
               <div class="form-group">
                 <label for="file_tdup">File TDUP</label>
-                <input name="file_tdup" type="file" class="form-control-file">
+                <input name="file_tdup" type="file" class="form-control-file" required="required" autocomplete="off">
               </div>
 
               <div>

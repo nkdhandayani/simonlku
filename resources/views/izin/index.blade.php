@@ -8,7 +8,7 @@
       <ol class="breadcrumb">
         <li><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li> Kelola Data</li>
-        <li class="active"><a href="/izin_verif"></i> Izin Operasional (Sudah Diverifikasi)</a></li>
+        <li class="active"><a href="/izin"></i> Izin Operasional</a></li>
       </ol>
   	</section>
 
@@ -19,7 +19,7 @@
 
         <div class="box-header">
         	<div class="box-body pad table-responsive">
-              	<h3 class="box-title" style="font-size: 20px;"><i class="fa fa-files-o"></i> Daftar Izin Operasional (Sudah Diverifikasi)</h3>
+              	<h3 class="box-title" style="font-size: 20px;"><i class="fa fa-files-o"></i> Daftar Izin Operasional</h3>
 			
 	          	<div style="float: right;">
 	          	<div style="clear: both;"></div>
@@ -35,7 +35,7 @@
 	      <div class="row"></div>
  
 	    <div class="row">
-    		<div class="col-xs-12">
+    		<div class="col-xs-12" style="overflow-x:auto;">
         	<table id='example1' class="table table-hover table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
         		<thead>
           			<tr role="row">
@@ -59,32 +59,30 @@
 		                <td>{{ $izin->ms_berlaku }}</td>
 		                <td>@if($izin->file_izin) <img width="50px" src="data:image/png;base64,{{ base64_encode($tdup->file_izin) }}"/> @else - @endif</td>
 		                <td>
-		                	<?php if($izin->sts_verifikasi == 0)
+		                	<?php
+                      if($izin->sts_verifikasi == 0)
+                			{
+                			  echo "Belum Diverifikasi";
+                			}
+                			elseif($izin->sts_verifikasi == 1)
                 			{
                 			  echo "Tidak Disetujui";
                 			}
-                			  elseif($izin->sts_verifikasi == 1)
+                			elseif($izin->sts_verifikasi == 2)
                 			{
-                			  echo "Sudah Disetujui";
-                			}
-                			else
-                			{
-                			  echo "-";
+                			  echo "Disetujui";
                 			}
                 			?>
 		                </td>
 		                <td>
-		                	<?php if($izin->status == 0)
+		                	<?php
+                      if($izin->status == 0)
                 			{
                 			  echo "Tidak Aktif";
                 			}
-                			  elseif($izin->status == 1)
+                			elseif($izin->status == 1)
                 			{
                 			  echo "Aktif";
-                			}
-                			else
-                			{
-                			  echo "-";
                 			}
                 			?>
 		                </td>
@@ -128,18 +126,18 @@
             <form action="/izin/store" method="post" enctype="multipart/form-data">{{csrf_field()}}
 
             <div class="form-group">
-              <label for="inputNo_Izin">Nomor Izin Operasional</label>
-              <input name="no_izin" type="text" class="form-control">
+              <label for="no_izin">Nomor Izin Operasional</label>
+              <input name="no_izin" type="text" class="form-control" required="required" autocomplete="off">
             </div>
 
             <div class="form-row">
             <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
-              <label for="input_tanggal">Tanggal Izin Operasional</label>
-              <input name="tanggal" type="date" class="form-control">
+              <label for="tanggal">Tanggal Izin Operasional</label>
+              <input name="tanggal" type="date" class="form-control" required="required" autocomplete="off">
             </div>
             <div class="form-group col-md-6" style="padding: 0px;">
-              <label for="input_ms_berlaku">Masa Berlaku Izin Operasional</label>
-              <input name="ms_berlaku" type="date" class="form-control">
+              <label for="ms_berlaku">Masa Berlaku Izin Operasional</label>
+              <input name="ms_berlaku" type="date" class="form-control" required="required" autocomplete="off">
             </div>
             </div>
       
