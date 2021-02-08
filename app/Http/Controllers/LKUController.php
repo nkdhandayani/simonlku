@@ -57,8 +57,8 @@ class LKUController extends Controller
         $file->move('file_lku', $file->getClientOriginalName());
 
         LKU::create([
-            'id_tdup' => $tdup,
-            'id_izin' => $izin,
+            'id_tdup' => $tdup->id_tdup,
+            'id_izin' => $izin->id_izin,
             'id_bpw' => Auth::guard('bpw')->user()->id_bpw,
             'no_surat' => request('no_surat'),
             'tahun' => request('tahun'),
@@ -92,7 +92,7 @@ class LKUController extends Controller
         $lkus = LKU::find($id);
         $tdups = TDUP::find($id);
         $izins = Izin::find($id);
-        return view ('izin/edit_izin', [
+        return view ('lku/edit_lku', [
             'lku' => $lkus,
             'tdup' => $tdups,
             'izin' => $izins,
@@ -104,20 +104,29 @@ class LKUController extends Controller
 
     public function update(Request $request, $id)
     {
-        DB::table('lku')->where('id_lku', $id)
-            -> update([
-                'id_tdup' => auth()->id_tdup(),
-                'id_izin' => auth()->id_izin(),
-                'no_surat' => request('no_surat'),
-                'tahun' => request('tahun'),
-                'periode' => request('periode'),
-                'file_lku' => file_get_contents($request->file('file_lku')->getRealPath()),
-                'sts_verifikasi' => request('sts_verifikasi'),
-                'keterangan' => request('keterangan'),
-                'tgl_verifikasi' => request('tgl_verifikasi'),
-                'status' => request('status'),
-            ]);
-        return redirect('lku');
+        $lkus = LKU::find($id);
+
+        if(auth()->guard('user')->user()) {
+            $id_user = auth()->user()->id_user;
+            $lkus->id_user = $id_user;
+        }
+        
+        $lkus->no_surat = $request->no_surat;
+        $lkus->tahun = $request->tahun;
+        $lkus->periode = $request->periode;
+        if(auth()->guard('bpw')->user()) {
+            $file = $request->file_lku;
+
+            $file->move('file_lku', $file->getClientOriginalName());
+
+            $lkus->file_lku = $file->getClientOriginalName();
+        }
+        $lkus->sts_verifikasi = $request->sts_verifikasi;
+        $lkus->keterangan = $request->keterangan;
+        $lkus->tgl_verifikasi = $request->tgl_verifikasi;
+        $lkus->status = $request->status;
+        $lkus->save();
+        return redirect('/lku');
     }
 
 

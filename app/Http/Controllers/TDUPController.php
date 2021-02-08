@@ -84,6 +84,7 @@ class TDUPController extends Controller
             $id_user = auth()->user()->id_user;
             $tdups->id_user = $id_user;
         }
+        
         $tdups->no_tdup = $request->no_tdup;
         $tdups->ms_berlaku = $request->ms_berlaku;
         if(auth()->guard('bpw')->user()) {

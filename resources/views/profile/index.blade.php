@@ -4,7 +4,7 @@
 
 	<section class="content-header">
       <h1>
-        Detail Tanda Daftar Usaha Pariwisata
+        Detail Pengguna
       </h1>
       <ol class="breadcrumb">
         <li><a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a></li>
@@ -24,86 +24,76 @@
 
           <table class="table">
             <tr>
-              <td width="300">Nama Biro</td>
+              <td width="300">Foto Pengguna</td>
               <td width="10">:</td>
-              <td>{{$tdups->bpw->nm_bpw}}</td>
+              <td>@if($users->foto_user) <a href="{{ asset('foto_user/' . $users->foto_user) }}"><img width="100px" src="{{ asset('foto_user/' . $users->foto_user) }}"/></a> @else - @endif</td>
             </tr>
             <tr> 
-              <td>No. Tanda Daftar Usaha Pariwisata</td>
+              <td>Nama Pengguna</td>
               <td>:</td>
-              <td>{{$tdups->no_tdup}}</td>
+              <td>{{$users->nm_user}}</td>
             </tr>
-            <tr>
-              <td>Tanggal Tanda Daftar Usaha Pariwisata</td>
+            <tr> 
+              <td>NIK</td>
               <td>:</td>
-              <td>{{$tdups->tanggal}}</td>
+              <td>{{$users->nik}}</td>
             </tr>
-            <tr>
-              <td>Masa Berlaku Tanda Daftar Usaha Pariwisata</td>
+            <tr> 
+              <td>E-mail</td>
               <td>:</td>
-              <td>{{$tdups->ms_berlaku}}</td>
+              <td>{{$users->email}}</td>
             </tr>
-            <tr>
-              <td>File Tanda Daftar Usaha Pariwisata</td>
+            <tr> 
+              <td>No. Telepon</td>
               <td>:</td>
-              <td>@if($tdups->file_tdup) <a href="{{ asset('file_tdup/' . $tdups->file_tdup) }}"><img width="100px" src="{{ asset('file_tdup/' . $tdups->file_tdup) }}"/></a> @else - @endif</td>
+              <td>{{$users->no_telp}}</td>
             </tr>
-            <tr>
-              <td>Tanggal Ditambahkan</td>
+            <tr> 
+              <td>Jenis Kelamin</td>
               <td>:</td>
-              <td>{{$tdups->created_at}}</td>
+              <td>{{$users->jns_kelamin}}</td>
             </tr>
-            <tr>
-              <td>Status Verifikasi</td>
+            <tr> 
+              <td>Level</td>
               <td>:</td>
-              <td>                
+              <td>
                 <?php
-                  if($tdups->sts_verifikasi == 0)
+                if($users->level == 0)
                   {
-                    echo "Belum Diverifikasi";
+                    echo "Administrator";
                   }
-                  elseif($tdups->sts_verifikasi == 1)
+                elseif($users->level == 1)
                   {
-                    echo "Tidak Disetujui";
+                    echo "Staf Jasa Pariwisata";
                   }
-                  elseif($tdups->sts_verifikasi == 2)
+                elseif($users->level == 2)
                   {
-                    echo "Disetujui";
-                  }
+                    echo "Kepala Seksi Jasa Pariwisata";
+                  }                          
                 ?>
               </td>
-            </tr>
-            <tr>
-              <td>Keterangan</td>
-              <td>:</td>
-              <td>{{$tdups->keterangan}}</td>
-            </tr>
-            <tr>
-              <td>Tanggal Verifikasi</td>
-              <td>:</td>
-              <td>{{$tdups->tgl_verifikasi}}</td>
-            </tr>
-            <tr>
-              <td>Diverifikasi oleh:</td>
-              <td>:</td>
-              <td>{{$tdups->user->nm_user}}</td>
             </tr>
             <tr>
               <td>Status</td>
               <td>:</td>
               <td>
                 <?php
-                if($tdups->status == 0)
-                {
-                  echo "Tidak Aktif";
-                }
-                elseif($tdups->status == 1)
-                {
-                  echo "Aktif";
-                }                         
+                if($users->status == 0)
+                  {
+                    echo "Tidak Aktif";
+                  }
+                elseif($users->status == 1)
+                  {
+                    echo "Aktif";
+                  }
+                else
+                  {
+                    echo "Tidak Aktif";
+                  }                          
                 ?>            
               </td>    
             </tr>
+
           </table>  
         </div>
 

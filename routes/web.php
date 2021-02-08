@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-	Route::get('/dashboard', function () { return view('dashboard.index'); });
+	Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index');
 	Route::get('/regis', 'App\Http\Controllers\InsertRegister@insert');
+	Route::get('/user-logout', 'App\Http\Controllers\AuthController@logout')->name('user.logout');
 	Route::post('/logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
 	Route::post('/postlogin', 'App\Http\Controllers\AuthController@postlogin');
 	Route::get('/', function () { return view('auth.login'); });
@@ -51,6 +52,15 @@ use Illuminate\Support\Facades\Route;
 		// Route LKU
 		Route::post('/lku/store', 'App\Http\Controllers\LKUController@store');
 		});
+
+
+	// 	Route oleh Kepala Seksi
+		Route::group(['middleware' => 'isKepalaUser'], function(){
+		// 	Route BPW
+		
+		// 	Route LKU
+			
+	});
 
 
 
@@ -95,18 +105,10 @@ use Illuminate\Support\Facades\Route;
 	//	Route oleh Administrator, Staf Pegawai, Kepala Seksi, dan BPW
 		Route::group(['middleware' => ['CheckRole: isAdminUser, isStaffUser, isKepalaUser, isBPWUser']], function(){
 		// Route Profile
-		Route::get('/profile/edit/{id}','App\Http\Controllers\ProfilController@edit');
-		Route::get('/profile/update/{id}','App\Http\Controllers\ProfilController@update');
-		Route::get('/profile/show/{id}','App\Http\Controllers\ProfilController@show');
+		Route::get('/profile/edit/{id}','App\Http\Controllers\ProfileController@edit');
+		Route::get('/profile/update/{id}','App\Http\Controllers\ProfileController@update');
+		Route::get('/profile/show/{id}','App\Http\Controllers\ProfileController@show');
 
 		});
 
 
-
-	// 	Route oleh Kepala Seksi
-		Route::group(['middleware' => 'isKepalaUser'], function(){
-		// 	Route BPW
-		
-		// 	Route LKU
-			
-	});

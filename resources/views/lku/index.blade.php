@@ -64,19 +64,20 @@
                   <td>{{ $lku->no_surat }}</td>
                   <td>{{ $lku->tahun }}</td>
                   <td>{{ $lku->periode }}</td>
-                  <td>{{ $lku->file_lku }}</td>
+                  <td><a href="{{ asset('file_lku/' . $lku->file_lku) }}" target="_blank">{{ $lku->file_lku }}</a></td>
                   <td>
-                      <?php if($lku->sts_verifikasi == 0)
+                      <?php
+                      if($lku->sts_verifikasi == 0)
+                      {
+                        echo "Belum Diverifikasi";
+                      }
+                      elseif($lku->sts_verifikasi == 1)
                       {
                         echo "Tidak Disetujui";
                       }
-                        elseif($lku->sts_verifikasi == 1)
+                      elseif($lku->sts_verifikasi == 2)
                       {
-                        echo "Sudah Disetujui";
-                      }
-                      else
-                      {
-                        echo "-";
+                        echo "Disetujui";
                       }
                       ?>
                   </td>
@@ -96,11 +97,11 @@
                       ?>
                   </td>
                   <td>
-                    <a href="#" class="fa fa-eye btn-danger btn-sm"></a>
+                    <a href="/lku/show/{{ $lku->id_lku }}" class="fa fa-eye btn-danger btn-sm"></a>
 
                     @if(auth()->guard('bpw')->user() ||
                        (auth()->guard('user')->user()->level == 1))
-                    <a href="#" class="fa fa-edit btn-warning btn-sm"></a>
+                    <a href="/lku/edit/{{ $lku->id_lku }}" class="fa fa-edit btn-warning btn-sm"></a>
                     @endif
                     
                   </td>

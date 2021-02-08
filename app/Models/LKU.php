@@ -15,6 +15,7 @@ class LKU extends Model
     
     public $fillable = [
         'id_tdup',
+        'id_bpw',
     	'id_izin',
         'no_surat',
         'tahun',

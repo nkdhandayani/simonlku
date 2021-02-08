@@ -56,7 +56,7 @@
 	            	<tr>
 		                <td>{{ $i }}</td>
 		                <td>{{ $izin->no_izin }}</td>
-		                <td>{{ $izin->ms_berlaku }}</td>
+		                <td>{{ $izin->ms_berlaku->isoFormat('dddd, DD MMMM Y') }}</td>
 		                <td>@if($izin->file_izin) <a href="{{ asset('file_izin/' . $izin->file_izin) }}">Lihat Gambar Izin Operasional</a> @else - @endif</td>
 		                <td>
 		                	<?php

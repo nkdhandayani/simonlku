@@ -18,8 +18,8 @@
     <div class="box-body">
       <table class="table">
         <tr>
-          <td>Nama Biro</td>
-          <td>:</td>
+          <td width="300">Nama Biro</td>
+          <td width="10">:</td>
           <td>{{$lkus->bpw->nm_bpw}}</td>
         </tr>
         <tr> 
@@ -115,18 +115,15 @@
           <td>Status Verifikasi</td>
           <td>:</td>
           <td>                
-            <?php if($lkus->status == 0)
-                {
-                   echo "Tidak Disetujui";
-                }
-                  elseif($lkus->status == 1)
-                {
-                    echo "Disetujui";
-                }
-                  else
-                {
-                    echo "-";
-                }                          
+            <?php
+            if($lkus->status == 0)
+            {
+               echo "Tidak Disetujui";
+            }
+              elseif($lkus->status == 1)
+            {
+                echo "Disetujui";
+            }                          
             ?>
           </td>
         </tr>
@@ -143,7 +140,7 @@
         <tr>
           <td>Diverifikasi oleh:</td>
           <td>:</td>
-          <td>{{$lkus->user->nm_user}}</td>
+          <td>{{$lkus->user->nm_user ?? '-'}}</td>
         </tr>
         <tr>
           <td>Status</td>

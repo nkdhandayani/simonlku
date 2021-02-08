@@ -14,7 +14,7 @@
     </ol>
   </section>
 
-  <section class="content" style="padding-top: 0;">
+  <section class="content">
   <div class="box box-primary">
     <div class="box-body">
       <table class="table">
@@ -107,5 +107,6 @@
     </div>
 
 	</div>
+  </div>
 	</section>  
 @endsection

@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../assets/css/formLogin.css">
     <link rel="icon" type="img/png" href="../../assets/images/Logo Dinas Pariwisata.png">
+    <!-- Toast css -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <title>Login | Dinas Pariwisata Provinsi Bali</title>
 </head>
 
@@ -68,5 +70,14 @@
         
     </div>
 </div>
+<!-- Toast js -->
+<script src="{{url('adminLTE/bower_components/jquery/dist/jquery.min.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" type="text/javascript"></script>
+
+<script>
+  @if(session()->has('error'))
+    toastr.error('{{ session()->get('error') }}');
+  @endif
+</script>
 </body>
 </html>

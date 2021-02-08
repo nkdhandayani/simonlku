@@ -33,9 +33,7 @@
 
 		<div class="form-group">
         	<label for="foto_user">Foto Pengguna</label>
-        	<br>
-        	<a href="{{ asset('foto_user/' . $user->foto_user) }}"><img width="250px" src="{{ asset('foto_user/' . $user->foto_user) }}"/></a>
-        	<input name="foto_user" type="file" class="form-control-file" id="foto_user" value ="{{$user -> foto_user}}" required="required" autocomplete="off">
+           	<input name="foto_user" type="file" class="form-control-file" id="foto_user" value ="{{$users -> foto_user}}" required="required" autocomplete="off">
       	</div>
 
 		<div class="form-group">

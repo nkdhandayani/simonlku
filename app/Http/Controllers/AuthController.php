@@ -37,6 +37,9 @@ class AuthController extends Controller
     {
         Auth::guard('user')->logout();
         Auth::guard('bpw')->logout();
+        if(session()->has('error')) {
+            return redirect('/')->with('error', session()->get('error'));
+        }
         return redirect('/');
     }
 }

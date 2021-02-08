@@ -12,6 +12,7 @@ class Izin extends Model
 	protected $table = "izin";
     public $timestamps = true;
     protected $primaryKey = "id_izin";
+    protected $dates = ['ms_berlaku'];
     
     public $fillable = [
     	'id_bpw',

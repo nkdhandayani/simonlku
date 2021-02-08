@@ -17,7 +17,7 @@
   	<section class="content">
   	<div class="box box-primary">
         <div class="box-body pad table-responsive">
-
+ 
         <div class="box-footer">
           <a href="/tdup" class="btn btn-primary btn-sm">Back</a>
         </div>
@@ -84,9 +84,9 @@
               <td>{{$tdups->tgl_verifikasi}}</td>
             </tr>
             <tr>
-              <td>Diverifikasi oleh:</td>
+              <td>Diverifikasi oleh</td>
               <td>:</td>
-              <td>{{$tdups->user->nm_user}}</td>
+              <td>{{$tdups->user->nm_user ?? '-'}}</td>
             </tr>
             <tr>
               <td>Status</td>

@@ -15,7 +15,8 @@
   </section>
 
   <form action="/lku/update/{{ $lku -> id_lku }}" method="post" enctype="multipart/form-data">
-  {{csrf_field()}}
+    @method('patch')
+  {{csrf_field()}} 
   <section class="content">
   <div class="box">
   
@@ -39,17 +40,17 @@
     </div>
     <div class="form-group col-md-6" style="padding: 0px;">
       <label for="periode">-- Pilih Periode LKU --</label>
-      <select  disabled="true" name="periode" class="form-control" id="periode" value ="{{$lku -> periode}}" required="required" autocomplete="off">
-        <option value="0" @if($lku -> periode == "I") selected @endif>I</option>
-        <option value="1" @if($lku -> periode == "II") selected @endif>II</option>
+      <select name="periode" class="form-control" id="periode" value ="{{$lku -> periode}}" required="required" autocomplete="off">
+        <option value="I" @if($lku -> periode == "I") selected @endif>I</option>
+        <option value="II" @if($lku -> periode == "II") selected @endif>II</option>
       </select>
     </div>
     </div>
     
     <div class="form-group">
-      <label for="file_lku">File lku</label>
+      <label for="file_lku">File LKU</label>
       <br>
-      <a href="{{ asset('file_lku/' . $lku->file_lku) }}"><img width="250px" src="{{ asset('file_lku/' . $lku->file_lku) }}"/></a>
+      <a href="{{ asset('file_lku/' . $lku->file_lku) }}" target="_blank">{{ $lku->file_lku }}</a>
       @if(auth()->guard('bpw')->user())
       <input name="file_lku" type="file" class="form-control-file" id="file_lku" value ="{{$lku -> file_lku}}" required="required" autocomplete="off">
       @endif
@@ -60,6 +61,39 @@
         <input name="created_at" type="text" class="form-control" id="created_at" value ="{{$lku -> created_at}}" required="required" autocomplete="off" readonly>
       </div>
 
+    <div class="form-group">
+      <label for="file_tdup">File TDUP</label>
+      <br>
+      <a href="{{ asset('file_tdup/' . $lku->tdup->file_tdup) }}"><img width="250px" src="{{ asset('file_tdup/' . $lku->tdup->file_tdup) }}"/></a>
+    </div>
+
+  
+    <div class="form-group">
+      <label for="sts_verifikasi">Status TDUP</label>
+      <select disabled="true" name="sts_verifikasi" class="form-control" id="sts_verifikasi" value ="{{$lku -> tdup -> sts_verifikasi}}" required="required" autocomplete="off">
+        <option value="0" @if($lku -> tdup -> sts_verifikasi == "0") selected @endif>Belum Diverifikasi</option>
+        <option value="2" @if($lku -> tdup -> sts_verifikasi == "2") selected @endif>Disetujui</option>
+        <option value="1" @if($lku -> tdup -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="file_izin">File Izin Operasional</label>
+      <br>
+      <a href="{{ asset('file_izin/' . $lku->izin->file_izin) }}"><img width="250px" src="{{ asset('file_izin/' . $lku->izin->file_izin) }}"/></a>
+    </div>
+
+    <div class="form-group col-md-6"  style="padding: 0; padding-right: 10px">
+      <label for="sts_verifikasi">Status Izin</label>
+      <select disabled="true" name="sts_verifikasi" class="form-control" id="sts_verifikasi" value ="{{$lku -> izin -> sts_verifikasi}}" required="required" autocomplete="off">
+        <option value="0" @if($lku -> izin -> sts_verifikasi == "0") selected @endif>Belum Diverifikasi</option>
+        <option value="2" @if($lku -> izin -> sts_verifikasi == "2") selected @endif>Disetujui</option>
+        <option value="1" @if($lku -> izin -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
+      </select>
+    </div>
+    </div>
+
+    @if(auth()->guard('user')->user()->level == 1)
     <div class="form-row">
     <div class="form-group col-md-6"  style="padding: 0; padding-right: 10px">
       <label for="sts_verifikasi">Status TDUP</label>
@@ -80,7 +114,6 @@
     </div>
     </div>
 
-    @if(auth()->guard('user')->user()->level == 1))
     <div class="form-group">
       <label for="keterangan">Keterangan</label>
       <textarea name="keterangan" type="textarea" class="form-control" id="input_keterangan" rows="6" required="required" autocomplete="off" value="{{$lku -> keterangan}}">{{$lku -> keterangan}}</textarea>
