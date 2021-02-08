@@ -57,6 +57,9 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+        $file = $request->foto_user;
+        $file->move('foto_user', $file->getClientOriginalName());
+
         $users = User::find($id);
         $users->username = $request->username;
         $users->password = $request->password;
@@ -65,7 +68,7 @@ class UserController extends Controller
         $users->email = $request->email;
         $users->no_telp = $request->no_telp;
         $users->jns_kelamin = $request->jns_kelamin;
-        $users->foto_user = $request->foto_user;
+        $users->foto_user = $file->getClientOriginalName();
         $users->level = $request->level;
         $users->status = $request->status;
         $users->save();

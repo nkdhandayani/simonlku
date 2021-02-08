@@ -18,11 +18,11 @@
   <div class="box box-primary">
     <div class="box-body">
       <table class="table">
-        <!-- <tr>
-          <td>Nama Biro</td>
-          <td>:</td>
-          <td>{{$izins->$bpw->nm_bpw}}</td>
-        </tr> -->
+        <tr>
+          <td width="300">Nama Biro</td>
+          <td width="10">:</td>
+          <td>{{$izins->bpw->nm_bpw}}</td>
+        </tr>
         <tr> 
           <td>No. Izin Operasional</td>
           <td>:</td>
@@ -41,7 +41,7 @@
         <tr>
           <td>File Izin Operasional</td>
           <td>:</td>
-          <td>{{$izins->file_izin}}</td>
+          <td>@if($izins->file_izin) <a href="{{ asset('file_izin/' . $izins->file_izin) }}"><img width="100px" src="{{ asset('file_izin/' . $izins->file_izin) }}"/></a> @else - @endif</td>
         </tr>
         <tr>
           <td>Tanggal Ditambahkan</td>
@@ -78,11 +78,11 @@
           <td>:</td>
           <td>{{$izins->tgl_verifikasi}}</td>
         </tr>
-        <!-- <tr>
+        <tr>
           <td>Diverifikasi oleh:</td>
           <td>:</td>
-          <td>{{$izins->user->nm_user}}</td>
-        </tr> -->
+          <td>{{$izins->user->nm_user ?? '-'}}</td>
+        </tr>
         <tr>
           <td>Status</td>
           <td>:</td>

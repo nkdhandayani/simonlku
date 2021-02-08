@@ -46,7 +46,11 @@
 
       <div class="form-group">
         <label for="file_tdup">File TDUP</label>
+        <br>
+        <a href="{{ asset('file_tdup/' . $tdup->file_tdup) }}"><img width="250px" src="{{ asset('file_tdup/' . $tdup->file_tdup) }}"/></a>
+        @if(auth()->guard('bpw')->user())
         <input name="file_tdup" type="file" class="form-control-file" id="file_tdup" value ="{{$tdup -> file_tdup}}" required="required" autocomplete="off">
+        @endif
       </div>
 
       <div class="form-group">
@@ -92,14 +96,14 @@
 
       <div class="form-group">
         <label for="tgl_verifikasi">Tanggal Verifikasi</label>
-        <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value="{{$tdup -> tgl_verifikasi}}" required="required" autocomplete="off">
+        <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value="{{ ($tdup -> tgl_verifikasi == '0000-00-00') ? date('Y-m-d') : $tdup->tgl_verifikasi }}" required="required" autocomplete="off">
       </div>
       
       <div class="form-row">
       <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
         <label for="sts_verifikasi">Status Verifikasi</label>
         <select name="sts_verifikasi" class="form-control" id="sts_verifikasi" value ="{{$tdup -> sts_verifikasi}}" required="required" autocomplete="off">
-          <option selected>-- Pilih Status Verifikasi --</option>
+          <option disabled selected>-- Pilih Status Verifikasi --</option>
           <option value="2" @if($tdup -> sts_verifikasi == "2") selected @endif>Disetujui</option>
           <option value="1" @if($tdup -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
         </select>
@@ -107,7 +111,7 @@
       <div class="form-group col-md-6" style="padding: 0px;">
         <label for="form_status">Status</label>
         <select name="status" class="form-control" id="input_status" value ="{{$tdup -> status}}" required="required" autocomplete="off">
-          <option selected>-- Pilih Status --</option>
+          <option disabled selected>-- Pilih Status --</option>
           <option value="1" @if($tdup -> status == "1") selected @endif>Aktif</option>
           <option value="0" @if($tdup -> status == "0") selected @endif>Tidak Aktif</option>
         </select>

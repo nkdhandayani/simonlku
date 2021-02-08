@@ -14,19 +14,24 @@
       </ol>
   	</section>
 
-  	<section class="content" style="padding-top: 0;">
+  	<section class="content">
   	<div class="box box-primary">
-        <div class="box-body">
+        <div class="box-body pad table-responsive">
+
+        <div class="box-footer">
+          <a href="/tdup" class="btn btn-primary btn-sm">Back</a>
+        </div>
+
           <table class="table">
-            <!-- <tr>
-              <td>Nama Biro</td>
-              <td>:</td>
+            <tr>
+              <td width="300">Nama Biro</td>
+              <td width="10">:</td>
               <td>{{$tdups->bpw->nm_bpw}}</td>
-            </tr> -->
+            </tr>
             <tr> 
               <td>No. Tanda Daftar Usaha Pariwisata</td>
               <td>:</td>
-              <td>{{$tdups->no_izin}}</td>
+              <td>{{$tdups->no_tdup}}</td>
             </tr>
             <tr>
               <td>Tanggal Tanda Daftar Usaha Pariwisata</td>
@@ -41,7 +46,7 @@
             <tr>
               <td>File Tanda Daftar Usaha Pariwisata</td>
               <td>:</td>
-              <td>{{$tdups->file_tdup}}</td>
+              <td>@if($tdups->file_tdup) <a href="{{ asset('file_tdup/' . $tdups->file_tdup) }}"><img width="100px" src="{{ asset('file_tdup/' . $tdups->file_tdup) }}"/></a> @else - @endif</td>
             </tr>
             <tr>
               <td>Tanggal Ditambahkan</td>
@@ -78,34 +83,32 @@
               <td>:</td>
               <td>{{$tdups->tgl_verifikasi}}</td>
             </tr>
-           <!--  <tr>
+            <tr>
               <td>Diverifikasi oleh:</td>
               <td>:</td>
               <td>{{$tdups->user->nm_user}}</td>
-            </tr> -->
+            </tr>
             <tr>
               <td>Status</td>
               <td>:</td>
               <td>
                 <?php
                 if($tdups->status == 0)
-                  {
-                    echo "Tidak Aktif";
-                  }
-                    elseif($tdups->status == 1)
-                  {
-                    echo "Aktif";
-                  }                         
+                {
+                  echo "Tidak Aktif";
+                }
+                elseif($tdups->status == 1)
+                {
+                  echo "Aktif";
+                }                         
                 ?>            
               </td>    
             </tr>
           </table>  
         </div>
 
-        <div class="box-footer">
-          <a href="/tdup" class="btn btn-primary btn-sm">Back</a>
-        </div>
 
 	</div>
+  </div>
 	</section>  
 @endsection

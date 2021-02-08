@@ -51,16 +51,15 @@
 
 
     @elseif(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 0)
-    <li class="header">KELOLA DATA PEGAWAI</li>
+    <li class="header">KELOLA DATA PENGGUNA</li>
     <li class="{{ (Request()->segment(1) == 'user') ? 'active' : ''}}">
         <a href="/user"><i class="fa fa-user"></i><span> Pegawai Jasa Pariwisata</span></a>
     </li>
-
-    <li class="header">KELOLA DATA BIRO</li>
     <li class="{{ (Request()->segment(1) == 'bpw') ? 'active' : ''}}">
         <a href="/bpw"><i class="fa fa-institution"></i><span> Biro Perjalanan Wisata</span></a>
     </li>
 
+    <li class="header">KELOLA DATA BIRO</li>
     <li class="{{ (Request()->segment(1) == 'tdup') ? 'active' : ''}}">
       <a href="/tdup"><i class="fa fa-file-text"></i><span> TDUP</span></a>
     </li>

@@ -20,18 +20,30 @@ class TDUPController extends Controller
      */
     public function index()
     {
-        $tdups = TDUP::all();
+        // $tdups = TDUP::all();
+        $tdups = TDUP::orderByRaw('FIELD(sts_verifikasi,0,1,2)')->latest()->get();
+
+        if(auth()->guard('bpw')->user()) {
+            $bpw = auth()->guard('bpw')->user();
+            $tdups = TDUP::where('id_bpw', $bpw->id_bpw)->orderByRaw('FIELD(sts_verifikasi,0,1,2)')->latest()->get();
+        }        
         return view('tdup/index', compact('tdups'));
     }
 
 
     public function store(Request $request)
     {
+        $file = $request->file_tdup;
+        // dd($request->all());
+
+        $file->move('file_tdup', $file->getClientOriginalName());
+
         TDUP::create([
             'no_tdup' => request('no_tdup'),
             'id_bpw' => Auth::guard('bpw')->user()->id_bpw,
+            'tanggal' => request('tanggal'),
             'ms_berlaku' => request('ms_berlaku'),
-            'file_tdup' => '',
+            'file_tdup' => $file->getClientOriginalName(),
             'sts_verifikasi' => '',
             'keterangan' => '',
             'tgl_verifikasi' => '',
@@ -68,9 +80,19 @@ class TDUPController extends Controller
     { 
         $tdups = TDUP::find($id);
 
+        if(auth()->guard('user')->user()) {
+            $id_user = auth()->user()->id_user;
+            $tdups->id_user = $id_user;
+        }
         $tdups->no_tdup = $request->no_tdup;
         $tdups->ms_berlaku = $request->ms_berlaku;
-        $tdups->file_tdup = $request->file_tdup;
+        if(auth()->guard('bpw')->user()) {
+            $file = $request->file_tdup;
+
+            $file->move('file_tdup', $file->getClientOriginalName());
+
+            $tdups->file_tdup = $file->getClientOriginalName();
+        }
         $tdups->sts_verifikasi = $request->sts_verifikasi;
         $tdups->keterangan = $request->keterangan;
         $tdups->tgl_verifikasi = $request->tgl_verifikasi;

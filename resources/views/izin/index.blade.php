@@ -57,7 +57,7 @@
 		                <td>{{ $i }}</td>
 		                <td>{{ $izin->no_izin }}</td>
 		                <td>{{ $izin->ms_berlaku }}</td>
-		                <td>@if($izin->file_izin) <img width="50px" src="data:image/png;base64,{{ base64_encode($tdup->file_izin) }}"/> @else - @endif</td>
+		                <td>@if($izin->file_izin) <a href="{{ asset('file_izin/' . $izin->file_izin) }}">Lihat Gambar Izin Operasional</a> @else - @endif</td>
 		                <td>
 		                	<?php
                       if($izin->sts_verifikasi == 0)

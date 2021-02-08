@@ -28,8 +28,8 @@
 	          	@elseif(auth()->guard('user') && auth()->guard('user')->user()->level == 0)
 	          		<a href="#" class="btn bg-purple btn-sm"><i class="fa fa-print"> Print</i></a>
 				      @endif
-			  	</div>
-			</div>
+			  	    </div>
+			    </div>
 
 	    <div class="box-body" id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 	      <div class="row"></div>
@@ -57,7 +57,7 @@
 		                <td>{{ $i }}</td>
 		                <td>{{ $tdup->no_tdup }}</td>
 		                <td>{{ $tdup->ms_berlaku }}</td>
-		                <td>@if($tdup->file_tdup) <img width="50px" src="data:image/png;base64,{{ base64_encode($tdup->file_tdup) }}"/> @else - @endif</td>
+		                <td>@if($tdup->file_tdup) <a href="{{ asset('file_tdup/' . $tdup->file_tdup) }}">Lihat Gambar TDUP</a> @else - @endif</td>
 		                <td>
 		                	<?php
                       if($tdup->sts_verifikasi == 0)

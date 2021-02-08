@@ -36,7 +36,7 @@
     </div>
 
 		<div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12"  style="overflow-x:auto;">
       <table id='example1' class="table table-hover table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
         <thead>
           <tr role="row">

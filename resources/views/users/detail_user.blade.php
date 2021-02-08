@@ -19,7 +19,7 @@
         <tr>
           <td width="200px">Foto</td>
           <td width="5px">:</td>
-          <td>{{$users->foto_user}}</td>
+          <td>@if($users->foto_user) <a href="{{ asset('foto_user/' . $users->foto_user) }}"><img width="100px" src="{{ asset('foto_user/' . $users->foto_user) }}"/></a> @else - @endif</td>
         </tr>
         <tr> 
           <td>Nama Pengguna</td>

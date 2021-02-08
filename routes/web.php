@@ -35,6 +35,7 @@ use Illuminate\Support\Facades\Route;
 		Route::post('/bpw/store', 'App\Http\Controllers\BPWController@store');
 		Route::get('/bpw/edit/{id}','App\Http\Controllers\BPWController@edit');
 		Route::patch('/bpw/update/{id}','App\Http\Controllers\BPWController@update');
+
 		});
 
 
@@ -48,7 +49,7 @@ use Illuminate\Support\Facades\Route;
 		Route::post('/izin/store', 'App\Http\Controllers\IzinController@store');
 
 		// Route LKU
-		Route::get('/lku/store', 'App\Http\Controllers\LKUController@store');
+		Route::post('/lku/store', 'App\Http\Controllers\LKUController@store');
 		});
 
 
@@ -88,6 +89,16 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/lku', 'App\Http\Controllers\LKUController@index');
 		Route::get('/lku/show/{id}','App\Http\Controllers\LKUController@show');
 		
+		});
+
+
+	//	Route oleh Administrator, Staf Pegawai, Kepala Seksi, dan BPW
+		Route::group(['middleware' => ['CheckRole: isAdminUser, isStaffUser, isKepalaUser, isBPWUser']], function(){
+		// Route Profile
+		Route::get('/profile/edit/{id}','App\Http\Controllers\ProfilController@edit');
+		Route::get('/profile/update/{id}','App\Http\Controllers\ProfilController@update');
+		Route::get('/profile/show/{id}','App\Http\Controllers\ProfilController@show');
+
 		});
 
 

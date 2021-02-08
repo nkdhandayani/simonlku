@@ -10,7 +10,7 @@
         <li class="active"><a href="/user"></i>Kelola Pengguna</a></li>
       </ol>
     </section>
- 
+  
  
   <section class="content">
 	<div class="row">
@@ -53,7 +53,7 @@
             @foreach ($users as $pengguna)
               <tr>
                 <td>{{ $i }}</td>
-                <td>{{ $pengguna->foto_user }}</td>
+                <td>@if($pengguna->avatar_user) <a href="{{ asset('avatar_user/' . $pengguna->avatar_user) }}"><img width="50px" src="{{ asset('avatar_user/' . $pengguna->avatar_user) }}"/></a> @else - @endif</td>
                 <td>{{ $pengguna->nm_user }}</td>
                 <td>{{ $pengguna->email }}</td>
                 <td>{{ $pengguna->no_telp }}</td>

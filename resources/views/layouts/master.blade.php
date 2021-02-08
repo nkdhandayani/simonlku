@@ -42,6 +42,9 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <!-- Toast css -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
@@ -114,11 +117,21 @@
 <script src="{{url('adminLTE/dist/js/pages/dashboard.js')}}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{url('adminLTE/dist/js/demo.js')}}"></script>
+<!-- Toast js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" type="text/javascript"></script>
 
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
   })
+
+  @if(session()->has('success'))
+    toastr.success('{{ session()->get('success') }}');
+  @endif
+
+  @if(session()->has('error'))
+    toastr.error('{{ session()->get('error') }}');
+  @endif
 </script>
 
 

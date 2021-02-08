@@ -20,18 +20,30 @@ class IzinController extends Controller
      */
     public function index()
     {
-        $izins = Izin::all();
+        // $izins = Izin::all();
+        $izins = Izin::orderByRaw('FIELD(sts_verifikasi,0,1,2)')->latest()->get();
+
+        if(auth()->guard('bpw')->user()) {
+            $bpw = auth()->guard('bpw')->user();
+            $izins = Izin::where('id_bpw', $bpw->id_bpw)->orderByRaw('FIELD(sts_verifikasi,0,1,2)')->latest()->get();
+        }        
         return view('izin/index', compact('izins'));
     }
 
     
     public function store(Request $request)
     {
+        $file = $request->file_izin;
+        // dd($request->all());
+
+        $file->move('file_izin', $file->getClientOriginalName());
+
         Izin::create([
             'no_izin' => request('no_izin'),
             'id_bpw' => Auth::guard('bpw')->user()->id_bpw,
+            'tanggal' => request('tanggal'),
             'ms_berlaku' => request('ms_berlaku'),
-            'file_izin' => '',
+            'file_izin' => $file->getClientOriginalName(),
             'sts_verifikasi' => '',
             'keterangan' => '',
             'tgl_verifikasi' => '',
@@ -44,17 +56,21 @@ class IzinController extends Controller
 
     public function show($id)
     {
+        $user = User::all();
+        $bpw = BPW::all();
         $izins = Izin::find($id);
-        return view ('izin/detail_izin', compact('izins'));
+        return view ('/izin/detail_izin', compact('izins', 'bpw', 'user'));
     }
 
     public function edit($id)
     {
         $bpw = Auth::guard('bpw')->user();
+        $user = Auth::guard('user')->user();
         $izins = Izin::find($id);
         return view ('izin/edit_izin', [
             'izin' => $izins,
-            'bpw' => $bpw
+            'bpw' => $bpw,
+            'user' => $user
         ]);
     }
 
@@ -63,9 +79,19 @@ class IzinController extends Controller
     {
         $izins = Izin::find($id);
 
+        if(auth()->guard('user')->user()) {
+            $id_user = auth()->user()->id_user;
+            $izins->id_user = $id_user;
+        }
         $izins->no_izin = $request->no_izin;
         $izins->ms_berlaku = $request->ms_berlaku;
-        $izins->file_izin = $request->file_izin;
+        if(auth()->guard('bpw')->user()) {
+            $file = $request->file_izin;
+
+            $file->move('file_izin', $file->getClientOriginalName());
+
+            $izins->file_izin = $file->getClientOriginalName();
+        }
         $izins->sts_verifikasi = $request->sts_verifikasi;
         $izins->keterangan = $request->keterangan;
         $izins->tgl_verifikasi = $request->tgl_verifikasi;

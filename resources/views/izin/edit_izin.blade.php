@@ -43,10 +43,14 @@
         <input name="ms_berlaku" type="date" class="form-control" id="ms_berlaku" value ="{{$izin -> ms_berlaku}}" required="required" autocomplete="off">
       </div>
       </div>
-
+ 
       <div class="form-group">
-        <label for="form_file_izin">File TDUP</label>
+        <label for="file_izin">File izin</label>
+        <br>
+        <a href="{{ asset('file_izin/' . $izin->file_izin) }}"><img width="250px" src="{{ asset('file_izin/' . $izin->file_izin) }}"/></a>
+        @if(auth()->guard('bpw')->user())
         <input name="file_izin" type="file" class="form-control-file" id="file_izin" value ="{{$izin -> file_izin}}" required="required" autocomplete="off">
+        @endif
       </div>
 
       <div class="form-group">
@@ -94,7 +98,7 @@
 
       <div class="form-group">
         <label for="tgl_verifikasi">Tanggal Verifikasi</label>
-        <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value ="{{$izin -> tgl_verifikasi}}" required="required" autocomplete="off">
+        <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value ="{{ ($izin -> tgl_verifikasi == '0000-00-00') ? date('Y-m-d') : $izin->tgl_verifikasi }}" required="required" autocomplete="off">
       </div>
 
       <div class="form-row">
@@ -103,8 +107,8 @@
         <select name="sts_verifikasi" class="form-control" id="sts_verifikasi" value ="{{$izin -> sts_verifikasi}}" required="required" autocomplete="off">
           <option selected>-- Pilih Status Verifikasi --</option>
           <option value="0" @if($izin -> sts_verifikasi == "0") selected @endif>Belum Diverifikasi</option>
-          <option value="1" @if($izin -> sts_verifikasi == "1") selected @endif>Disetujui</option>
-          <option value="2" @if($izin -> sts_verifikasi == "2") selected @endif>Tidak Disetujui</option>
+          <option value="1" @if($izin -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
+          <option value="2" @if($izin -> sts_verifikasi == "2") selected @endif>Disetujui</option>
         </select>
       </div>
       <div class="form-group col-md-6" style="padding: 0px;">
