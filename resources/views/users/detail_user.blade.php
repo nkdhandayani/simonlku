@@ -15,10 +15,17 @@
   <section class="content">
   <div class="box box-primary">
     <div class="box-body pad table-responsive">
+
+      <div>
+        <button type="button" class="close" aria-label="Close"><a href="/user">
+              <span aria-hidden="true">&times;</span></a>
+          </button>
+      </div>
+
       <table class="table">
         <tr>
           <td width="200px">Foto</td>
-          <td width="5px">:</td>
+          <td width="10px">:</td>
           <td>{{$users->foto_user}}</td>
         </tr>
         <tr> 
@@ -97,10 +104,6 @@
         </tr>
       </table>            
     </div>    
-
-    <div class="box-footer">
-      <a href="/user" class="btn btn-primary btn-sm">Back</a>
-    </div>
 
   </div>
   </div>

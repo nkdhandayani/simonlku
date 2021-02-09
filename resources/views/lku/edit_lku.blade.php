@@ -24,9 +24,11 @@
     <div class="box-body">
   
     <div>
-      <a href="/lku" class="btn btn-primary" style="float: right;">Back</a>
+      <button type="button" class="close" aria-label="Close"><a href="/lku">
+            <span aria-hidden="true">&times;</span></a>
+        </button>
     </div>
-    <div style="clear: both;"></div>
+    <br><br>
 
     <div class="form-group">
       <label for="no_surat">Nomor Surat Pengantar</label>
@@ -39,7 +41,7 @@
       <input name="tahun" type="text" class="form-control" id="tahun" value ="{{$lku -> tahun}}" required="required" autocomplete="off">
     </div>
     <div class="form-group col-md-6" style="padding: 0px;">
-      <label for="periode">-- Pilih Periode LKU --</label>
+      <label for="periode">Periode</label>
       <select name="periode" class="form-control" id="periode" value ="{{$lku -> periode}}" required="required" autocomplete="off">
         <option value="I" @if($lku -> periode == "I") selected @endif>I</option>
         <option value="II" @if($lku -> periode == "II") selected @endif>II</option>
@@ -58,13 +60,13 @@
 
     <div class="form-group">
         <label for="created_at">Tanggal Ditambahkan</label>
-        <input name="created_at" type="text" class="form-control" id="created_at" value ="{{$lku -> created_at}}" required="required" autocomplete="off" readonly>
+        <input name="created_at" type="text" class="form-control" id="created_at" value ="{{$lku -> created_at->isoFormat('dddd, DD MMMM Y')}}" required="required" autocomplete="off" readonly>
       </div>
 
     <div class="form-group">
       <label for="file_tdup">File TDUP</label>
       <br>
-      <a href="{{ asset('file_tdup/' . $lku->tdup->file_tdup) }}"><img width="250px" src="{{ asset('file_tdup/' . $lku->tdup->file_tdup) }}"/></a>
+      <a href="{{ asset('file_tdup/' . $lku->tdup->file_tdup) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_tdup/' . $lku->tdup->file_tdup) }}"/></a>
     </div>
 
   
@@ -80,40 +82,19 @@
     <div class="form-group">
       <label for="file_izin">File Izin Operasional</label>
       <br>
-      <a href="{{ asset('file_izin/' . $lku->izin->file_izin) }}"><img width="250px" src="{{ asset('file_izin/' . $lku->izin->file_izin) }}"/></a>
+      <a href="{{ asset('file_izin/' . $lku->izin->file_izin) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_izin/' . $lku->izin->file_izin) }}"/></a>
     </div>
 
-    <div class="form-group col-md-6"  style="padding: 0; padding-right: 10px">
+    <div class="form-group">
       <label for="sts_verifikasi">Status Izin</label>
       <select disabled="true" name="sts_verifikasi" class="form-control" id="sts_verifikasi" value ="{{$lku -> izin -> sts_verifikasi}}" required="required" autocomplete="off">
         <option value="0" @if($lku -> izin -> sts_verifikasi == "0") selected @endif>Belum Diverifikasi</option>
         <option value="2" @if($lku -> izin -> sts_verifikasi == "2") selected @endif>Disetujui</option>
         <option value="1" @if($lku -> izin -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
       </select>
-    </div>
     </div>
 
     @if(auth()->guard('user')->user()->level == 1)
-    <div class="form-row">
-    <div class="form-group col-md-6"  style="padding: 0; padding-right: 10px">
-      <label for="sts_verifikasi">Status TDUP</label>
-      <select disabled="true" name="sts_verifikasi" class="form-control" id="sts_verifikasi" value ="{{$lku -> tdup -> sts_verifikasi}}" required="required" autocomplete="off">
-        <option value="0" @if($lku -> tdup -> sts_verifikasi == "0") selected @endif>Belum Diverifikasi</option>
-        <option value="2" @if($lku -> tdup -> sts_verifikasi == "2") selected @endif>Disetujui</option>
-        <option value="1" @if($lku -> tdup -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
-      </select>
-    </div>
-
-    <div class="form-group col-md-6"  style="padding: 0; padding-right: 10px">
-      <label for="sts_verifikasi">Status Izin</label>
-      <select disabled="true" name="sts_verifikasi" class="form-control" id="sts_verifikasi" value ="{{$lku -> izin -> sts_verifikasi}}" required="required" autocomplete="off">
-        <option value="0" @if($lku -> izin -> sts_verifikasi == "0") selected @endif>Belum Diverifikasi</option>
-        <option value="2" @if($lku -> izin -> sts_verifikasi == "2") selected @endif>Disetujui</option>
-        <option value="1" @if($lku -> izin -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
-      </select>
-    </div>
-    </div>
-
     <div class="form-group">
       <label for="keterangan">Keterangan</label>
       <textarea name="keterangan" type="textarea" class="form-control" id="input_keterangan" rows="6" required="required" autocomplete="off" value="{{$lku -> keterangan}}">{{$lku -> keterangan}}</textarea>

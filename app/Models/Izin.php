@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\BPW as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class Izin extends Model
 {
@@ -12,13 +14,13 @@ class Izin extends Model
 	protected $table = "izin";
     public $timestamps = true;
     protected $primaryKey = "id_izin";
-    protected $dates = ['ms_berlaku'];
+    protected $dates = ['tanggal', 'tgl_verifikasi'];
     
     public $fillable = [
     	'id_bpw',
+        'id_user',
         'no_izin',
         'tanggal',
-        'ms_berlaku',
         'file_izin',
         'sts_verifikasi',
         'keterangan',

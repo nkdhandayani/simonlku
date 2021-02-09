@@ -58,7 +58,7 @@
 
 
 <footer class="main-footer">
-    <strong>Copyright &copy; 2021 <a href="https://www.instagram.com/nkdhandayani/">Dewi Handayani</a>.
+    <strong>Copyright &copy;<a href="https://www.instagram.com/nkdhandayani/" target="_blank">Dewi Handayani</a></strong>.
 </footer>
 
 <div class="control-sidebar-bg"></div>

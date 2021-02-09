@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\BPW;
 use App\Models\TDUP;
 use App\Models\Izin;
@@ -17,7 +18,7 @@ class DashboardController extends Controller
     	if(auth()->guard('bpw')->user()) {
     		$year = [
     			// ?
-    			2020, 2021, 2022
+    			2021, 2022, 2023
     		];
 	    	$yearInactive = 0;
 	    	$allowLogin = true;
@@ -52,15 +53,15 @@ class DashboardController extends Controller
 	    	}
 
 	    	if(!$allowLogin) {
-	    		return redirect('user-logout')->with('error', 'Anda tidak dapat login karena tidak mengupload file LKU sebanyak 2 kali berturut-turut pada periode ' . $yearInactive);
+	    		return redirect('user-logout')->with('error', 'Anda tidak dapat login karena tidak mengupload file LKU sebanyak 2 kali berturut-turut pada tahun ' . $yearInactive);
 	    	}
     	}
 
-    	$total_bpw = BPW::count();
-    	$total_tdup = TDUP::count();
-    	$total_izin = Izin::count();
-    	$total_lku = LKU::count();
+    	$jml_bpw = BPW::count();
+    	$jml_tdup = TDUP::count();
+    	$jml_izin = Izin::count();
+    	$jml_lku = LKU::count();
         
-    	return view('dashboard.index', compact('total_bpw','total_tdup','total_izin','total_lku'));
+    	return view('dashboard.index', compact('jml_bpw','jml_tdup','jml_izin','jml_lku'));
     }
 }

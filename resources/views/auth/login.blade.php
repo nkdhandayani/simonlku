@@ -27,7 +27,7 @@
                                 <form action="/postlogin" method="POST">
                                 @csrf
                                     <div class="form-label-group">
-                                        <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+                                        <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus autocomplete="off">
                                         <label for="inputUsername">Username</label>
                                     </div>
 
@@ -42,24 +42,25 @@
                                         <label for="inputPassword">Password</label>
                                     </div>
 
-                                    <div class="form-label-group">
-                                        <select class="form-control" name="login_as" id="inputLoginAs" style="border-radius: 2rem;" required>
-                                            <option value="">-- Login As --</option>
-                                            <option value="jasa_pariwisata">Jasa Pariwisata</option>
-                                            <option value="biro_perjalanan_wisata">Biro Perjalanan Wisata</option>
-                                        </select>
-                                    </div>
-
                                     @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
+                                    <div class="form-label-group">
+                                        <select class="form-control" name="login_as" id="inputLoginAs" required="required" style="border-radius: 2rem;">
+                                            <option disabled selected>-- Login As --</option>
+                                            <option value="jasa_pariwisata">Jasa Pariwisata</option>
+                                            <option value="biro_perjalanan_wisata">Biro Perjalanan Wisata</option>
+                                        </select>
+                                    </div>
+
                                     
-                                    <div class="custom-control custom-checkbox mb-3">
+                                    <!-- <div class="custom-control custom-checkbox mb-3">
                                         <input type="checkbox" class="custom-control-input" id="customCheck1">
                                         <label class="custom-control-label" for="customCheck1">Remember password</label>
-                                    </div>
+                                    </div> -->
                                     
                                     <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Log In</button>
                                 </form>                       

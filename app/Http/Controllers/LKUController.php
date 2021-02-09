@@ -22,7 +22,12 @@ class LKUController extends Controller
      */
     public function index()
     {
-        $lkus = LKU::all();
+        $lkus = LKU::orderByRaw('FIELD(sts_verifikasi,0,1,2)')->latest()->get();
+
+        if(auth()->guard('bpw')->user()) {
+            $bpw = auth()->guard('bpw')->user();
+            $lkus = LKU::where('id_bpw', $bpw->id_bpw)->orderByRaw('FIELD(sts_verifikasi,0,1,2)')->latest()->get();
+        }        
         return view('lku/index', compact('lkus'));
     }
 
@@ -81,7 +86,7 @@ class LKUController extends Controller
         $lkus = LKU::find($id);
         $tdups = TDUP::find($id);
         $izins = Izin::find($id);
-        return view ('/izin/detail_izin', compact('lkus','tdups','izins', 'bpw', 'user'));
+        return view ('/lku/detail_lku', compact('lkus','tdups','izins', 'bpw', 'user'));
     }
 
 

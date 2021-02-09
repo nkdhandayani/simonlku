@@ -25,8 +25,6 @@
 	          	<div style="clear: both;"></div>
 				      @if(auth()->guard('bpw')->user())
 	          		<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"> Add</i></button>
-	          	@elseif(auth()->guard('user') && auth()->guard('user')->user()->level == 0)
-	          		<a href="#" class="btn bg-purple btn-sm"><i class="fa fa-print"> Print</i></a>
 				      @endif
 			  	    </div>
           </div>
@@ -41,7 +39,7 @@
           			<tr role="row">
 		            	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
 		            	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No. Izin Operasional</th>
-		            	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Masa Berlaku</th>
+		            	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tanggal Izin Operasional</th>
 		            	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">File Izin Operasional</th>
 		            	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Status Verifikasi</th>
 		            	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Status</th>
@@ -56,8 +54,8 @@
 	            	<tr>
 		                <td>{{ $i }}</td>
 		                <td>{{ $izin->no_izin }}</td>
-		                <td>{{ $izin->ms_berlaku->isoFormat('dddd, DD MMMM Y') }}</td>
-		                <td>@if($izin->file_izin) <a href="{{ asset('file_izin/' . $izin->file_izin) }}">Lihat Gambar Izin Operasional</a> @else - @endif</td>
+		                <td>{{ $izin->tanggal->isoFormat('dddd, DD MMMM Y') }}</td>
+		                <td>@if($izin->file_izin) <a href="{{ asset('file_izin/' . $izin->file_izin) }}" target="_blank">Lihat Gambar Izin Operasional</a> @else - @endif</td>
 		                <td>
 		                	<?php
                       if($izin->sts_verifikasi == 0)
@@ -125,22 +123,17 @@
           <div class="modal-body">
             <form action="/izin/store" method="post" enctype="multipart/form-data">{{csrf_field()}}
 
-            <div class="form-group">
-              <label for="no_izin">Nomor Izin Operasional</label>
-              <input name="no_izin" type="text" class="form-control" required="required" autocomplete="off">
-            </div>
-
             <div class="form-row">
             <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
+              <label for="no_izin">Nomor Izin Operasional</label>
+              <input name="no_izin" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Nomor Izin Operasional">
+            </div>
+            <div class="form-group col-md-6" style="padding: 0;">
               <label for="tanggal">Tanggal Izin Operasional</label>
               <input name="tanggal" type="date" class="form-control" required="required" autocomplete="off">
             </div>
-            <div class="form-group col-md-6" style="padding: 0px;">
-              <label for="ms_berlaku">Masa Berlaku Izin Operasional</label>
-              <input name="ms_berlaku" type="date" class="form-control" required="required" autocomplete="off">
             </div>
-            </div>
-      
+
             <div class="form-group">
               <label for="file_izin">File Izin</label>
               <input name="file_izin" type="file" class="form-control-file">

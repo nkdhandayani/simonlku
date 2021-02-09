@@ -42,7 +42,6 @@ class IzinController extends Controller
             'no_izin' => request('no_izin'),
             'id_bpw' => Auth::guard('bpw')->user()->id_bpw,
             'tanggal' => request('tanggal'),
-            'ms_berlaku' => request('ms_berlaku'),
             'file_izin' => $file->getClientOriginalName(),
             'sts_verifikasi' => '',
             'keterangan' => '',
@@ -50,7 +49,7 @@ class IzinController extends Controller
             'status' => '',
         ]);
 
-        return redirect('/izin');
+        return redirect('/izin')->with('success', 'Data berhasil ditambahkan!');
     }
 
 
@@ -84,7 +83,7 @@ class IzinController extends Controller
             $izins->id_user = $id_user;
         }
         $izins->no_izin = $request->no_izin;
-        $izins->ms_berlaku = $request->ms_berlaku;
+        $izins->tanggal = $request->tanggal;
         if(auth()->guard('bpw')->user()) {
             $file = $request->file_izin;
 
@@ -97,7 +96,7 @@ class IzinController extends Controller
         $izins->tgl_verifikasi = $request->tgl_verifikasi;
         $izins->status = $request->status;
         $izins->save();
-        return redirect('/izin');
+        return redirect('/izin')->with('success', 'Data berhasil dirubah!');
     }
 
 

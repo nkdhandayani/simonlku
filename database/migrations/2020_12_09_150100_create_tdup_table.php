@@ -16,9 +16,9 @@ class CreateTdupTable extends Migration
         Schema::create('tdup', function (Blueprint $table) {
             $table->increments('id_tdup')->unsigned();;
             $table->unsignedInteger('id_bpw');
+            $table->unsignedInteger('id_user');
             $table->string('no_tdup', 20);
             $table->date('tanggal');
-            $table->date('ms_berlaku');
             $table->string('file_tdup', 100);
             $table->integer('sts_verifikasi')->unsigned();
             $table->string('keterangan');

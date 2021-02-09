@@ -29,7 +29,6 @@ class CreateLkuTable extends Migration
             $table->integer('status')->unsigned();
             $table->timestamps();
 
-            $table->foreign('id_bpw')->references('id_bpw')->on('bpw');
             $table->foreign('id_tdup')->references('id_tdup')->on('tdup');
             $table->foreign('id_izin')->references('id_izin')->on('izin');
         });

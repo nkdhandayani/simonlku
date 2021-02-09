@@ -18,40 +18,38 @@
   	<div class="box box-primary">
         <div class="box-body pad table-responsive">
  
-        <div class="box-footer">
-          <a href="/tdup" class="btn btn-primary btn-sm">Back</a>
+        <div>
+          <button type="button" class="close" aria-label="Close"><a href="/tdup">
+            <span aria-hidden="true">&times;</span></a>
+          </button>
         </div>
+        <br><br>
 
           <table class="table">
             <tr>
-              <td width="300">Nama Biro</td>
+              <td width="200">Nama Biro Perjalanan Wisata</td>
               <td width="10">:</td>
               <td>{{$tdups->bpw->nm_bpw}}</td>
             </tr>
             <tr> 
-              <td>No. Tanda Daftar Usaha Pariwisata</td>
+              <td>No. TDUP</td>
               <td>:</td>
               <td>{{$tdups->no_tdup}}</td>
             </tr>
             <tr>
-              <td>Tanggal Tanda Daftar Usaha Pariwisata</td>
+              <td>Tanggal TDUP</td>
               <td>:</td>
-              <td>{{$tdups->tanggal}}</td>
+              <td>{{ $tdups->tanggal->isoFormat('dddd, DD MMMM Y') }}</td>
             </tr>
             <tr>
-              <td>Masa Berlaku Tanda Daftar Usaha Pariwisata</td>
+              <td>File TDUP</td>
               <td>:</td>
-              <td>{{$tdups->ms_berlaku}}</td>
-            </tr>
-            <tr>
-              <td>File Tanda Daftar Usaha Pariwisata</td>
-              <td>:</td>
-              <td>@if($tdups->file_tdup) <a href="{{ asset('file_tdup/' . $tdups->file_tdup) }}"><img width="100px" src="{{ asset('file_tdup/' . $tdups->file_tdup) }}"/></a> @else - @endif</td>
+              <td>@if($tdups->file_tdup) <a href="{{ asset('file_tdup/' . $tdups->file_tdup) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_tdup/' . $tdups->file_tdup) }}"/></a> @else - @endif</td>
             </tr>
             <tr>
               <td>Tanggal Ditambahkan</td>
               <td>:</td>
-              <td>{{$tdups->created_at}}</td>
+              <td>{{ $tdups->created_at->isoFormat('dddd, DD MMMM Y') }}</td>
             </tr>
             <tr>
               <td>Status Verifikasi</td>
@@ -77,11 +75,6 @@
               <td>Keterangan</td>
               <td>:</td>
               <td>{{$tdups->keterangan}}</td>
-            </tr>
-            <tr>
-              <td>Tanggal Verifikasi</td>
-              <td>:</td>
-              <td>{{$tdups->tgl_verifikasi}}</td>
             </tr>
             <tr>
               <td>Diverifikasi oleh</td>

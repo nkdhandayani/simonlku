@@ -17,9 +17,16 @@
   <section class="content">
   <div class="box box-primary">
     <div class="box-body">
+      <div>
+        <button type="button" class="close" aria-label="Close"><a href="/izin">
+              <span aria-hidden="true">&times;</span></a>
+          </button>
+      </div>
+      <br><br>
+      
       <table class="table">
         <tr>
-          <td width="300">Nama Biro</td>
+          <td width="200">Nama Biro Perjalanan Wisata</td>
           <td width="10">:</td>
           <td>{{$izins->bpw->nm_bpw}}</td>
         </tr>
@@ -31,22 +38,17 @@
         <tr>
           <td>Tanggal Izin Operasional</td>
           <td>:</td>
-          <td>{{$izins->tanggal}}</td>
-        </tr>
-        <tr>
-          <td>Masa Berlaku Izin Operasional</td>
-          <td>:</td>
-          <td>{{$izins->ms_berlaku}}</td>
+          <td>{{ $izins->tanggal->isoFormat('dddd, DD MMMM Y') }}</td>
         </tr>
         <tr>
           <td>File Izin Operasional</td>
           <td>:</td>
-          <td>@if($izins->file_izin) <a href="{{ asset('file_izin/' . $izins->file_izin) }}"><img width="100px" src="{{ asset('file_izin/' . $izins->file_izin) }}"/></a> @else - @endif</td>
+          <td>@if($izins->file_izin) <a href="{{ asset('file_izin/' . $izins->file_izin) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_izin/' . $izins->file_izin) }}"/></a> @else - @endif</td>
         </tr>
         <tr>
           <td>Tanggal Ditambahkan</td>
           <td>:</td>
-          <td>{{$izins->created_at}}</td>
+          <td>{{ $izins->created_at->isoFormat('dddd, DD MMMM Y') }}</td>
         </tr>
         <tr>
           <td>Status Verifikasi</td>
@@ -74,11 +76,6 @@
           <td>{{$izins->keterangan}}</td>
         </tr>
         <tr>
-          <td>Tanggal Verifikasi</td>
-          <td>:</td>
-          <td>{{$izins->tgl_verifikasi}}</td>
-        </tr>
-        <tr>
           <td>Diverifikasi oleh:</td>
           <td>:</td>
           <td>{{$izins->user->nm_user ?? '-'}}</td>
@@ -100,10 +97,6 @@
           </td>    
         </tr>
       </table>  
-    </div>
-      
-    <div class="box-footer">
-       <a href="/izin" class="btn btn-primary">Back</a>
     </div>
 
 	</div>

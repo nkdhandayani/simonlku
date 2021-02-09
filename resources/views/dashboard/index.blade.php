@@ -2,20 +2,20 @@
 
 @section('content')
 	<section class="content-header">
+		@if(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '0' || \Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '1' || \Auth::guard('bpw')->user())
       <h1>
         Dashboard
         @if(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '0')
         Administrator
         @elseif(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '1')
         Staf Jasa Pariwisata
-        @elseif(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '2')
-        Kepala Seksi Jasa Pariwisata
         @endif
 
         @if(\Auth::guard('bpw')->user())
         Biro Perjalanan Wisata
         @endif
       </h1>
+      	@endif
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-home"></i>Home</a></li>
         <li class="active"><a href="/dashboard"></i>Dashboard</a></li>
@@ -24,16 +24,15 @@
 
 
     <section class="content">
+      	@if(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '0' || \Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '1' || \Auth::guard('bpw')->user())
+      
       <div class="row">
 
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-red">
             <div class="inner">
-              <h3>{{$bpws = App\Models\BPW::count()}}</h3>
-              <h4>Data BPW</h4>
-            </div>
-            <div class="icon">
-              <i class="fa fa-institution"></i>
+              <h3>{{$jml_bpw}}</h3>
+              <h4><strong>Total Data BPW</strong></h4>
             </div>
             <a href="/bpw" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -43,11 +42,8 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-yellow">
             <div class="inner">
-              <h3>{{$tdups = App\Models\TDUP::count()}}</h3>
-              <h4>Data TDUP</h4>
-            </div>
-            <div class="icon">
-              <i class="fa fa-file-text"></i>
+              <h3>{{$jml_tdup}}</h3>
+              <h4><strong>Total Data TDUP</strong></h4>
             </div>
             <a href="/tdup" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -57,11 +53,8 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>{{$izins = App\Models\Izin::count()}}</h3>
-              <h4>Data Izin Operasional</h4>
-            </div>
-            <div class="icon">
-              <i class="fa fa-file-text"></i>
+              <h3>{{$jml_izin}}</h3>
+              <h4><strong>Total Data Izin Operasional</strong></h4>
             </div>
             <a href="/izin" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -71,16 +64,14 @@
         <div class="col-lg-3 col-xs-6">
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>{{$lkus = App\Models\LKU::count()}}</h3>
-              <h4>Data LKU</h4>
-            </div>
-            <div class="icon">
-              <i class="fa fa-file-text"></i>
+              <h3>{{$jml_lku}}</h3>
+              <h4><strong>Total Data LKU</strong></h4>
             </div>
             <a href="/lku" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         </div>
+        @endif
 
 
         <div class="row">

@@ -14,8 +14,9 @@ class LKU extends Model
     protected $primaryKey = "id_lku";
     
     public $fillable = [
-        'id_tdup',
         'id_bpw',
+        'id_user',
+        'id_tdup',
     	'id_izin',
         'no_surat',
         'tahun',

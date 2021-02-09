@@ -41,11 +41,10 @@ class BPWController extends Controller
             'jns_bpw' => request('jns_bpw'),
             'sts_kantor' => request('sts_kantor'),
             'nib' => request('nib'),
-            'foto_bpw' => '',
             'status' => request('status'),
         ]);
 
-        return redirect('/bpw');
+        return redirect('/bpw')->with('success', 'Data berhasil ditambahkan!');
     }
 
 
@@ -69,7 +68,6 @@ class BPWController extends Controller
 
         $bpws->nm_bpw = $request->nm_bpw;
         $bpws->username = $request->username;
-        $bpws->password = bcrypt($request->password);
         $bpws->email = $request->email;
         $bpws->kabupaten = $request->kabupaten;
         $bpws->no_telp = $request->no_telp;
@@ -79,11 +77,10 @@ class BPWController extends Controller
         $bpws->jns_bpw = $request->jns_bpw;
         $bpws->sts_kantor = $request->sts_kantor;
         $bpws->nib = $request->nib;
-        $bpws->foto_bpw = $request->foto_bpw;
         $bpws->status = $request->status;
         $bpws->save();
 
-        return redirect('/bpw');
+        return redirect('/bpw')->with('success', 'Data berhasil dirubah!');
     }
     
 

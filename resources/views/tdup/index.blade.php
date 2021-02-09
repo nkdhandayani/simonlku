@@ -8,7 +8,7 @@
       <ol class="breadcrumb">
         <li><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li> Kelola Data</li>
-        <li class="active"><a href="/tdup"></i> TDUP</a></li>
+        <li class="active"><a href="/tdup"></i> Tanda Daftar Usaha Pariwisata</a></li>
       </ol>
   	</section>
 
@@ -25,8 +25,6 @@
 	          	<div style="clear: both;"></div>
 				      @if(auth()->guard('bpw')->user())
 	          		<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"> Add</i></button>
-	          	@elseif(auth()->guard('user') && auth()->guard('user')->user()->level == 0)
-	          		<a href="#" class="btn bg-purple btn-sm"><i class="fa fa-print"> Print</i></a>
 				      @endif
 			  	    </div>
 			    </div>
@@ -41,7 +39,7 @@
           			<tr role="row">
 		            	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
 		            	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No. TDUP</th>
-		            	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Masa Berlaku</th>
+		            	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tanggal TDUP</th>
 		            	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">File TDUP</th>
 		            	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Status Verifikasi</th>
 		            	<th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Status</th>
@@ -56,8 +54,8 @@
 	            	<tr>
 		                <td>{{ $i }}</td>
 		                <td>{{ $tdup->no_tdup }}</td>
-		                <td>{{ $tdup->ms_berlaku }}</td>
-		                <td>@if($tdup->file_tdup) <a href="{{ asset('file_tdup/' . $tdup->file_tdup) }}">Lihat Gambar TDUP</a> @else - @endif</td>
+		                <td>{{ $tdup->tanggal->isoFormat('dddd, DD MMMM Y') }}</td>
+		                <td>@if($tdup->file_tdup) <a href="{{ asset('file_tdup/' . $tdup->file_tdup) }}" target="_blank">Lihat Gambar TDUP</a> @else - @endif </td>
 		                <td>
 		                	<?php
                       if($tdup->sts_verifikasi == 0)
@@ -125,26 +123,22 @@
           <div class="modal-body">
             <form action="/tdup/store" method="post" enctype="multipart/form-data">{{csrf_field()}}
 
-              <div class="form-group">
+              <div class="form-row">
+              <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
                 <label for="no_tdup">Nomor TDUP</label>
                 <input name="no_tdup" type="text" class="form-control" placeholder="Masukkan Nomor TDUP" required="required" autocomplete="off">
               </div>
-
-              <div class="form-row">
-              <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
+              <div class="form-group col-md-6" style="padding: 0;">
                 <label for="tanggal">Tanggal TDUP</label>
                 <input name="tanggal" type="date" class="form-control" required="required" autocomplete="off">
               </div>
-              <div class="form-group col-md-6" style="padding: 0px;">
-                <label for="ms_berlaku">Masa Berlaku TDUP</label>
-                <input name="ms_berlaku" type="date" class="form-control" required="required" autocomplete="off">
               </div>
-              </div>
-      
+
               <div class="form-group">
                 <label for="file_tdup">File TDUP</label>
                 <input name="file_tdup" type="file" class="form-control-file" required="required" autocomplete="off">
               </div>
+      
 
               <div>
                 <button type="submit" class="btn btn-primary btn-sm">Save</button>

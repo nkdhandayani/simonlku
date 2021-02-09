@@ -134,31 +134,22 @@
               </div>
               </div>
               
-              <div class="form-group">
+              <div class="form-row">
+              <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
                 <label for="email">E-mail</label>
                   <input name="email"type="email" class="form-control" id="email" placeholder="Masukkan E-mail" required="required" autocomplete="off">
+              </div>
+              <div class="form-group col-md-6" style="padding: 0;">
+                <label for="nib">Nomor Induk Berusaha</label>
+                  <input name="nib" type="text" class="form-control" id="nib" placeholder="Masukkan Nomor Induk Berusaha" required="required" autocomplete="off">
+              </div>
               </div>
               
               <div class="form-group">
                 <label for="alamat">Alamat</label>
                   <textarea name="alamat" type="textarea" class="form-control" id="alamat" rows="6" placeholder="Masukkan Alamat" required="required" autocomplete="off"></textarea>
               </div>
-      
-              <div class="form-group">
-                <label for="form_kabupaten">Kabupaten/Kota</label>
-                  <select name="kabupaten" class="form-control" id="input_kabupaten" required="required" autocomplete="off">
-                    <option selected>-- Pilih Kabupaten/Kota --</option>
-                    <option value="Kota Denpasar">Kota Denpasar</option>
-                    <option value="Badung">Badung</option>
-                    <option value="Gianyar">Gianyar</option>
-                    <option value="Bangli">Bangli</option>
-                    <option value="Tabanan">Tabanan</option>
-                    <option value="Jembrana">Jembrana</option>
-                    <option value="Buleleng">Buleleng</option>
-                    <option value="Klungkung">Klungkung</option>
-                    <option value="Karangasem">Karangasem</option>
-                  </select>
-              </div>
+    
       
               <div class="form-row">
               <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
@@ -171,21 +162,22 @@
               </div>
               </div>
       
-              <div class="form-group">
+              <div class="form-row">
+              <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
                 <label for="nm_pic">Nama PIC</label>
                   <input name="nm_pic" type="text" class="form-control" id="nm_pic" placeholder="Masukkan Nama PIC" required="required" autocomplete="off">
               </div>
-        
-              <div class="form-group">
+              <div class="form-group col-md-6" style="padding: 0;">
                 <label for="nm_pimpinan">Nama Pimpinan</label>
                   <input name="nm_pimpinan" type="text" class="form-control" id="nm_pimpinan" placeholder="Masukkan Nama Pimpinan" required="required" autocomplete="off">
+              </div>
               </div>
         
               <div class="form-row">
               <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
                 <label for="jns_BPW">Jenis BPW</label>
                   <select name="jns_bpw" class="form-control" id="jns_bpw" required="required" autocomplete="off">
-                    <option selected>-- Pilih Jenis BPW --</option>
+                    <option selected disabled>-- Pilih Jenis BPW --</option>
                     <option value="BPW">BPW</option>
                     <option value="MICE">MICE</option>
                     <option value="Lanjut Usia">Lanjut Usia</option>
@@ -194,30 +186,37 @@
               <div class="form-group  col-md-6" style="padding: 0;">
                 <label for="sts_kantor">Status Kantor</label>
                   <select name="sts_kantor" class="form-control" id="sts_kantor" required="required" autocomplete="off">
-                    <option selected>-- Pilih Status Kantor --</option>
+                    <option selected disabled>-- Pilih Status Kantor --</option>
                     <option value="Hak Pribadi">Hak Pribadi</option>
                     <option value="Kontrak">Kontrak</option>
                   </select>
               </div>
               </div>
       
-              <div class="form-group">
-                <label for="nib">Nomor Induk Berusaha</label>
-                  <input name="nib" type="text" class="form-control" id="nib" placeholder="Masukkan Nomor Induk Berusaha" required="required" autocomplete="off">
+              <div class="form-row">
+              <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
+                <label for="form_kabupaten">Kabupaten/Kota</label>
+                  <select name="kabupaten" class="form-control" id="input_kabupaten" required="required" autocomplete="off">
+                    <option selected disabled>-- Pilih Kabupaten/Kota --</option>
+                    <option value="Kota Denpasar">Kota Denpasar</option>
+                    <option value="Badung">Badung</option>
+                    <option value="Gianyar">Gianyar</option>
+                    <option value="Bangli">Bangli</option>
+                    <option value="Tabanan">Tabanan</option>
+                    <option value="Jembrana">Jembrana</option>
+                    <option value="Buleleng">Buleleng</option>
+                    <option value="Klungkung">Klungkung</option>
+                    <option value="Karangasem">Karangasem</option>
+                  </select>
               </div>
-        
-              <div class="form-group">
-                <label for="foto_bpw">Foto BPW</label>
-                  <input name="foto_bpw" type="file" class="form-control-file" id="foto_bpw">
-              </div>
-              
-              <div class="form-group">
+              <div class="form-group col-md-6" style="padding: 0;">
                 <label for="status">Status</label>
                   <select name="status" class="form-control" id="status" required="required" autocomplete="off">
-                    <option selected>-- Pilih Status --</option>
+                    <option selected disabled>-- Pilih Status --</option>
                     <option value="1">Aktif</option>
                     <option value="0">Tidak Aktif</option>
                   </select>
+              </div>
               </div>
               
               <div>

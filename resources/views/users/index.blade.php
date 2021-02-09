@@ -23,7 +23,6 @@
         <div style="float: right;">
         <div style="clear: both;"></div>
         	<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"> Add</i></button>
-        	<a href="#" class="btn bg-purple btn-sm"><i class="fa fa-print"> Print</i></a> 
 		    </div>
 		  </div>
     
@@ -125,11 +124,6 @@
           <div class="box box-primary">
           <div class="modal-body">
             <form action="/user/store" method="post" enctype="multipart/form-data">{{csrf_field()}}
-
-              <div class="form-group">
-                <label for="form_foto_user">Foto Pegawai</label>
-                <input name="foto_user" type="file" class="form-control-file" id="foto_user">
-              </div>
           
               <div class="form-group">
                 <label for="form_nm_user">Nama Pegawai</label>
@@ -166,7 +160,7 @@
               <div class="form-group col-md-6" style="padding: 0;">
                 <label for="form_jns_kelamin">Jenis Kelamin</label>
                 <select name="jns_kelamin" class="form-control" id="jns_kelamin" required="required" autocomplete="off">
-                  <option selected>-- Pilih Jenis Kelamin --</option>
+                  <option selected disabled="">-- Pilih Jenis Kelamin --</option>
                   <option value="Laki-laki">Laki-laki</option>
                   <option value="Perempuan">Perempuan</option>
                   </select>
@@ -177,7 +171,7 @@
               <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
                 <label for="form_level">Level</label>
                   <select name="level" class="form-control" id="level" required="required" autocomplete="off">
-                    <option selected>-- Pilih Level --</option>
+                    <option selected disabled="">-- Pilih Level --</option>
                     <option value="0">Administrator</option>
                     <option value="1">Staf Jasa Pariwisata</option>
                     <option value="2">Kepala Seksi Jasa Pariwisata</option>
@@ -186,7 +180,7 @@
               <div class="form-group col-md-6" style="padding: 0;">
                 <label for="form_status" required="required" autocomplete="off">Status</label>
                   <select name="status" class="form-control" id="status">
-                    <option selected>-- Pilih Status --</option>
+                    <option selected disabled="">-- Pilih Status --</option>
                     <option value="1">Aktif</option>
                     <option value="0">Tidak Aktif</option>
                   </select>

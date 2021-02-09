@@ -24,30 +24,27 @@
     <div class="box-body">
 
       <div>
-        <a href="/izin" class="btn btn-primary btn-sm" style="float: right;">Back</a>
+        <button type="button" class="close" aria-label="Close"><a href="/izin">
+              <span aria-hidden="true">&times;</span></a>
+          </button>
       </div>
-      <div style="clear: both;"></div>
-
-      <div class="form-group">
-        <label for="no_izin">Nomor Izin Operasional</label>
-        <input name="no_izin" type="text" class="form-control" id="no_izin" value ="{{$izin -> no_izin}}" required="required" autocomplete="off">
-      </div>
+      <br><br>
 
       <div class="form-row">
       <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
-        <label for="tanggal">Tanggal Izin Operasional</label>
-        <input name="tanggal" type="date" class="form-control" id="tanggal" value ="{{$izin -> tanggal}}" required="required" autocomplete="off">
+        <label for="no_izin">Nomor Izin Operasional</label>
+        <input name="no_izin" type="text" class="form-control" id="no_izin" value ="{{$izin -> no_izin}}" required="required" autocomplete="off">
       </div>
       <div class="form-group col-md-6" style="padding: 0px;">
-        <label for="ms_berlaku">Masa Berlaku Izin Operasional</label>
-        <input name="ms_berlaku" type="date" class="form-control" id="ms_berlaku" value ="{{$izin -> ms_berlaku}}" required="required" autocomplete="off">
+        <label for="tanggal">Tanggal Izin Operasional</label>
+        <input name="tanggal" type="date" class="form-control" id="tanggal" value ="{{$izin -> tanggal}}" required="required" autocomplete="off">
       </div>
       </div>
  
       <div class="form-group">
         <label for="file_izin">File izin</label>
         <br>
-        <a href="{{ asset('file_izin/' . $izin->file_izin) }}"><img width="250px" src="{{ asset('file_izin/' . $izin->file_izin) }}"/></a>
+        <a href="{{ asset('file_izin/' . $izin->file_izin) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_izin/' . $izin->file_izin) }}"/></a>
         @if(auth()->guard('bpw')->user())
         <input name="file_izin" type="file" class="form-control-file" id="file_izin" value ="{{$izin -> file_izin}}" required="required" autocomplete="off">
         @endif
@@ -64,16 +61,16 @@
         <textarea name="keterangan" type="textarea" class="form-control" id="keterangan" rows="6" required="required" autocomplete="off" readonly>{{$izin -> keterangan}}</textarea>
       </div>
 
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="tgl_verifikasi">Tanggal Verifikasi</label>
         <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value ="{{$izin -> tgl_verifikasi}}" required="required" autocomplete="off" required="required" autocomplete="off" readonly>
-      </div>
+      </div> -->
 
       <div class="form-row">
       <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
         <label for="sts_verifikasi">Status Verifikasi</label>
         <select name="sts_verifikasi" class="form-control" id="sts_verifikasi" value ="{{$izin -> sts_verifikasi}}" required="required" autocomplete="off" readonly>
-          <option selected>-- Pilih Status Verifikasi --</option>
+          <option selected disabled="">-- Pilih Status Verifikasi --</option>
           <option value="0" @if($izin -> sts_verifikasi == "0") selected @endif>Belum Diverifikasi</option>
           <option value="2" @if($izin -> sts_verifikasi == "2") selected @endif>Disetujui</option>
           <option value="1" @if($izin -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
@@ -82,7 +79,7 @@
       <div class="form-group col-md-6" style="padding: 0px;">
         <label for="status">Status</label>
         <select name="status" class="form-control" id="status" value ="{{$izin -> status}}" required="required" autocomplete="off" readonly>
-          <option selected>-- Pilih Status --</option>
+          <option selected disabled="">-- Pilih Status --</option>
           <option value="1" @if($izin -> status == "1") selected @endif>Aktif</option>
           <option value="0" @if($izin -> status == "0") selected @endif>Tidak Aktif</option>
         </select>
@@ -93,20 +90,19 @@
       @elseif(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 1)
       <div class="form-group">
         <label for="keterangan">Keterangan</label>
-        <textarea name="keterangan" type="textarea" class="form-control" id="input_keterangan" rows="6" required="required" autocomplete="off" placeholder="Masukkan Keterangan"></textarea>
+        <textarea name="keterangan" type="textarea" class="form-control" id="input_keterangan" rows="6" required="required" autocomplete="off" placeholder="Masukkan Keterangan">{{$izin -> keterangan}}</textarea>
       </div>
 
-      <div class="form-group">
+      <!-- <div class="form-group">
         <label for="tgl_verifikasi">Tanggal Verifikasi</label>
-        <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value ="{{ ($izin -> tgl_verifikasi == '0000-00-00') ? date('Y-m-d') : $izin->tgl_verifikasi }}" required="required" autocomplete="off">
-      </div>
+        <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value ="{{ $izin -> tgl_verifikasi }}" required="required" autocomplete="off">
+      </div> -->
 
       <div class="form-row">
       <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
         <label for="sts_verifikasi">Status Verifikasi</label>
         <select name="sts_verifikasi" class="form-control" id="sts_verifikasi" value ="{{$izin -> sts_verifikasi}}" required="required" autocomplete="off">
-          <option selected>-- Pilih Status Verifikasi --</option>
-          <option value="0" @if($izin -> sts_verifikasi == "0") selected @endif>Belum Diverifikasi</option>
+          <option selected disabled="">-- Pilih Status Verifikasi --</option>
           <option value="1" @if($izin -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
           <option value="2" @if($izin -> sts_verifikasi == "2") selected @endif>Disetujui</option>
         </select>
@@ -114,7 +110,7 @@
       <div class="form-group col-md-6" style="padding: 0px;">
         <label for="status">Status</label>
         <select name="status" class="form-control" id="status" value ="{{$izin -> status}}" required="required" autocomplete="off">
-          <option selected>-- Pilih Status --</option>
+          <option selected disabled="">-- Pilih Status --</option>
           <option value="1" @if($izin -> status == "1") selected @endif>Aktif</option>
           <option value="0" @if($izin -> status == "0") selected @endif>Tidak Aktif</option>
         </select>

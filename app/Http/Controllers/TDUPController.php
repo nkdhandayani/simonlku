@@ -41,8 +41,8 @@ class TDUPController extends Controller
         TDUP::create([
             'no_tdup' => request('no_tdup'),
             'id_bpw' => Auth::guard('bpw')->user()->id_bpw,
+            'id_user' => '',
             'tanggal' => request('tanggal'),
-            'ms_berlaku' => request('ms_berlaku'),
             'file_tdup' => $file->getClientOriginalName(),
             'sts_verifikasi' => '',
             'keterangan' => '',
@@ -50,7 +50,7 @@ class TDUPController extends Controller
             'status' => '',
         ]);
 
-        return redirect('/tdup');
+        return redirect('/tdup')->with('success', 'Data berhasil ditambahkan!');
     }
 
 
@@ -86,7 +86,7 @@ class TDUPController extends Controller
         }
         
         $tdups->no_tdup = $request->no_tdup;
-        $tdups->ms_berlaku = $request->ms_berlaku;
+        $tdups->tanggal = $request->tanggal;
         if(auth()->guard('bpw')->user()) {
             $file = $request->file_tdup;
 
@@ -99,7 +99,7 @@ class TDUPController extends Controller
         $tdups->tgl_verifikasi = $request->tgl_verifikasi;
         $tdups->status = $request->status;
         $tdups->save();
-        return redirect('/tdup');
+        return redirect('/tdup')->with('success', 'Data berhasil dirubah!');
         
 
     }

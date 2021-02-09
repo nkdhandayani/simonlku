@@ -9,7 +9,7 @@
     <ol class="breadcrumb">
       <li><a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
       <li> Kelola Data</li>
-      <li class="active"><a href="/lku_verif"></i> LKU (Sudah Diverifikasi)</a></li>
+      <li class="active"><a href="/lku_verif"></i> Laporan Kegiatan Usaha</a></li>
     </ol>
   </section>
 
@@ -26,8 +26,6 @@
               <div style="clear: both;"></div>
               @if(auth()->guard('bpw')->user())
                 <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"> Add</i></button>
-              @elseif(auth()->guard('user') && auth()->guard('user')->user()->level == 0)
-                <a href="#" class="btn bg-purple btn-sm"><i class="fa fa-print"> Print</i></a>
               @endif
               </div>
           </div>
@@ -138,18 +136,18 @@
 
               <div class="form-group">
           <label for="input_no_surat">Nomor Surat Pengantar</label>
-          <input name="no_surat" type="text" class="form-control">
+          <input name="no_surat" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Nomor Surat Pengantar">
         </div>
         
         <div class="form-row">
         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
           <label for="input_tahun">Tahun LKU</label>
-          <input name="tahun" type="text" class="form-control">
+          <input name="tahun" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Tahun LKU">
         </div>
         <div class="form-group col-md-6" style="padding: 0px;">
           <label for="periode">Periode LKU</label>
           <select name="periode" class="form-control">
-            <option selected>-- Pilih Periode LKU --</option>
+            <option selected disabled>-- Pilih Periode LKU --</option>
             <option value="I">I</option>
             <option value="II">II</option>
           </select>
