@@ -21,13 +21,14 @@
               <span aria-hidden="true">&times;</span></a>
           </button>
       </div>
+      <br><br>
 
       <table class="table">
-        <tr>
+        <!-- <tr>
           <td width="200px">Foto</td>
           <td width="10px">:</td>
           <td>{{$users->foto_user}}</td>
-        </tr>
+        </tr> -->
         <tr> 
           <td>Nama Pengguna</td>
           <td>:</td>

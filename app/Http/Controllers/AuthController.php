@@ -18,20 +18,21 @@ class AuthController extends Controller
     public function postlogin(Request $request)
     {
         if($request->login_as == "jasa_pariwisata"){
-            if (Auth::guard('user')->attempt($request->only('username', 'password'))) {
+            if (Auth::guard('user')->attempt(['username' => $request->username, 'password' => $request->password, 'status' => 1])) {
                 $user = \App\Models\User::where('username', $request->username)->first();
                 return redirect('/dashboard')->with('success', 'Selamat Anda berhasil login!');
             }
         }
+
         else if($request->login_as == "biro_perjalanan_wisata"){
-            if (Auth::guard('bpw')->attempt($request->only('username', 'password'))) {
+            if (Auth::guard('bpw')->attempt(['username' => $request->username, 'password' => $request->password, 'status' => 1])) {
                 $bpw = \App\Models\BPW::where('username', $request->username)->first();
                 return redirect('/dashboard')->with('success', 'Selamat Anda berhasil login!');
             }
         }
 
         if(!$request->login_as == "jasa_pariwisata" || !$request->login_as == "biro_perjalanan_wisata" || !$request->login_as == null) {
-                return redirect('user-logout')->with('error', 'Data login yang Anda masukkan salah');
+                return redirect('user-logout')->with('error', 'Data login yang Anda masukkan salah atau akun anda tidak aktif.');
         }
 
         return redirect('/');

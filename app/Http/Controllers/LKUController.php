@@ -21,7 +21,7 @@ class LKUController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
         $lkus = LKU::orderByRaw('FIELD(sts_verifikasi,0,1,2)')->latest()->get();
 
         if(auth()->guard('bpw')->user()) {
@@ -34,6 +34,11 @@ class LKUController extends Controller
 
     public function store(Request $request)
     {
+        $validate = $request->validate([
+            'tahun' => 'required|min:4|max:4',
+            'file_lku' => 'required|mimes:pdf'
+        ]);
+
         $bpw = auth()->guard('bpw')->user();
         // dd($bpw->id_bpw);
         $tdup = TDUP::where('id_bpw', $bpw->id_bpw)
@@ -109,6 +114,11 @@ class LKUController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validate = $request->validate([
+            'tahun' => 'required|min:4|max:4',
+            'file_lku' => 'required|mimes:pdf'
+        ]);
+        
         $lkus = LKU::find($id);
 
         if(auth()->guard('user')->user()) {

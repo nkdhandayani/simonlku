@@ -34,20 +34,35 @@
       <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
         <label for="no_tdup">Nomor TDUP</label>
         <input name="no_tdup" type="text" class="form-control" id="no_tdup" value ="{{$tdup -> no_tdup}}" required="required" autocomplete="off">
+        @error('no_tdup')
+            <span class="invalid-feedback text-danger" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
       </div>
       <div class="form-group col-md-6" style="padding: 0px;">
         <label for="tanggal">Tanggal TDUP</label>
         <input name="tanggal" type="date" class="form-control" id="tanggal" value ="{{$tdup -> tanggal}}" required="required" autocomplete="off">
       </div>
+      @error('tanggal')
+          <span class="invalid-feedback text-danger" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+      @enderror
       </div>
 
       <div class="form-group">
-        <label for="file_tdup">File TDUP</label>
+        <label for="file_tdup">File TDUP <small style="color: red"> *Dalam Format JPG/JPEG/PNG</small></label>
         <br>
         <a href="{{ asset('file_tdup/' . $tdup->file_tdup) }}" target="_blank"><img width="200px" height="200px;" src="{{ asset('file_tdup/' . $tdup->file_tdup) }}"/></a>
         @if(auth()->guard('bpw')->user())
         <input name="file_tdup" type="file" class="form-control-file" id="file_tdup" value ="{{$tdup -> file_tdup}}" required="required" autocomplete="off">
         @endif
+        @error('file_tdup')
+          <span class="invalid-feedback text-danger" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+        @enderror
       </div>
 
       <div class="form-group">

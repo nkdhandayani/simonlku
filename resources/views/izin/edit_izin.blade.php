@@ -34,11 +34,21 @@
       <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
         <label for="no_izin">Nomor Izin Operasional</label>
         <input name="no_izin" type="text" class="form-control" id="no_izin" value ="{{$izin -> no_izin}}" required="required" autocomplete="off">
+        @error('no_izin')
+          <span class="invalid-feedback text-danger" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+        @enderror
       </div>
       <div class="form-group col-md-6" style="padding: 0px;">
         <label for="tanggal">Tanggal Izin Operasional</label>
         <input name="tanggal" type="date" class="form-control" id="tanggal" value ="{{$izin -> tanggal}}" required="required" autocomplete="off">
       </div>
+      @error('tanggal')
+          <span class="invalid-feedback text-danger" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+        @enderror
       </div>
  
       <div class="form-group">
@@ -48,6 +58,11 @@
         @if(auth()->guard('bpw')->user())
         <input name="file_izin" type="file" class="form-control-file" id="file_izin" value ="{{$izin -> file_izin}}" required="required" autocomplete="off">
         @endif
+        @error('file_izin')
+          <span class="invalid-feedback text-danger" role="alert">
+              <strong>{{ $message }}</strong>
+          </span>
+        @enderror
       </div>
 
       <div class="form-group">

@@ -133,7 +133,7 @@
     toastr.error('{{ session()->get('error') }}');
   @endif
 </script>
-
+@yield('js')
 
 </body>
 </html>

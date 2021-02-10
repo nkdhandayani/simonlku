@@ -33,7 +33,7 @@
 
     @if(auth()->guard('bpw')->user() || auth()->guard('user')->user() && auth()->guard('user')->user()->level == 1)
     <li class="{{ (Request()->segment(1) == 'bpw') ? 'active' : ''}}">
-      <a href="/bpw"><i class="fa fa-institution"></i><span>Biro Perjalanan Wisata</span></a>
+      <a href="/bpw"><i class="fa fa-institution"></i><span> Biro Perjalanan Wisata</span></a>
     </li>
 
     <li class="header">KELOLA DATA BIRO</li>

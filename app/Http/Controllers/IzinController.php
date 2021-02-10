@@ -32,7 +32,13 @@ class IzinController extends Controller
 
     
     public function store(Request $request)
-    {
+    {   
+        $validate = $request->validate([
+            'no_izin' => 'required|min:4',
+            'tanggal' => 'required|date',
+            'file_izin' => 'required|mimes:jpg,jpeg,png'
+        ]);
+
         $file = $request->file_izin;
         // dd($request->all());
 
@@ -76,6 +82,11 @@ class IzinController extends Controller
 
     public function update(Request $request, $id)
     {
+        $validate = $request->validate([
+            'no_izin' => 'required|min:4',
+            'tanggal' => 'required|date',
+        ]);
+
         $izins = Izin::find($id);
 
         if(auth()->guard('user')->user()) {

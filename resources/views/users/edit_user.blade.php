@@ -28,7 +28,7 @@
       	      <span aria-hidden="true">&times;</span></a>
       	  </button>
 	  	</div>
-	  	<br>
+	  	<br><br>
 	  		
 		<div class="form-row">
 		<div class="form-group col-md-6" style="padding: 0; padding-right: 10px">

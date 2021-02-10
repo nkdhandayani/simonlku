@@ -22,6 +22,7 @@
       	      <span aria-hidden="true">&times;</span></a>
       	  	</button>
 	  		</div>
+	  		<br><br>
 
 	        <table class="table">
 	            <tr>

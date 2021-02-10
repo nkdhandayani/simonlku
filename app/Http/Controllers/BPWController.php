@@ -19,7 +19,7 @@ class BPWController extends Controller
      */
     public function index()
     {
-        $bpws = BPW::all();
+        $bpws = BPW::orderBy('nm_bpw', 'ASC')->get();
         return view('bpw/index', compact('bpws'));
     }
 

@@ -158,7 +158,7 @@
               </div>
               <div class="form-group col-md-6" style="padding: 0;">
                 <label for="no_fax">Nomor Fax</label>
-                  <input name="no_fax" type="text" class="form-control" id="no_fax" placeholder="Masukkan Nomor Fax" required="required" autocomplete="off">
+                  <input name="no_fax" type="text" class="form-control" id="no_fax" placeholder="Masukkan Nomor Fax" autocomplete="off">
               </div>
               </div>
       

@@ -126,17 +126,32 @@
             <div class="form-row">
             <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
               <label for="no_izin">Nomor Izin Operasional</label>
-              <input name="no_izin" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Nomor Izin Operasional">
+              <input name="no_izin" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Nomor Izin Operasional" value="{{ old('no_izin') }}">
+              @error('no_izin')
+                <span class="invalid-feedback text-danger" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+              @enderror
             </div>
             <div class="form-group col-md-6" style="padding: 0;">
               <label for="tanggal">Tanggal Izin Operasional</label>
-              <input name="tanggal" type="date" class="form-control" required="required" autocomplete="off">
+              <input name="tanggal" type="date" class="form-control" required="required" autocomplete="off" value="{{ old('tanggal') }}">
+              @error('tanggal')
+                <span class="invalid-feedback text-danger" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+              @enderror
             </div>
             </div>
 
             <div class="form-group">
-              <label for="file_izin">File Izin</label>
-              <input name="file_izin" type="file" class="form-control-file">
+              <label for="file_tdup">File Izin Operasional <small style="color: red"> *Dalam Format JPG/JPEG/PNG</small></label>
+              <input name="file_izin" type="file" class="form-control-file" value="{{ old('file_izin') }}">
+              @error('file_izin')
+                <span class="invalid-feedback text-danger" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+              @enderror
             </div>
       
             <div>

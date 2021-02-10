@@ -19,7 +19,7 @@
 
         <div class="box-header">
         	<div class="box-body pad table-responsive">
-              <h3 class="box-title" style="font-size: 20px;"><i class="fa fa-files-o"></i> Daftar TDUP</h3>
+              <h3 class="box-title" style="font-size: 20px;"><i class="fa fa-files-o"></i> Daftar Tanda Daftar Usaha Pariwata</h3>
 			
 	          	<div style="float: right;">
 	          	<div style="clear: both;"></div>
@@ -126,17 +126,33 @@
               <div class="form-row">
               <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
                 <label for="no_tdup">Nomor TDUP</label>
-                <input name="no_tdup" type="text" class="form-control" placeholder="Masukkan Nomor TDUP" required="required" autocomplete="off">
+                <input name="no_tdup" type="text" class="form-control" placeholder="Masukkan Nomor TDUP" required="required" autocomplete="off" value="{{ old('no_tdup') }}">
+                @error('no_tdup')
+                    <span class="invalid-feedback text-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
               </div>
               <div class="form-group col-md-6" style="padding: 0;">
                 <label for="tanggal">Tanggal TDUP</label>
-                <input name="tanggal" type="date" class="form-control" required="required" autocomplete="off">
+                <input name="tanggal" type="date" class="form-control" required="required" autocomplete="off" value="{{ old('tanggal') }}">
+                @error('tanggal')
+                    <span class="invalid-feedback text-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
               </div>
+              <div class="col-md-12"></div>
               </div>
 
               <div class="form-group">
-                <label for="file_tdup">File TDUP</label>
-                <input name="file_tdup" type="file" class="form-control-file" required="required" autocomplete="off">
+                <label for="file_tdup">File TDUP <small style="color: red"> *Dalam Format JPG/JPEG/PNG</small></label>
+                <input name="file_tdup" type="file" class="form-control-file" required="required" autocomplete="off" value="{{ old('file_tdup') }}">
+                @error('file_tdup')
+                    <span class="invalid-feedback text-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
               </div>
       
 
@@ -152,4 +168,12 @@
 </div>
 </div>
 </section> 
+@endsection
+
+@section('js')
+<script type="text/javascript">
+  @if($errors->any())
+    $('#exampleModal').modal();
+  @endif
+</script>
 @endsection

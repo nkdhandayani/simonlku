@@ -20,7 +20,7 @@
   
         <div class="box-header">
           <div class="box-body pad table-responsive">
-              <h3 class="box-title" style="font-size: 20px;"><i class="fa fa-files-o"></i> Daftar LKU</h3>
+              <h3 class="box-title" style="font-size: 20px;"><i class="fa fa-files-o"></i> Daftar Laporan Kegiatan Usaha</h3>
       
               <div style="float: right;">
               <div style="clear: both;"></div>
@@ -135,35 +135,45 @@
             <form action="/lku/store" method="post" enctype="multipart/form-data">{{csrf_field()}}
 
               <div class="form-group">
-          <label for="input_no_surat">Nomor Surat Pengantar</label>
-          <input name="no_surat" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Nomor Surat Pengantar">
-        </div>
+                <label for="input_no_surat">Nomor Surat Pengantar</label>
+                <input name="no_surat" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Nomor Surat Pengantar">
+              </div>
         
-        <div class="form-row">
-        <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
-          <label for="input_tahun">Tahun LKU</label>
-          <input name="tahun" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Tahun LKU">
-        </div>
-        <div class="form-group col-md-6" style="padding: 0px;">
-          <label for="periode">Periode LKU</label>
-          <select name="periode" class="form-control">
-            <option selected disabled>-- Pilih Periode LKU --</option>
-            <option value="I">I</option>
-            <option value="II">II</option>
-          </select>
-        </div>
-        </div>
+              <div class="form-row">
+              <div class="form-group col-md-6" style="padding: 0; padding-right: 10px">
+                <label for="input_tahun">Tahun LKU</label>
+                <input name="tahun" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Tahun LKU" value="{{ old('tahun') }}">
+                @error('tahun')
+                    <span class="invalid-feedback text-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+              <div class="form-group col-md-6" style="padding: 0px;">
+                <label for="periode">Periode LKU</label>
+                <select name="periode" class="form-control">
+                  <option selected disabled>-- Pilih Periode LKU --</option>
+                  <option value="I">I</option>
+                  <option value="II">II</option>
+                </select>
+              </div>
+              </div>
 
-        <div class="form-group">
-          <label for="file_lku">File LKU</label>
-          <input name="file_lku" type="file" class="form-control-file">
-        </div>
-      
-        <div>
-          <button type="submit" class="btn btn-primary btn-sm">Save</button>
-        </div>
+              <div class="form-group">
+                <label for="file_tdup">File LKU <small style="color: red"> *Dalam Format PDF</small></label>
+                <input name="file_lku" type="file" class="form-control-file" value="{{ old('file_lku') }}">
+                @error('file_lku')
+                    <span class="invalid-feedback text-danger" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+              </div>
+            
+              <div>
+                <button type="submit" class="btn btn-primary btn-sm">Save</button>
+              </div>
 
-</form>
+        </form>
       </div>
     </div>
   </div>

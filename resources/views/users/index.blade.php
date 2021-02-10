@@ -36,7 +36,7 @@
           <thead>
             <tr role="row">
               <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
-              <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Foto Pegawai</th>
+              <!-- <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Foto Pegawai</th> -->
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Nama Pegawai</th>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Email</th>
               <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">No. Telp</th>
@@ -52,7 +52,7 @@
             @foreach ($users as $pengguna)
               <tr>
                 <td>{{ $i }}</td>
-                <td>{{ $pengguna->foto_user }}</td>
+                <!-- <td>{{ $pengguna->foto_user }}</td> -->
                 <td>{{ $pengguna->nm_user }}</td>
                 <td>{{ $pengguna->email }}</td>
                 <td>{{ $pengguna->no_telp }}</td>
