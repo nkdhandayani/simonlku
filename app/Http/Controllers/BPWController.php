@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use PDF;
 
 class BPWController extends Controller
 {
@@ -83,6 +84,13 @@ class BPWController extends Controller
         return redirect('/bpw')->with('success', 'Data berhasil dirubah!');
     }
     
+    public function pdf(Request $request)
+    {
+        $bpws = BPW::all();
+ 
+        $pdf = PDF::loadview('bpw/bpw_pdf', compact('bpws'));
+        return $pdf->stream();
+    }
 
     public function destroy($id)
     {

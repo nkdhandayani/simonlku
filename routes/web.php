@@ -36,6 +36,7 @@ use Illuminate\Support\Facades\Route;
 		Route::post('/bpw/store', 'App\Http\Controllers\BPWController@store');
 		Route::get('/bpw/edit/{id}','App\Http\Controllers\BPWController@edit');
 		Route::patch('/bpw/update/{id}','App\Http\Controllers\BPWController@update');
+		Route::get('/bpw/cetak', 'App\Http\Controllers\BPWController@pdf');
 
 		});
 

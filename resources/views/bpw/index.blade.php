@@ -26,7 +26,7 @@
       <div style="float: right;">
       <div style="clear: both;"></div>
         <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"> Add</i></button>
-        <a href="#" class="btn bg-purple btn-sm"><i class="fa fa-print"> Print</i></a> 
+        <a href="/bpw/cetak" class="btn bg-purple btn-sm" target="_blank"><i class="fa fa-print"> Print</i></a> 
       </div>
       @endif 
     </div>
