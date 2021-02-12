@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use PDF;
 
 class LKUController extends Controller
 {
@@ -32,6 +33,18 @@ class LKUController extends Controller
     }
 
 
+    public function monitoring()
+    { 
+        $lkus = LKU::orderByRaw('FIELD(sts_verifikasi,0,1,2)')->latest()->get();
+
+        if(auth()->guard('bpw')->user()) {
+            $bpw = auth()->guard('bpw')->user();
+            $lkus = LKU::where('id_bpw', $bpw->id_bpw)->orderByRaw('FIELD(sts_verifikasi,0,1,2)')->latest()->get();
+        }        
+        return view('lku/monitoring_lku', compact('lkus'));
+    }
+
+
     public function store(Request $request)
     {
         $validate = $request->validate([
@@ -41,24 +54,16 @@ class LKUController extends Controller
 
         $bpw = auth()->guard('bpw')->user();
         // dd($bpw->id_bpw);
-        $tdup = TDUP::where('id_bpw', $bpw->id_bpw)
-            ->where('status', 1)
-            ->where('sts_verifikasi', 2)
-            ->latest()
-            ->first();
+        $tdup = TDUP::where('id_bpw', $bpw->id_bpw)->where('sts_verifikasi', 2)->get();
 
-        $izin = Izin::where('id_bpw', $bpw->id_bpw)
-            ->where('status', 1)
-            ->where('sts_verifikasi', 2)
-            ->latest()
-            ->first();
+        $izin = Izin::where('id_bpw', $bpw->id_bpw)->where('sts_verifikasi', 2)->get();
 
         if($tdup == null && $izin == null) {
-            return redirect('/lku')->with('error', 'TDUP dan Izin tidak ada');
+            return redirect('/lku')->with('error', 'File TDUP dan Izin tidak ditemukan!');
         } else if($tdup == null) {
-            return redirect('/lku')->with('error', 'TDUP tidak ada');
+            return redirect('/lku')->with('error', 'Silakan upload file TDUP!');
         } else if($izin == null) {
-            return redirect('/lku')->with('error', 'Izin tidak ada');
+            return redirect('/lku')->with('error', 'Silakan upload file Izin Operasional!');
         }
 
         $file = $request->file_lku;
@@ -77,7 +82,6 @@ class LKUController extends Controller
             'sts_verifikasi' => '',
             'keterangan' => '',
             'tgl_verifikasi' => '',
-            'status' => '',
         ]);
 
         return redirect('/lku');
@@ -139,11 +143,17 @@ class LKUController extends Controller
         $lkus->sts_verifikasi = $request->sts_verifikasi;
         $lkus->keterangan = $request->keterangan;
         $lkus->tgl_verifikasi = $request->tgl_verifikasi;
-        $lkus->status = $request->status;
         $lkus->save();
         return redirect('/lku');
     }
 
+    public function pdf(Request $request)
+    {
+        $lkus = LKU::all();
+ 
+        $pdf = PDF::loadview('lku/lku_pdf', compact('lku'));
+        return $pdf->stream();
+    }
 
     public function destroy($id)
     {

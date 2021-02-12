@@ -13,6 +13,7 @@ class User extends Authenticatable
     protected $table = "users"; 
     public $timestamps = true;
     protected $primaryKey = 'id_user';
+    protected $dates = ['created_at', 'updated_at'];
 
     /**
      * The attributes that are mass assignable.
@@ -20,7 +21,18 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'password', 'nm_user', 'nik', 'email', 'no_telp', 'jns_kelamin', 'foto_user', 'level', 'status', 'created_at', 'updated_at'
+        'username',
+        'password',
+        'nm_user',
+        'nik',
+        'email',
+        'no_telp',
+        'jns_kelamin',
+        'foto_user',
+        'level',
+        'status',
+        'created_at',
+        'updated_at'
     ];
 
     /**

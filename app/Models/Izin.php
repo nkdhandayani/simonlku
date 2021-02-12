@@ -14,18 +14,19 @@ class Izin extends Model
 	protected $table = "izin";
     public $timestamps = true;
     protected $primaryKey = "id_izin";
-    protected $dates = ['tanggal', 'tgl_verifikasi'];
+    protected $dates = ['tgl_izin', 'tgl_verifikasi', 'created_at', 'updated_at'];
     
     public $fillable = [
     	'id_bpw',
         'id_user',
         'no_izin',
-        'tanggal',
+        'tgl_izin',
         'file_izin',
         'sts_verifikasi',
         'keterangan',
         'tgl_verifikasi',
-        'status',
+        'created_at',
+        'updated_at'
     ];
 
     public function bpw()

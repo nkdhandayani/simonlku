@@ -12,6 +12,7 @@ class LKU extends Model
     protected $table = "lku";
     public $timestamps = true;
     protected $primaryKey = "id_lku";
+    protected $dates = ['tgl_verifikasi', 'created_at', 'updated_at'];
     
     public $fillable = [
         'id_bpw',
@@ -19,13 +20,14 @@ class LKU extends Model
         'id_tdup',
     	'id_izin',
         'no_surat',
-        'tahun',
-        'periode',
+        'tahun_lku',
+        'periode_lku',
         'file_lku',
         'sts_verifikasi',
         'keterangan',
         'tgl_verifikasi',
-        'status',
+        'created_at',
+        'updated_at'
     ];
 
     public function bpw()

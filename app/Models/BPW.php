@@ -14,6 +14,7 @@ class BPW extends Authenticatable
     protected $table = "bpw";
     public $timestamps = true;
     protected $primaryKey = "id_bpw";
+    protected $dates = ['created_at', 'protected'];
 
     public $fillable = [
     	'id_user',
@@ -32,6 +33,8 @@ class BPW extends Authenticatable
         'nib',
         'foto_bpw',
         'status',
+        'created_at',
+        'updated_at'
     ];
 
     protected $hidden = [
@@ -45,12 +48,12 @@ class BPW extends Authenticatable
 
     public function tdup()
     {
-        return $this->hasMany(TDUP::class, 'id_tdup', 'id_tdup');
+        return $this->hasOne(TDUP::class, 'id_tdup', 'id_tdup');
     }
 
     public function izin()
     {
-        return $this->hasMany(Izin::class, 'id_izin', 'id_izin');
+        return $this->hasOne(Izin::class, 'id_izin', 'id_izin');
     }
 
     public function lku()

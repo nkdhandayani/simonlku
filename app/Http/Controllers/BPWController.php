@@ -27,6 +27,13 @@ class BPWController extends Controller
 
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'nm_bpw' => 'required|min:6|max:50',
+            'username' => 'required|min:5|max:20',    
+            'nm_pic' => 'required|min:6|max:50',
+            'nm_pimpinan' => 'required|min:6|max:50',
+        ]);
+
         BPW::create([
             'nm_bpw' => request('nm_bpw'),
             'id_user' => Auth::user()->id_user,
@@ -42,6 +49,7 @@ class BPWController extends Controller
             'jns_bpw' => request('jns_bpw'),
             'sts_kantor' => request('sts_kantor'),
             'nib' => request('nib'),
+            'foto_bpw' => '',
             'status' => request('status'),
         ]);
 
@@ -89,6 +97,7 @@ class BPWController extends Controller
         $bpws = BPW::all();
  
         $pdf = PDF::loadview('bpw/bpw_pdf', compact('bpws'));
+        $pdf->setPaper('A4', 'landscape');
         return $pdf->stream();
     }
 

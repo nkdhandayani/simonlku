@@ -18,12 +18,11 @@ class CreateIzinTable extends Migration
             $table->unsignedInteger('id_bpw');
             $table->unsignedInteger('id_user');
             $table->string('no_izin', 20);
-            $table->date('tanggal');
+            $table->date('tgl_izin');
             $table->string('file_izin', 100);
             $table->integer('sts_verifikasi')->unsigned();
             $table->string('keterangan');
             $table->date('tgl_verifikasi');
-            $table->integer('status')->unsigned();
             $table->timestamps();
 
             $table->foreign('id_bpw')->references('id_bpw')->on('bpw');

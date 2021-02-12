@@ -14,18 +14,19 @@ class TDUP extends Model
     protected $table = "tdup";
     public $timestamps = true;
     protected $primaryKey = "id_tdup";
-    protected $dates = ['tanggal', 'tgl_verifikasi'];
+    protected $dates = ['tgl_tdup', 'tgl_verifikasi', 'created_at', 'updated_at'];
 
     public $fillable = [
     	'id_bpw',
         'id_user',
         'no_tdup',
-        'tanggal',
+        'tgl_tdup',
         'file_tdup',
         'sts_verifikasi',
         'keterangan',
         'tgl_verifikasi',
-        'status',
+        'created_at',
+        'updated_at'
     ];
 
     public function bpw()

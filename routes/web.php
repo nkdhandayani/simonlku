@@ -98,6 +98,7 @@ use Illuminate\Support\Facades\Route;
 
 		// 	Route LKU
 		Route::get('/lku', 'App\Http\Controllers\LKUController@index');
+		Route::get('/monitoring_lku', 'App\Http\Controllers\LKUController@monitoring');
 		Route::get('/lku/show/{id}','App\Http\Controllers\LKUController@show');
 		
 		});

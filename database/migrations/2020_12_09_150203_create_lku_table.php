@@ -26,7 +26,6 @@ class CreateLkuTable extends Migration
             $table->integer('sts_verifikasi')->unsigned();
             $table->string('keterangan');
             $table->date('tgl_verifikasi');
-            $table->integer('status')->unsigned();
             $table->timestamps();
 
             $table->foreign('id_tdup')->references('id_tdup')->on('tdup');

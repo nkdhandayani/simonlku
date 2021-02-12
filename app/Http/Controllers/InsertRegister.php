@@ -13,7 +13,7 @@ class InsertRegister extends Controller
         User::create([
             'username' => "admin",
             'password' => Hash::make("admin"),
-            'nm_user' => "Ngurah Adi",
+            'nm_user' => "Ngurah Adi Hendrawan",
             'nik' => "5671025310980001",
             'email' => "ngurahadi@gmail.com",
             'no_telp' => "089788566123",
@@ -28,7 +28,7 @@ class InsertRegister extends Controller
         User::create([
             'username' => "stafjasa",
             'password' => Hash::make("stafjasa"),
-            'nm_user' => "Wayan Darma",
+            'nm_user' => "Wayan Darma Susila",
             'nik' => "5671025310980002",
             'email' => "wayandarma@gmail.com",
             'no_telp' => "0897885454231",
@@ -43,7 +43,7 @@ class InsertRegister extends Controller
         User::create([
             'username' => "kepalaseksi",
             'password' => Hash::make("kepalaseksi"),
-            'nm_user' => "Kadek Sinta",
+            'nm_user' => "Kadek Sinta Wianti",
             'nik' => "5671025310980003",
             'email' => "kadeksinta@gmail.com",
             'no_telp' => "089788786133",

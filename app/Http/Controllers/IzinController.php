@@ -52,7 +52,6 @@ class IzinController extends Controller
             'sts_verifikasi' => '',
             'keterangan' => '',
             'tgl_verifikasi' => '',
-            'status' => '',
         ]);
 
         return redirect('/izin')->with('success', 'Data berhasil ditambahkan!');
@@ -105,7 +104,6 @@ class IzinController extends Controller
         $izins->sts_verifikasi = $request->sts_verifikasi;
         $izins->keterangan = $request->keterangan;
         $izins->tgl_verifikasi = $request->tgl_verifikasi;
-        $izins->status = $request->status;
         $izins->save();
         return redirect('/izin')->with('success', 'Data berhasil dirubah!');
     }
