@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('email', 50);
             $table->string('no_telp', 15);
             $table->enum('jns_kelamin', ["Laki-laki", "Perempuan"]);
-            $table->string('foto_user', 100);
+            $table->string('foto_user', 100)->nullable();
             $table->integer('level')->unsigned();
             $table->integer('status')->unsigned();
             $table->timestamps();

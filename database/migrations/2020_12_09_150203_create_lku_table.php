@@ -24,8 +24,9 @@ class CreateLkuTable extends Migration
             $table->enum('periode', ["I", "II"]);
             $table->string('file_lku', 100);
             $table->integer('sts_verifikasi')->unsigned();
-            $table->string('keterangan');
-            $table->date('tgl_verifikasi');
+            $table->string('keterangan')->nullable();
+            $table->date('tgl_verifikasi')->nullable();
+            $table->integer('status')->unsigned();
             $table->timestamps();
 
             $table->foreign('id_tdup')->references('id_tdup')->on('tdup');

@@ -31,10 +31,15 @@
                         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
                             <label for="nm_bpw">Nama BPW</label>
                             <input name="nm_bpw" type="text" class="form-control" id="nm_bpw" value="{{$bpws -> nm_bpw}}" required="required" autocomplete="off" />
+                            @error('nm_bpw')
+                            <span class="invalid-feedback text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group col-md-6" style="padding: 0;">
                             <label for="username">Username</label>
-                            <input name="username" type="username" class="form-control" id="username" value="{{$bpws -> username}}" required="required" autocomplete="off" />
+                            <input name="username" type="username" class="form-control" id="username" value="{{$bpws -> username}}" required="required" autocomplete="off" readonly />
                         </div>
                     </div>
 
@@ -61,7 +66,7 @@
                         </div>
                         <div class="form-group col-md-6" style="padding: 0;">
                             <label for="no_fax">Nomor Fax</label>
-                            <input name="no_fax" type="text" class="form-control" id="no_fax" value="{{$bpws -> no_fax}}" required="required" autocomplete="off" />
+                            <input name="no_fax" type="text" class="form-control" id="no_fax" value="{{$bpws -> no_fax}}" autocomplete="off" />
                         </div>
                     </div>
 
@@ -69,10 +74,20 @@
                         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
                             <label for="nm_pic">Nama PIC</label>
                             <input name="nm_pic" type="text" class="form-control" id="nm_pic" value="{{$bpws -> nm_pic}}" required="required" autocomplete="off" />
+                            @error('nm_pic')
+                            <span class="invalid-feedback text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group col-md-6" style="padding: 0;">
                             <label for="nm_pimpinan">Nama Pimpinan</label>
                             <input name="nm_pimpinan" type="text" class="form-control" id="nm_pimpinan" value="{{$bpws -> nm_pimpinan}}" required="required" autocomplete="off" />
+                            @error('nm_pimpinan')
+                            <span class="invalid-feedback text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
                     </div>
 

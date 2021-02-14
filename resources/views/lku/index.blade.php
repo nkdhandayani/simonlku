@@ -9,7 +9,7 @@
             <a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
         </li>
         <li>Kelola Data</li>
-        <li class="active"><a href="/lku_verif"> Laporan Kegiatan Usaha</a></li>
+        <li class="active"><a href="/lku"> Laporan Kegiatan Usaha</a></li>
     </ol>
 </section>
 
@@ -62,7 +62,19 @@
                                             <td><a href="{{ asset('file_lku/' . $lku->file_lku) }}" target="_blank">{{ $lku->file_lku }}</a></td>
                                             <td>
                                                 <?php
-                      if($lku->sts_verifikasi == 0) { echo "Belum Diverifikasi"; } elseif($lku->sts_verifikasi == 1) { echo "Tidak Disetujui"; } elseif($lku->sts_verifikasi == 2) { echo "Disetujui"; } ?>
+                                                if($lku->sts_verifikasi == 0)
+                                                    {
+                                                        echo "Belum Diverifikasi";
+                                                    }
+                                                elseif($lku->sts_verifikasi == 1)
+                                                    {
+                                                        echo "Tidak Disetujui";
+                                                    }
+                                                elseif($lku->sts_verifikasi == 2)
+                                                    {
+                                                        echo "Disetujui";
+                                                    }
+                                                ?>
                                             </td>
 
                                             <td>
@@ -91,7 +103,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="exampleModalLabel"><i class="fa fa-file"></i> Tambah LKU</h4>
+                    <h4 class="modal-title" id="exampleModalLabel"><i class="fa fa-files-o"></i> Tambah LKU</h4>
                 </div>
 
                 <div class="box box-primary">
@@ -101,25 +113,20 @@
 
                             <div class="form-group">
                                 <label for="input_no_surat">Nomor Surat Pengantar</label>
-                                <input name="no_surat" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Nomor Surat Pengantar" />
+                                <input name="no_surat" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Nomor Surat Pengantar" value="{{ old('no_surat') }}" />
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
                                     <label for="input_tahun">Tahun LKU</label>
                                     <input name="tahun" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Tahun LKU" value="{{ old('tahun') }}" />
-                                    @error('tahun')
-                                    <span class="invalid-feedback text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
                                 </div>
                                 <div class="form-group col-md-6" style="padding: 0px;">
                                     <label for="periode">Periode LKU</label>
                                     <select name="periode" class="form-control">
                                         <option selected disabled>-- Pilih Periode LKU --</option>
-                                        <option value="I">I</option>
-                                        <option value="II">II</option>
+                                        <option value="{{ old('periode') == 'I' ? 'selected' : '' }}">I</option>
+                                        <option value="{{ old('periode') == 'II' ? 'selected' : '' }}">II</option>
                                     </select>
                                 </div>
                             </div>

@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
+use Carbon\Carbon;
 
 class IzinController extends Controller
 {
@@ -33,11 +34,11 @@ class IzinController extends Controller
     
     public function store(Request $request)
     {   
-        $validate = $request->validate([
+        $this->validate($request, [
             'no_izin' => 'required|min:4',
-            'tanggal' => 'required|date',
+            'tgl_izin' => 'required|date',
             'file_izin' => 'required|mimes:jpg,jpeg,png'
-        ]);
+        ]); 
 
         $file = $request->file_izin;
         // dd($request->all());
@@ -47,11 +48,11 @@ class IzinController extends Controller
         Izin::create([
             'no_izin' => request('no_izin'),
             'id_bpw' => Auth::guard('bpw')->user()->id_bpw,
-            'tanggal' => request('tanggal'),
+            'tgl_izin' => request('tgl_izin'),
             'file_izin' => $file->getClientOriginalName(),
-            'sts_verifikasi' => '',
-            'keterangan' => '',
-            'tgl_verifikasi' => '',
+            'sts_verifikasi' =>'',
+            'keterangan' => request('keterangan'),
+            'tgl_verifikasi' => request('tgl_verifikasi'),
         ]);
 
         return redirect('/izin')->with('success', 'Data berhasil ditambahkan!');
@@ -63,6 +64,8 @@ class IzinController extends Controller
         $user = User::all();
         $bpw = BPW::all();
         $izins = Izin::find($id);
+
+        // dd($izins, $user, $bpw);
         return view ('/izin/detail_izin', compact('izins', 'bpw', 'user'));
     }
 
@@ -81,9 +84,10 @@ class IzinController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validate = $request->validate([
+        $this->validate($request, [
             'no_izin' => 'required|min:4',
-            'tanggal' => 'required|date',
+            'tgl_izin' => 'required|date',
+            'file_izin' => 'required|mimes:jpg,jpeg,png'
         ]);
 
         $izins = Izin::find($id);
@@ -93,7 +97,7 @@ class IzinController extends Controller
             $izins->id_user = $id_user;
         }
         $izins->no_izin = $request->no_izin;
-        $izins->tanggal = $request->tanggal;
+        $izins->tgl_izin = $request->tgl_izin;
         if(auth()->guard('bpw')->user()) {
             $file = $request->file_izin;
 

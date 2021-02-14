@@ -35,20 +35,14 @@ class LKUController extends Controller
 
     public function monitoring()
     { 
-        $lkus = LKU::orderByRaw('FIELD(sts_verifikasi,0,1,2)')->latest()->get();
-
-        if(auth()->guard('bpw')->user()) {
-            $bpw = auth()->guard('bpw')->user();
-            $lkus = LKU::where('id_bpw', $bpw->id_bpw)->orderByRaw('FIELD(sts_verifikasi,0,1,2)')->latest()->get();
-        }        
-        return view('lku/monitoring_lku', compact('lkus'));
+        $bpws = BPW::orderBy('nm_bpw', 'ASC')->get();
+        return view('lku/monitoring_lku', compact('bpws'));
     }
 
 
     public function store(Request $request)
     {
-        $validate = $request->validate([
-            'tahun' => 'required|min:4|max:4',
+        $this->validate($request, [
             'file_lku' => 'required|mimes:pdf'
         ]);
 
@@ -118,9 +112,8 @@ class LKUController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validate = $request->validate([
-            'tahun' => 'required|min:4|max:4',
-            'file_lku' => 'required|mimes:pdf'
+        $this->validate($request, [
+            'file_lku' => 'mimes:pdf'
         ]);
         
         $lkus = LKU::find($id);

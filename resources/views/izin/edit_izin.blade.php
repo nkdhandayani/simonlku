@@ -21,7 +21,7 @@
             <form role="form">
                 <div class="box-body">
                     <div>
-                      <a href="/izin" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                        <a href="/izin" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
                     </div>
                     <br />
                     <br />
@@ -37,10 +37,10 @@
                             @enderror
                         </div>
                         <div class="form-group col-md-6" style="padding: 0px;">
-                            <label for="tanggal">Tanggal Izin Operasional</label>
-                            <input name="tanggal" type="date" class="form-control" id="tanggal" value="{{$izin -> tanggal}}" required="required" autocomplete="off" />
+                            <label for="tgl_izin">Tanggal Izin Operasional</label>
+                            <input name="tgl_izin" type="date" class="form-control" id="tgl_izin" value="{{$izin -> tgl_izin -> format('Y-m-d')}}" required="required" autocomplete="off" />
                         </div>
-                        @error('tanggal')
+                        @error('tgl_izin')
                         <span class="invalid-feedback text-danger" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
@@ -52,6 +52,9 @@
                         <br />
                         <a href="{{ asset('file_izin/' . $izin->file_izin) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_izin/' . $izin->file_izin) }}" /></a>
                         @if(auth()->guard('bpw')->user())
+                        <br />
+                        <br />
+                        <p style="margin-bottom: 0;">(Silakan upload ulang file Anda)</p>
                         <input name="file_izin" type="file" class="form-control-file" id="file_izin" value="{{$izin -> file_izin}}" required="required" autocomplete="off" />
                         @endif @error('file_izin')
                         <span class="invalid-feedback text-danger" role="alert">
@@ -62,18 +65,18 @@
 
                     <div class="form-group">
                         <label for="created_at">Tanggal Ditambahkan</label>
-                        <input name="created_at" type="text" class="form-control" id="created_at" value="{{$izin -> created_at}}" required="required" autocomplete="off" readonly />
+                        <input name="created_at" type="text" class="form-control" id="created_at" value="{{$izin -> created_at -> isoFormat('dddd, DD MMMM Y')}}" required="required" autocomplete="off" readonly />
                     </div>
 
                     @if(auth()->guard('bpw')->user())
                     <div class="form-group">
                         <label for="keterangan">Keterangan</label>
-                        <textarea name="keterangan" type="textarea" class="form-control" id="keterangan" rows="6" required="required" autocomplete="off" readonly>{{$izin -> keterangan}}</textarea>
+                        <textarea name="keterangan" type="textarea" class="form-control" id="keterangan" rows="6" autocomplete="off" placeholder="-" readonly>{{$izin -> keterangan}}</textarea>
                     </div>
 
                     <div class="form-group">
                         <label for="tgl_verifikasi">Tanggal Verifikasi</label>
-                        <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value="{{$izin -> tgl_verifikasi}}" required="required" autocomplete="off" required="required" autocomplete="off" readonly />
+                        <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value="{{$izin -> tgl_verifikasi -> format('Y-m-d')}}" required="required" autocomplete="off" readonly />
                     </div>
 
                     <div class="form-row">
@@ -81,7 +84,7 @@
                             <label for="sts_verifikasi">Status Verifikasi</label>
                             <select name="sts_verifikasi" class="form-control" id="sts_verifikasi" value="{{$izin -> sts_verifikasi}}" required="required" autocomplete="off" readonly>
                                 <option selected disabled="">-- Pilih Status Verifikasi --</option>
-                                <option value="0" @if($izin -> sts_verifikasi == "0") selected @endif>Belum Diverifikasi</option>
+                                <option value="0" @if($izin -> sts_verifikasi == "0") selected @endif>Sedang Diproses</option>
                                 <option value="2" @if($izin -> sts_verifikasi == "2") selected @endif>Disetujui</option>
                                 <option value="1" @if($izin -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
                             </select>
@@ -99,7 +102,7 @@
                     @elseif(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 1)
                     <div class="form-group">
                         <label for="keterangan">Keterangan</label>
-                        <textarea name="keterangan" type="textarea" class="form-control" id="input_keterangan" rows="6" required="required" autocomplete="off" placeholder="Masukkan Keterangan">{{$izin -> keterangan}}</textarea>
+                        <textarea name="keterangan" type="textarea" class="form-control" id="input_keterangan" rows="6" autocomplete="off" placeholder="Masukkan Keterangan">{{$izin -> keterangan}}</textarea>
                     </div>
 
                     <div class="form-row">

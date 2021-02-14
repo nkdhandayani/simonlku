@@ -71,7 +71,7 @@
                     <b><u>Ni Luh Herawati, SS., M.Par</u></b>
                 </td>
                 <td align="right" width="50%">
-                    Denpasar,<br />
+                    Denpasar, <br />
                     Sekretaris
                     <br />
                     <br />

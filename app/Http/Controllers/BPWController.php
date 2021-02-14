@@ -29,7 +29,7 @@ class BPWController extends Controller
     {
         $this->validate($request, [
             'nm_bpw' => 'required|min:6|max:50',
-            'username' => 'required|min:5|max:20',    
+            'username' => 'required|min:5|max:20|unique:bpw',    
             'nm_pic' => 'required|min:6|max:50',
             'nm_pimpinan' => 'required|min:6|max:50',
         ]);
@@ -49,7 +49,7 @@ class BPWController extends Controller
             'jns_bpw' => request('jns_bpw'),
             'sts_kantor' => request('sts_kantor'),
             'nib' => request('nib'),
-            'foto_bpw' => '',
+            'foto_bpw' => request('foto_bpw'),
             'status' => request('status'),
         ]);
 
@@ -72,7 +72,13 @@ class BPWController extends Controller
 
 
     public function update(Request $request, $id)
-    { 
+    {         
+        $this->validate($request, [
+            'nm_bpw' => 'required|min:6|max:50',  
+            'nm_pic' => 'required|min:6|max:50',
+            'nm_pimpinan' => 'required|min:6|max:50',
+        ]);
+
         $bpws = BPW::find($id);
 
         $bpws->nm_bpw = $request->nm_bpw;

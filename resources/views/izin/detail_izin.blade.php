@@ -18,7 +18,7 @@
     <div class="box box-primary">
         <div class="box-body">
             <div>
-              <a href="/izin" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                <a href="/izin" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
             </div>
             <br />
             <br />
@@ -37,7 +37,7 @@
                 <tr>
                     <td>Tanggal Izin Operasional</td>
                     <td>:</td>
-                    <td>{{ $izins->tanggal->isoFormat('dddd, DD MMMM Y') }}</td>
+                    <td>{{ $izins->tgl_izin->isoFormat('dddd, DD MMMM Y') }}</td>
                 </tr>
                 <tr>
                     <td>File Izin Operasional</td>
@@ -56,18 +56,70 @@
                     <td>:</td>
                     <td>
                         <?php
-              if($izins->sts_verifikasi == 0) { echo "Belum Diverifikasi"; } elseif($izins->sts_verifikasi == 1) { echo "Tidak Disetujui"; } elseif($izins->sts_verifikasi == 2) { echo "Disetujui"; } ?>
+                        if($izins->sts_verifikasi == 0)
+                            {
+                                echo "Sedang Diproses";
+                            }
+                        elseif($izins->sts_verifikasi == 1)
+                            {
+                                echo "Tidak Disetujui";
+                            }
+                        elseif($izins->sts_verifikasi == 2)
+                            {
+                                echo "Disetujui";
+                            }
+                        ?>
                     </td>
                 </tr>
                 <tr>
                     <td>Keterangan</td>
                     <td>:</td>
-                    <td>{{$izins->keterangan}}</td>
+                    <td>
+                        <?php
+                        if($izins->keterangan == null)
+                            {
+                                echo "-";
+                            }
+                        elseif($izins->keterangan != null)
+                            {
+                                echo $izins->keterangan;
+                            }
+                        ?>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Diverifikasi oleh:</td>
+                    <td>Diverifikasi oleh</td>
                     <td>:</td>
                     <td>{{$izins->user->nm_user ?? '-'}}</td>
+                </tr>
+                <tr>
+                    <td>Tanggal Verifikasi</td>
+                    <td>:</td>
+                    <td>
+                        <?php
+                        if($izins->tgl_verifikasi == null)
+                            {
+                                echo "-";
+                            }
+                        elseif($izins->tgl_verifikasi != null)
+                            {
+                                echo $izins->tgl_verifikasi->isoFormat('dddd, DD MMMM Y');
+                            }
+                        ?>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Status TDUP</td>
+                    <td>:</td>
+                    <td>
+                        <?php
+                        if($izins->status == '0')
+                            {
+                                echo "Aktif";
+                            }
+                        ?>
+                    </td>
                 </tr>
             </table>
         </div>

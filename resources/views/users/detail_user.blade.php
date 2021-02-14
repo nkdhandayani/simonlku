@@ -23,12 +23,12 @@
 
             <table class="table">
                 <!-- <tr>
-                    <td width="150px">Foto</td>
+                    <td width="200px">Foto</td>
                     <td width="10px">:</td>
                     <td>{{$users->foto_user}}</td>
                 </tr> -->
                 <tr>
-                    <td width="150px">Nama Pengguna</td>
+                    <td width="200px">Nama Pengguna</td>
                     <td width="10px">:</td>
                     <td>{{$users->nm_user}}</td>
                 </tr>
@@ -62,7 +62,18 @@
                     <td>:</td>
                     <td>
                         <?php
-                          if($users->level == 0) { echo "Administrator"; } elseif($users->level == 1) { echo "Staf Jasa Pariwisata"; } elseif($users->level == 2) { echo "Kepala Seksi Jasa Pariwisata"; } else { echo "-"; }
+                        if($users->level == 0)
+                            {
+                                echo "Administrator";
+                            }
+                        elseif($users->level == 1)
+                            {
+                                echo "Staf Jasa Pariwisata";
+                            }
+                        elseif($users->level == 2)
+                            {
+                                echo "Kepala Seksi Jasa Pariwisata";
+                            }
                         ?>
                     </td>
                 </tr>
@@ -71,7 +82,14 @@
                     <td>:</td>
                     <td>
                         <?php
-                          if($users->status == 0) { echo "Tidak Aktif"; } elseif($users->status == 1) { echo "Aktif"; } else { echo "Tidak Aktif"; }
+                        if($users->status == 0)
+                            {
+                                echo "Tidak Aktif";
+                            }
+                        elseif($users->status == 1)
+                            {
+                                echo "Aktif";
+                            }
                         ?>
                     </td>
                 </tr>

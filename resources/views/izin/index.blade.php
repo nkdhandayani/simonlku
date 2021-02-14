@@ -37,9 +37,15 @@
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No. Izin Operasional</th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tanggal Izin Operasional</th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">File Izin Operasional</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
+                                                No. Izin Operasional
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
+                                                Tanggal Izin Operasional
+                                            </th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
+                                                File Izin Operasional
+                                            </th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Status Verifikasi</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Aksi</th>
                                         </tr>
@@ -52,11 +58,8 @@
                                             <td>{{ $izin->tgl_izin->isoFormat('dddd, DD MMMM Y') }}</td>
                                             <td>@if($izin->file_izin) <a href="{{ asset('file_izin/' . $izin->file_izin) }}" target="_blank">Lihat Gambar Izin Operasional</a> @else - @endif</td>
                                             <td>
-                                              <?php
-                                                if($izin->sts_verifikasi == 0) { echo "Belum Diverifikasi"; }
-                                                elseif($izin->sts_verifikasi == 1) { echo "Tidak Disetujui"; }
-                                                elseif($izin->sts_verifikasi == 2) { echo "Disetujui"; }
-                                              ?>
+                                                <?php
+                                                if($izin->sts_verifikasi == 0) { echo "Sedang Diproses"; } elseif($izin->sts_verifikasi == 1) { echo "Tidak Disetujui"; } elseif($izin->sts_verifikasi == 2) { echo "Disetujui"; } ?>
                                             </td>
                                             <td>
                                                 <a href="/izin/show/{{ $izin->id_izin }}" class="fa fa-eye btn-danger btn-sm"></a>
@@ -84,7 +87,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="exampleModalLabel"><i class="fa fa-file"></i> Tambah Izin Operasional</h4>
+                    <h4 class="modal-title" id="exampleModalLabel"><i class="fa fa-files-o"></i> Tambah Izin Operasional</h4>
                 </div>
 
                 <div class="box box-primary">

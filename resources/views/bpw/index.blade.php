@@ -41,7 +41,9 @@
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama BPW</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Kabupaten</th>
-                                            <th style="width: 200px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Alamat</th>
+                                            <th style="width: 200px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
+                                                Alamat
+                                            </th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No. Telp</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama PIC</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Status</th>
@@ -124,7 +126,7 @@
                                     <label for="email">E-mail</label>
                                     <input name="email" type="email" class="form-control" id="email" placeholder="Masukkan E-mail" required="required" autocomplete="off" value="{{ old('email') }}" />
                                 </div>
-                                <div style="padding:0px" class="form-group col-md-6">
+                                <div style="padding: 0px;" class="form-group col-md-6">
                                     <label for="nib">Nomor Induk Berusaha</label>
                                     <input name="nib" type="nib" class="form-control" id="nib" placeholder="Masukkan Nomor Induk Berusaha" required="required" autocomplete="off" value="{{ old('nib') }}" />
                                 </div>
@@ -142,7 +144,7 @@
                                 </div>
                                 <div class="form-group col-md-6" style="padding: 0;">
                                     <label for="no_fax">Nomor Fax</label>
-                                    <input name="no_fax" type="text" class="form-control" id="no_fax" required="required" placeholder="Masukkan Nomor Fax" autocomplete="off" value="{{ old('no_fax') }}" />
+                                    <input name="no_fax" type="text" class="form-control" id="no_fax" placeholder="Masukkan Nomor Fax" autocomplete="off" value="{{ old('no_fax') }}" />
                                 </div>
                             </div>
 
@@ -171,17 +173,17 @@
                                     <label for="jns_BPW">Jenis BPW</label>
                                     <select name="jns_bpw" class="form-control" id="jns_bpw" required="required" autocomplete="off">
                                         <option selected disabled>-- Pilih Jenis BPW --</option>
-                                        <option value="BPW">BPW</option>
-                                        <option value="MICE">MICE</option>
-                                        <option value="Lanjut Usia">Lanjut Usia</option>
+                                        <option value="{{ old('jns_bpw') == 'BPW' ? 'selected' : '' }}">BPW</option>
+                                        <option value="{{ old('jns_bpw') == 'MICE' ? 'selected' : '' }}">MICE</option>
+                                        <option value="{{ old('jns_bpw') == 'Lanjut Usia' ? 'selected' : '' }}">Lanjut Usia</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6" style="padding: 0;">
                                     <label for="sts_kantor">Status Kantor</label>
                                     <select name="sts_kantor" class="form-control" id="sts_kantor" required="required" autocomplete="off">
                                         <option selected disabled>-- Pilih Status Kantor --</option>
-                                        <option value="Hak Pribadi">Hak Pribadi</option>
-                                        <option value="Kontrak">Kontrak</option>
+                                        <option value="old('sts_kantor') == 'Hak Pribadi' ? 'selected' : '' }}">Hak Pribadi</option>
+                                        <option value="{{ old('sts_kantor') == 'Kontrak' ? 'selected' : '' }}">Kontrak</option>
                                     </select>
                                 </div>
                             </div>
@@ -191,23 +193,23 @@
                                     <label for="form_kabupaten">Kabupaten/Kota</label>
                                     <select name="kabupaten" class="form-control" id="input_kabupaten" required="required" autocomplete="off">
                                         <option selected disabled>-- Pilih Kabupaten/Kota --</option>
-                                        <option value="Kota Denpasar">Kota Denpasar</option>
-                                        <option value="Badung">Badung</option>
-                                        <option value="Gianyar">Gianyar</option>
-                                        <option value="Bangli">Bangli</option>
-                                        <option value="Tabanan">Tabanan</option>
-                                        <option value="Jembrana">Jembrana</option>
-                                        <option value="Buleleng">Buleleng</option>
-                                        <option value="Klungkung">Klungkung</option>
-                                        <option value="Karangasem">Karangasem</option>
+                                        <option value="{{ old('kabupaten') == 'Kota Denpasar' ? 'selected' : '' }}">Kota Denpasar</option>
+                                        <option value="{{ old('kabupaten') == 'Badung' ? 'selected' : '' }}">Badung</option>
+                                        <option value="{{ old('kabupaten') == 'Badung' ? 'selected' : '' }}">Gianyar</option>
+                                        <option value="{{ old('kabupaten') == 'Bangli' ? 'selected' : '' }}">Bangli</option>
+                                        <option value="{{ old('kabupaten') == 'Tabanan' ? 'selected' : '' }}">Tabanan</option>
+                                        <option value="{{ old('kabupaten') == 'Jembrana' ? 'selected' : '' }}">Jembrana</option>
+                                        <option value="{{ old('kabupaten') == 'Buleleng' ? 'selected' : '' }}">Buleleng</option>
+                                        <option value="{{ old('kabupaten') == 'Klungkung' ? 'selected' : '' }}">Klungkung</option>
+                                        <option value="{{ old('kabupaten') == 'Karangasem' ? 'selected' : '' }}">Karangasem</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6" style="padding: 0;">
                                     <label for="status">Status</label>
                                     <select name="status" class="form-control" id="status" required="required" autocomplete="off">
-                                        <option selected disabled>-- Pilih Status --</option>
-                                        <option value="1">Aktif</option>
-                                        <option value="0">Tidak Aktif</option>
+                                        <option disabled selected>-- Pilih Status --</option>
+                                        <option value="{{ old('status') == '1' ? 'selected' : '' }}">Aktif</option>
+                                        <option value="{{ old('status') == '0' ? 'selected' : '' }}">Tidak Aktif</option>
                                     </select>
                                 </div>
                             </div>

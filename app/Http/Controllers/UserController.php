@@ -26,7 +26,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'username' => 'required|min:5|max:20',
+            'username' => 'required|min:5|max:20|unique:user',
             'nm_user' => 'required|min:6|max:50',
             'nik' => 'required|min:16|max:20',     
         ]);
@@ -62,6 +62,11 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'nm_user' => 'required|min:6|max:50',
+            'nik' => 'required|min:16|max:20',     
+        ]);
+        
         $users = User::find($id);
         $users->username = $request->username;
         $users->nm_user = $request->nm_user;

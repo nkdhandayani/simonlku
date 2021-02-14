@@ -53,7 +53,18 @@
                                             <td>@if($tdup->file_tdup) <a href="{{ asset('file_tdup/' . $tdup->file_tdup) }}" target="_blank">Lihat Gambar TDUP</a> @else - @endif</td>
                                             <td>
                                                 <?php
-                                                  if($tdup->sts_verifikasi == 0) { echo "Belum Diverifikasi"; } elseif($tdup->sts_verifikasi == 1) { echo "Tidak Disetujui"; } elseif($tdup->sts_verifikasi == 2) { echo "Disetujui"; }
+                                                if($tdup->sts_verifikasi == 0)
+                                                    {
+                                                        echo "Sedang Diproses";
+                                                    }
+                                                elseif($tdup->sts_verifikasi == 1)
+                                                    {
+                                                        echo "Tidak Disetujui";
+                                                    }
+                                                elseif($tdup->sts_verifikasi == 2)
+                                                    {
+                                                        echo "Disetujui";
+                                                    }
                                                 ?>
                                             </td>
                                             <td>
@@ -82,7 +93,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h4 class="modal-title" id="exampleModalLabel"><i class="fa fa-file"></i> Tambah TDUP</h4>
+                    <h4 class="modal-title" id="exampleModalLabel"><i class="fa fa-files-o"></i> Tambah TDUP</h4>
                 </div>
 
                 <div class="box box-primary">
@@ -96,7 +107,7 @@
                                     <input name="no_tdup" type="text" class="form-control" placeholder="Masukkan Nomor TDUP" required="required" autocomplete="off" value="{{ old('no_tdup') }}" />
                                     @error('no_tdup')
                                     <span class="invalid-feedback text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        {{ $message }}
                                     </span>
                                     @enderror
                                 </div>
@@ -105,7 +116,7 @@
                                     <input name="tgl_tdup" type="date" class="form-control" required="required" autocomplete="off" value="{{ old('tgl_tdup') }}" />
                                     @error('tgl_tdup')
                                     <span class="invalid-feedback text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        {{ $message }}
                                     </span>
                                     @enderror
                                 </div>
@@ -117,7 +128,7 @@
                                 <input name="file_tdup" type="file" class="form-control-file" required="required" autocomplete="off" value="{{ old('file_tdup') }}" />
                                 @error('file_tdup')
                                 <span class="invalid-feedback text-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    {{ $message }}
                                 </span>
                                 @enderror
                             </div>

@@ -50,9 +50,12 @@
                         <br />
                         <a href="{{ asset('file_lku/' . $lku->file_lku) }}" target="_blank">{{ $lku->file_lku }}</a>
                         @if(auth()->guard('bpw')->user())
+                        <br />
+                        <br />
+                        <p style="margin-bottom: 0;">(Silakan upload ulang file Anda)</p>
                         <input name="file_lku" type="file" class="form-control-file" id="file_lku" value="{{$lku -> file_lku}}" required="required" autocomplete="off" />
                         @endif
-                    </div>
+                    </div> 
 
                     <div class="form-group">
                         <label for="created_at">Tanggal Ditambahkan</label>
@@ -68,7 +71,7 @@
                     <div class="form-group">
                         <label for="sts_verifikasi">Status TDUP</label>
                         <select disabled="true" name="sts_verifikasi" class="form-control" id="sts_verifikasi" value="{{$lku -> tdup -> sts_verifikasi}}" required="required" autocomplete="off">
-                            <option value="0" @if($lku -> tdup -> sts_verifikasi == "0") selected @endif>Belum Diverifikasi</option>
+                            <option value="0" @if($lku -> tdup -> sts_verifikasi == "0") selected @endif>Sedang Diproses</option>
                             <option value="2" @if($lku -> tdup -> sts_verifikasi == "2") selected @endif>Disetujui</option>
                             <option value="1" @if($lku -> tdup -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
                         </select>
@@ -83,10 +86,31 @@
                     <div class="form-group">
                         <label for="sts_verifikasi">Status Izin</label>
                         <select disabled="true" name="sts_verifikasi" class="form-control" id="sts_verifikasi" value="{{$lku -> izin -> sts_verifikasi}}" required="required" autocomplete="off">
-                            <option value="0" @if($lku -> izin -> sts_verifikasi == "0") selected @endif>Belum Diverifikasi</option>
+                            <option value="0" @if($lku -> izin -> sts_verifikasi == "0") selected @endif>Sedang Diproses</option>
                             <option value="2" @if($lku -> izin -> sts_verifikasi == "2") selected @endif>Disetujui</option>
                             <option value="1" @if($lku -> izin -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
                         </select>
+                    </div>
+
+                    @if(auth()->guard('bpw')->user())
+                    <div class="form-group">
+                        <label for="keterangan">Keterangan</label>
+                        <textarea name="keterangan" type="textarea" class="form-control" id="input_keterangan" rows="6" autocomplete="off" placeholder="-" readonly>{{$lku -> keterangan}}</textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
+                            <label for="sts_verifikasi">Status Verifikasi</label>
+                            <select name="sts_verifikasi" class="form-control" id="sts_verifikasi" value="{{$lku -> sts_verifikasi}}" required="required" autocomplete="off" readonly>
+                                <option value="0" @if($lku -> sts_verifikasi == "0") selected @endif>Sedang Diproses</option>
+                                <option value="2" @if($lku -> sts_verifikasi == "2") selected @endif>Disetujui</option>
+                                <option value="1" @if($lku -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6" style="padding: 0;">
+                            <label for="tgl_verifikasi">Tanggal Verifikasi</label>
+                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value="{{$lku -> tgl_verifikasi -> format('Y-m-d')}}" required="required" autocomplete="off" readonly />
+                        </div>
                     </div>
 
                     @if(auth()->guard('user')->user()->level == 1)

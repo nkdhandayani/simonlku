@@ -46,25 +46,39 @@
                 <tr>
                     <td>File Laporan Kegiatan Usaha</td>
                     <td>:</td>
-                    <td>@if($lkus->file_lku) <a href="{{ asset('file_lku/' . $lkus->file_lku) }}" target="_blank">{{ $lkus->file_lku }}</a> @else - @endif</td>
+                    <td>
+                        @if($lkus->file_lku)
+                        <a href="{{ asset('file_lku/' . $lkus->file_lku) }}" target="_blank">{{ $lkus->file_lku }}</a>
+                        @else - @endif
+                    </td>
                 </tr>
-
                 <tr>
                     <td>Status TDUP</td>
                     <td>:</td>
                     <td>
-                      <?php
-                        if($lkus->tdups->sts_verifikasi == 0) { echo "Belum Diverifikasi"; }
-                        elseif($lkus->tdups->sts_verifikasi == 1) { echo "Tidak Disetujui"; }
-                        elseif($lkus->tdups->sts_verifikasi == 2) { echo "Disetujui"; }
-                      ?>
+                        <?php
+                        if($lkus->tdups->sts_verifikasi == 0)
+                            {
+                                echo "Sedang Diproses";
+                            }
+                        elseif($lkus->tdups->sts_verifikasi == 1)
+                            {
+                                echo "Tidak Disetujui";
+                            }
+                        elseif($lkus->tdups->sts_verifikasi == 2)
+                            {
+                                echo "Disetujui";
+                            }
+                        ?>
                     </td>
                 </tr>
                 <tr>
                     <td>File Tanda Daftar Usaha Pariwisata</td>
                     <td>:</td>
                     <td>
-                        @if($lkus->tdups->file_tdup) <a href="{{ asset('file_tdup/' . $$lkus->tdups->file_tdup) }}"><img width="200px" height="200px" src="{{ asset('file_tdup/' . $lkus->tdups->file_tdup) }}" /></a> @else - @endif
+                        @if($lkus->tdups->file_tdup)
+                        <a href="{{ asset('file_tdup/' . $$lkus->tdups->file_tdup) }}"><img width="200px" height="200px" src="{{ asset('file_tdup/' . $lkus->tdups->file_tdup) }}" /></a>
+                        @else - @endif
                     </td>
                 </tr>
 
@@ -72,18 +86,29 @@
                     <td>Status Izin Operasional</td>
                     <td>:</td>
                     <td>
-                      <?php
-                        if($lkus->izins->sts_verifikasi == 0) { echo "Belum Diverifikasi"; }
-                        elseif($lkus->izins->sts_verifikasi == 1) { echo "Tidak Disetujui"; }
-                        elseif($lkus->izins->sts_verifikasi == 2) { echo "Disetujui"; }
-                      ?>
+                        <?php
+                        if($lkus->izins->sts_verifikasi == 0)
+                            {
+                                echo "Belum Diverifikasi";
+                            }
+                        elseif($lkus->izins->sts_verifikasi == 1)
+                            {
+                                echo "Tidak Disetujui";
+                            }
+                        elseif($lkus->izins->sts_verifikasi == 2)
+                            {
+                                echo "Disetujui";
+                            }
+                        ?>
                     </td>
                 </tr>
                 <tr>
                     <td>File Izin Operasional</td>
                     <td>:</td>
                     <td>
-                        @if($lkus->izins->file_izin) <a href="{{ asset('file_izin/' . $$lkus->izins->file_izin) }}"><img width="200px" height="200px" src="{{ asset('file_izin/' . $lkus->izins->file_izin) }}" /></a> @else - @endif
+                        @if($lkus->izins->file_izin)
+                        <a href="{{ asset('file_izin/' . $$lkus->izins->file_izin) }}"><img width="200px" height="200px" src="{{ asset('file_izin/' . $lkus->izins->file_izin) }}" /></a>
+                        @else - @endif
                     </td>
                 </tr>
 
@@ -96,27 +121,73 @@
                     <td>Status Verifikasi</td>
                     <td>:</td>
                     <td>
-                      <?php
-                        if($lkus->sts_verifikasi == 0) { echo "Belum Diverifikasi"; }
-                        elseif($lkus->sts_verifikasi == 1) { echo "Tidak Disetujui"; }
-                        elseif($lkus->sts_verifikasi == 2) { echo "Disetujui"; }
-                      ?>
+                        <?php
+                        if($lkus->sts_verifikasi == 0)
+                            {
+                                echo "Sedang Diproses";
+                            }
+                        elseif($lkus->sts_verifikasi == 1)
+                            {
+                                echo "Tidak Disetujui";
+                            }
+                        elseif($lkus->sts_verifikasi == 2)
+                            {
+                                echo "Disetujui";
+                            }
+                        ?>
                     </td>
                 </tr>
                 <tr>
                     <td>Keterangan</td>
                     <td>:</td>
-                    <td>{{$lkus->keterangan}}</td>
+                    <td>
+                        <?php
+                        if($lkus->keterangan == null)
+                            {
+                                echo "-";
+                            }
+                        elseif($lkus->keterangan != null)
+                            {
+                                echo $lkus->keterangan;
+                            }
+                        ?>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Diverifikasi oleh:</td>
+                    <td>Diverifikasi oleh</td>
                     <td>:</td>
-                    <td>{{$lkus->user->nm_user ?? '-'}}</td>
+                    <td>
+                        {{$lkus->user->nm_user ?? '-'}}
+                    </td>
                 </tr>
                 <tr>
-                    <td>Tanggal Diverifikasi</td>
+                    <td>Tanggal Verifikasi</td>
                     <td>:</td>
-                    <td>{{$lkus -> tgl_verifikasi->isoFormat('dddd, DD MMMM Y')}}</td>
+                    <td>
+                        <?php
+                        if($lkus->tgl_verifikasi == null)
+                            {
+                                echo "-";
+                            }
+                        elseif($lkus->tgl_verifikasi != null)
+                            {
+                                echo $lkus->tgl_verifikasi->isoFormat('dddd, DD MMMM Y');
+                            }
+                        ?>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Status TDUP</td>
+                    <td>:</td>
+                    <td>
+                        <?php
+                        if($lkus->status == '0')
+                            {
+                                echo "Aktif";
+                            }
+                        ?>
+                    </td>
                 </tr>
             </table>
         </div>

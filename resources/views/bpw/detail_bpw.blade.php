@@ -23,11 +23,22 @@
             <br />
 
             <table class="table">
-                <!-- <tr>
+                <tr>
                     <td width="200px">Foto</td>
                     <td width="5px">:</td>
-                    <td>{{$bpws->foto_bpw}}</td>
-                </tr> -->
+                    <td>
+                        <?php
+                        if($bpws->foto_bpw == null)
+                            {
+                                echo "-";
+                            }
+                        elseif($bpws->foto_bpw != null)
+                            {
+                                echo $bpws->foto_bpw;
+                            }
+                        ?>
+                    </td>
+                </tr>
                 <tr>
                     <td>Nama Biro</td>
                     <td>:</td>
@@ -63,7 +74,18 @@
                 <tr>
                     <td>No. Fax</td>
                     <td>:</td>
-                    <td>{{$bpws->no_fax}}</td>
+                    <td>
+                        <?php
+                        if($bpws->no_fax == null)
+                            {
+                                echo "-";
+                            }
+                        elseif($bpws->no_fax != null)
+                            {
+                                echo $bpws->no_fax;
+                            }
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>Nama PIC</td>
@@ -93,7 +115,22 @@
                 <tr>
                     <td>Status</td>
                     <td>:</td>
-                    <td><?php if($bpws->status == 0) { echo "Tidak Aktif"; } elseif($bpws->status == 1) { echo "Aktif"; } else { echo "-"; } ?></td>
+                    <td>
+                        <?php
+                        if($bpws->status == 0)
+                            {
+                                echo "Tidak Aktif";
+                            }
+                        elseif($bpws->status == 1)
+                            {
+                                echo "Aktif";
+                            }
+                        else
+                            {
+                                echo "-";
+                            }
+                        ?>
+                    </td>
                 </tr>
             </table>
         </div>

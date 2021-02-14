@@ -33,7 +33,7 @@ class TDUPController extends Controller
  
     public function store(Request $request)
     {
-        $validate = $request->validate([
+        $this->validate($request, [
             'no_tdup' => 'required|min:4',
             'tgl_tdup' => 'required|date',
             'file_tdup' => 'required|mimes:jpg,jpeg,png'
@@ -50,9 +50,9 @@ class TDUPController extends Controller
             'id_user' => '',
             'tgl_tdup' => request('tgl_tdup'),
             'file_tdup' => $file->getClientOriginalName(),
-            'sts_verifikasi' => '',
-            'keterangan' => '',
-            'tgl_verifikasi' => '',
+            'sts_verifikasi' =>'',
+            'keterangan' => request('keterangan'),
+            'tgl_verifikasi' => request('tgl_verifikasi'),
         ]);
 
         return redirect('/tdup')->with('success', 'Data berhasil ditambahkan!');
@@ -83,6 +83,11 @@ class TDUPController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'no_tdup' => 'required|min:4',
+            'tgl_tdup' => 'required|date',
+            'file_tdup' => 'required|mimes:jpg,jpeg,png'
+        ]);
 
         $tdups = TDUP::find($id);
 

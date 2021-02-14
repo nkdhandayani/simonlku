@@ -26,6 +26,7 @@ class LKU extends Model
         'sts_verifikasi',
         'keterangan',
         'tgl_verifikasi',
+        'status',
         'created_at',
         'updated_at'
     ];

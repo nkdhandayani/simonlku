@@ -43,7 +43,9 @@
                     <td>File TDUP</td>
                     <td>:</td>
                     <td>
-                        @if($tdups->file_tdup) <a href="{{ asset('file_tdup/' . $tdups->file_tdup) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_tdup/' . $tdups->file_tdup) }}" /></a> @else - @endif
+                        @if($tdups->file_tdup)
+                        <a href="{{ asset('file_tdup/' . $tdups->file_tdup) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_tdup/' . $tdups->file_tdup) }}" /></a>
+                        @else - @endif
                     </td>
                 </tr>
                 <tr>
@@ -56,24 +58,72 @@
                     <td>:</td>
                     <td>
                         <?php
-                        if($tdups->sts_verifikasi == 0) { echo "Belum Diverifikasi"; } elseif($tdups->sts_verifikasi == 1) { echo "Tidak Disetujui"; } elseif($tdups->sts_verifikasi == 2) { echo "Disetujui"; }
+                        if($tdups->sts_verifikasi == 0)
+                            {
+                                echo "Sedang Diproses";
+                            }
+                        elseif($tdups->sts_verifikasi == 1)
+                            {
+                                echo "Tidak Disetujui";
+                            }
+                        elseif($tdups->sts_verifikasi == 2)
+                            {
+                                echo "Disetujui";
+                            }
                         ?>
                     </td>
                 </tr>
                 <tr>
                     <td>Keterangan</td>
                     <td>:</td>
-                    <td>{{$tdups->keterangan}}</td>
+                    <td>
+                        <?php
+                        if($tdups->keterangan == null)
+                            {
+                                echo "-";
+                            }
+                        elseif($tdups->keterangan != null)
+                            {
+                                echo $tdups->keterangan;
+                            }
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>Diverifikasi oleh</td>
                     <td>:</td>
-                    <td>{{$tdups->user->nm_user ?? '-'}}</td>
+                    <td>
+                        {{$tdups->user->nm_user ?? '-'}}
+                    </td>
                 </tr>
                 <tr>
-                    <td>Tanggal Diverifikasi</td>
+                    <td>Tanggal Verifikasi</td>
                     <td>:</td>
-                    <td>{{$tdups -> tgl_verifikasi->isoFormat('dddd, DD MMMM Y')}}</td>
+                    <td>
+                        <?php
+                        if($tdups->tgl_verifikasi == null)
+                            {
+                                echo "-";
+                            }
+                        elseif($tdups->tgl_verifikasi != null)
+                            {
+                                echo $tdups->tgl_verifikasi->isoFormat('dddd, DD MMMM Y');
+                            }
+                        ?>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Status TDUP</td>
+                    <td>:</td>
+                    <td>
+                        <?php
+                        if($tdups->status == '0')
+                            {
+                                echo "Aktif";
+                            }
+                        ?>
+                    </td>
                 </tr>
             </table>
         </div>
