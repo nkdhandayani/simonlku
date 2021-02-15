@@ -23,7 +23,7 @@
                         <div style="float: right;">
                             <div style="clear: both;"></div>
                             @if(auth()->guard('bpw')->user())
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"> Add</i></button>
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"> Tambah Data</i></button>
                             @endif
                         </div>
                     </div>
@@ -134,7 +134,7 @@
                             </div>
 
                             <div>
-                                <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
                             </div>
                         </form>
                     </div>

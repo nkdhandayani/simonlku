@@ -24,7 +24,7 @@
                         @if(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 0)
                         <div style="float: right;">
                             <div style="clear: both;"></div>
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"> Add</i></button>
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"> Tambah Data</i></button>
                             <a href="/bpw/cetak" class="btn bg-purple btn-sm" target="_blank"><i class="fa fa-file-pdf-o"> Export PDF</i></a>
                         </div>
                         @endif
@@ -173,17 +173,17 @@
                                     <label for="jns_BPW">Jenis BPW</label>
                                     <select name="jns_bpw" class="form-control" id="jns_bpw" required="required" autocomplete="off">
                                         <option selected disabled>-- Pilih Jenis BPW --</option>
-                                        <option value="{{ old('jns_bpw') == 'BPW' ? 'selected' : '' }}">BPW</option>
-                                        <option value="{{ old('jns_bpw') == 'MICE' ? 'selected' : '' }}">MICE</option>
-                                        <option value="{{ old('jns_bpw') == 'Lanjut Usia' ? 'selected' : '' }}">Lanjut Usia</option>
+                                        <option value="BPW" {{ old('jns_bpw') == 'BPW' ? 'selected' : '' }}>BPW</option>
+                                        <option value="MICE" {{ old('jns_bpw') == 'MICE' ? 'selected' : '' }}>MICE</option>
+                                        <option value="Lanjut Usia"{{ old('jns_bpw') == 'Lanjut Usia' ? 'selected' : '' }}>Lanjut Usia</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6" style="padding: 0;">
                                     <label for="sts_kantor">Status Kantor</label>
                                     <select name="sts_kantor" class="form-control" id="sts_kantor" required="required" autocomplete="off">
                                         <option selected disabled>-- Pilih Status Kantor --</option>
-                                        <option value="old('sts_kantor') == 'Hak Pribadi' ? 'selected' : '' }}">Hak Pribadi</option>
-                                        <option value="{{ old('sts_kantor') == 'Kontrak' ? 'selected' : '' }}">Kontrak</option>
+                                        <option value="Hak Pribadi"old('sts_kantor') == 'Hak Pribadi' ? 'selected' : '' }}"">Hak Pribadi</option>
+                                        <option value="Kontrak"{{ old('sts_kantor') == 'Kontrak' ? 'selected' : '' }}>Kontrak</option>
                                     </select>
                                 </div>
                             </div>
@@ -193,29 +193,29 @@
                                     <label for="form_kabupaten">Kabupaten/Kota</label>
                                     <select name="kabupaten" class="form-control" id="input_kabupaten" required="required" autocomplete="off">
                                         <option selected disabled>-- Pilih Kabupaten/Kota --</option>
-                                        <option value="{{ old('kabupaten') == 'Kota Denpasar' ? 'selected' : '' }}">Kota Denpasar</option>
-                                        <option value="{{ old('kabupaten') == 'Badung' ? 'selected' : '' }}">Badung</option>
-                                        <option value="{{ old('kabupaten') == 'Badung' ? 'selected' : '' }}">Gianyar</option>
-                                        <option value="{{ old('kabupaten') == 'Bangli' ? 'selected' : '' }}">Bangli</option>
-                                        <option value="{{ old('kabupaten') == 'Tabanan' ? 'selected' : '' }}">Tabanan</option>
-                                        <option value="{{ old('kabupaten') == 'Jembrana' ? 'selected' : '' }}">Jembrana</option>
-                                        <option value="{{ old('kabupaten') == 'Buleleng' ? 'selected' : '' }}">Buleleng</option>
-                                        <option value="{{ old('kabupaten') == 'Klungkung' ? 'selected' : '' }}">Klungkung</option>
-                                        <option value="{{ old('kabupaten') == 'Karangasem' ? 'selected' : '' }}">Karangasem</option>
+                                        <option value="Kota Denpasar"{{ old('kabupaten') == 'Kota Denpasar' ? 'selected' : '' }}>Kota Denpasar</option>
+                                        <option value="Badung"{{ old('kabupaten') == 'Badung' ? 'selected' : '' }}>Badung</option>
+                                        <option value="Gianyar"{{ old('kabupaten') == 'Badung' ? 'selected' : '' }}>Gianyar</option>
+                                        <option value="Bangli"{{ old('kabupaten') == 'Bangli' ? 'selected' : '' }}>Bangli</option>
+                                        <option value="Tabanan"{{ old('kabupaten') == 'Tabanan' ? 'selected' : '' }}>Tabanan</option>
+                                        <option value="Jembrana"{{ old('kabupaten') == 'Jembrana' ? 'selected' : '' }}>Jembrana</option>
+                                        <option value="Buleleng"{{ old('kabupaten') == 'Buleleng' ? 'selected' : '' }}>Buleleng</option>
+                                        <option value="Klungkung"{{ old('kabupaten') == 'Klungkung' ? 'selected' : '' }}>Klungkung</option>
+                                        <option value="Karangasem"{{ old('kabupaten') == 'Karangasem' ? 'selected' : '' }}>Karangasem</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6" style="padding: 0;">
                                     <label for="status">Status</label>
                                     <select name="status" class="form-control" id="status" required="required" autocomplete="off">
                                         <option disabled selected>-- Pilih Status --</option>
-                                        <option value="{{ old('status') == '1' ? 'selected' : '' }}">Aktif</option>
-                                        <option value="{{ old('status') == '0' ? 'selected' : '' }}">Tidak Aktif</option>
+                                        <option value="1"{{ old('status') == '1' ? 'selected' : '' }}>Aktif</option>
+                                        <option value="0"{{ old('status') == '0' ? 'selected' : '' }}>Tidak Aktif</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div>
-                                <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
                             </div>
                         </form>
                     </div>

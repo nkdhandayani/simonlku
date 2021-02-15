@@ -22,7 +22,7 @@
                         <h3 class="box-title" style="font-size: 25px;"><i class="fa fa-user"></i> Daftar Pegawai Jasa Pariwisata</h3>
                         <div style="float: right;">
                             <div style="clear: both;"></div>
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"> Add</i></button>
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"> Tambah Data</i></button>
                         </div>
                     </div>
 
@@ -200,7 +200,7 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                            <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
                         </form>
                     </div>
                 </div>

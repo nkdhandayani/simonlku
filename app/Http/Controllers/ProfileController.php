@@ -6,12 +6,28 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
-    public function show($id)
+
+    public function showUser()
     {
-        $user = User::find($id);
-        $bpw = BPW::find($id);
-        return view ('/profile/index', compact('bpw', 'user'));
+        //$user = User::find($id);
+        return view ('/profile/index');
     }
+
+    public function showBPW()
+    {
+        //$BPW = BPW::find($id);
+        return view ('/profile/edit_profile');
+    }
+
+    public function indexPass()
+    {
+        //$BPW = BPW::find($id);
+        return view ('/profile/ganti_pass');
+    }
+
+
+
+
 
     public function edit($id)
     {

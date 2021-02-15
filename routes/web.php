@@ -21,6 +21,9 @@ use Illuminate\Support\Facades\Route;
 	Route::post('/postlogin', 'App\Http\Controllers\AuthController@postlogin');
 	Route::get('/', function () { return view('auth.login'); });
 	Route::get('/lte', function () { return view('adminLTE'); });
+	Route::get('/prof', 'App\Http\Controllers\ProfileController@showUser');
+	Route::get('/editprof', 'App\Http\Controllers\ProfileController@showBPW');
+	Route::get('/editpass', 'App\Http\Controllers\ProfileController@indexPass');
 	
  	
 	//	Route oleh Administrator
@@ -109,7 +112,7 @@ use Illuminate\Support\Facades\Route;
 		// Route Profile
 		Route::get('/profile/edit/{id}','App\Http\Controllers\ProfileController@edit');
 		Route::get('/profile/update/{id}','App\Http\Controllers\ProfileController@update');
-		Route::get('/profile/show/{id}','App\Http\Controllers\ProfileController@show');
+		// Route::get('/profile/show/{id}','App\Http\Controllers\ProfileController@show');
 
 		});
 
