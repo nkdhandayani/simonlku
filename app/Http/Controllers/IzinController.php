@@ -98,12 +98,14 @@ class IzinController extends Controller
         }
         $izins->no_izin = $request->no_izin;
         $izins->tgl_izin = $request->tgl_izin;
-        if(auth()->guard('bpw')->user()) {
-            $file = $request->file_izin;
+        if($request->hasFile('file_izin')){
+            if(auth()->guard('bpw')->user()) {
+                $file = $request->file_izin;
 
-            $file->move('file_izin', $file->getClientOriginalName());
+                $file->move('file_izin', $file->getClientOriginalName());
 
-            $izins->file_izin = $file->getClientOriginalName();
+                $lkus->file_izin = $file->getClientOriginalName();
+            }
         }
         $izins->sts_verifikasi = $request->sts_verifikasi;
         $izins->keterangan = $request->keterangan;

@@ -2,8 +2,18 @@
 
 <section class="sidebar">
     <div class="user-panel">
-      <div class="pull-left image">
-        <img src="{{url('adminLTE/dist/img/user.png')}}" class="img-circle" alt="User Image">
+      <div class="pull-left user">
+        @if(auth()->guard('bpw')->user() && auth()->guard('bpw')->user()->foto_bpw != null)
+        <img width="45px" height="45px" src="{{ asset('avatar_bpw/' . auth()->guard('bpw')->user()->foto_bpw) }}" class="img-circle" alt="User Image"/>
+        @elseif(auth()->guard('bpw')->user() && auth()->guard('bpw')->user()->foto_bpw == null)
+        <img width="45px" height="45px" src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-circle" alt="User Image"/>
+        @endif
+
+        @if(auth()->guard('user')->user() && auth()->guard('user')->user()->foto_user != null)
+        <img width="45px" height="45px" src="{{ asset('avatar_user/' . auth()->guard('user')->user()->foto_user) }}" class="img-circle" alt="User Image"/>
+        @elseif(auth()->guard('user')->user() && auth()->guard('user')->user()->foto_user == null)
+        <img width="45px" height="45px" src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-circle" alt="User Image"/>
+        @endif
       </div>
         
       <div class="pull-left info">

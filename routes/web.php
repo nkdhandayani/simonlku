@@ -39,7 +39,8 @@ use Illuminate\Support\Facades\Route;
 		Route::post('/bpw/store', 'App\Http\Controllers\BPWController@store');
 		Route::get('/bpw/edit/{id}','App\Http\Controllers\BPWController@edit');
 		Route::patch('/bpw/update/{id}','App\Http\Controllers\BPWController@update');
-		Route::get('/bpw/cetak', 'App\Http\Controllers\BPWController@pdf');
+		Route::get('/bpw/cetak', 'App\Http\Controllers\BPWController@cetak');
+		Route::get('/bpw/cetakId/{id}','App\Http\Controllers\BPWController@cetakId');
 
 		});
 
@@ -112,7 +113,7 @@ use Illuminate\Support\Facades\Route;
 		// Route Profile
 		Route::get('/profile','App\Http\Controllers\ProfileController@index');
 		Route::get('/profile/edit','App\Http\Controllers\ProfileController@edit');
-		Route::get('/profile/update','App\Http\Controllers\ProfileController@update');
+		Route::patch('/profile/update','App\Http\Controllers\ProfileController@update');
 		Route::get('/profile/show','App\Http\Controllers\ProfileController@show');
 
 		});

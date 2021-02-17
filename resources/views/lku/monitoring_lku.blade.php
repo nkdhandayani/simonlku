@@ -21,8 +21,8 @@
                 <div class="box-header">
                     <div class="box-body pad table-responsive">
                         
-                        <div class="form-group col-md-4" style="padding: 0; padding-right: 10px;">
-                            <select id="tahun" class="form-control select2" name="tahun" required="required" autocomplete="off">
+                        <div class="form-group col-md-2" style="padding: 0px;">
+                            <select id="tahun" class="form-control select2" style="width: 170px;" name="tahun" required="required" autocomplete="off">
                                 <option disabled selected>-- Pilih Tahun LKU--</option>
                                 @foreach ($lkus as $tahun)
                                 <option value="{{$tahun}}">{{$tahun}}</option>
@@ -31,12 +31,10 @@
                         </div>
 
                         <div>
-                            <button type="button" class="btn btn-success" id="refresh"><i class="fa fa-refresh"></i> Refresh</button>
-
                             @if(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 0)
                             <div style="float: right;">
                                 <div style="clear: both;"></div>
-                                <a href="#" class="btn bg-purple" target="_blank"><i class="fa fa-file-pdf-o"> Export PDF</i></a>
+                                <a href="#" class="btn bg-purple btn-sm" target="_blank"><i class="fa fa-file-pdf-o"> Export PDF</i></a>
                             </div>
                             @endif
                         </div>
@@ -56,8 +54,8 @@
                                             <th style="width: 200px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Alamat</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No. Telp</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama PIC</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama Pimpinan</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Status</th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Aksi</th>
                                         </tr>
                                     </thead>
 
@@ -117,13 +115,8 @@
                     html += '<td>'+ data.data[i].alamat+'</td>'
                     html += '<td>'+ data.data[i].no_telp+'</td>'
                     html += '<td>'+ data.data[i].nm_pic+'</td>'
+                    html += '<td>'+ data.data[i].nm_pimpinan+'</td>'
                     html += '<td>'+ status+'</td>'
-                    html += '<td>'
-                    if (data.user.level==0) {
-                    html += '<a href="/bpw/edit/'+data.data[i].id_bpw+'"><i class="fa fa-edit btn-warning btn-sm"></i></a>'}
-                    if (data.user.level==1){
-                    html += ' <a href="/bpw/show/'+data.data[i].id_bpw+'"><i class="fa fa-eye btn-danger btn-sm"></i></a>'}
-                    html += '</td>'
                     html += '</tr>'
                 }
 

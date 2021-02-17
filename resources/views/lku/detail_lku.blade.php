@@ -24,7 +24,7 @@
 
             <table class="table">
                 <tr>
-                    <td width="200">Nama Biro</td>
+                    <td width="300">Nama Biro</td>
                     <td width="10">:</td>
                     <td>{{$lkus->bpw->nm_bpw}}</td>
                 </tr>
@@ -163,6 +163,10 @@
                             {
                                 echo "-";
                             }
+                        elseif($lkus->tgl_verifikasi == '0000-00-00')
+                            {
+                                echo "-";
+                            }
                         else
                             {
                                 echo $lkus->tgl_verifikasi->isoFormat('dddd, DD MMMM Y');
@@ -172,7 +176,7 @@
                 </tr>
 
                 <tr>
-                    <td>Status TDUP</td>
+                    <td>Status LKU</td>
                     <td>:</td>
                     <td>
                         <?php

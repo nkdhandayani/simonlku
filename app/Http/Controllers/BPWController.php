@@ -29,9 +29,14 @@ class BPWController extends Controller
     {
         $this->validate($request, [
             'nm_bpw' => 'required|min:6|max:50',
-            'username' => 'required|min:5|max:20|unique:bpw',    
+            'username' => 'required|min:5|max:20|unique:bpw',
+            'password' => 'required|min:6|max:20',
+            'no_telp' => 'required|min:7|max:15',
+            'no_fax' => 'nullable|min:7|max:15',    
             'nm_pic' => 'required|min:6|max:50',
             'nm_pimpinan' => 'required|min:6|max:50',
+            'nib' => 'required|min:13|max:20',
+            'foto_bpw' => 'mimesmimes:jpg,jpeg,png'
         ]);
 
         BPW::create([
@@ -74,12 +79,18 @@ class BPWController extends Controller
     public function update(Request $request, $id)
     {         
         $this->validate($request, [
-            'nm_bpw' => 'required|min:6|max:50',  
-            'nm_pic' => 'required|min:6|max:50',
-            'nm_pimpinan' => 'required|min:6|max:50',
+            'nm_bpw' => 'min:6|max:50',
+            'username' => 'min:5|max:20|unique:bpw,username,'.$id.',id_bpw',
+            'password' => 'min:6|max:20',
+            'no_telp' => 'min:7|max:15',
+            'no_fax' => 'nullable|min:7|max:15',    
+            'nm_pic' => 'min:6|max:50',
+            'nm_pimpinan' => 'min:6|max:50',
+            'nib' => 'min:13|max:20',
+            'foto_bpw' => 'mimes:jpg,jpeg,png'
         ]);
 
-        $bpws = BPW::find($id);
+        $bpws = BPW::where('id_bpw', $id)->first();
 
         $bpws->nm_bpw = $request->nm_bpw;
         $bpws->username = $request->username;
@@ -92,23 +103,33 @@ class BPWController extends Controller
         $bpws->jns_bpw = $request->jns_bpw;
         $bpws->sts_kantor = $request->sts_kantor;
         $bpws->nib = $request->nib;
+        if(auth()->guard('bpw')->user()) {
+            $file = $request->foto_bpw;
+
+            $file->move('avatar_bpw', $file->getClientOriginalName());
+
+            $bpws->foto_bpw = $file->getClientOriginalName();
+        }
         $bpws->status = $request->status;
         $bpws->save();
 
         return redirect('/bpw')->with('success', 'Data berhasil dirubah!');
     }
     
-    public function pdf(Request $request)
+    public function cetak(Request $request)
     {
-        $bpws = BPW::all();
+        $bpws = BPW::orderBy('nm_bpw', 'ASC')->where('status', 1)->get();
  
-        $pdf = PDF::loadview('bpw/bpw_pdf', compact('bpws'));
+        $pdf = PDF::loadview('bpw/bpw_cetak', compact('bpws'));
         $pdf->setPaper('A4', 'landscape');
         return $pdf->stream();
     }
 
-    public function destroy($id)
+    public function cetakId($id)
     {
-        //
+        $bpws = BPW::find($id);
+ 
+        $pdf = PDF::loadview('bpw/bpw_cetakId', compact('bpws'));
+        return $pdf->stream();
     }
 }

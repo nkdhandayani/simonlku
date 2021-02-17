@@ -1,53 +1,36 @@
-@extends('layouts.master')
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DATA Biro Perjalanan Wisata</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style type="text/css">
+		.line-title{
+			border:0;
+			border-style: inset;
+			border-top: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<img src="assets/images/Logo Dinas Pariwisata.png" style="position: absolute; width: 100px; height: auto;" />
+	<table style="width: 100%;">
+            <tr>
+                <td align="center" style="line-height: 1.2; font-size: 15px;">
+                    PEMERINTAH PROVINSI BALI<br />
+                    <span style="font-size: 25px; font-style: bold; letter-spacing: 2;">DINAS PARIWISATA</span><br />
+                    BALI GOVERNMENT TOURISM OFFICE<br />
+                    DENPASAR - BALI<br />
+                    <small>Jalan S. Parman No. 1 Renon – Denpasar, Bali 80227</small>
+                </td>
+            </tr>
+        </table>
+	<hr class="line-title">
 
-@section('content')
-<section class="content-header">
-    <h1>
-        Detail Biro Perjalanan Wisata
-    </h1>
-    <ol class="breadcrumb">
-        <li>
-            <a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
-        </li>
-        <li>Kelola Data</li>
-        <li><a href="/bpw"> Biro Perjalanan Wisata</a></li>
-        <li class="active"><a href="#">Detail Biro Perjalanan Wisata</a></li>
-    </ol>
-</section>
-
-<section class="content">
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box box-primary">
-                <div class="box-header">
-                    <div>
-                        <a href="/bpw" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                    </div>
-                    <br />
-                    <br />
-                    <div class="col-md-4 mb-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex flex-column align-items-center text-center" style="padding: 20px;">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150" />
-                                    <div class="mt-3">
-                                        <h3>
-                                            {{$bpws->nm_bpw}}
-                                        </h3>
-                                        <p class="text-muted font-size-sm">
-                                            Biro Perjalanan Wisata
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-8">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <table class="table">
-                                    <tr>
+		<p align="center" style="font-size: 25px; font-style: bold;">DATA BIRO PERJALANAN WISATA</p>
+		<div class="box-body">
+         <table class="table table-bordered">
+         ($bpws as $bpws)
+		<tr>
                                         <td width="150">Nama Biro</td>
                                         <td width="10px">:</td>
                                         <td>{{$bpws->nm_bpw}}</td>
@@ -110,14 +93,34 @@
                                             if($bpws->status == 0) { echo "Tidak Aktif"; } elseif($bpws->status == 1) { echo "Aktif"; } ?>
                                         </td>
                                     </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <h5 style="text-align: right; padding-right: 15px; color: blue;">Reset Password?</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-@endsection
+           </table> 
+        <!-- /.box-body -->
+        <div class="box-footer"></div>
+      </div>
+	<br>
+	<br>
+	<table border="0" width="100%">
+            <tr>
+                <td align="left" width="50%">
+                    Mengetahui,<br />
+                    Kepala Seksi Jasa Pariwisata
+                    <br />
+                    <br />
+                    <br />
+                    <br>
+                    <b><u>Ni Luh Herawati, SS., M.Par</u></b>
+                </td>
+                <td align="right" width="50%">
+                    Denpasar, {{Carbon\Carbon::now()->isoFormat('D MMMM Y')}}<br />
+                    Administrator
+                    <br />
+                    <br />
+                    <br />
+                    <br>
+                    <b><u>@if(\Auth::guard('user')->check()){{ \Auth::guard('user')->user()->nm_user }} @endif</u></b>
+                </td>
+            </tr>
+        </table>
+
+</body>
+</html>

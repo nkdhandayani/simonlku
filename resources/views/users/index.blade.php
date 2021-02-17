@@ -12,7 +12,7 @@
         <li class="active"><a href="/user">Kelola Pengguna</a></li>
     </ol>
 </section>
-
+ 
 <section class="content">
     <div class="row">
         <div class="col-xs-12">
@@ -118,84 +118,89 @@
                         <form action="/user/store" method="post" enctype="multipart/form-data">
                             {{csrf_field()}}
 
-                            <div class="form-group">
+                            <div class="form-group" style="margin-bottom: 25px;">
                                 <label for="nm_user">Nama Pegawai</label>
-                                <input name="nm_user" type="text" class="form-control" id="nm_user" placeholder="Masukkan Nama Pegawai" required="required" autocomplete="off" value="{{ old('nm_user') }}" />
+                                <input name="nm_user" type="text" class="form-control" id="nm_user" placeholder="Masukkan Nama Pegawai" required autocomplete="off" value="{{ old('nm_user') }}" />
                                 @error('nm_user')
                                 <span class="invalid-feedback text-danger" role="alert">
-                                    {{ $message }}
+                                    Nama Pegawai terdiri dari 6-50 karakter.
                                 </span>
                                 @enderror
                             </div>
 
                             <div class="form-row">
-                                <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
+                                <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 5px;">
                                     <label for="username">Username</label>
-                                    <input name="username" type="username" class="form-control" id="username" placeholder="Masukkan Username" required="required" autocomplete="off" value="{{ old('username') }}" />
+                                    <input name="username" type="username" class="form-control" id="username" placeholder="Masukkan Username" required autocomplete="off" value="{{ old('username') }}" />
                                     @error('username')
                                     <span class="invalid-feedback text-danger" role="alert">
-                                        {{ $message }}
+                                        Username bersifat unik dari 6-20 karakter.
                                     </span>
                                     @enderror
                                 </div>
-                                <div class="form-group col-md-6" style="padding: 0px;">
+                                <div class="form-group col-md-6" style="padding: 0px; margin-bottom: 25px;">
                                     <label for="password">Password</label>
-                                    <input name="password" type="password" class="form-control" id="password" placeholder="Masukkan Password" required="required" autocomplete="off" value="{{ old('password') }}" />
+                                    <input name="password" type="password" class="form-control" id="password" placeholder="Masukkan Password" required autocomplete="off" value="{{ old('password') }}" />
                                     @error('password')
                                     <span class="invalid-feedback text-danger" role="alert">
-                                        {{ $message }}
+                                        Password terdiri dari 6-20 karakter.
                                     </span>
                                     @enderror
                                 </div>
                             </div>
 
                             <div class="form-row">
-                                <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
+                                <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 8px;">
                                     <label for="nik">NIK</label>
-                                    <input name="nik" type="text" class="form-control" id="nik" placeholder="Masukkan NIK" required="required" autocomplete="off" value="{{ old('nik') }}" />
+                                    <input name="nik" type="text" class="form-control" id="nik" placeholder="Masukkan NIK" required autocomplete="off" value="{{ old('nik') }}" />
                                     @error('nik')
                                     <span class="invalid-feedback text-danger" role="alert">
-                                        {{ $message }}
+                                        NIK terdiri dari 16-20 karakter.
                                     </span>
                                     @enderror
                                 </div>
-                                <div class="form-group col-md-6" style="padding: 0;">
+                                <div class="form-group col-md-6" style="padding: 0;  margin-bottom: 28px;">
                                     <label for="email">E-mail</label>
-                                    <input name="email" type="email" class="form-control" id="email" placeholder="Masukkan E-mail" required="required" autocomplete="off" value="{{ old('email') }}" />
+                                    <input name="email" type="email" class="form-control" id="email" placeholder="Masukkan E-mail" required autocomplete="off" value="{{ old('email') }}" />
                                 </div>
                             </div>
 
                             <div class="form-row">
-                                <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
+                                <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 8px;">
                                     <label for="no_telp">Nomor Telepon</label>
-                                    <input name="no_telp" type="text" class="form-control" id="no_telp" placeholder="Masukkan Nomor Telepon" required="required" autocomplete="off" value="{{ old('no_telp') }}" />
+                                    <input name="no_telp" type="text" class="form-control" id="no_telp" placeholder="Masukkan Nomor Telepon" required autocomplete="off" value="{{ old('no_telp') }}" />
+                                    @error('no_telp')
+                                    <span class="invalid-feedback text-danger" role="alert">
+                                        Nomor Telepon terdiri dari 7-15 karakter.
+                                    </span>
+                                    @enderror
                                 </div>
-                                <div class="form-group col-md-6" style="padding: 0;">
+                                <div class="form-group col-md-6" style="padding: 0;  margin-bottom: 28px;">
                                     <label for="jns_kelamin">Jenis Kelamin</label>
-                                    <select name="jns_kelamin" class="form-control" id="jns_kelamin" required="required" autocomplete="off">
+                                    <select name="jns_kelamin" class="form-control" id="jns_kelamin" required autocomplete="off">
                                         <option selected disabled="">-- Pilih Jenis Kelamin --</option>
-                                        <option value="{{ old('jns_kelamin') == 'Laki-laki' ? 'selected' : '' }}">Laki-laki</option>
-                                        <option value="{{ old('jns_kelamin') == 'Perempuan' ? 'selected' : '' }}">Perempuan</option>
+                                        <option value="Laki-laki" {{ old('jns_kelamin') == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                                        <option value="Perempuan" {{ old('jns_kelamin') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-row">
-                                <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
+                                <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 10px;" >
                                     <label for="level">Level</label>
-                                    <select name="level" class="form-control" id="level" required="required" autocomplete="off">
+                                    <select name="level" class="form-control" id="level" required autocomplete="off">
                                         <option selected disabled="">-- Pilih Level --</option>
-                                        <option value="{{ old('level') == '0' ? 'selected' : '' }}">Administrator</option>
-                                        <option value="{{ old('level') == '1' ? 'selected' : '' }}">Staf Jasa Pariwisata</option>
-                                        <option value="{{ old('level') == '2' ? 'selected' : '' }}">Kepala Seksi Jasa Pariwisata</option>
+                                        <option value="0" {{ old('level') == '0' ? 'selected' : '' }}>Administrator</option>
+                                        <option value="1" {{ old('level') == '1' ? 'selected' : '' }}>Staf Jasa Pariwisata</option>
+                                        <option value="2" {{ old('level') == '2' ? 'selected' : '' }}>Kepala Seksi Jasa Pariwisata</option>
                                     </select>
                                 </div>
-                                <div class="form-group col-md-6" style="padding: 0;">
+                                <div class="form-group col-md-6" style="padding: 0; margin-bottom: 10px;">
                                     <label for="form_status" autocomplete="off">Status</label>
-                                    <select name="status" class="form-control" id="status" required="required">
+                                    <select name="status" class="form-control" id="status" required>
                                         <option selected disabled="">-- Pilih Status --</option>
-                                        <option value="{{ old('status') == '1' ? 'selected' : '' }}">Aktif</option>
-                                        <option value="{{ old('status') == '0' ? 'selected' : '' }}">Tidak Aktif</option>
+                                        <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>Aktif</option>
+                                        <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>Tidak Aktif</option>
                                     </select>
                                 </div>
                             </div>

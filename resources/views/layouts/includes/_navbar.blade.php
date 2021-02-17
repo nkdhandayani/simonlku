@@ -18,7 +18,18 @@
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{url('adminLTE/dist/img/user.png')}}" class="user-image" alt="User Image">
+              @if(auth()->guard('bpw')->user() && auth()->guard('bpw')->user()->foto_bpw != null)
+              <img width="200px" height="200px" src="{{ asset('avatar_bpw/' . auth()->guard('bpw')->user()->foto_bpw) }}" class="user-image" alt="User Image"/>
+              @elseif(auth()->guard('bpw')->user() && auth()->guard('bpw')->user()->foto_bpw == null)
+              <img width="18px" height="18px" src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-circle" alt="User Image"/>
+              @endif
+
+              @if(auth()->guard('user')->user() && auth()->guard('user')->user()->foto_user != null)
+              <img width="200px" height="200px" src="{{ asset('avatar_user/' . auth()->guard('user')->user()->foto_user) }}" class="user-image" alt="User Image"/>
+              @elseif(auth()->guard('user')->user() && auth()->guard('user')->user()->foto_user == null)
+              <img width="18px" height="18px" src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-circle" alt="User Image"/>
+              @endif
+
               <span class="hidden-xs">
                 @if(\Auth::guard('user')->check())
                   {{ \Auth::guard('user')->user()->nm_user }}
@@ -31,7 +42,17 @@
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
-                <img src="{{url('adminLTE/dist/img/user.png')}}" class="img-circle" alt="User Image">
+                @if(auth()->guard('bpw')->user() && auth()->guard('bpw')->user()->foto_bpw != null)
+                <img width="200px" height="200px" src="{{ asset('avatar_bpw/' . auth()->guard('bpw')->user()->foto_bpw) }}" class="img-circle" alt="User Image"/>
+                @elseif(auth()->guard('bpw')->user() && auth()->guard('bpw')->user()->foto_bpw == null)
+                <img width="20px" height="20px" src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-circle" alt="User Image"/>
+                @endif
+
+                @if(auth()->guard('user')->user() && auth()->guard('user')->user()->foto_user != null)
+                <img width="200px" height="200px" src="{{ asset('avatar_user/' . auth()->guard('user')->user()->foto_user) }}" class="img-circle" alt="User Image"/>
+                @elseif(auth()->guard('user')->user() && auth()->guard('user')->user()->foto_user == null)
+                <img width="20px" height="20px" src="https://bootdey.com/img/Content/avatar/avatar7.png" class="img-circle" alt="User Image"/>
+                @endif
 
                 <p>
                   @if(\Auth::guard('user')->check())

@@ -27,7 +27,7 @@
 
         <hr class="line-title" />
 
-        <p align="center" style="font-size: 25px; font-style: bold;">DAFTAR BIRO PERJALANAN WISATA</p>
+        <p align="center" style="font-size: 25px; font-style: bold;">DATA BIRO PERJALANAN WISATA TAHUN {{Carbon\Carbon::now()->isoFormat('Y')}}</p>
         <table class="table table-bordered">
             <thead>
                 <tr>

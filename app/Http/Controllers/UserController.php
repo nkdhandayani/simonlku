@@ -26,9 +26,11 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'username' => 'required|min:5|max:20|unique:user',
+            'username' => 'required|min:5|max:20|unique:users',
             'nm_user' => 'required|min:6|max:50',
-            'nik' => 'required|min:16|max:20',     
+            'password' => 'required|min:6|max:20',
+            'nik' => 'required|min:16|max:20',  
+            'no_telp' => 'required|min:7|max:15',
         ]);
 
         User::create([
@@ -63,27 +65,33 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nm_user' => 'required|min:6|max:50',
-            'nik' => 'required|min:16|max:20',     
+            'username' => 'min:5|max:20|unique:users,username,'.$id.',id_user',
+            'nm_user' => 'min:6|max:50',
+            'password' => 'min:6|max:20', 
+            'nik' => 'min:16|max:20', 
+            'no_telp' => 'min:7|max:15',
+            'foto_user' => 'mimes:jpg,jpeg,png'   
         ]);
         
-        $users = User::find($id);
+        $users = User::where('id_user', $id)->first();
+
         $users->username = $request->username;
         $users->nm_user = $request->nm_user;
         $users->nik = $request->nik;
         $users->email = $request->email;
         $users->no_telp = $request->no_telp;
         $users->jns_kelamin = $request->jns_kelamin;
+        if(auth()->guard('user')->user()) {
+            $file = $request->foto_user;
+
+            $file->move('avatar_user', $file->getClientOriginalName());
+
+            $users->foto_user = $file->getClientOriginalName();
+        }
         $users->level = $request->level;
         $users->status = $request->status;
         $users->save();
         
         return redirect('/user')->with('success', 'Data berhasil dirubah!');
-    }
-
-
-    public function destroy($id)
-    {
-        //
     }
 }
