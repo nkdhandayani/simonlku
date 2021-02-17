@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\BPW as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class LKU extends Model
 {
@@ -20,7 +22,7 @@ class LKU extends Model
         'id_tdup',
     	'id_izin',
         'no_surat',
-        'tahun_lku',
+        'tahun',
         'periode_lku',
         'file_lku',
         'sts_verifikasi',

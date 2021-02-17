@@ -182,7 +182,7 @@
                                     <label for="sts_kantor">Status Kantor</label>
                                     <select name="sts_kantor" class="form-control" id="sts_kantor" required="required" autocomplete="off">
                                         <option selected disabled>-- Pilih Status Kantor --</option>
-                                        <option value="Hak Pribadi"old('sts_kantor') == 'Hak Pribadi' ? 'selected' : '' }}"">Hak Pribadi</option>
+                                        <option value="Hak Pribadi"old('sts_kantor') == 'Hak Pribadi' ? 'selected' : '' }}>Hak Pribadi</option>
                                         <option value="Kontrak"{{ old('sts_kantor') == 'Kontrak' ? 'selected' : '' }}>Kontrak</option>
                                     </select>
                                 </div>

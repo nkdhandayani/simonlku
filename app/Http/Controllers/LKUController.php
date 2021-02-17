@@ -33,10 +33,18 @@ class LKUController extends Controller
     }
 
 
-    public function monitoring()
+    public function monitoring(Request $request)
     { 
         $bpws = BPW::orderBy('nm_bpw', 'ASC')->get();
-        return view('lku/monitoring_lku', compact('bpws'));
+        $lkus = LKU::orderBy('tahun', 'ASC')->groupBy('tahun')->pluck('tahun');
+
+        if($request->ajax()){
+            $lku = LKU::where('tahun', $request->tahun)->pluck('id_bpw')->toArray();
+            $data = BPW::whereNotIn('id_bpw', collect($lku))->get();
+            $user = auth()->guard('user')->user();
+            return json_encode(['data'=>$data, 'user'=>$user]);
+        }
+        return view('lku/monitoring_lku', compact('bpws', 'lkus'));
     }
 
 
@@ -48,16 +56,16 @@ class LKUController extends Controller
 
         $bpw = auth()->guard('bpw')->user();
         // dd($bpw->id_bpw);
-        $tdup = TDUP::where('id_bpw', $bpw->id_bpw)->where('sts_verifikasi', 2)->get();
+        $tdup = TDUP::where('id_bpw', $bpw->id_bpw)->where('sts_verifikasi', 2)->first();
 
-        $izin = Izin::where('id_bpw', $bpw->id_bpw)->where('sts_verifikasi', 2)->get();
+        $izin = Izin::where('id_bpw', $bpw->id_bpw)->where('sts_verifikasi', 2)->first();
 
         if($tdup == null && $izin == null) {
-            return redirect('/lku')->with('error', 'File TDUP dan Izin tidak ditemukan!');
+            return redirect('/lku')->with('error', 'File TDUP dan Izin Operadional Anda tidak ditemukan!');
         } else if($tdup == null) {
-            return redirect('/lku')->with('error', 'Silakan upload file TDUP!');
+            return redirect('/lku')->with('error', 'Pastikan file TDUP Anda telah disetujui!');
         } else if($izin == null) {
-            return redirect('/lku')->with('error', 'Silakan upload file Izin Operasional!');
+            return redirect('/lku')->with('error', 'Pastikan file Izin Operasional Anda telah disetujui!');
         }
 
         $file = $request->file_lku;
@@ -89,6 +97,7 @@ class LKUController extends Controller
         $lkus = LKU::find($id);
         $tdups = TDUP::find($id);
         $izins = Izin::find($id);
+
         return view ('/lku/detail_lku', compact('lkus','tdups','izins', 'bpw', 'user'));
     }
 
@@ -126,13 +135,17 @@ class LKUController extends Controller
         $lkus->no_surat = $request->no_surat;
         $lkus->tahun = $request->tahun;
         $lkus->periode = $request->periode;
-        if(auth()->guard('bpw')->user()) {
-            $file = $request->file_lku;
 
-            $file->move('file_lku', $file->getClientOriginalName());
+        if($request->hasFile('file_lku')){
+            if(auth()->guard('bpw')->user()) {
+                $file = $request->file_lku;
 
-            $lkus->file_lku = $file->getClientOriginalName();
+                $file->move('file_lku', $file->getClientOriginalName());
+
+                $lkus->file_lku = $file->getClientOriginalName();
+            }
         }
+
         $lkus->sts_verifikasi = $request->sts_verifikasi;
         $lkus->keterangan = $request->keterangan;
         $lkus->tgl_verifikasi = $request->tgl_verifikasi;

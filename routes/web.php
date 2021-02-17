@@ -106,13 +106,14 @@ use Illuminate\Support\Facades\Route;
 		
 		});
 
-
+ 
 	//	Route oleh Administrator, Staf Pegawai, Kepala Seksi, dan BPW
 		Route::group(['middleware' => ['CheckRole: isAdminUser, isStaffUser, isKepalaUser, isBPWUser']], function(){
 		// Route Profile
-		Route::get('/profile/edit/{id}','App\Http\Controllers\ProfileController@edit');
-		Route::get('/profile/update/{id}','App\Http\Controllers\ProfileController@update');
-		// Route::get('/profile/show/{id}','App\Http\Controllers\ProfileController@show');
+		Route::get('/profile','App\Http\Controllers\ProfileController@index');
+		Route::get('/profile/edit','App\Http\Controllers\ProfileController@edit');
+		Route::get('/profile/update','App\Http\Controllers\ProfileController@update');
+		Route::get('/profile/show','App\Http\Controllers\ProfileController@show');
 
 		});
 

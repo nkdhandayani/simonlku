@@ -47,9 +47,7 @@
                     <td>File Laporan Kegiatan Usaha</td>
                     <td>:</td>
                     <td>
-                        @if($lkus->file_lku)
                         <a href="{{ asset('file_lku/' . $lkus->file_lku) }}" target="_blank">{{ $lkus->file_lku }}</a>
-                        @else - @endif
                     </td>
                 </tr>
                 <tr>
@@ -57,15 +55,15 @@
                     <td>:</td>
                     <td>
                         <?php
-                        if($lkus->tdups->sts_verifikasi == 0)
+                        if($lkus->tdup->sts_verifikasi == 0)
                             {
                                 echo "Sedang Diproses";
                             }
-                        elseif($lkus->tdups->sts_verifikasi == 1)
+                        elseif($lkus->tdup->sts_verifikasi == 1)
                             {
                                 echo "Tidak Disetujui";
                             }
-                        elseif($lkus->tdups->sts_verifikasi == 2)
+                        else
                             {
                                 echo "Disetujui";
                             }
@@ -76,9 +74,7 @@
                     <td>File Tanda Daftar Usaha Pariwisata</td>
                     <td>:</td>
                     <td>
-                        @if($lkus->tdups->file_tdup)
-                        <a href="{{ asset('file_tdup/' . $$lkus->tdups->file_tdup) }}"><img width="200px" height="200px" src="{{ asset('file_tdup/' . $lkus->tdups->file_tdup) }}" /></a>
-                        @else - @endif
+                        <a href="{{ asset('file_tdup/' . $lkus->tdup->file_tdup) }}"><img width="200px" height="200px" src="{{ asset('file_tdup/' . $lkus->tdup->file_tdup) }}" /></a>
                     </td>
                 </tr>
 
@@ -87,15 +83,15 @@
                     <td>:</td>
                     <td>
                         <?php
-                        if($lkus->izins->sts_verifikasi == 0)
+                        if($lkus->izin->sts_verifikasi == 0)
                             {
                                 echo "Belum Diverifikasi";
                             }
-                        elseif($lkus->izins->sts_verifikasi == 1)
+                        elseif($lkus->izin->sts_verifikasi == 1)
                             {
                                 echo "Tidak Disetujui";
                             }
-                        elseif($lkus->izins->sts_verifikasi == 2)
+                        else
                             {
                                 echo "Disetujui";
                             }
@@ -106,9 +102,7 @@
                     <td>File Izin Operasional</td>
                     <td>:</td>
                     <td>
-                        @if($lkus->izins->file_izin)
-                        <a href="{{ asset('file_izin/' . $$lkus->izins->file_izin) }}"><img width="200px" height="200px" src="{{ asset('file_izin/' . $lkus->izins->file_izin) }}" /></a>
-                        @else - @endif
+                        <a href="{{ asset('file_izin/' . $lkus->izin->file_izin) }}"><img width="200px" height="200px" src="{{ asset('file_izin/' . $lkus->izin->file_izin) }}" /></a>
                     </td>
                 </tr>
 
@@ -130,7 +124,7 @@
                             {
                                 echo "Tidak Disetujui";
                             }
-                        elseif($lkus->sts_verifikasi == 2)
+                        else
                             {
                                 echo "Disetujui";
                             }
@@ -146,7 +140,7 @@
                             {
                                 echo "-";
                             }
-                        elseif($lkus->keterangan != null)
+                        else
                             {
                                 echo $lkus->keterangan;
                             }
@@ -169,7 +163,7 @@
                             {
                                 echo "-";
                             }
-                        elseif($lkus->tgl_verifikasi != null)
+                        else
                             {
                                 echo $lkus->tgl_verifikasi->isoFormat('dddd, DD MMMM Y');
                             }

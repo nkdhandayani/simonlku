@@ -125,8 +125,8 @@
                                     <label for="periode">Periode LKU</label>
                                     <select name="periode" class="form-control">
                                         <option selected disabled>-- Pilih Periode LKU --</option>
-                                        <option value="{{ old('periode') == 'I' ? 'selected' : '' }}">I</option>
-                                        <option value="{{ old('periode') == 'II' ? 'selected' : '' }}">II</option>
+                                        <option value="I" {{ old('periode') == 'I' ? 'selected' : '' }}>I</option>
+                                        <option value="II" {{ old('periode') == 'II' ? 'selected' : '' }}>II</option>
                                     </select>
                                 </div>
                             </div>

@@ -87,7 +87,7 @@ class IzinController extends Controller
         $this->validate($request, [
             'no_izin' => 'required|min:4',
             'tgl_izin' => 'required|date',
-            'file_izin' => 'required|mimes:jpg,jpeg,png'
+            'file_izin' => 'mimes:jpg,jpeg,png'
         ]);
 
         $izins = Izin::find($id);

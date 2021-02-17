@@ -143,6 +143,9 @@
                                         <li>
                                             Silakan beri nama file sebagai berikut: <strong>(Nama Travel)_Per(Periode)_Tahun</strong> dalam format <strong style="color: red;">PDF</strong><strong> (Contoh: Makmur Tour_Per1_2021.pdf)</strong>
                                         </li>
+                                        <li>
+                                            Minimal laporan yang dikumpulkan ialah LKU tahun <strong>2021.</strong>
+                                        </li>
                                     </ol>
                                     <br />
                                     <p class="tembusan">Tembusan disampaikan kepada Yth.</p>

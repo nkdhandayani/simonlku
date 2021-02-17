@@ -53,7 +53,7 @@
                         <br />
                         <br />
                         <p style="margin-bottom: 0;">(Silakan upload ulang file Anda)</p>
-                        <input name="file_lku" type="file" class="form-control-file" id="file_lku" value="{{$lku -> file_lku}}" required="required" autocomplete="off" />
+                        <input name="file_lku" type="file" class="form-control-file" id="file_lku" value="{{$lku -> file_lku}}" autocomplete="off" />
                         @endif
                     </div> 
 
@@ -109,14 +109,14 @@
                         </div>
                         <div class="form-group col-md-6" style="padding: 0;">
                             <label for="tgl_verifikasi">Tanggal Verifikasi</label>
-                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value="{{$lku -> tgl_verifikasi -> format('Y-m-d')}}" required="required" autocomplete="off" readonly />
+                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" @if($lku -> tgl_verifikasi != null) value="{{$lku -> tgl_verifikasi -> format('Y-m-d')}}" @endif required="required" autocomplete="off" readonly />
                         </div>
                     </div>
 
-                    @if(auth()->guard('user')->user()->level == 1)
+                    @else
                     <div class="form-group">
                         <label for="keterangan">Keterangan</label>
-                        <textarea name="keterangan" type="textarea" class="form-control" id="input_keterangan" rows="6" required="required" autocomplete="off" value="{{$lku -> keterangan}}">{{$lku -> keterangan}}</textarea>
+                        <textarea name="keterangan" type="textarea" class="form-control" id="input_keterangan" rows="6" autocomplete="off" value="{{$lku -> keterangan}}">{{$lku -> keterangan}}</textarea>
                     </div>
 
                     <div class="form-row">
@@ -131,7 +131,7 @@
 
                         <div class="form-group col-md-6" style="padding: 0px;">
                             <label for="tgl_verifikasi">Tanggal Verifikasi</label>
-                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value="{{$lku -> tgl_verifikasi}}" required="required" autocomplete="off" />
+                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" @if($lku -> tgl_verifikasi != null) value="{{$lku -> tgl_verifikasi -> format('Y-m-d')}}" @endif required="required" autocomplete="off" />
                         </div>
                     </div>
                     @endif

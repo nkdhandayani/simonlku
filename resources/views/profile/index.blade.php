@@ -25,9 +25,27 @@
                     <div class="d-flex flex-column align-items-center text-center" style="padding:20px;">
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150" />
                         <div class="mt-3">
-                            <h3>John Doe</h3>
-                            <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                            <button class="btn btn-warning btn-sm">Edit</button>
+                            <h3>
+                                @if(\Auth::guard('user')->check())
+                                {{ \Auth::guard('user')->user()->nm_user }}
+                                @elseif(\Auth::guard('bpw')->check())
+                                {{ \Auth::guard('bpw')->user()->nm_bpw }}
+                                @endif
+                            </h3>
+                            <p class="text-muted font-size-sm">
+                                @if(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '0')
+                                Administrator
+                                @elseif(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '1')
+                                Staf Jasa Pariwisata
+                                @elseif(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '2')
+                                Kepala Seksi Jasa Pariwisata
+                                @endif
+
+                                @if(\Auth::guard('bpw')->user())
+                                Biro Perjalanan Wisata
+                                @endif
+                            </p>
+                            <a href="/profile/edit"><button class="btn btn-warning btn-sm">Edit</button></a>
                         </div>
                     </div>
                 </div>
@@ -105,37 +123,63 @@
                 <tr>
                     <td width="150px">Nama Pegawai</td>
                     <td width="10px">:</td>
-                    <td>X</td>
+                    <td>{{$users->nm_user}}</td>
                 </tr>
                 <tr>
                     <td>NIK</td>
                     <td>:</td>
-                    <td>X</td>
+                    <td>{{$users->nik}}</td>
                 </tr>
                 <tr>
                     <td>Email</td>
                     <td>:</td>
-                    <td>X</td>
+                    <td>{{$users->email}}</td>
                 </tr>
                 <tr>
                     <td>No. Telp</td>
                     <td>:</td>
-                    <td>X</td>
+                    <td>{{$users->no_telp}}</td>
                 </tr>
                 <tr>
                     <td>Jenis Kelamin</td>
                     <td>:</td>
-                    <td>X</td>
+                    <td>{{$users->jns_kelamin}}</td>
                 </tr>
                 <tr>
                     <td>Level</td>
                     <td>:</td>
-                    <td>X</td>
+                    <td>
+                        <?php
+                        if($users->level == 0)
+                            {
+                                echo "Administrator";
+                            }
+                        elseif($users->level == 1)
+                            {
+                                echo "Staf Jasa Pariwisata";
+                            }
+                        elseif($users->level == 2)
+                            {
+                                echo "Kepala Seksi Jasa Pariwisata";
+                            }
+                        ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>Status</td>
                     <td>:</td>
-                    <td>X</td>
+                    <td>
+                        <?php
+                        if($users->status == 0)
+                            {
+                                echo "Tidak Aktif";
+                            }
+                        elseif($users->status == 1)
+                            {
+                                echo "Aktif";
+                            }
+                        ?>
+                    </td>
                 </tr>
                 @endif
             </table>

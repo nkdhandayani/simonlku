@@ -67,13 +67,11 @@
                     <br />
                     <br />
                     <br />
-                    <br />
                     <b><u>Ni Luh Herawati, SS., M.Par</u></b>
                 </td>
                 <td align="right" width="50%">
-                    Denpasar, <br />
-                    Sekretaris
-                    <br />
+                    Denpasar, {{Carbon\Carbon::now()->isoFormat('D MMMM Y')}}<br />
+                    Administrator
                     <br />
                     <br />
                     <br />

@@ -15,7 +15,7 @@
       <div class="col-xs-12">
 
 @if(\Auth::guard('bpw')->user())
-<form action="#" method="post" enctype="multipart/form-data">
+<form action="/profile/update/" method="post" enctype="multipart/form-data">
     @method('patch') {{csrf_field()}}
 
     <section class="content">
@@ -24,7 +24,7 @@
                 <div class="box-body">
                     
                     <div>
-                        <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                        <a href="/profile" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
                     </div>
                     <br />
                     <br />
@@ -132,11 +132,11 @@
 
                   
                     
-@endif
+@endif 
 
 
 @if(\Auth::guard('user')->user())
-<form action="#" method="post" enctype="multipart/form-data">
+<form action="/profile/update/" method="post" enctype="multipart/form-data">
     @method('patch') {{csrf_field()}}
 
     <section class="content">
@@ -144,7 +144,7 @@
             <form role="form">
                 <div class="box-body pad table-responsive">
                     <div>
-                        <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                        <a href="/profile" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
                     </div>
                     <br />
                     <br />
@@ -152,64 +152,53 @@
                     <div class="form-row">
                         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
                             <label for="form_nm_user">Nama Pengguna</label>
-                            <input name="nm_user" type="text" class="form-control" id="input_nm_user" value="" required="required" autocomplete="off" />
+                            <input name="nm_user" type="text" class="form-control" id="input_nm_user" value="{{$users -> nm_user}}" required="required" autocomplete="off" />
                         </div>
                         <div class="form-group col-md-6" style="padding: 0;">
                             <label for="username">Username</label>
-                            <input name="username" type="username" class="form-control" id="username" value="" required="required" autocomplete="off" readonly />
+                            <input name="username" type="username" class="form-control" id="username" value="{{$users -> username}}" required="required" autocomplete="off" readonly />
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
                             <label for="form_nik">NIK</label>
-                            <input name="nik" type="text" class="form-control" id="input_nik" value="" required="required" autocomplete="off" />
+                            <input name="nik" type="text" class="form-control" id="input_nik" value="{{$users -> nik}}" required="required" autocomplete="off" />
                         </div>
                         <div class="form-group col-md-6" style="padding: 0;">
                             <label for="form_Email">E-mail</label>
-                            <input name="email" type="email" class="form-control" id="input_email" value="" required="required" autocomplete="off" />
+                            <input name="email" type="email" class="form-control" id="input_email" value="{{$users -> email}}" required="required" autocomplete="off" />
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
                             <label for="form_no_telp">Nomor Telepon</label>
-                            <input name="no_telp" type="text" class="form-control" id="input_no_telp" value="" required="required" autocomplete="off" />
+                            <input name="no_telp" type="text" class="form-control" id="input_no_telp" value="{{$users -> no_telp}}" required="required" autocomplete="off" />
                         </div>
                         <div class="form-group col-md-6" style="padding: 0;">
                             <label for="form_jns_kelamin">Jenis Kelamin</label>
-                            <select name="jns_kelamin" class="form-control" id="input_jns_kelamin" value="" required="required" autocomplete="off">
+                            <select name="jns_kelamin" class="form-control" id="input_jns_kelamin" value="{{$users -> jns_kelamin}}" required="required" autocomplete="off">
                                 <option selected disabled="">-- Pilih Jenis Kelamin --</option>
-                                <option value=">Laki-laki</option>
-                                <option value=">Perempuan</option>
+                                <option value="Laki-laki" @if($users -> jns_kelamin == "Laki-laki") selected @endif>Laki-laki</option>
+                                <option value="Perempuan" @if($users -> jns_kelamin == "Perempuan") selected @endif>Perempuan</option>
                             </select>
                         </div>
                     </div>
 
-                        <div class="form-row">
-                        <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 0px;">
-                            <label for="form_level">Level</label>
-                            <select name="level" class="form-control" id="input_level" value="" required="required" autocomplete="off" readonly>
-                                <option selected disabled="">-- Pilih Level --</option>
-                                <option value="">Administrator</option>
-                                <option value="">Staf Jasa Pariwisata</option>
-                                <option value="">Kepala Seksi Jasa</option>
-                            </select>
-                        </div>
-                        <div class="form-group col-md-6" style="padding: 0;">
+                        <div class="form-group">
                             <label for="foto_user">Foto Pegawai</label>
-                            <input name="foto_user" type="file" class="form-control-file" id="foto_user" value="" required="required" autocomplete="off" />
+                            <input name="foto_user" type="file" class="form-control-file" id="foto_user" value="{{$users -> foto_user}}" required="required" autocomplete="off" />
                             @error('foto_user')
                             <span class="invalid-feedback text-danger" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
                             @enderror
                         </div>
-                    </div>
 
 
                     <div>
-                        <button type="submit" class="btn btn-primary btn-sm" style="margin-top: 20px; text-align: left">Simpan</button>
+                        <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
                     </div>
 
                 

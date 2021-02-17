@@ -86,7 +86,7 @@ class TDUPController extends Controller
         $this->validate($request, [
             'no_tdup' => 'required|min:4',
             'tgl_tdup' => 'required|date',
-            'file_tdup' => 'required|mimes:jpg,jpeg,png'
+            'file_tdup' => 'mimes:jpg,jpeg,png'
         ]);
 
         $tdups = TDUP::find($id);

@@ -107,7 +107,7 @@
 
                         <div class="form-group col-md-6" style="padding: 0px;">
                             <label for="tgl_verifikasi">Tanggal Verifikasi</label>
-                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value="{{$tdup -> tgl_verifikasi -> format('Y-m-d')}}" required="required" autocomplete="off" />
+                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value="{{$tdup -> tgl_verifikasi}}" required="required" autocomplete="off" />
                         </div>
                     </div>
                     @endif

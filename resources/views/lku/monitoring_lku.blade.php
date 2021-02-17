@@ -20,16 +20,18 @@
             <div class="box box-primary">
                 <div class="box-header">
                     <div class="box-body pad table-responsive">
-                        <div class="form-group col-md-2" style="padding: 0; padding-right: 10px;">
-                            <select id="thn_ajaran" class="form-control select2" name="sts_siswa" required="required" autocomplete="off">
+                        
+                        <div class="form-group col-md-4" style="padding: 0; padding-right: 10px;">
+                            <select id="tahun" class="form-control select2" name="tahun" required="required" autocomplete="off">
                                 <option disabled selected>-- Pilih Tahun LKU--</option>
-                                <option id="tahun_ajaran" value=""></option>
+                                @foreach ($lkus as $tahun)
+                                <option value="{{$tahun}}">{{$tahun}}</option>
+                                @endforeach
                             </select>
                         </div>
 
                         <div>
-                            <button type="button" class="btn btn-primary" id="filter"><i class=""></i> Filter</button>
-                            <button type="button" class="btn btn-warning" id="refresh"><i class="fa fa-refresh"></i> Refresh</button>
+                            <button type="button" class="btn btn-success" id="refresh"><i class="fa fa-refresh"></i> Refresh</button>
 
                             @if(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 0)
                             <div style="float: right;">
@@ -59,25 +61,8 @@
                                         </tr>
                                     </thead>
 
-                                    <tbody>
-                                        @php $i=1; @endphp @foreach ($bpws as $bpw)
-                                        <tr>
-                                            <td>{{ $i }}</td>
-                                            <td>{{ $bpw->nm_bpw }}</td>
-                                            <td>{{ $bpw->kabupaten }}</td>
-                                            <td>{{ $bpw->alamat }}</td>
-                                            <td>{{ $bpw->no_telp }}</td>
-                                            <td>{{ $bpw->nm_pic }}</td>
-                                            <td><?php if($bpw->status == 0) { echo "Tidak Aktif"; } elseif($bpw->status == 1) { echo "Aktif"; } else { echo "Tidak Aktif"; } ?></td>
-                                            <td>
-                                                <a href="/bpw/show/{{ $bpw->id_bpw }}" class="fa fa-eye btn-danger btn-sm"></a>
-
-                                                @if(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 0)
-                                                <a href="/bpw/edit/{{ $bpw->id_bpw }}" class="fa fa-edit btn-success btn-sm"></a>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                        @php $i++; @endphp @endforeach
+                                    <tbody id="tbody">
+                        
                                     </tbody>
                                 </table>
                             </div>
@@ -88,4 +73,72 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('js')
+<script type="text/javascript">
+    $('.select2').select2();
+    $('#tahun').change(function(){
+        let tahun = $('#tahun').val()
+        let url = "{{url('/monitoring_lku')}}"
+        let data = {
+            'tahun':tahun
+        }
+
+        $.ajax({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            type: "GET",
+            url: url,
+            data: data,
+            dataType: "JSON",
+            success: function (data) {     
+                $('#tbody').html('')              
+                let html = ''
+                let status = ''
+                console.log(data.user.level)
+
+
+                for(let i = 0; i<data.data.length; i++){
+                switch (data.data[i].status) {
+                            case 0:
+                                 status = "Tidak Aktif";
+                                break;
+                            case 1:
+                                status = "Aktif";
+                                break;
+                        }
+
+                    html += '<tr>'
+                    html += '<td>'+ (i + 1) +'</td>'
+                    html += '<td>'+ data.data[i].nm_bpw+'</td>'
+                    html += '<td>'+ data.data[i].kabupaten+'</td>'
+                    html += '<td>'+ data.data[i].alamat+'</td>'
+                    html += '<td>'+ data.data[i].no_telp+'</td>'
+                    html += '<td>'+ data.data[i].nm_pic+'</td>'
+                    html += '<td>'+ status+'</td>'
+                    html += '<td>'
+                    if (data.user.level==0) {
+                    html += '<a href="/bpw/edit/'+data.data[i].id_bpw+'"><i class="fa fa-edit btn-warning btn-sm"></i></a>'}
+                    if (data.user.level==1){
+                    html += ' <a href="/bpw/show/'+data.data[i].id_bpw+'"><i class="fa fa-eye btn-danger btn-sm"></i></a>'}
+                    html += '</td>'
+                    html += '</tr>'
+                }
+
+                $('#tbody').html(html)
+            },
+
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log('error')
+            },
+        });
+
+    })
+
+    $('#refresh').click(function(){
+        location.reload()
+    })
+</script>
 @endsection
