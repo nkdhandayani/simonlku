@@ -107,7 +107,11 @@ class IzinController extends Controller
                 $lkus->file_izin = $file->getClientOriginalName();
             }
         }
-        $izins->sts_verifikasi = $request->sts_verifikasi;
+        if(auth()->guard('bpw')->user()){
+            $izins->sts_verifikasi = $request->sts_verifikasi == 0;
+        } else{
+             $izins->sts_verifikasi = $request->sts_verifikasi;
+        }
         $izins->keterangan = $request->keterangan;
         $izins->tgl_verifikasi = $request->tgl_verifikasi;
         $izins->save();

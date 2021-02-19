@@ -61,6 +61,11 @@
                                         <td>{{$bpws->nm_bpw}}</td>
                                     </tr>
                                     <tr>
+                                        <td>Username</td>
+                                        <td>:</td>
+                                        <td>{{$bpws->username}}</td>
+                                    </tr>
+                                    <tr>
                                         <td>Email</td>
                                         <td>:</td>
                                         <td>{{$bpws->email}}</td>
@@ -123,6 +128,11 @@
                                         <td>{{$users->nm_user}}</td>
                                     </tr>
                                     <tr>
+                                        <td>Username</td>
+                                        <td>:</td>
+                                        <td>{{$users->username}}</td>
+                                    </tr>
+                                    <tr>
                                         <td>NIK</td>
                                         <td>:</td>
                                         <td>{{$users->nik}}</td>
@@ -163,7 +173,7 @@
                             </div>
                         </div>
                     </div>
-                    <h5 style="text-align: right; padding-right: 15px; padding-bottom: 0px; color: blue;">Ganti Password?</h5>
+                    <h5 style="text-align: right; padding-right: 15px;"><a href="/profile/ganti_pass"> Ganti Password?</h5>
                 </div>
             </div>
         </div>

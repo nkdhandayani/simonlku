@@ -119,10 +119,10 @@
                         <td></td>
                     </tr>
 
-                    <div class="table-responsive square">
+                    <div class="table-responsive square"  style="overflow-x: auto;">
                         <table border="1" class="col-lg-12">
                             <tr>
-                                <td class="col-lg-6">
+                                <td class="col-lg-6" style="margin-top: 0px;">
                                     <strong>Ketentuan:</strong>
                                     <ol class="term">
                                         <li>Laporan Kegiatan yang harus diisi serta disampaikan secara benar dan lengkap.</li>
@@ -156,7 +156,7 @@
                                     </ol>
                                 </td>
 
-                                <td class="col-lg-4 jml-pegawai">
+                                <td class="col-lg-4" style="margin-top: 0px;">
                                     <strong>Jumlah Karyawan Tetap</strong>
                                     <p>Keterangan:</p>
                                     <ol class="term">
@@ -172,15 +172,16 @@
                                         <li>Petugas Administrasi dan Keuangan</li>
                                         <li>Karyawan Lain</li>
                                         <li>Jumlah</li>
+                                        <p><br><br><br><br><br></p>
                                     </ol>
                                 </td>
 
-                                <td class="col-lg-1 bottom">
-                                    <strong>Pria</strong>
+                                <td class="col-lg-1 term">
+                                    <p style="height: 400px;"><strong>Pria</strong></p>
                                 </td>
 
-                                <td class="col-lg-1 bottom">
-                                    <strong>Wanita</strong>
+                                <td class="col-lg-1 term">
+                                    <p style="height: 400px;"><strong>Wanita</strong></p>
                                 </td>
                             </tr>
                         </table>

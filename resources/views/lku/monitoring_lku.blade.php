@@ -19,9 +19,9 @@
         <div class="col-xs-12">
             <div class="box box-primary">
                 <div class="box-header">
-                    <div class="box-body pad table-responsive">
+                    <div class="box-body pad table-responsive" style="padding-bottom: 0px;">
                         
-                        <div class="form-group col-md-2" style="padding: 0px;">
+                        <div class="form-group col-md-2" style="padding-bottom: 0px; padding-left: 0px;">
                             <select id="tahun" class="form-control select2" style="width: 170px;" name="tahun" required="required" autocomplete="off">
                                 <option disabled selected>-- Pilih Tahun LKU--</option>
                                 @foreach ($lkus as $tahun)
@@ -34,18 +34,17 @@
                             @if(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 0)
                             <div style="float: right;">
                                 <div style="clear: both;"></div>
-                                <a href="#" class="btn bg-purple btn-sm" target="_blank"><i class="fa fa-file-pdf-o"> Export PDF</i></a>
+                                <a href="#" id="cetak" class="btn bg-purple btn-sm" target="_blank"><i class="fa fa-file-pdf-o"> Export PDF</i></a>
                             </div>
                             @endif
                         </div>
                     </div>
 
                     <div class="box-body" id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
-                        <div class="row"></div>
 
                         <div class="row">
                             <div class="col-xs-12">
-                                <table id="example1" class="table table-hover table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                <table id="example1 tahun" class="table table-hover table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
@@ -82,7 +81,7 @@
         let data = {
             'tahun':tahun
         }
-
+        $('#cetak').attr('href','/cetaklku/'+ tahun +'')
         $.ajax({
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),

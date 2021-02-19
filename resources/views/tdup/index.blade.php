@@ -44,7 +44,7 @@
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Aksi</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody> 
                                         @php $i=1; @endphp @foreach ($tdups as $tdup)
                                         <tr>
                                             <td>{{ $i }}</td>

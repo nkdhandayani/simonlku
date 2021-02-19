@@ -42,6 +42,9 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/bpw/cetak', 'App\Http\Controllers\BPWController@cetak');
 		Route::get('/bpw/cetakId/{id}','App\Http\Controllers\BPWController@cetakId');
 
+		// Route LKU
+		Route::get('/cetaklku/{tahun}','App\Http\Controllers\LKUController@cetakFilter');
+
 		});
 
 
@@ -115,6 +118,7 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/profile/edit','App\Http\Controllers\ProfileController@edit');
 		Route::patch('/profile/update','App\Http\Controllers\ProfileController@update');
 		Route::get('/profile/show','App\Http\Controllers\ProfileController@show');
+		Route::get('/profile/ganti_pass','App\Http\Controllers\ProfileController@gantiPass');
 
 		});
 

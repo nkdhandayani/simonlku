@@ -32,7 +32,7 @@ class LKUController extends Controller
         return view('lku/index', compact('lkus'));
     }
 
-
+ 
     public function monitoring(Request $request)
     { 
         $bpws = BPW::orderBy('nm_bpw', 'ASC')->get();
@@ -40,13 +40,12 @@ class LKUController extends Controller
 
         if($request->ajax()){
             $lku = LKU::where('tahun', $request->tahun)->pluck('id_bpw')->toArray();
-            $data = BPW::whereNotIn('id_bpw', collect($lku))->get();
+            $data = BPW::whereNotIn('id_bpw', collect($lku))->orderBy('nm_bpw', 'ASC')->get();
             $user = auth()->guard('user')->user();
             return json_encode(['data'=>$data, 'user'=>$user]);
         }
         return view('lku/monitoring_lku', compact('bpws', 'lkus'));
     }
-
 
     public function store(Request $request)
     {
@@ -61,11 +60,11 @@ class LKUController extends Controller
         $izin = Izin::where('id_bpw', $bpw->id_bpw)->where('sts_verifikasi', 2)->first();
 
         if($tdup == null && $izin == null) {
-            return redirect('/lku')->with('error', 'File TDUP dan Izin Operadional Anda tidak ditemukan!');
+            return redirect('/lku')->with('error', 'File TDUP dan Izin Operasional Anda tidak ditemukan!');
         } else if($tdup == null) {
-            return redirect('/lku')->with('error', 'Pastikan file TDUP Anda telah disetujui!');
+            return redirect('/lku')->with('error', 'File TDUP Anda tidak ditemukan!');
         } else if($izin == null) {
-            return redirect('/lku')->with('error', 'Pastikan file Izin Operasional Anda telah disetujui!');
+            return redirect('/lku')->with('error', 'File Izin Operasional Anda tidak ditemukan!');
         }
 
         $file = $request->file_lku;
@@ -81,9 +80,9 @@ class LKUController extends Controller
             'tahun' => request('tahun'),
             'periode' => request('periode'),
             'file_lku' => $file->getClientOriginalName(),
-            'sts_verifikasi' => '',
-            'keterangan' => '',
-            'tgl_verifikasi' => '',
+            'sts_verifikasi' =>'',
+            'keterangan' => request('keterangan'),
+            'tgl_verifikasi' => request('tgl_verifikasi'),
         ]);
 
         return redirect('/lku');
@@ -153,16 +152,14 @@ class LKUController extends Controller
         return redirect('/lku');
     }
 
-    public function pdf(Request $request)
-    {
-        $lkus = LKU::all();
- 
-        $pdf = PDF::loadview('lku/lku_pdf', compact('lku'));
-        return $pdf->stream();
-    }
+    public function cetakFilter($tahun)
+    {   
+        $lku = LKU::where('tahun', $tahun)->pluck('id_bpw')->toArray();
+        $bpw = BPW::whereNotIn('id_bpw', collect($lku))->get();
+        $tahun_filter = LKU::where('tahun', $tahun)->first();
 
-    public function destroy($id)
-    {
-        //
+        $pdf = PDF::loadview('lku/lku_cetak', compact('lku','bpw', 'tahun'));
+        $pdf->setPaper('A4', 'landscape');
+        return $pdf->stream();
     }
 }

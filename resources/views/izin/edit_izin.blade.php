@@ -26,6 +26,7 @@
                     <br />
                     <br />
 
+                    @if(auth()->guard('bpw')->user())
                     <div class="form-row">
                         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
                             <label for="no_izin">Nomor Izin Operasional</label>
@@ -68,7 +69,6 @@
                         <input name="created_at" type="text" class="form-control" id="created_at" value="{{$izin -> created_at -> isoFormat('dddd, DD MMMM Y')}}" required="required" autocomplete="off" readonly />
                     </div>
 
-                    @if(auth()->guard('bpw')->user())
                     <div class="form-group">
                         <label for="keterangan">Keterangan</label>
                         <textarea name="keterangan" type="textarea" class="form-control" id="keterangan" rows="6" autocomplete="off" placeholder="-" readonly>{{$izin -> keterangan}}</textarea>
@@ -89,17 +89,60 @@
                                 <option value="1" @if($izin -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
                             </select>
                         </div>
-                        <div class="form-group col-md-6" style="padding: 0px;">
-                            <label for="status">Status</label>
-                            <select name="status" class="form-control" id="status" value="{{$izin -> status}}" required="required" autocomplete="off" readonly>
-                                <option selected disabled="">-- Pilih Status --</option>
-                                <option value="1" @if($izin -> status == "1") selected @endif>Aktif</option>
-                                <option value="0" @if($izin -> status == "0") selected @endif>Tidak Aktif</option>
-                            </select>
+                        <div class="form-group col-md-6" style="padding: 0;">
+                            <label for="tgl_verifikasi">Tanggal Verifikasi</label>
+                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" @if($izin -> tgl_verifikasi == null)
+                            value="{{$izin -> tgl_verifikasi}}"
+                            @else
+                            value="{{$izin -> tgl_verifikasi -> format('Y-m-d')}}"
+                            @endif
+                            required="required" autocomplete="off" readonly />
                         </div>
                     </div>
 
                     @elseif(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 1)
+                    <div class="form-row">
+                        <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
+                            <label for="no_izin">Nomor Izin Operasional</label>
+                            <input name="no_izin" type="text" class="form-control" id="no_izin" value="{{$izin -> no_izin}}" required="required" autocomplete="off" readonly />
+                            @error('no_izin')
+                            <span class="invalid-feedback text-danger" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <div class="form-group col-md-6" style="padding: 0px;">
+                            <label for="tgl_izin">Tanggal Izin Operasional</label>
+                            <input name="tgl_izin" type="date" class="form-control" id="tgl_izin" value="{{$izin -> tgl_izin -> format('Y-m-d')}}" required="required" autocomplete="off" readonly />
+                        </div>
+                        @error('tgl_izin')
+                        <span class="invalid-feedback text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="file_izin">File izin</label>
+                        <br />
+                        <a href="{{ asset('file_izin/' . $izin->file_izin) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_izin/' . $izin->file_izin) }}" /></a>
+                        @if(auth()->guard('bpw')->user())
+                        <br />
+                        <br />
+                        <p style="margin-bottom: 0;">(Silakan upload ulang file Anda)</p>
+                        <input name="file_izin" type="file" class="form-control-file" id="file_izin" value="{{$izin -> file_izin}}" required="required" autocomplete="off" />
+                        @endif @error('file_izin')
+                        <span class="invalid-feedback text-danger" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label for="created_at">Tanggal Ditambahkan</label>
+                        <input name="created_at" type="text" class="form-control" id="created_at" value="{{$izin -> created_at -> isoFormat('dddd, DD MMMM Y')}}" required="required" autocomplete="off" readonly />
+                    </div>
+
                     <div class="form-group">
                         <label for="keterangan">Keterangan</label>
                         <textarea name="keterangan" type="textarea" class="form-control" id="input_keterangan" rows="6" autocomplete="off" placeholder="Masukkan Keterangan">{{$izin -> keterangan}}</textarea>
@@ -117,7 +160,13 @@
 
                         <div class="form-group col-md-6" style="padding: 0px;">
                             <label for="tgl_verifikasi">Tanggal Verifikasi</label>
-                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" value="{{$izin -> tgl_verifikasi}}" required="required" autocomplete="off" />
+                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi"
+                            @if($izin -> tgl_verifikasi == null)
+                            value="{{$izin -> tgl_verifikasi}}"
+                            @else
+                            value="{{$izin -> tgl_verifikasi -> format('Y-m-d')}}"
+                            @endif
+                            required="required" autocomplete="off" />
                         </div>
                     </div>
                     @endif

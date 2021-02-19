@@ -41,7 +41,12 @@
       <a href="/dashboard"><i class="fa fa-home"></i> Dashboard</a>
     </li>
 
+
     @if(auth()->guard('bpw')->user())
+    <li class="{{ (Request()->segment(1) == 'bpw') ? 'active' : ''}}">
+      <a href="/bpw"><i class="fa fa-institution"></i> Biro Perjalanan Wisata</a>
+    </li>
+    
     <li class="header">KELOLA DATA BIRO</li>
     <li class="{{ (Request()->segment(1) == 'tdup') ? 'active' : ''}}">
       <a href="/tdup"><i class="fa fa-files-o"></i> TDUP</a>

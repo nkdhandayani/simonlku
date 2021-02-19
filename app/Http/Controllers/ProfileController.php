@@ -43,7 +43,6 @@ class ProfileController extends Controller
             
                 $users = Auth::guard('user')->user();
     
-                $users->username = $request->username;
                 $users->nm_user = $request->nm_user;
                 $users->nik = $request->nik;
                 $users->email = $request->email;
@@ -97,5 +96,12 @@ class ProfileController extends Controller
                 $bpws->save();
                 return redirect('/profile')->with('success', 'Data berhasil dirubah!');
         }
+    }
+
+    public function gantiPass()
+    {
+        $bpws = Auth::guard('bpw')->user();
+        $users = Auth::guard('user')->user();
+        return view ('/profile/ganti_pass', compact('bpws','users'));
     }
 }

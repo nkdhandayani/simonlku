@@ -163,11 +163,7 @@
                             {
                                 echo "-";
                             }
-                        elseif($lkus->tgl_verifikasi == '0000-00-00')
-                            {
-                                echo "-";
-                            }
-                        else
+                        elseif($lkus->tgl_verifikasi != null)
                             {
                                 echo $lkus->tgl_verifikasi->isoFormat('dddd, DD MMMM Y');
                             }

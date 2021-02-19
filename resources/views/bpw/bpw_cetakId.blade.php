@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>DATA Biro Perjalanan Wisata</title>
+	<title>Data Biro Perjalanan Wisata</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<style type="text/css">
 		.line-title{
@@ -58,7 +58,11 @@
                                     <tr>
                                         <td>No. Fax</td>
                                         <td>:</td>
-                                        <td>{{$bpws->no_fax}}</td>
+                                        <td>
+                                            @if($bpws->no_fax != null)
+                                            {{$bpws->no_fax}}
+                                            @else - @endif
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Nama PIC</td>

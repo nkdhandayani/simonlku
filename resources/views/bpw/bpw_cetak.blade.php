@@ -56,9 +56,6 @@
         </table>
         <br />
         <br />
-        <br />
-        <br />
-        <br />
         <table border="0" width="100%">
             <tr>
                 <td align="left" width="50%">

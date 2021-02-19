@@ -104,10 +104,14 @@ class TDUPController extends Controller
 
                 $file->move('file_tdup', $file->getClientOriginalName());
 
-                $lkus->file_tdup = $file->getClientOriginalName();
+                $tdups->file_tdup = $file->getClientOriginalName();
             }
         }
-        $tdups->sts_verifikasi = $request->sts_verifikasi;
+        if(auth()->guard('bpw')->user()){
+            $tdups->sts_verifikasi = $request->sts_verifikasi == 0;
+        } else{
+             $tdups->sts_verifikasi = $request->sts_verifikasi;
+        }
         $tdups->keterangan = $request->keterangan;
         $tdups->tgl_verifikasi = $request->tgl_verifikasi;
         $tdups->save();

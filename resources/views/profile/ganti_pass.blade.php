@@ -24,28 +24,29 @@
               <div class="box-body">
 
                 <div>
-                        <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                        <a href="/profile" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
                     </div>
+                    <br>
                     <br>
                 
                 <div class="form-group">
                   <label for="inputEmail3" class="col-sm-2">Passrowd Lama</label>
                   <div class="col-sm-3">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="Password lama">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Password Lama">
                   </div>
                 </div>
 
                 <div class="form-group">
                   <label for="inputPassword3" class="col-sm-2">Password Baru</label>
                   <div class="col-sm-3">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password baru">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password Baru">
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label for="inputPassword3" class="col-sm-2">Konfirmasi Password</label>
+                  <label for="inputPassword3" class="col-sm-2">Password Konfirmasi</label>
                   <div class="col-sm-3">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Konfirmasi password">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password Konfirmasi">
                   </div>
                 </div>
 

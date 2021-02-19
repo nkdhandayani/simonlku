@@ -81,7 +81,6 @@ class BPWController extends Controller
         $this->validate($request, [
             'nm_bpw' => 'min:6|max:50',
             'username' => 'min:5|max:20|unique:bpw,username,'.$id.',id_bpw',
-            'password' => 'min:6|max:20',
             'no_telp' => 'min:7|max:15',
             'no_fax' => 'nullable|min:7|max:15',    
             'nm_pic' => 'min:6|max:50',
@@ -103,12 +102,14 @@ class BPWController extends Controller
         $bpws->jns_bpw = $request->jns_bpw;
         $bpws->sts_kantor = $request->sts_kantor;
         $bpws->nib = $request->nib;
-        if(auth()->guard('bpw')->user()) {
-            $file = $request->foto_bpw;
+        if($request->hasFile('foto_bpw')){
+            if(auth()->guard('bpw')->user()) {
+                $file = $request->foto_bpw;
 
-            $file->move('avatar_bpw', $file->getClientOriginalName());
+                $file->move('avatar_bpw', $file->getClientOriginalName());
 
-            $bpws->foto_bpw = $file->getClientOriginalName();
+                $bpws->foto_bpw = $file->getClientOriginalName();
+            }
         }
         $bpws->status = $request->status;
         $bpws->save();

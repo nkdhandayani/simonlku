@@ -28,8 +28,12 @@
                     <div class="col-md-4 mb-3">
                         <div class="card">
                             <div class="card-body">
-                                <div class="d-flex flex-column align-items-center text-center" style="padding: 20px;">
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150" />
+                                <div class="d-flex flex-column align-items-center text-center user">
+                                        @if($bpws->foto_bpw != null)
+                                        <a href="{{ asset('avatar_bpw/' . $bpws->foto_bpw) }}"><img width="180px" height="180px" src="{{ asset('avatar_bpw/' . $bpws->foto_bpw) }}" class="img-circle" alt="User Image"/></a>
+                                        @else
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="180px" height="180px" class="img-circle" alt="User Image" style="padding-top: 10px;" />
+                                        @endif
                                     <div class="mt-3">
                                         <h3>
                                             {{$bpws->nm_bpw}}
@@ -52,6 +56,13 @@
                                         <td width="10px">:</td>
                                         <td>{{$bpws->nm_bpw}}</td>
                                     </tr>
+                                    @if(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '0')
+                                    <tr>
+                                        <td>Username</td>
+                                        <td>:</td>
+                                        <td>{{$bpws->username}}</td>
+                                    </tr>
+                                    @endif
                                     <tr>
                                         <td>Email</td>
                                         <td>:</td>
@@ -75,7 +86,11 @@
                                     <tr>
                                         <td>No. Fax</td>
                                         <td>:</td>
-                                        <td>{{$bpws->no_fax}}</td>
+                                        <td>
+                                            @if($bpws->no_fax != null)
+                                            {{$bpws->no_fax}}
+                                            @else - @endif
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Nama PIC</td>

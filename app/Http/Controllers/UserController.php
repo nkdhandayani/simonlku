@@ -67,7 +67,6 @@ class UserController extends Controller
         $this->validate($request, [
             'username' => 'min:5|max:20|unique:users,username,'.$id.',id_user',
             'nm_user' => 'min:6|max:50',
-            'password' => 'min:6|max:20', 
             'nik' => 'min:16|max:20', 
             'no_telp' => 'min:7|max:15',
             'foto_user' => 'mimes:jpg,jpeg,png'   
@@ -81,12 +80,14 @@ class UserController extends Controller
         $users->email = $request->email;
         $users->no_telp = $request->no_telp;
         $users->jns_kelamin = $request->jns_kelamin;
-        if(auth()->guard('user')->user()) {
-            $file = $request->foto_user;
+        if($request->hasFile('foto_user')){
+            if(auth()->guard('user')->user()) {
+                $file = $request->foto_user;
 
-            $file->move('avatar_user', $file->getClientOriginalName());
+                $file->move('avatar_user', $file->getClientOriginalName());
 
-            $users->foto_user = $file->getClientOriginalName();
+                $users->foto_user = $file->getClientOriginalName();
+            }
         }
         $users->level = $request->level;
         $users->status = $request->status;
