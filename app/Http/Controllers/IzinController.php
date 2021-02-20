@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
-use Carbon\Carbon;
 
 class IzinController extends Controller
 {
@@ -42,7 +41,7 @@ class IzinController extends Controller
         }
 
         $this->validate($request, [
-            'no_izin' => 'required|min:4',
+            'no_izin' => 'required|min:4|max:10',
             'tgl_izin' => 'required|date',
             'file_izin' => 'required|mimes:jpg,jpeg,png'
         ]); 
@@ -62,7 +61,7 @@ class IzinController extends Controller
             'tgl_verifikasi' => request('tgl_verifikasi'),
         ]);
 
-        return redirect('/izin')->with('success', 'Data berhasil ditambahkan!');
+        return redirect('/izin')->with('success', 'Data berhasil ditambahkan.');
     }
 
 
@@ -91,11 +90,17 @@ class IzinController extends Controller
 
     public function update(Request $request, $id)
     {
+        if(auth()->guard('bpw')->user()) {
         $this->validate($request, [
-            'no_izin' => 'required|min:4',
-            'tgl_izin' => 'required|date',
-            'file_izin' => 'mimes:jpg,jpeg,png'
+            'no_izin' => 'min:4|max:10',
+            'tgl_izin' => 'date',
+            'file_izin' => 'mimes:jpg,jpeg,png',
         ]);
+        } else {
+        $this->validate($request, [
+            'sts_verifikasi' => 'required'
+        ]);
+        }
 
         $izins = Izin::find($id);
 
@@ -111,7 +116,7 @@ class IzinController extends Controller
 
                 $file->move('file_izin', $file->getClientOriginalName());
 
-                $lkus->file_izin = $file->getClientOriginalName();
+                $izins->file_izin = $file->getClientOriginalName();
             }
         }
         if(auth()->guard('bpw')->user()){
@@ -122,7 +127,7 @@ class IzinController extends Controller
         $izins->keterangan = $request->keterangan;
         $izins->tgl_verifikasi = $request->tgl_verifikasi;
         $izins->save();
-        return redirect('/izin')->with('success', 'Data berhasil dirubah!');
+        return redirect('/izin')->with('success', 'Data berhasil diubah.');
     }
 
 

@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
-use PDF;
+use PDF; 
 
 class LKUController extends Controller
 {
@@ -32,7 +32,6 @@ class LKUController extends Controller
         return view('lku/index', compact('lkus'));
     }
 
- 
     public function monitoring(Request $request)
     { 
         $bpws = BPW::orderBy('nm_bpw', 'ASC')->get();
@@ -50,6 +49,9 @@ class LKUController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'no_surat' => 'required|min:4|max:20',
+            'tahun' => 'required|min:4|max:4',
+            'periode' => 'required',
             'file_lku' => 'required|mimes:pdf'
         ]);
 
@@ -60,11 +62,11 @@ class LKUController extends Controller
         $izin = Izin::where('id_bpw', $bpw->id_bpw)->where('sts_verifikasi', 2)->first();
 
         if($tdup == null && $izin == null) {
-            return redirect('/lku')->with('error', 'File TDUP dan Izin Operasional Anda tidak ditemukan!');
+            return redirect('/lku')->with('error', 'Pastikan file TDUP dan Izin Operasional Anda telah disetujui.');
         } else if($tdup == null) {
-            return redirect('/lku')->with('error', 'File TDUP Anda tidak ditemukan!');
+            return redirect('/lku')->with('error', 'Pastikan file TDUP Anda telah disetujui.');
         } else if($izin == null) {
-            return redirect('/lku')->with('error', 'File Izin Operasional Anda tidak ditemukan!');
+            return redirect('/lku')->with('error', 'Pastikan file Izin Operasional Anda telah disetujui.');
         }
 
         $file = $request->file_lku;
@@ -120,9 +122,17 @@ class LKUController extends Controller
 
     public function update(Request $request, $id)
     {
+        if(auth()->guard('bpw')->user()) {
         $this->validate($request, [
+            'no_surat' => 'min:4|max:20',
+            'tahun' => 'min:4|max:4',
             'file_lku' => 'mimes:pdf'
         ]);
+        } else {
+        $this->validate($request, [
+            'sts_verifikasi' => 'required'
+        ]);
+        }
         
         $lkus = LKU::find($id);
 
@@ -145,7 +155,11 @@ class LKUController extends Controller
             }
         }
 
-        $lkus->sts_verifikasi = $request->sts_verifikasi;
+        if(auth()->guard('bpw')->user()){
+            $lkus->sts_verifikasi = $request->sts_verifikasi == 0;
+        } else{
+            $lkus->sts_verifikasi = $request->sts_verifikasi;
+        }
         $lkus->keterangan = $request->keterangan;
         $lkus->tgl_verifikasi = $request->tgl_verifikasi;
         $lkus->save();

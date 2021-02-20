@@ -41,7 +41,7 @@ class TDUPController extends Controller
         }
 
         $this->validate($request, [
-            'no_tdup' => 'required|min:4',
+            'no_tdup' => 'required|min:4|max:10',
             'tgl_tdup' => 'required|date',
             'file_tdup' => 'required|mimes:jpg,jpeg,png'
         ]);
@@ -62,7 +62,7 @@ class TDUPController extends Controller
             'tgl_verifikasi' => request('tgl_verifikasi'),
         ]);
 
-        return redirect('/tdup')->with('success', 'Data berhasil ditambahkan!');
+        return redirect('/tdup')->with('success', 'Data berhasil ditambahkan.');
     }
 
 
@@ -90,11 +90,17 @@ class TDUPController extends Controller
 
     public function update(Request $request, $id)
     {
+        if(auth()->guard('bpw')->user()) {
         $this->validate($request, [
-            'no_tdup' => 'required|min:4',
-            'tgl_tdup' => 'required|date',
-            'file_tdup' => 'mimes:jpg,jpeg,png'
+            'no_tdup' => 'min:4|max:10',
+            'tgl_tdup' => 'date',
+            'file_tdup' => 'mimes:jpg,jpeg,png',
         ]);
+        } else {
+        $this->validate($request, [
+            'sts_verifikasi' => 'required'
+        ]);
+        }
 
         $tdups = TDUP::find($id);
 
@@ -122,7 +128,7 @@ class TDUPController extends Controller
         $tdups->keterangan = $request->keterangan;
         $tdups->tgl_verifikasi = $request->tgl_verifikasi;
         $tdups->save();
-        return redirect('/tdup')->with('success', 'Data berhasil dirubah!');  
+        return redirect('/tdup')->with('success', 'Data berhasil diubah.');  
 
     }
 

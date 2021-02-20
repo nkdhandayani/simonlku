@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Data Biro Perjalanan Wisata</title>
+	<title>DATA BIRO PERJALANAN WISATA - DINAS PARIWISATA PROVINSI BALI</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<style type="text/css">
 		.line-title{
@@ -9,7 +9,7 @@
 			border-style: inset;
 			border-top: 1px solid #000;
 		}
-	</style>
+	</style> 
 </head>
 <body>
 	<img src="assets/images/Logo Dinas Pariwisata.png" style="position: absolute; width: 100px; height: auto;" />
@@ -31,7 +31,7 @@
          <table class="table table-bordered">
          ($bpws as $bpws)
 		<tr>
-                                        <td width="150">Nama Biro</td>
+                                        <td width="200">Nama Biro Perjalanan Wisata</td>
                                         <td width="10px">:</td>
                                         <td>{{$bpws->nm_bpw}}</td>
                                     </tr>
@@ -51,12 +51,12 @@
                                         <td>{{$bpws->kabupaten}}</td>
                                     </tr>
                                     <tr>
-                                        <td>No. Telp</td>
+                                        <td>Nomor Telp</td>
                                         <td>:</td>
                                         <td>{{$bpws->no_telp}}</td>
                                     </tr>
                                     <tr>
-                                        <td>No. Fax</td>
+                                        <td>Nomor Fax</td>
                                         <td>:</td>
                                         <td>
                                             @if($bpws->no_fax != null)
@@ -75,7 +75,7 @@
                                         <td>{{$bpws->nm_pimpinan}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Jenis BPW</td>
+                                        <td>Jenis Biro Perjalanan Wisata</td>
                                         <td>:</td>
                                         <td>{{$bpws->jns_bpw}}</td>
                                     </tr>
@@ -111,7 +111,6 @@
                     <br />
                     <br />
                     <br />
-                    <br>
                     <b><u>Ni Luh Herawati, SS., M.Par</u></b>
                 </td>
                 <td align="right" width="50%">
@@ -120,7 +119,6 @@
                     <br />
                     <br />
                     <br />
-                    <br>
                     <b><u>@if(\Auth::guard('user')->check()){{ \Auth::guard('user')->user()->nm_user }} @endif</u></b>
                 </td>
             </tr>

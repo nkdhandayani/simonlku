@@ -52,7 +52,7 @@
                             <div class="card-body">
                                 <table class="table">
                                     <tr>
-                                        <td width="150">Nama Biro</td>
+                                        <td width="200">Nama Biro Perjalanan Wisata</td>
                                         <td width="10px">:</td>
                                         <td>{{$bpws->nm_bpw}}</td>
                                     </tr>
@@ -79,12 +79,12 @@
                                         <td>{{$bpws->kabupaten}}</td>
                                     </tr>
                                     <tr>
-                                        <td>No. Telp</td>
+                                        <td>Nomor Telp</td>
                                         <td>:</td>
                                         <td>{{$bpws->no_telp}}</td>
                                     </tr>
                                     <tr>
-                                        <td>No. Fax</td>
+                                        <td>Nomor Fax</td>
                                         <td>:</td>
                                         <td>
                                             @if($bpws->no_fax != null)
@@ -103,7 +103,7 @@
                                         <td>{{$bpws->nm_pimpinan}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Jenis BPW</td>
+                                        <td>Jenis Biro Perjalanan Wisata</td>
                                         <td>:</td>
                                         <td>{{$bpws->jns_bpw}}</td>
                                     </tr>
@@ -129,7 +129,13 @@
                             </div>
                         </div>
                     </div>
-                    <h5 style="text-align: right; padding-right: 15px; color: blue;">Reset Password?</h5>
+
+                    @if(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 0)
+                    <div style="float: right;">
+                        <div style="clear: both;"></div>
+                        <a href="#"><button class="btn btn-primary btn-sm">Reset Password?</button></a>
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

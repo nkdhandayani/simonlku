@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use PDF;
-
+ 
 class BPWController extends Controller
 {
     /* *
@@ -31,12 +31,16 @@ class BPWController extends Controller
             'nm_bpw' => 'required|min:6|max:50',
             'username' => 'required|min:5|max:20|unique:bpw',
             'password' => 'required|min:6|max:20',
+            'kabupaten' => 'required',
             'no_telp' => 'required|min:7|max:15',
             'no_fax' => 'nullable|min:7|max:15',    
             'nm_pic' => 'required|min:6|max:50',
             'nm_pimpinan' => 'required|min:6|max:50',
+            'jns_bpw' => 'required',
+            'sts_kantor' => 'required',
             'nib' => 'required|min:13|max:20',
-            'foto_bpw' => 'mimesmimes:jpg,jpeg,png'
+            'foto_bpw' => 'mimesmimes:jpg,jpeg,png',
+            'status' => 'required',
         ]);
 
         BPW::create([

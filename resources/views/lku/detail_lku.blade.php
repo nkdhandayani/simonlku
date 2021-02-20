@@ -24,7 +24,7 @@
 
             <table class="table">
                 <tr>
-                    <td width="300">Nama Biro</td>
+                    <td width="300">Nama Biro Perjalanan Wisata</td>
                     <td width="10">:</td>
                     <td>{{$lkus->bpw->nm_bpw}}</td>
                 </tr>
@@ -74,7 +74,7 @@
                     <td>File Tanda Daftar Usaha Pariwisata</td>
                     <td>:</td>
                     <td>
-                        <a href="{{ asset('file_tdup/' . $lkus->tdup->file_tdup) }}"><img width="200px" height="200px" src="{{ asset('file_tdup/' . $lkus->tdup->file_tdup) }}" /></a>
+                        <a href="{{ asset('file_tdup/' . $lkus->tdup->file_tdup) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_tdup/' . $lkus->tdup->file_tdup) }}" /></a>
                     </td>
                 </tr>
 
@@ -85,7 +85,7 @@
                         <?php
                         if($lkus->izin->sts_verifikasi == 0)
                             {
-                                echo "Belum Diverifikasi";
+                                echo "Sedang Diproses";
                             }
                         elseif($lkus->izin->sts_verifikasi == 1)
                             {
@@ -102,7 +102,7 @@
                     <td>File Izin Operasional</td>
                     <td>:</td>
                     <td>
-                        <a href="{{ asset('file_izin/' . $lkus->izin->file_izin) }}"><img width="200px" height="200px" src="{{ asset('file_izin/' . $lkus->izin->file_izin) }}" /></a>
+                        <a href="{{ asset('file_izin/' . $lkus->izin->file_izin) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_izin/' . $lkus->izin->file_izin) }}" /></a>
                     </td>
                 </tr>
 

@@ -35,7 +35,6 @@
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
-                                            <!-- <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Foto Pegawai</th> -->
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Nama Pegawai</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">Email</th>
                                             <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending">No. Telp</th>
@@ -182,6 +181,11 @@
                                         <option value="Laki-laki" {{ old('jns_kelamin') == 'Laki-laki' ? 'selected' : '' }}>Laki-laki</option>
                                         <option value="Perempuan" {{ old('jns_kelamin') == 'Perempuan' ? 'selected' : '' }}>Perempuan</option>
                                     </select>
+                                    @error('jns_kelamin')
+                                <span class="invalid-feedback text-danger" role="alert">
+                                    Jenis Kelamin tidak boleh kosong.
+                                </span>
+                                @enderror
                                 </div>
                             </div>
 
@@ -194,6 +198,11 @@
                                         <option value="1" {{ old('level') == '1' ? 'selected' : '' }}>Staf Jasa Pariwisata</option>
                                         <option value="2" {{ old('level') == '2' ? 'selected' : '' }}>Kepala Seksi Jasa Pariwisata</option>
                                     </select>
+                                    @error('level')
+                                <span class="invalid-feedback text-danger" role="alert">
+                                    Level tidak boleh kosong.
+                                </span>
+                                @enderror
                                 </div>
                                 <div class="form-group col-md-6" style="padding: 0; margin-bottom: 10px;">
                                     <label for="form_status" autocomplete="off">Status</label>
@@ -202,6 +211,11 @@
                                         <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>Aktif</option>
                                         <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>Tidak Aktif</option>
                                     </select>
+                                    @error('status')
+                                <span class="invalid-feedback text-danger" role="alert">
+                                    Status tidak boleh kosong.
+                                </span>
+                                @enderror
                                 </div>
                             </div>
 

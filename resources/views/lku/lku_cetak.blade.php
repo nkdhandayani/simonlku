@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>DATA BIRO PERJALANAN WISATA (TIDAK MENGUMPULKAN LKU) - DINAS PARIWISATA BALI</title>
+        <title>DAFTAR MONITORING LKU TAHUN {{$tahun}} - DINAS PARIWISATA BALI</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
         <style type="text/css">
             .line-title {
@@ -26,7 +26,7 @@
         </table>
 
         <hr class="line-title" />
-        <div style="line-height: 0.5">
+        <div style="padding-top: 10px; line-height: 0.5">
         <p align="center" style="font-size: 25px; font-style: bold;">DAFTAR BIRO PERJALANAN WISATA</p>
         <p  align="center" style="font-size: 25px; font-style: bold;">YANG TIDAK MENGUMPULKAN LKU</p>
         <p  align="center" style="font-size: 25px; font-style: bold;">TAHUN {{$tahun}}</p>

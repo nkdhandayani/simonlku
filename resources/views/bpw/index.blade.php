@@ -39,7 +39,7 @@
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama BPW</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama Biro</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Kabupaten</th>
                                             <th style="width: 200px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
                                                 Alamat
@@ -96,11 +96,11 @@
                             {{csrf_field()}}
 
                             <div class="form-group" style="margin-bottom: 10px;">
-                                <label for="nm_bpw">Nama BPW</label>
-                                <input name="nm_bpw" type="text" class="form-control" id="nm_bpw" placeholder="Masukkan Nama BPW" required autocomplete="off" value="{{ old('nm_bpw') }}" />
+                                <label for="nm_bpw">Nama Biro Perjalanan Wisata</label>
+                                <input name="nm_bpw" type="text" class="form-control" id="nm_bpw" placeholder="Masukkan Nama Biro Perjalanan Wisata" required autocomplete="off" value="{{ old('nm_bpw') }}" />
                                 @error('nm_bpw')
                                 <span class="invalid-feedback text-danger" role="alert">
-                                    Nama BPW terdiri dari 6-50 karakter.
+                                    Nama Biro Perjalanan Wisata terdiri dari 6-50 karakter.
                                 </span>
                                 @enderror
                             </div>
@@ -115,7 +115,7 @@
                                     </span>
                                     @enderror
                                 </div>
-                                <div style="padding: 0px; padding-right: 10px; margin-bottom: 25px;" class="form-group col-md-6">
+                                <div style="padding: 0px; margin-bottom: 25px;" class="form-group col-md-6">
                                     <label for="password">Password</label>
                                     <input name="password" type="password" class="form-control" id="password" placeholder="Masukkan Password" required autocomplete="off" />
                                     @error('password')
@@ -190,21 +190,31 @@
 
                             <div class="form-row">
                                 <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 5px;">
-                                    <label for="jns_BPW">Jenis BPW</label>
+                                    <label for="jns_BPW">Jenis Biro Perjalanan Wisata</label>
                                     <select name="jns_bpw" class="form-control" id="jns_bpw" required autocomplete="off">
-                                        <option selected disabled>-- Pilih Jenis BPW --</option>
+                                        <option selected disabled>-- Pilih Jenis Biro --</option>
                                         <option value="BPW" {{ old('jns_bpw') == 'BPW' ? 'selected' : '' }}>BPW</option>
                                         <option value="MICE" {{ old('jns_bpw') == 'MICE' ? 'selected' : '' }}>MICE</option>
                                         <option value="Lanjut Usia"{{ old('jns_bpw') == 'Lanjut Usia' ? 'selected' : '' }}>Lanjut Usia</option>
                                     </select>
+                                    @error('jns_bpw')
+                                <span class="invalid-feedback text-danger" role="alert">
+                                    Jenis Biro tidak boleh kosong.
+                                </span>
+                                @enderror
                                 </div>
                                 <div class="form-group col-md-6" style="padding: 0; margin-bottom: 25px;">
                                     <label for="sts_kantor">Status Kantor</label>
                                     <select name="sts_kantor" class="form-control" id="sts_kantor" required autocomplete="off">
                                         <option selected disabled>-- Pilih Status Kantor --</option>
-                                        <option value="Hak Pribadi"old('sts_kantor') == 'Hak Pribadi' ? 'selected' : '' }}>Hak Pribadi</option>
-                                        <option value="Kontrak"{{ old('sts_kantor') == 'Kontrak' ? 'selected' : '' }}>Kontrak</option>
+                                        <option value="Hak Pribadi" {{old('sts_kantor') == 'Hak Pribadi' ? 'selected' : '' }}>Hak Pribadi</option>
+                                        <option value="Kontrak" {{ old('sts_kantor') == 'Kontrak' ? 'selected' : '' }}>Kontrak</option>
                                     </select>
+                                    @error('sts_kantor')
+                                <span class="invalid-feedback text-danger" role="alert">
+                                    Status Kantor tidak boleh kosong.
+                                </span>
+                                @enderror
                                 </div>
                             </div>
 
@@ -223,6 +233,11 @@
                                         <option value="Klungkung"{{ old('kabupaten') == 'Klungkung' ? 'selected' : '' }}>Klungkung</option>
                                         <option value="Karangasem"{{ old('kabupaten') == 'Karangasem' ? 'selected' : '' }}>Karangasem</option>
                                     </select>
+                                    @error('kabupaten')
+                                <span class="invalid-feedback text-danger" role="alert">
+                                    Kabupaten tidak boleh kosong.
+                                </span>
+                                @enderror
                                 </div>
                                 <div class="form-group col-md-6" style="padding: 0; margin-bottom: 25px;">
                                     <label for="status">Status</label>
@@ -231,6 +246,11 @@
                                         <option value="1"{{ old('status') == '1' ? 'selected' : '' }}>Aktif</option>
                                         <option value="0"{{ old('status') == '0' ? 'selected' : '' }}>Tidak Aktif</option>
                                     </select>
+                                    @error('status')
+                                <span class="invalid-feedback text-danger" role="alert">
+                                    Status tidak boleh kosong.
+                                </span>
+                                @enderror
                                 </div>
                             </div>
 

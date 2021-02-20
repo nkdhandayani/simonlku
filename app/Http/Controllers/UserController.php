@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
-    /**
+    /** 
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -31,6 +31,9 @@ class UserController extends Controller
             'password' => 'required|min:6|max:20',
             'nik' => 'required|min:16|max:20',  
             'no_telp' => 'required|min:7|max:15',
+            'jns_kelamin' => 'required',
+            'level' => 'required',
+            'status' => 'required'
         ]);
 
         User::create([
@@ -94,5 +97,14 @@ class UserController extends Controller
         $users->save();
         
         return redirect('/user')->with('success', 'Data berhasil dirubah!');
+    }
+
+    public function reset($id)
+    {
+        $users = User::findOrFail(Auth::guard('user')->user()->id);
+        $users->password = bcrypt('disparbali');
+        $users->update();
+
+        return redirect('/user/show/{{$users->id_user}}')->with('success', 'Password berhasil direset!');
     }
 }

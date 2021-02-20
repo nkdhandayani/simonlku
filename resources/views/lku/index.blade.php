@@ -38,7 +38,7 @@
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama BPW</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama Biro</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
                                                 No. Surat Pengantar
                                             </th>
@@ -64,7 +64,7 @@
                                                 <?php
                                                 if($lku->sts_verifikasi == 0)
                                                     {
-                                                        echo "Belum Diverifikasi";
+                                                        echo "Sedang Diproses";
                                                     }
                                                 elseif($lku->sts_verifikasi == 1)
                                                     {
@@ -112,31 +112,46 @@
                             {{csrf_field()}}
 
                             <div class="form-group">
-                                <label for="input_no_surat">Nomor Surat Pengantar</label>
-                                <input name="no_surat" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Nomor Surat Pengantar" value="{{ old('no_surat') }}" />
+                                <label for="no_surat">Nomor Surat Pengantar</label>
+                                <input name="no_surat" id="no_surat" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Nomor Surat Pengantar" value="{{ old('no_surat') }}" />
+                                @error('no_surat')
+                                    <span class="invalid-feedback text-danger" role="alert">
+                                        Nomor Surat Pengantar terdiri dari 4-20 karakter.
+                                    </span>
+                                    @enderror
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
                                     <label for="input_tahun">Tahun LKU</label>
-                                    <input name="tahun" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Tahun LKU" value="{{ old('tahun') }}" />
+                                    <input name="tahun" type="text" class="form-control" id="tahun" required autocomplete="off" placeholder="Masukkan Tahun LKU" value="{{ old('tahun') }}" />
+                                    @error('tahun')
+                                    <span class="invalid-feedback text-danger" role="alert">
+                                        Tahun LKU terdiri dari 4 karakter.
+                                    </span>
+                                    @enderror
                                 </div>
-                                <div class="form-group col-md-6" style="padding: 0px;">
+                                <div class="form-group col-md-6" style="padding: 0px; margin-bottom: 35px;">
                                     <label for="periode">Periode LKU</label>
-                                    <select name="periode" class="form-control">
+                                    <select name="periode" class="form-control" id="periode" required autocomplete="off">
                                         <option selected disabled>-- Pilih Periode LKU --</option>
                                         <option value="I" {{ old('periode') == 'I' ? 'selected' : '' }}>I</option>
                                         <option value="II" {{ old('periode') == 'II' ? 'selected' : '' }}>II</option>
                                     </select>
+                                    @error('periode')
+                                <span class="invalid-feedback text-danger" role="alert">
+                                    Periode tidak boleh kosong.
+                                </span>
+                                @enderror
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label for="file_tdup">File LKU <small style="color: red;"> *Dalam Format PDF</small></label>
-                                <input name="file_lku" type="file" class="form-control-file" value="{{ old('file_lku') }}" />
+                                <input name="file_lku" type="file" class="form-control-file" required autocomplete="off" value="{{ old('file_lku') }}" />
                                 @error('file_lku')
                                 <span class="invalid-feedback text-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    Format file yang Anda upload salah.
                                 </span>
                                 @enderror
                             </div>

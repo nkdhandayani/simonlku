@@ -43,7 +43,7 @@
                     <div class="box-body" id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
 
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="col-xs-12" style="overflow-x: auto;">
                                 <table id="" class="table table-hover table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                     <thead>
                                         <tr role="row">
@@ -127,10 +127,6 @@
             },
         });
 
-    })
-
-    $('#refresh').click(function(){
-        location.reload()
     })
 </script>
 @endsection

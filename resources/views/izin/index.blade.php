@@ -92,30 +92,25 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
                                     <label for="no_izin">Nomor Izin Operasional</label>
-                                    <input name="no_izin" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Nomor Izin Operasional" value="{{ old('no_izin') }}" />
+                                    <input name="no_izin" type="text" class="form-control" required autocomplete="off" placeholder="Masukkan Nomor Izin Operasional" value="{{ old('no_izin') }}" />
                                     @error('no_izin')
                                     <span class="invalid-feedback text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        Nomor Izin terdiri dari 4-10 karakter.
                                     </span>
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6" style="padding: 0;">
                                     <label for="tgl_izin">Tanggal Izin Operasional</label>
-                                    <input name="tgl_izin" type="date" class="form-control" required="required" autocomplete="off" value="{{ old('tgl_izin') }}" />
-                                    @error('tgl_izin')
-                                    <span class="invalid-feedback text-danger" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    <input name="tgl_izin" type="date" class="form-control" required autocomplete="off" value="{{ old('tgl_izin') }}" />
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label for="file_tdup">File Izin Operasional <small style="color: red;"> *Dalam Format JPG/JPEG/PNG</small></label>
-                                <input name="file_izin" type="file" class="form-control-file" value="{{ old('file_izin') }}" />
+                                <label for="file_izin">File Izin Operasional <small style="color: red;"> *Dalam Format JPG/JPEG/PNG</small></label>
+                                <input name="file_izin" type="file" class="form-control-file" required autocomplete="off" value="{{ old('file_izin') }}" />
                                 @error('file_izin')
                                 <span class="invalid-feedback text-danger" role="alert">
-                                    <strong>{{ $message }}</strong>
+                                    Format file yang Anda upload salah.
                                 </span>
                                 @enderror
                             </div>

@@ -31,11 +31,11 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 5px;">
-                            <label for="nm_bpw">Nama BPW</label>
+                            <label for="nm_bpw">Nama Biro Perjalanan Wisata</label>
                             <input name="nm_bpw" type="text" class="form-control" id="nm_bpw" value="{{$bpws -> nm_bpw}}" required autocomplete="off" />
                             @error('nm_bpw')
                             <span class="invalid-feedback text-danger" role="alert">
-                                Nama BPW terdiri dari 6-50 karakter.
+                                Nama Biro Perjalanan Wisata terdiri dari 6-50 karakter.
                             </span>
                             @enderror
                         </div>
@@ -115,9 +115,9 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 5px;">
-                            <label for="jns_BPW">Jenis BPW</label>
+                            <label for="jns_BPW">Jenis Biro</label>
                             <select name="jns_bpw" class="form-control" id="jns_bpw" value="{{$bpws -> jns_bpw}}" required autocomplete="off">
-                                <option selected>-- Pilih Jenis BPW --</option>
+                                <option disabled selected>-- Pilih Jenis BPW --</option>
                                 <option value="BPW" @if($bpws -> jns_bpw == "BPW") selected @endif>BPW</option>
                                 <option value="MICE" @if($bpws -> jns_bpw == "MICE") selected @endif>MICE</option>
                                 <option value="Lanjut Usia" @if($bpws -> jns_bpw == "Lanjut Usia") selected @endif>Lanjut Usia</option>
@@ -126,7 +126,7 @@
                         <div class="form-group col-md-6" style="padding: 0; margin-bottom: 25px;">
                             <label for="sts_kantor">Status Kantor</label>
                             <select name="sts_kantor" class="form-control" id="sts_kantor" value="{{$bpws -> sts_kantor}}" required autocomplete="off">
-                                <option selected>-- Pilih Status Kantor --</option>
+                                <option disabled selected>-- Pilih Status Kantor --</option>
                                 <option value="Hak Pribadi" @if($bpws -> sts_kantor == "Hak Pribadi") selected @endif>Hak Pribadi</option>
                                 <option value="Kontrak" @if($bpws -> sts_kantor == "Kontrak") selected @endif>Kontrak</option>
                             </select>
@@ -137,7 +137,7 @@
                         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 5px;">
                             <label for="kabupaten">Kabupaten/Kota</label>
                             <select name="kabupaten" class="form-control" id="kabupaten" required autocomplete="off">
-                                <option selected>-- Pilih Kabupaten/Kota --</option>
+                                <option disabled selected>-- Pilih Kabupaten/Kota --</option>
                                 <option value="Kota Denpasar" @if($bpws -> kabupaten == "Kota Denpasar") selected @endif>Kota Denpasar</option>
                                 <option value="Badung" @if($bpws -> kabupaten == "Badung") selected @endif>Badung</option>
                                 <option value="Gianyar" @if($bpws -> kabupaten == "Gianyar") selected @endif>Gianyar</option>
@@ -152,7 +152,7 @@
                         <div class="form-group col-md-6" style="padding: 0; margin-bottom: 25px;">
                             <label for="status">Status</label>
                             <select name="status" class="form-control" id="status" value="{{$bpws -> status}}" required autocomplete="off">
-                                <option selected>-- Pilih Status --</option>
+                                <option disabled="" selected>-- Pilih Status --</option>
                                 <option value="1" @if($bpws -> status == "1") selected @endif>Aktif</option>
                                 <option value="0" @if($bpws -> status == "0") selected @endif>Tidak Aktif</option>
                             </select>

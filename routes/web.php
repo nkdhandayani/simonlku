@@ -34,6 +34,8 @@ use Illuminate\Support\Facades\Route;
 		Route::get('/user/edit/{id}','App\Http\Controllers\UserController@edit');
 		Route::patch('/user/update/{id}','App\Http\Controllers\UserController@update');
 		Route::get('/user/show/{id}','App\Http\Controllers\UserController@show');
+		Route::get('/user/reset/{id}','App\Http\Controllers\UserController@reset');
+
 
 		// Route BPW
 		Route::post('/bpw/store', 'App\Http\Controllers\BPWController@store');

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>DATA BIRO PERJALANAN WISATA - DINAS PARIWISATA BALI</title>
+        <title>DAFTAR BIRO PERJALANAN WISATA TAHUN {{Carbon\Carbon::now()->isoFormat('Y')}} - DINAS PARIWISATA PROVINSI BALI</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
         <style type="text/css">
             .line-title {
@@ -27,12 +27,12 @@
 
         <hr class="line-title" />
 
-        <p align="center" style="font-size: 25px; font-style: bold;">DATA BIRO PERJALANAN WISATA TAHUN {{Carbon\Carbon::now()->isoFormat('Y')}}</p>
+        <p align="center" style="font-size: 25px; font-style: bold;">DAFTAR BIRO PERJALANAN WISATA TAHUN {{Carbon\Carbon::now()->isoFormat('Y')}}</p>
         <table class="table table-bordered">
             <thead>
                 <tr>
                     <th align="center">No.</th>
-                    <th align="center">Nama BPW</th>
+                    <th align="center">Nama Biro</th>
                     <th align="center">Kabupaten</th>
                     <th align="center">Alamat</th>
                     <th align="center">No. Telp</th>

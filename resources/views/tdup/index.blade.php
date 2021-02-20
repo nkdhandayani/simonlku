@@ -104,31 +104,26 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
                                     <label for="no_tdup">Nomor TDUP</label>
-                                    <input name="no_tdup" type="text" class="form-control" placeholder="Masukkan Nomor TDUP" required="required" autocomplete="off" value="{{ old('no_tdup') }}" />
+                                    <input name="no_tdup" type="text" class="form-control" placeholder="Masukkan Nomor TDUP" required autocomplete="off" value="{{ old('no_tdup') }}" />
                                     @error('no_tdup')
                                     <span class="invalid-feedback text-danger" role="alert">
-                                        {{ $message }}
+                                        Nomor TDUP terdiri dari 4-10 karakter.
                                     </span>
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6" style="padding: 0;">
                                     <label for="tgl_tdup">Tanggal TDUP</label>
-                                    <input name="tgl_tdup" type="date" class="form-control" required="required" autocomplete="off" value="{{ old('tgl_tdup') }}" />
-                                    @error('tgl_tdup')
-                                    <span class="invalid-feedback text-danger" role="alert">
-                                        {{ $message }}
-                                    </span>
-                                    @enderror
+                                    <input name="tgl_tdup" type="date" class="form-control" required autocomplete="off" value="{{ old('tgl_tdup') }}" />
                                 </div>
                                 <div class="col-md-12"></div>
                             </div>
 
                             <div class="form-group">
                                 <label for="file_tdup">File TDUP <small style="color: red;"> *Dalam Format JPG/JPEG/PNG</small></label>
-                                <input name="file_tdup" type="file" class="form-control-file" required="required" autocomplete="off" value="{{ old('file_tdup') }}" />
+                                <input name="file_tdup" type="file" class="form-control-file" required autocomplete="off" value="{{ old('file_tdup') }}" />
                                 @error('file_tdup')
                                 <span class="invalid-feedback text-danger" role="alert">
-                                    {{ $message }}
+                                    Format file yang Anda upload salah.
                                 </span>
                                 @enderror
                             </div>
