@@ -104,4 +104,37 @@ class ProfileController extends Controller
         $users = Auth::guard('user')->user();
         return view ('/profile/ganti_pass', compact('bpws','users'));
     }
+
+    public function gantiPassStore(Request $request)
+    {
+        $this->validate($request, [
+            'password_lama' => 'required|min:6|max:20',
+            'password_baru' => 'required|min:6|max:20',
+            'password_konfirmasi' => 'required|min:6|max:20',
+        ]);
+
+        $u = (Auth::guard('bpw')->user() != null) ? Auth::guard('bpw')->user() : Auth::guard('user')->user();
+        
+        // dd($request->all());
+        if (Hash::check($request->password_lama, $u->password)) {
+            // Password lama yang diinputkan sama dengan password saat ini
+            if ($request->password_baru === $request->password_konfirmasi) {
+                // Password baru dan password konfirmasi cocok
+                $password_baru = bcrypt($request->password_baru);
+                $password_konfirmasi = bcrypt($request->password_konfirmasi);
+
+                $update_password = $u->update([
+                    'password' => $password_baru
+                ]);
+
+                return redirect('/profile')->with('success', 'Password telah berhasil diubah.');
+            } else {
+                // Jika password baru dan password konfirmasi tidak sama maka kembalikan ke halaman ganti password dengan error 
+                return redirect('/profile/ganti_pass')->with('error', 'Password baru dan password konfirmasi yang Anda masukkan tidak sama, silahkan coba lagi.');
+            }
+        } else {
+            // Jika password lama yang diinputkan tidak cocok dengan password saat ini, maka kembalikan ke halaman ganti password dengan error 
+            return redirect('/profile/ganti_pass')->with('error', 'Password lama yang Anda masukkan tidak sama, silahkan coba lagi.');
+        }
+    }
 }

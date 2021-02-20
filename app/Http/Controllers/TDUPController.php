@@ -33,6 +33,13 @@ class TDUPController extends Controller
  
     public function store(Request $request)
     {
+        $bpw = Auth::guard('bpw')->user();
+        $cek_tdup = TDUP::where('id_bpw', $bpw->id_bpw)->get()->count();
+        
+        if($cek_tdup > 0) {
+            return redirect('/tdup')->with('error', 'Gagal menambahkan TDUP. Anda telah menambahkan TDUP sebelumnya.');
+        }
+
         $this->validate($request, [
             'no_tdup' => 'required|min:4',
             'tgl_tdup' => 'required|date',

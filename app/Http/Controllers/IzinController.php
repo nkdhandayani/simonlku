@@ -34,6 +34,13 @@ class IzinController extends Controller
     
     public function store(Request $request)
     {   
+        $bpw = Auth::guard('bpw')->user();
+        $cek_izin = Izin::where('id_bpw', $bpw->id_bpw)->get()->count();
+        
+        if($cek_izin > 0) {
+            return redirect('/izin')->with('error', 'Gagal menambahkan Izin Operasional. Anda telah menambahkan Izin Operasional sebelumnya.');
+        }
+
         $this->validate($request, [
             'no_izin' => 'required|min:4',
             'tgl_izin' => 'required|date',

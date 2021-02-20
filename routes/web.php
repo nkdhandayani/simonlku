@@ -119,7 +119,7 @@ use Illuminate\Support\Facades\Route;
 		Route::patch('/profile/update','App\Http\Controllers\ProfileController@update');
 		Route::get('/profile/show','App\Http\Controllers\ProfileController@show');
 		Route::get('/profile/ganti_pass','App\Http\Controllers\ProfileController@gantiPass');
-
+		Route::post('/profile/ganti_pass/store','App\Http\Controllers\ProfileController@gantiPassStore')->name('gantiPassStore');
 		});
 
 
