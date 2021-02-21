@@ -65,8 +65,6 @@
                     Administrator
                     @elseif(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '1')
                     Staf Jasa Pariwisata
-                    @elseif(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '2')
-                    Kepala Seksi Jasa Pariwisata
                     @endif
 
                     @if(\Auth::guard('bpw')->user())

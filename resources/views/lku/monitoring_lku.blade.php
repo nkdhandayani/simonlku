@@ -81,7 +81,7 @@
         let data = {
             'tahun':tahun
         }
-        $('#cetak').attr('href','/cetaklku/'+ tahun +'')
+        $('#cetak').attr('href','/cetak/'+ tahun +'')
         $.ajax({
             headers: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),

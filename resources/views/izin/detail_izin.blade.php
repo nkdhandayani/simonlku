@@ -1,5 +1,6 @@
-@extends('layouts.master') @section('content')
+@extends('layouts.master')
 
+@section('content')
 <section class="content-header">
     <h1>
         Detail Izin Operasional
@@ -43,7 +44,11 @@
                     <td>File Izin Operasional</td>
                     <td>:</td>
                     <td>
-                        @if($izins->file_izin) <a href="{{ asset('file_izin/' . $izins->file_izin) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_izin/' . $izins->file_izin) }}" /></a> @else - @endif
+                        @if($izins->file_izin)
+                            <a href="{{ asset('file_izin/' . $izins->file_izin) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_izin/' . $izins->file_izin) }}" /></a>
+                        @else
+                            -
+                        @endif
                     </td>
                 </tr>
                 <tr>
@@ -64,7 +69,7 @@
                             {
                                 echo "Tidak Disetujui";
                             }
-                        elseif($izins->sts_verifikasi == 2)
+                        else
                             {
                                 echo "Disetujui";
                             }
@@ -80,7 +85,7 @@
                             {
                                 echo "-";
                             }
-                        elseif($izins->keterangan != null)
+                        else
                             {
                                 echo $izins->keterangan;
                             }
@@ -101,7 +106,7 @@
                             {
                                 echo "-";
                             }
-                        elseif($izins->tgl_verifikasi != null)
+                        else
                             {
                                 echo $izins->tgl_verifikasi->isoFormat('dddd, DD MMMM Y');
                             }
@@ -114,11 +119,7 @@
                     <td>:</td>
                     <td>
                         <?php
-                        if($izins->status == '0')
-                            {
-                                echo "Aktif";
-                            }
-                        ?>
+                        if($izins->status == '0') { echo "Aktif"; } ?>
                     </td>
                 </tr>
             </table>

@@ -1,5 +1,6 @@
- @extends('layouts.master') @section('content')
+@extends('layouts.master')
 
+@section('content')
 <section class="content-header">
     <h1>
         Detail Tanda Daftar Usaha Pariwisata
@@ -66,7 +67,7 @@
                             {
                                 echo "Tidak Disetujui";
                             }
-                        elseif($tdups->sts_verifikasi == 2)
+                        else
                             {
                                 echo "Disetujui";
                             }
@@ -82,7 +83,7 @@
                             {
                                 echo "-";
                             }
-                        elseif($tdups->keterangan != null)
+                        else
                             {
                                 echo $tdups->keterangan;
                             }
@@ -105,7 +106,7 @@
                             {
                                 echo "-";
                             }
-                        elseif($tdups->tgl_verifikasi != null)
+                        else
                             {
                                 echo $tdups->tgl_verifikasi->isoFormat('dddd, DD MMMM Y');
                             }
@@ -118,11 +119,7 @@
                     <td>:</td>
                     <td>
                         <?php
-                        if($tdups->status == '0')
-                            {
-                                echo "Aktif";
-                            }
-                        ?>
+                        if($tdups->status == '0') { echo "Aktif"; } ?>
                     </td>
                 </tr>
             </table>

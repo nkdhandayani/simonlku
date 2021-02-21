@@ -1,5 +1,6 @@
-@extends('layouts.master') @section('content')
+@extends('layouts.master')
 
+@section('content')
 <section class="content-header">
     <h1>
         Data Biro Perjalanan Wisata
@@ -44,7 +45,7 @@
                                             <th style="width: 200px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
                                                 Alamat
                                             </th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No. Telp</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nomor Telepon</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama PIC</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Status</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Aksi</th>
@@ -59,7 +60,18 @@
                                             <td>{{ $bpw->alamat }}</td>
                                             <td>{{ $bpw->no_telp }}</td>
                                             <td>{{ $bpw->nm_pic }}</td>
-                                            <td><?php if($bpw->status == 0) { echo "Tidak Aktif"; } elseif($bpw->status == 1) { echo "Aktif"; } else { echo "Tidak Aktif"; } ?></td>
+                                            <td>
+                                                <?php
+                                                if($bpw->status == 0)
+                                                    {
+                                                        echo "Tidak Aktif";
+                                                    }
+                                                else
+                                                    {
+                                                        echo "Aktif";
+                                                    }
+                                                ?>
+                                            </td>
                                             <td>
                                                 <a href="/bpw/show/{{ $bpw->id_bpw }}" class="fa fa-eye btn-danger btn-sm"></a>
 
@@ -97,7 +109,7 @@
 
                             <div class="form-group" style="margin-bottom: 10px;">
                                 <label for="nm_bpw">Nama Biro Perjalanan Wisata</label>
-                                <input name="nm_bpw" type="text" class="form-control" id="nm_bpw" placeholder="Masukkan Nama Biro Perjalanan Wisata" required autocomplete="off" value="{{ old('nm_bpw') }}" />
+                                <input name="nm_bpw" type="text" class="form-control" id="nm_bpw" onkeypress="return hanyaHuruf(event)" placeholder="Masukkan Nama Biro Perjalanan Wisata" required autocomplete="off" value="{{ old('nm_bpw') }}" />
                                 @error('nm_bpw')
                                 <span class="invalid-feedback text-danger" role="alert">
                                     Nama Biro Perjalanan Wisata terdiri dari 6-50 karakter.
@@ -133,10 +145,10 @@
                                 </div>
                                 <div style="padding: 0px; margin-bottom: 25px;" class="form-group col-md-6">
                                     <label for="nib">Nomor Induk Berusaha</label>
-                                    <input name="nib" type="nib" class="form-control" id="nib" placeholder="Masukkan Nomor Induk Berusaha" required autocomplete="off" value="{{ old('nib') }}" />
+                                    <input name="nib" type="nib" class="form-control" id="nib" onkeypress="return hanyaAngka(event)" placeholder="Masukkan Nomor Induk Berusaha" required autocomplete="off" value="{{ old('nib') }}" />
                                     @error('nib')
                                     <span class="invalid-feedback text-danger" role="alert">
-                                        NIK terdiri dari 13-20 karakter.
+                                        NIB terdiri dari 13-20 karakter.
                                     </span>
                                     @enderror
                                 </div>
@@ -150,7 +162,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 5px;">
                                     <label for="no_telp">Nomor Telepon</label>
-                                    <input name="no_telp" type="text" class="form-control" id="no_telp" placeholder="Masukkan Nomor Telepon" required autocomplete="off" value="{{ old('no_telp') }}" />
+                                    <input name="no_telp" type="text" class="form-control" id="no_telp" onkeypress="return hanyaAngka(event)" placeholder="Masukkan Nomor Telepon" required autocomplete="off" value="{{ old('no_telp') }}" />
                                     @error('no_telp')
                                     <span class="invalid-feedback text-danger" role="alert">
                                         Nomor Telepon terdiri dari 7-15 karakter.
@@ -159,7 +171,7 @@
                                 </div>
                                 <div class="form-group col-md-6" style="padding: 0; margin-bottom: 25px;">
                                     <label for="no_fax">Nomor Fax</label>
-                                    <input name="no_fax" type="text" class="form-control" id="no_fax" placeholder="Masukkan Nomor Fax" autocomplete="off" value="{{ old('no_fax') }}" />
+                                    <input name="no_fax" type="text" class="form-control" id="no_fax" onkeypress="return hanyaAngka(event)" placeholder="Masukkan Nomor Fax" autocomplete="off" value="{{ old('no_fax') }}" />
                                     @error('no_fax')
                                     <span class="invalid-feedback text-danger" role="alert">
                                         Nomor Fax terdiri dari 7-15 karakter.
@@ -170,7 +182,7 @@
 
                             <div class="form-group" style="margin-bottom: 25px;">
                                 <label for="nm_pimpinan">Nama Pimpinan</label>
-                                <input name="nm_pimpinan" type="text" class="form-control" id="nm_pimpinan" placeholder="Masukkan Nama BPW" required autocomplete="off" value="{{ old('nm_pimpinan') }}" />
+                                <input name="nm_pimpinan" type="text" class="form-control" id="nm_pimpinan" onkeypress="return hanyaHuruf(event)" placeholder="Masukkan Nama BPW" required autocomplete="off" value="{{ old('nm_pimpinan') }}" />
                                 @error('nm_pimpinan')
                                 <span class="invalid-feedback text-danger" role="alert">
                                     Nama Pimpinan terdiri dari 6-50 karakter.
@@ -180,7 +192,7 @@
 
                             <div class="form-group" style="margin-bottom: 25px;">
                                 <label for="nm_pic">Nama PIC</label>
-                                <input name="nm_pic" type="text" class="form-control" id="nm_pic" placeholder="Masukkan Nama BPW" required autocomplete="off" value="{{ old('nm_pic') }}" />
+                                <input name="nm_pic" type="text" class="form-control" id="nm_pic" onkeypress="return hanyaHuruf(event)" placeholder="Masukkan Nama BPW" required autocomplete="off" value="{{ old('nm_pic') }}" />
                                 @error('nm_pic')
                                 <span class="invalid-feedback text-danger" role="alert">
                                     Nama PIC terdiri dari 6-50 karakter.
@@ -234,10 +246,10 @@
                                         <option value="Karangasem"{{ old('kabupaten') == 'Karangasem' ? 'selected' : '' }}>Karangasem</option>
                                     </select>
                                     @error('kabupaten')
-                                <span class="invalid-feedback text-danger" role="alert">
-                                    Kabupaten tidak boleh kosong.
-                                </span>
-                                @enderror
+                                    <span class="invalid-feedback text-danger" role="alert">
+                                        Kabupaten tidak boleh kosong.
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group col-md-6" style="padding: 0; margin-bottom: 25px;">
                                     <label for="status">Status</label>
@@ -247,10 +259,10 @@
                                         <option value="0"{{ old('status') == '0' ? 'selected' : '' }}>Tidak Aktif</option>
                                     </select>
                                     @error('status')
-                                <span class="invalid-feedback text-danger" role="alert">
-                                    Status tidak boleh kosong.
-                                </span>
-                                @enderror
+                                    <span class="invalid-feedback text-danger" role="alert">
+                                        Status tidak boleh kosong.
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -264,10 +276,26 @@
         </div>
     </div>
 </section>
-@endsection @section('js')
+@endsection
+
+@section('js')
 <script type="text/javascript">
     @if($errors->any())
       $('#exampleModal').modal();
     @endif
+
+    function hanyaAngka(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+
+    function hanyaHuruf(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return true;
+        return false;
+    }
 </script>
 @endsection

@@ -1,5 +1,6 @@
-@extends('layouts.master') @section('content')
+@extends('layouts.master')
 
+@section('content')
 <section class="content-header">
     <h1>
         Edit Izin Operasional
@@ -32,10 +33,10 @@
                             <label for="no_izin">Nomor Izin Operasional</label>
                             <input name="no_izin" type="text" class="form-control" id="no_izin" value="{{$izin -> no_izin}}" required autocomplete="off" />
                             @error('no_izin')
-                                    <span class="invalid-feedback text-danger" role="alert">
-                                        Nomor Izin terdiri dari 4-10 karakter.
-                                    </span>
-                                    @enderror
+                            <span class="invalid-feedback text-danger" role="alert">
+                                Nomor Izin terdiri dari 4-10 karakter.
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group col-md-6" style="padding: 0px; margin-bottom: 35px;">
                             <label for="tgl_izin">Tanggal Izin Operasional</label>
@@ -47,17 +48,15 @@
                         <label for="file_izin">File izin</label>
                         <br />
                         <a href="{{ asset('file_izin/' . $izin->file_izin) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_izin/' . $izin->file_izin) }}" /></a>
-                        @if(auth()->guard('bpw')->user())
                         <br />
                         <br />
                         <p style="margin-bottom: 0;">(Silakan upload ulang file Anda)</p>
                         <input name="file_izin" type="file" class="form-control-file" id="file_izin" value="{{$izin -> file_izin}}" required autocomplete="off" />
-                        @endif
                         @error('file_izin')
-                                <span class="invalid-feedback text-danger" role="alert">
-                                    Format file yang Anda upload salah.
-                                </span>
-                                @enderror
+                        <span class="invalid-feedback text-danger" role="alert">
+                            Format file yang Anda upload salah.
+                        </span>
+                        @enderror
                     </div>
 
                     <div class="form-group">
@@ -81,16 +80,10 @@
                         </div>
                         <div class="form-group col-md-6" style="padding: 0;">
                             <label for="tgl_verifikasi">Tanggal Verifikasi</label>
-                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" @if($izin -> tgl_verifikasi == null)
-                            value="{{$izin -> tgl_verifikasi}}"
-                            @else
-                            value="{{$izin -> tgl_verifikasi -> format('Y-m-d')}}"
-                            @endif
-                            required autocomplete="off" readonly/>
+                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" @if($izin -> tgl_verifikasi == null) value="{{$izin -> tgl_verifikasi}}" @else value="{{$izin -> tgl_verifikasi -> format('Y-m-d')}}" @endif required autocomplete="off" readonly/>
                         </div>
                     </div>
-
-                    @elseif(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 1)
+                    @endif @if(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 1)
                     <div class="form-row">
                         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
                             <label for="no_izin">Nomor Izin Operasional</label>
@@ -127,26 +120,21 @@
                                 <option value="1" @if($izin -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
                             </select>
                             @error('sts_verifikasi')
-                                <span class="invalid-feedback text-danger" role="alert">
-                                    Status Verifikasi tidak boleh kosong.
-                                </span>
-                                @enderror
+                            <span class="invalid-feedback text-danger" role="alert">
+                                Status Verifikasi tidak boleh kosong.
+                            </span>
+                            @enderror
                         </div>
 
                         <div class="form-group col-md-6" style="padding: 0px; margin-bottom: 35px;">
                             <label for="tgl_verifikasi">Tanggal Verifikasi</label>
-                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi"
-                            @if($izin -> tgl_verifikasi == null)
-                            value="{{$izin -> tgl_verifikasi}}"
-                            @else
-                            value="{{$izin -> tgl_verifikasi -> format('Y-m-d')}}"
-                            @endif
-                            required autocomplete="off" />
+                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" @if($izin - /> tgl_verifikasi == null) value="{{$izin -> tgl_verifikasi}}" @else value="{{$izin -> tgl_verifikasi ->
+                            format('Y-m-d')}}" @endif required autocomplete="off" />
                         </div>
                     </div>
                     @endif
 
-                        <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+                    <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
                 </div>
             </form>
         </div>

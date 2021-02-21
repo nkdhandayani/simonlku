@@ -49,19 +49,13 @@
                                     @enderror
 
                                     <div class="form-label-group">
-                                        <select class="form-control" name="login_as" id="inputLoginAs" required="required" style="border-radius: 2rem;">
+                                        <select class="form-control" name="login_as" id="inputLoginAs" required style="border-radius: 2rem;">
                                             <option disabled selected>-- Login As --</option>
                                             <option value="jasa_pariwisata">Jasa Pariwisata</option>
                                             <option value="biro_perjalanan_wisata">Biro Perjalanan Wisata</option>
                                         </select>
                                     </div>
 
-                                    
-                                    <!-- <div class="custom-control custom-checkbox mb-3">
-                                        <input type="checkbox" class="custom-control-input" id="customCheck1">
-                                        <label class="custom-control-label" for="customCheck1">Remember password</label>
-                                    </div> -->
-                                    
                                     <button class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" type="submit">Log In</button>
                                 </form>                       
                         </div>

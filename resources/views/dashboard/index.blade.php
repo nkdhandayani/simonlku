@@ -1,4 +1,7 @@
-@extends('layouts.master') @section('content') @if(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '2' || \Auth::guard('bpw')->user())
+@extends('layouts.master')
+
+@section('content')
+@if(\Auth::guard('bpw')->user())
 <section class="content-header">
     <h1>Format Pengumpulan Laporan</h1>
     <ol class="breadcrumb">
@@ -12,7 +15,6 @@
 
 <section class="content">
     @if(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '0' || \Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '1')
-
     <div class="row">
         <div class="col-md-4 col-sm-6 col-xs-12">
             <a href="/tdup">
@@ -23,10 +25,8 @@
                         <span class="info-box-text" style="color: black; font-size: 25px;">VERIFIKASI TDUP</span>
                         <span class="info-box-number" style="color: black; font-size: 25px;">{{$tdup_verif}}</span>
                     </div>
-                    <!-- /.info-box-content -->
                 </div>
             </a>
-            <!-- /.info-box -->
         </div>
 
         <div class="col-md-4 col-sm-6 col-xs-12">
@@ -38,10 +38,8 @@
                         <span class="info-box-text" style="color: black; font-size: 25px;">VERIFIKASI IZIN</span>
                         <span class="info-box-number" style="color: black; font-size: 25px;">{{$izin_verif}}</span>
                     </div>
-                    <!-- /.info-box-content -->
                 </div>
             </a>
-            <!-- /.info-box -->
         </div>
 
         <div class="col-md-4 col-sm-6 col-xs-12">
@@ -53,12 +51,9 @@
                         <span class="info-box-text" style="color: black; font-size: 25px;">VERIFIKASI LKU</span>
                         <span class="info-box-number" style="color: black; font-size: 25px;">{{$lku_verif}}</span>
                     </div>
-                    <!-- /.info-box-content -->
                 </div>
             </a>
-            <!-- /.info-box -->
         </div>
-        <!-- /.col -->
     </div>
     @endif
 
@@ -74,53 +69,58 @@
         <div class="col-lg-12">
             <div class="box box-primary">
                 <div class="table-top box-body table-responsive">
-                    <p class="top"><strong>PEMERINTAH PROVINSI BALI</strong></p>
-                    <p class="top"><strong>DINAS PARIWISATA</strong></p>
-                    <p class="top"><strong>(BALI GOVERNMENT TOURISM OFFICE)</strong></p>
-                    <p class="top"><small>Addres: JL. S. Parman Niti Mandala, Renon Phone: (0361) 222387, Fax (0361) 226313</small></p>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td align="center" style="line-height: 1.2; font-size: 15px;">
+                                PEMERINTAH PROVINSI BALI<br />
+                                <span style="font-size: 25px; font-style: bold; letter-spacing: 2;">DINAS PARIWISATA</span><br />
+                                BALI GOVERNMENT TOURISM OFFICE<br />
+                                DENPASAR - BALI<br />
+                                <small>Jalan S. Parman No. 1 Renon – Denpasar, Bali 80227</small>
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
                     <br />
 
-                    <p class="lku-bpw"><strong>Laporan Kegiatan Usaha (LKU)</strong></p>
-                    <p class="lku-bpw"><strong>Biro Perjalanan Wisata</strong></p>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td align="left" style="line-height: 1.5; font-size: 15px;">
+                                <strong>Laporan Kegiatan Usaha (LKU)</strong><br />
+                                <strong>Biro Perjalanan Wisata</strong>
+                            </td>
+                        </tr>
+                    </table>
 
-                    <tr>
-                        <td>Periode</td>
-                        <td>:</td>
-                        <td></td>
-                    </tr>
-                    <br />
-                    <tr>
-                        <td>Tahun</td>
-                        <td>:</td>
-                        <td></td>
-                    </tr>
-                    <br />
-                    <tr>
-                        <td>Nama Perusahaan</td>
-                        <td>:</td>
-                        <td></td>
-                    </tr>
-                    <br />
-                    <tr>
-                        <td>Alamat</td>
-                        <td>:</td>
-                        <td></td>
-                    </tr>
-                    <br />
-                    <tr>
-                        <td>Telephone</td>
-                        <td>:</td>
-                        <td></td>
-                    </tr>
-                    <br />
-                    <tr>
-                        <td>Nama Pimpinan</td>
-                        <td>:</td>
-                        <td></td>
-                    </tr>
+                    <table style="width: 100%;">
+                        <tr>
+                            <td width="150">Periode</td>
+                            <td>:</td>
+                        </tr>
+                        <tr>
+                            <td>Tahun</td>
+                            <td>:</td>
+                        </tr>
+                        <tr>
+                            <td>Nama Perusahaan</td>
+                            <td>:</td>
+                        </tr>
+                        <tr>
+                            <td>Alamat</td>
+                            <td>:</td>
+                        </tr>
+                        <tr>
+                            <td>Nomor Telepon</td>
+                            <td>:</td>
+                        </tr>
+                        <tr>
+                            <td>Nama Pimpinan</td>
+                            <td>:</td>
+                        </tr>
+                    </table>
 
-                    <div class="table-responsive square"  style="overflow-x: auto;">
-                        <table border="1" class="col-lg-12">
+                    <div class="table-responsive square" style="overflow-x: auto;">
+                        <table border="1" class="col-lg-12" style="width: 100%;">
                             <tr>
                                 <td class="col-lg-6" style="margin-top: 0px;">
                                     <strong>Ketentuan:</strong>
@@ -143,9 +143,7 @@
                                         <li>
                                             Silakan beri nama file sebagai berikut: <strong>(Nama Travel)_Per(Periode)_Tahun</strong> dalam format <strong style="color: red;">PDF</strong><strong> (Contoh: Makmur Tour_Per1_2021.pdf)</strong>
                                         </li>
-                                        <li>
-                                            Minimal laporan yang dikumpulkan ialah LKU tahun <strong>2021.</strong>
-                                        </li>
+                                        <li>Minimal laporan yang dikumpulkan ialah LKU tahun <strong>2021.</strong></li>
                                     </ol>
                                     <br />
                                     <p class="tembusan">Tembusan disampaikan kepada Yth.</p>
@@ -172,7 +170,13 @@
                                         <li>Petugas Administrasi dan Keuangan</li>
                                         <li>Karyawan Lain</li>
                                         <li>Jumlah</li>
-                                        <p><br><br><br><br><br></p>
+                                        <p>
+                                            <br />
+                                            <br />
+                                            <br />
+                                            <br />
+                                            <br />
+                                        </p>
                                     </ol>
                                 </td>
 

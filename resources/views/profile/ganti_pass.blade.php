@@ -17,10 +17,10 @@
       <div class="col-xs-12">
             <div class="box box-primary">
                 <div class="box-header">
-                
+                 
 
 
-            <form action="{{ route('gantiPassStore') }}" method="POST" class="form-horizontal">
+            <form action="/profile/ganti_pass/store" method="POST" class="form-horizontal">
               @csrf
               <div class="box-body">
                 <div>

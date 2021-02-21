@@ -22,8 +22,6 @@
           Administrator
           @elseif(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '1')
           Staf Jasa Pariwisata
-          @elseif(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '2')
-          Kepala Jasa Pariwisata
           @endif
 
           @if(\Auth::guard('bpw')->user())
@@ -113,17 +111,6 @@
         <li class="{{ (Request()->segment(1) == 'lku') ? 'active' : ''}}"><a href="/lku"><i class="fa fa-circle-o"></i> Pengumpulan LKU</a></li>
         <li class="{{ (Request()->segment(1) == 'monitoring_lku') ? 'active' : ''}}"><a href="/monitoring_lku"><i class="fa fa-circle-o"></i> Monitoring LKU</a></li>
       </ul>
-    </li>
-
-
-    @elseif(auth()->guard('user')->user()->level == 2)
-    <li class="header">E-REPORT</li>
-    <li class="{{ (Request()->segment(1) == 'ereport_bpw') ? 'active' : ''}}">
-      <a href="/ereport_bpw"><i class="fa fa-bar-chart-o"></i> Biro Perjanan Wisata</a>
-    </li>
-
-    <li class="{{ (Request()->segment(1) == 'ereport_lku') ? 'active' : ''}}">
-      <a href="/ereport_lku"><i class="fa fa-line-chart"></i> Laporan Kegiatan Usaha</a>
     </li>
     @endif
 

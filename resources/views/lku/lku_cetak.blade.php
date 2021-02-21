@@ -35,10 +35,10 @@
             <thead>
                 <tr>
                     <th align="center">No.</th>
-                    <th align="center">Nama BPW</th>
+                    <th align="center">Nama Biro</th>
                     <th align="center">Kabupaten</th>
                     <th align="center">Alamat</th>
-                    <th align="center">No. Telp</th>
+                    <th align="center">Nomor Telepon</th>
                     <th align="center">Nama PIC</th>
                     <th align="center">Nama Pimpinan</th>
                 </tr>

@@ -137,4 +137,13 @@ class BPWController extends Controller
         $pdf = PDF::loadview('bpw/bpw_cetakId', compact('bpws'));
         return $pdf->stream();
     }
+
+    public function reset($id)
+    {
+        $bpws = BPW::findOrFail($id);
+        $bpws->password = bcrypt('disparbali');
+        $bpws->update();
+
+        return redirect()->back()->with('success', 'Password berhasil direset!');
+    }
 }

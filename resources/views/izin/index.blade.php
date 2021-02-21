@@ -1,4 +1,6 @@
-@extends('layouts.master') @section('content')
+@extends('layouts.master')
+
+@section('content')
 <section class="content-header">
     <h1>
         Data Izin Operasional
@@ -30,7 +32,7 @@
 
                     <div class="box-body" id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                         <div class="row"></div>
- 
+
                         <div class="row">
                             <div class="col-xs-12" style="overflow-x: auto;">
                                 <table id="example1" class="table table-hover table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
@@ -50,10 +52,28 @@
                                             <td>{{ $i }}</td>
                                             <td>{{ $izin->no_izin }}</td>
                                             <td>{{ $izin->tgl_izin->isoFormat('dddd, DD MMMM Y') }}</td>
-                                            <td>@if($izin->file_izin) <a href="{{ asset('file_izin/' . $izin->file_izin) }}" target="_blank">Lihat Gambar Izin Operasional</a> @else - @endif</td>
+                                            <td>
+                                                @if($izin->file_izin)
+                                                    <a href="{{ asset('file_izin/' . $izin->file_izin) }}" target="_blank">Lihat Gambar Izin Operasional</a>
+                                                @else
+                                                    -
+                                                @endif
+                                            </td>
                                             <td>
                                                 <?php
-                                                if($izin->sts_verifikasi == 0) { echo "Sedang Diproses"; } elseif($izin->sts_verifikasi == 1) { echo "Tidak Disetujui"; } elseif($izin->sts_verifikasi == 2) { echo "Disetujui"; } ?>
+                                                if($izin->sts_verifikasi == 0)
+                                                    {
+                                                        echo "Sedang Diproses";
+                                                    }
+                                                elseif($izin->sts_verifikasi == 1)
+                                                    {
+                                                        echo "Tidak Disetujui";
+                                                    }
+                                                else
+                                                    {
+                                                        echo "Disetujui";
+                                                    }
+                                                ?>
                                             </td>
                                             <td>
                                                 <a href="/izin/show/{{ $izin->id_izin }}" class="fa fa-eye btn-danger btn-sm"></a>

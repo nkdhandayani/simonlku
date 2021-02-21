@@ -21,7 +21,7 @@
             <form role="form">
                 <div class="box-body">
                     <div>
-                      <a href="/lku" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                        <a href="/lku" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
                     </div>
                     <br />
                     <br />
@@ -40,12 +40,12 @@
                     <div class="form-row">
                         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
                             <label for="tahun">Tahun LKU</label>
-                            <input name="tahun" type="text" class="form-control" id="tahun" value="{{$lku -> tahun}}" required autocomplete="off" />
+                            <input name="tahun" type="text" class="form-control" id="tahun" onkeypress="return hanyaAngka(event)" value="{{$lku -> tahun}}" required autocomplete="off" />
                             @error('tahun')
-                                    <span class="invalid-feedback text-danger" role="alert">
-                                        Tahun LKU terdiri dari 4 karakter.
-                                    </span>
-                                    @enderror
+                            <span class="invalid-feedback text-danger" role="alert">
+                                Tahun LKU terdiri dari 4 karakter.
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group col-md-6" style="padding: 0px;">
                             <label for="periode">Periode</label>
@@ -54,10 +54,10 @@
                                 <option value="II" @if($lku -> periode == "II") selected @endif>II</option>
                             </select>
                             @error('periode')
-                                <span class="invalid-feedback text-danger" role="alert">
-                                    Periode tidak boleh kosong.
-                                </span>
-                                @enderror
+                            <span class="invalid-feedback text-danger" role="alert">
+                                Periode tidak boleh kosong.
+                            </span>
+                            @enderror
                         </div>
                     </div>
 
@@ -70,11 +70,11 @@
                         <p style="margin-bottom: 0;">(Silakan upload ulang file Anda)</p>
                         <input name="file_lku" type="file" class="form-control-file" id="file_lku" value="{{$lku -> file_lku}}" autocomplete="off" required />
                         @error('file_lku')
-                                <span class="invalid-feedback text-danger" role="alert">
-                                    Format file yang Anda upload salah.
-                                </span>
-                                @enderror
-                    </div> 
+                        <span class="invalid-feedback text-danger" role="alert">
+                            Format file yang Anda upload salah.
+                        </span>
+                        @enderror
+                    </div>
 
                     <div class="form-group">
                         <label for="created_at">Tanggal Ditambahkan</label>
@@ -89,7 +89,7 @@
 
                     <div class="form-group">
                         <label for="sts_verifikasi">Status TDUP</label>
-                        <select disabled="true" name="sts_verifikasi" class="form-control" id="sts_verifikasi" value="{{$lku -> tdup -> sts_verifikasi}}" required autocomplete="off">
+                        <select disabled="true" name="sts_verifikasi" class="form-control" id="sts_verifikasi" value="{{$lku -> tdup -> sts_verifikasi}}" required autocomplete="off" readpnly>
                             <option value="0" @if($lku -> tdup -> sts_verifikasi == "0") selected @endif>Sedang Diproses</option>
                             <option value="2" @if($lku -> tdup -> sts_verifikasi == "2") selected @endif>Disetujui</option>
                             <option value="1" @if($lku -> tdup -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
@@ -104,7 +104,7 @@
 
                     <div class="form-group">
                         <label for="sts_verifikasi">Status Izin</label>
-                        <select disabled="true" name="sts_verifikasi" class="form-control" id="sts_verifikasi" value="{{$lku -> izin -> sts_verifikasi}}" required autocomplete="off">
+                        <select disabled="true" name="sts_verifikasi" class="form-control" id="sts_verifikasi" value="{{$lku -> izin -> sts_verifikasi}}" required autocomplete="off" readonly>
                             <option value="0" @if($lku -> izin -> sts_verifikasi == "0") selected @endif>Sedang Diproses</option>
                             <option value="2" @if($lku -> izin -> sts_verifikasi == "2") selected @endif>Disetujui</option>
                             <option value="1" @if($lku -> izin -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
@@ -128,13 +128,8 @@
 
                         <div class="form-group col-md-6" style="padding: 0px; margin-bottom: 35px;">
                             <label for="tgl_verifikasi">Tanggal Verifikasi</label>
-                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi"
-                            @if($lku -> tgl_verifikasi == null)
-                            value="{{$lku -> tgl_verifikasi}}"
-                            @else
-                            value="{{$lku -> tgl_verifikasi -> format('Y-m-d')}}"
-                            @endif
-                            required autocomplete="off" readonly/>
+                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" @if($lku -> tgl_verifikasi == null) value="{{$lku -> tgl_verifikasi}}" @else value="{{$lku -> tgl_verifikasi ->
+                            format('Y-m-d')}}" @endif required autocomplete="off" readonly/>
                         </div>
                     </div>
 
@@ -154,10 +149,10 @@
                             <label for="tahun">Tahun LKU</label>
                             <input name="tahun" type="text" class="form-control" id="tahun" value="{{$lku -> tahun}}" required autocomplete="off" readonly />
                             @error('tahun')
-                                    <span class="invalid-feedback text-danger" role="alert">
-                                        Tahun LKU terdiri dari 4 karakter.
-                                    </span>
-                                    @enderror
+                            <span class="invalid-feedback text-danger" role="alert">
+                                Tahun LKU terdiri dari 4 karakter.
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group col-md-6" style="padding: 0px;">
                             <label for="periode">Periode</label>
@@ -166,10 +161,10 @@
                                 <option value="II" @if($lku -> periode == "II") selected @endif>II</option>
                             </select>
                             @error('periode')
-                                <span class="invalid-feedback text-danger" role="alert">
-                                    Periode tidak boleh kosong.
-                                </span>
-                                @enderror
+                            <span class="invalid-feedback text-danger" role="alert">
+                                Periode tidak boleh kosong.
+                            </span>
+                            @enderror
                         </div>
                     </div>
 
@@ -177,7 +172,7 @@
                         <label for="file_lku">File LKU</label>
                         <br />
                         <a href="{{ asset('file_lku/' . $lku->file_lku) }}" target="_blank">{{ $lku->file_lku }}</a>
-                    </div> 
+                    </div>
 
                     <div class="form-group">
                         <label for="created_at">Tanggal Ditambahkan</label>
@@ -213,7 +208,7 @@
                             <option value="1" @if($lku -> izin -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
                         </select>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="keterangan">Keterangan</label>
                         <textarea name="keterangan" type="textarea" class="form-control" id="input_keterangan" rows="6" autocomplete="off" placeholder="Masukkan Keterangan">{{$lku -> keterangan}}</textarea>
@@ -228,29 +223,42 @@
                                 <option value="1" @if($lku -> sts_verifikasi == "1") selected @endif>Tidak Disetujui</option>
                             </select>
                             @error('sts_verifikasi')
-                                <span class="invalid-feedback text-danger" role="alert">
-                                    Status Verifikasi tidak boleh kosong.
-                                </span>
-                                @enderror
+                            <span class="invalid-feedback text-danger" role="alert">
+                                Status Verifikasi tidak boleh kosong.
+                            </span>
+                            @enderror
                         </div>
 
                         <div class="form-group col-md-6" style="padding: 0px; margin-bottom: 35px;">
                             <label for="tgl_verifikasi">Tanggal Verifikasi</label>
-                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi"
-                            @if($lku -> tgl_verifikasi == null)
-                            value="{{$lku -> tgl_verifikasi}}"
-                            @else
-                            value="{{$lku -> tgl_verifikasi -> format('Y-m-d')}}"
-                            @endif
-                            required autocomplete="off" />
+                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" @if($lku - /> tgl_verifikasi == null) value="{{$lku -> tgl_verifikasi}}" @else value="{{$lku -> tgl_verifikasi ->
+                            format('Y-m-d')}}" @endif required autocomplete="off" />
                         </div>
                     </div>
                     @endif
 
+                    <div>
                         <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
+                    </div>
+                    
                 </div>
             </form>
         </div>
     </section>
 </form>
+@endsection
+
+@section('js')
+<script type="text/javascript">
+    @if($errors->any())
+      $('#exampleModal').modal();
+    @endif
+
+    function hanyaAngka(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+</script>
 @endsection

@@ -1,4 +1,6 @@
-@extends('layouts.master') @section('content')
+@extends('layouts.master')
+
+@section('content')
 <section class="content-header">
     <h1>
         Detail Pengguna
@@ -26,18 +28,29 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center" style="padding: 20px;">
-                                    @if(\Auth::guard('user')->user()) @if($users->foto_user != null)
-                                    <a href="{{ asset('avatar_user/' . $users->foto_user) }}"><img width="180px" height="180px" src="{{ asset('avatar_user/' . $users->foto_user) }}" class="img-circle" alt="User Image" /></a>
-                                    @else
-                                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="180px" height="180px" class="img-circle" alt="User Image" style="padding-top: 10px;" />
-                                    @endif @endif
+                                    @if(\Auth::guard('user')->user())
+                                        @if($users->foto_user != null)
+                                        <a href="{{ asset('avatar_user/' . $users->foto_user) }}"><img width="180px" height="180px" src="{{ asset('avatar_user/' . $users->foto_user) }}" class="img-circle" alt="User Image" /></a>
+                                        @else
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="180px" height="180px" class="img-circle" alt="User Image" style="padding-top: 10px;" />
+                                        @endif
+                                    @endif
+                                    
                                     <div class="mt-3">
                                         <h3>
                                             {{$users->nm_user}}
                                         </h3>
                                         <p class="text-muted font-size-sm">
                                             <?php
-                                            if($users->level == 0) { echo "Administrator"; } elseif($users->level == 1) { echo "Staf Jasa Pariwisata"; } elseif($users->level == 2) { echo "Kepala Seksi Jasa Pariwisata"; } ?>
+                                            if($users->level == 0)
+                                                {
+                                                    echo "Administrator";
+                                                }
+                                            else
+                                                {
+                                                    echo "Staf Jasa Pariwisata";
+                                                }
+                                            ?>
                                         </p>
                                     </div>
                                 </div>
@@ -70,7 +83,7 @@
                                         <td>{{$users->email}}</td>
                                     </tr>
                                     <tr>
-                                        <td>No. Telp</td>
+                                        <td>Nomor Telepon</td>
                                         <td>:</td>
                                         <td>{{$users->no_telp}}</td>
                                     </tr>
@@ -84,7 +97,15 @@
                                         <td>:</td>
                                         <td>
                                             <?php
-                                            if($users->level == 0) { echo "Administrator"; } elseif($users->level == 1) { echo "Staf Jasa Pariwisata"; } elseif($users->level == 2) { echo "Kepala Seksi Jasa Pariwisata"; } ?>
+                                            if($users->level == 0)
+                                                {
+                                                    echo "Administrator";
+                                                }
+                                            else
+                                                {
+                                                    echo "Staf Jasa Pariwisata";
+                                                }
+                                            ?>
                                         </td>
                                     </tr>
                                     <tr>
@@ -92,19 +113,26 @@
                                         <td>:</td>
                                         <td>
                                             <?php
-                                            if($users->status == 0) { echo "Tidak Aktif"; } elseif($users->status == 1) { echo "Aktif"; } ?>
+                                            if($users->status == 0)
+                                                {
+                                                    echo "Tidak Aktif";
+                                                }
+                                            else
+                                                {
+                                                    echo "Aktif";
+                                                }
+                                            ?>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
                         </div>
                     </div>
-                    
+
                     <div style="float: right;">
                         <div style="clear: both;"></div>
                         <a href="/user/reset/{{$users -> id_user}}"><button class="btn btn-primary btn-sm">Reset Password?</button></a>
                     </div>
-
                 </div>
             </div>
         </div>

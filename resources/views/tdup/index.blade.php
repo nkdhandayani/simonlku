@@ -1,4 +1,6 @@
-@extends('layouts.master') @section('content')
+@extends('layouts.master')
+
+@section('content')
 <section class="content-header">
     <h1>
         Data Tanda Daftar Usaha Pariwisata
@@ -37,14 +39,14 @@
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No. TDUP</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nomor TDUP</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tanggal TDUP</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">File TDUP</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Status Verifikasi</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Aksi</th>
                                         </tr>
                                     </thead>
-                                    <tbody> 
+                                    <tbody>
                                         @php $i=1; @endphp @foreach ($tdups as $tdup)
                                         <tr>
                                             <td>{{ $i }}</td>
@@ -61,7 +63,7 @@
                                                     {
                                                         echo "Tidak Disetujui";
                                                     }
-                                                elseif($tdup->sts_verifikasi == 2)
+                                                else
                                                     {
                                                         echo "Disetujui";
                                                     }
@@ -131,6 +133,7 @@
                             <div>
                                 <button type="submit" class="btn btn-primary btn-sm">Simpan</button>
                             </div>
+                            
                         </form>
                     </div>
                 </div>

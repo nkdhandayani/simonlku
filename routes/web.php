@@ -12,18 +12,6 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-	Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index');
-	Route::get('/regis', 'App\Http\Controllers\InsertRegister@insert');
-	Route::get('/user-logout', 'App\Http\Controllers\AuthController@logout')->name('user.logout');
-	Route::post('/logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
-	Route::post('/postlogin', 'App\Http\Controllers\AuthController@postlogin');
-	Route::get('/', function () { return view('auth.login'); });
-	Route::get('/lte', function () { return view('adminLTE'); });
-	Route::get('/prof', 'App\Http\Controllers\ProfileController@showUser');
-	Route::get('/editprof', 'App\Http\Controllers\ProfileController@showBPW');
-	Route::get('/editpass', 'App\Http\Controllers\ProfileController@indexPass');
 	
  	
 	//	Route oleh Administrator
@@ -43,9 +31,10 @@ use Illuminate\Support\Facades\Route;
 		Route::patch('/bpw/update/{id}','App\Http\Controllers\BPWController@update');
 		Route::get('/bpw/cetak', 'App\Http\Controllers\BPWController@cetak');
 		Route::get('/bpw/cetakId/{id}','App\Http\Controllers\BPWController@cetakId');
+		Route::get('/bpw/reset/{id}','App\Http\Controllers\BPWController@reset');
 
 		// Route LKU
-		Route::get('/cetaklku/{tahun}','App\Http\Controllers\LKUController@cetakFilter');
+		Route::get('/cetak/{tahun}','App\Http\Controllers\LKUController@cetakFilter');
 
 		});
 
@@ -121,7 +110,19 @@ use Illuminate\Support\Facades\Route;
 		Route::patch('/profile/update','App\Http\Controllers\ProfileController@update');
 		Route::get('/profile/show','App\Http\Controllers\ProfileController@show');
 		Route::get('/profile/ganti_pass','App\Http\Controllers\ProfileController@gantiPass');
-		Route::post('/profile/ganti_pass/store','App\Http\Controllers\ProfileController@gantiPassStore')->name('gantiPassStore');
+		Route::post('/profile/ganti_pass/store','App\Http\Controllers\ProfileController@gantiPassStore');
 		});
 
 
+
+
+
+
+
+	Route::get('/dashboard', 'App\Http\Controllers\DashboardController@index');
+	Route::get('/regis', 'App\Http\Controllers\InsertRegister@insert');
+	Route::get('/user-logout', 'App\Http\Controllers\AuthController@logout')->name('user.logout');
+	Route::post('/logout', 'App\Http\Controllers\AuthController@logout')->name('logout');
+	Route::post('/postlogin', 'App\Http\Controllers\AuthController@postlogin');
+	Route::get('/', function () { return view('auth.login'); });
+	Route::get('/lte', function () { return view('adminLTE'); });

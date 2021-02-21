@@ -29,11 +29,11 @@
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center user">
-                                        @if($bpws->foto_bpw != null)
-                                        <a href="{{ asset('avatar_bpw/' . $bpws->foto_bpw) }}"><img width="180px" height="180px" src="{{ asset('avatar_bpw/' . $bpws->foto_bpw) }}" class="img-circle" alt="User Image"/></a>
-                                        @else
+                                    @if($bpws->foto_bpw != null)
+                                        <a href="{{ asset('avatar_bpw/' . $bpws->foto_bpw) }}"><img width="180px" height="180px" src="{{ asset('avatar_bpw/' . $bpws->foto_bpw) }}" class="img-circle" alt="User Image" /></a>
+                                    @else
                                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="180px" height="180px" class="img-circle" alt="User Image" style="padding-top: 10px;" />
-                                        @endif
+                                    @endif
                                     <div class="mt-3">
                                         <h3>
                                             {{$bpws->nm_bpw}}
@@ -88,8 +88,10 @@
                                         <td>:</td>
                                         <td>
                                             @if($bpws->no_fax != null)
-                                            {{$bpws->no_fax}}
-                                            @else - @endif
+                                                {{$bpws->no_fax}}
+                                            @else
+                                                -
+                                            @endif
                                         </td>
                                     </tr>
                                     <tr>
@@ -122,7 +124,15 @@
                                         <td>:</td>
                                         <td>
                                             <?php
-                                            if($bpws->status == 0) { echo "Tidak Aktif"; } elseif($bpws->status == 1) { echo "Aktif"; } ?>
+                                            if($bpws->status == 0)
+                                                {
+                                                    echo "Tidak Aktif";
+                                                }
+                                            else
+                                                {
+                                                    echo "Aktif";
+                                            }
+                                            ?>
                                         </td>
                                     </tr>
                                 </table>
@@ -133,7 +143,7 @@
                     @if(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 0)
                     <div style="float: right;">
                         <div style="clear: both;"></div>
-                        <a href="#"><button class="btn btn-primary btn-sm">Reset Password?</button></a>
+                        <a href="/bpw/reset/{{$bpws -> id_bpw}}"><button class="btn btn-primary btn-sm">Reset Password?</button></a>
                     </div>
                     @endif
                 </div>

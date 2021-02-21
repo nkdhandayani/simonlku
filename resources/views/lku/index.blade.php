@@ -1,5 +1,6 @@
-@extends('layouts.master') @section('content')
+@extends('layouts.master')
 
+@section('content')
 <section class="content-header">
     <h1>
         Data Laporan Kegiatan Usaha
@@ -33,20 +34,17 @@
                         <div class="row"></div>
 
                         <div class="row">
-                            <div class="col-xs-12">
+                            <div class="col-xs-12" style="overflow-x: auto;">
                                 <table id="example1" class="table table-hover table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama Biro</th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
-                                                No. Surat Pengantar
-                                            </th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tahun</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No. Surat Pengantar</th>
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tahun LKU</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Periode</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">File LKU</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Status Verifikasi</th>
-
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Aksi</th>
                                         </tr>
                                     </thead>
@@ -70,13 +68,12 @@
                                                     {
                                                         echo "Tidak Disetujui";
                                                     }
-                                                elseif($lku->sts_verifikasi == 2)
+                                                else
                                                     {
                                                         echo "Disetujui";
                                                     }
                                                 ?>
                                             </td>
-
                                             <td>
                                                 <a href="/lku/show/{{ $lku->id_lku }}" class="fa fa-eye btn-danger btn-sm"></a>
 
@@ -115,16 +112,16 @@
                                 <label for="no_surat">Nomor Surat Pengantar</label>
                                 <input name="no_surat" id="no_surat" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Nomor Surat Pengantar" value="{{ old('no_surat') }}" />
                                 @error('no_surat')
-                                    <span class="invalid-feedback text-danger" role="alert">
-                                        Nomor Surat Pengantar terdiri dari 4-20 karakter.
-                                    </span>
-                                    @enderror
+                                <span class="invalid-feedback text-danger" role="alert">
+                                    Nomor Surat Pengantar terdiri dari 4-20 karakter.
+                                </span>
+                                @enderror
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;">
                                     <label for="input_tahun">Tahun LKU</label>
-                                    <input name="tahun" type="text" class="form-control" id="tahun" required autocomplete="off" placeholder="Masukkan Tahun LKU" value="{{ old('tahun') }}" />
+                                    <input name="tahun" type="text" class="form-control" id="tahun" required autocomplete="off" onkeypress="return hanyaAngka(event)" placeholder="Masukkan Tahun LKU" value="{{ old('tahun') }}" />
                                     @error('tahun')
                                     <span class="invalid-feedback text-danger" role="alert">
                                         Tahun LKU terdiri dari 4 karakter.
@@ -139,10 +136,10 @@
                                         <option value="II" {{ old('periode') == 'II' ? 'selected' : '' }}>II</option>
                                     </select>
                                     @error('periode')
-                                <span class="invalid-feedback text-danger" role="alert">
-                                    Periode tidak boleh kosong.
-                                </span>
-                                @enderror
+                                    <span class="invalid-feedback text-danger" role="alert">
+                                        Periode tidak boleh kosong.
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -173,5 +170,12 @@
     @if($errors->any())
       $('#exampleModal').modal();
     @endif
+
+    function hanyaAngka(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
 </script>
 @endsection

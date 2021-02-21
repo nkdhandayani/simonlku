@@ -101,10 +101,10 @@ class UserController extends Controller
 
     public function reset($id)
     {
-        $users = User::findOrFail(Auth::guard('user')->user()->id);
+        $users = User::findOrFail($id);
         $users->password = bcrypt('disparbali');
         $users->update();
 
-        return redirect('/user/show/{{$users->id_user}}')->with('success', 'Password berhasil direset!');
+        return redirect()->back()->with('success', 'Password berhasil direset!');
     }
 }

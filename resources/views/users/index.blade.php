@@ -22,7 +22,7 @@
                         <h3 class="box-title" style="font-size: 25px;"><i class="fa fa-user"></i> Daftar Pegawai Jasa Pariwisata</h3>
                         <div style="float: right;">
                             <div style="clear: both;"></div>
-                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"> Tambah Data</i></button>
+                                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModal"><i class="fa fa-pencil"> Tambah Data</i></button>
                         </div>
                     </div>
 
@@ -47,7 +47,6 @@
                                         @php $i=1; @endphp @foreach ($users as $pengguna)
                                         <tr>
                                             <td>{{ $i }}</td>
-                                            <!-- <td>{{ $pengguna->foto_user }}</td> -->
                                             <td>{{ $pengguna->nm_user }}</td>
                                             <td>{{ $pengguna->email }}</td>
                                             <td>{{ $pengguna->no_telp }}</td>
@@ -57,17 +56,9 @@
                                                   {
                                                     echo "Administrator";
                                                   }
-                                                elseif($pengguna->level == 1)
-                                                  {
-                                                    echo "Staf Jasa Pariwisata";
-                                                  }
-                                                elseif($pengguna->level == 2)
-                                                  {
-                                                    echo "Kepala Seksi Jasa Pariwisata";
-                                                  }
                                                 else
                                                   {
-                                                    echo "Admin";
+                                                    echo "Staf Jasa Pariwisata";
                                                   }
                                                 ?>
                                             </td>
@@ -119,7 +110,7 @@
 
                             <div class="form-group" style="margin-bottom: 25px;">
                                 <label for="nm_user">Nama Pegawai</label>
-                                <input name="nm_user" type="text" class="form-control" id="nm_user" placeholder="Masukkan Nama Pegawai" required autocomplete="off" value="{{ old('nm_user') }}" />
+                                <input name="nm_user" type="text" class="form-control" id="nm_user" onkeypress="return hanyaHuruf(event)" placeholder="Masukkan Nama Pegawai" required autocomplete="off" value="{{ old('nm_user') }}" />
                                 @error('nm_user')
                                 <span class="invalid-feedback text-danger" role="alert">
                                     Nama Pegawai terdiri dari 6-50 karakter.
@@ -151,7 +142,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 8px;">
                                     <label for="nik">NIK</label>
-                                    <input name="nik" type="text" class="form-control" id="nik" placeholder="Masukkan NIK" required autocomplete="off" value="{{ old('nik') }}" />
+                                    <input name="nik" type="text" class="form-control" id="nik" onkeypress="return hanyaAngka(event)" placeholder="Masukkan NIK" required autocomplete="off" value="{{ old('nik') }}" />
                                     @error('nik')
                                     <span class="invalid-feedback text-danger" role="alert">
                                         NIK terdiri dari 16-20 karakter.
@@ -167,7 +158,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 8px;">
                                     <label for="no_telp">Nomor Telepon</label>
-                                    <input name="no_telp" type="text" class="form-control" id="no_telp" placeholder="Masukkan Nomor Telepon" required autocomplete="off" value="{{ old('no_telp') }}" />
+                                    <input name="no_telp" type="text" class="form-control" id="no_telp" onkeypress="return hanyaAngka(event)" placeholder="Masukkan Nomor Telepon" required autocomplete="off" value="{{ old('no_telp') }}" />
                                     @error('no_telp')
                                     <span class="invalid-feedback text-danger" role="alert">
                                         Nomor Telepon terdiri dari 7-15 karakter.
@@ -196,13 +187,12 @@
                                         <option selected disabled="">-- Pilih Level --</option>
                                         <option value="0" {{ old('level') == '0' ? 'selected' : '' }}>Administrator</option>
                                         <option value="1" {{ old('level') == '1' ? 'selected' : '' }}>Staf Jasa Pariwisata</option>
-                                        <option value="2" {{ old('level') == '2' ? 'selected' : '' }}>Kepala Seksi Jasa Pariwisata</option>
                                     </select>
                                     @error('level')
-                                <span class="invalid-feedback text-danger" role="alert">
-                                    Level tidak boleh kosong.
-                                </span>
-                                @enderror
+                                    <span class="invalid-feedback text-danger" role="alert">
+                                        Level tidak boleh kosong.
+                                    </span>
+                                    @enderror
                                 </div>
                                 <div class="form-group col-md-6" style="padding: 0; margin-bottom: 10px;">
                                     <label for="form_status" autocomplete="off">Status</label>
@@ -212,10 +202,10 @@
                                         <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>Tidak Aktif</option>
                                     </select>
                                     @error('status')
-                                <span class="invalid-feedback text-danger" role="alert">
-                                    Status tidak boleh kosong.
-                                </span>
-                                @enderror
+                                    <span class="invalid-feedback text-danger" role="alert">
+                                        Status tidak boleh kosong.
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
 
@@ -234,5 +224,19 @@
     @if($errors->any())
       $('#exampleModal').modal();
     @endif
+
+    function hanyaAngka(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+
+    function hanyaHuruf(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return true;
+        return false;
+    }
 </script>
 @endsection

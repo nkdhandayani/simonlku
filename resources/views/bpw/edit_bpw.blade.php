@@ -32,7 +32,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 5px;">
                             <label for="nm_bpw">Nama Biro Perjalanan Wisata</label>
-                            <input name="nm_bpw" type="text" class="form-control" id="nm_bpw" value="{{$bpws -> nm_bpw}}" required autocomplete="off" />
+                            <input name="nm_bpw" type="text" class="form-control" id="nm_bpw" onkeypress="return hanyaHuruf(event)" value="{{$bpws -> nm_bpw}}" required autocomplete="off" />
                             @error('nm_bpw')
                             <span class="invalid-feedback text-danger" role="alert">
                                 Nama Biro Perjalanan Wisata terdiri dari 6-50 karakter.
@@ -62,7 +62,7 @@
                         </div>
                         <div class="form-group col-md-6" style="padding: 0; margin-bottom: 25px;">
                             <label for="nib">Nomor Induk Berusaha</label>
-                            <input name="nib" type="text" class="form-control" id="nib" value="{{$bpws -> nib}}" required autocomplete="off" />
+                            <input name="nib" type="text" class="form-control" id="nib" onkeypress="return hanyaAngka(event)" value="{{$bpws -> nib}}" required autocomplete="off" />
                             @error('nib')
                             <span class="invalid-feedback text-danger" role="alert">
                                 NIK terdiri dari 13-20 karakter.
@@ -74,7 +74,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 5px;">
                             <label for="no_telp">Nomor Telepon</label>
-                            <input name="no_telp" type="text" class="form-control" id="no_telp" value="{{$bpws -> no_telp}}" required autocomplete="off" />
+                            <input name="no_telp" type="text" class="form-control" id="no_telp" onkeypress="return hanyaAngka(event)" value="{{$bpws -> no_telp}}" required autocomplete="off" />
                             @error('no_telp')
                             <span class="invalid-feedback text-danger" role="alert">
                                 Nomor Telepon terdiri dari 7-15 karakter.
@@ -83,7 +83,7 @@
                         </div>
                         <div class="form-group col-md-6" style="padding: 0; margin-bottom: 25px;">
                             <label for="no_fax">Nomor Fax</label>
-                            <input name="no_fax" type="text" class="form-control" id="no_fax" value="{{$bpws -> no_fax}}{{ old('no_fax') }}" autocomplete="off" />
+                            <input name="no_fax" type="text" class="form-control" id="no_fax" onkeypress="return hanyaAngka(event)" value="{{$bpws -> no_fax}}{{ old('no_fax') }}" autocomplete="off" />
                             @error('no_fax')
                             <span class="invalid-feedback text-danger" role="alert">
                                 Nomor Fax terdiri dari 7-15 karakter.
@@ -95,7 +95,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 5px;">
                             <label for="nm_pic">Nama PIC</label>
-                            <input name="nm_pic" type="text" class="form-control" id="nm_pic" value="{{$bpws -> nm_pic}}" required autocomplete="off" />
+                            <input name="nm_pic" type="text" class="form-control" id="nm_pic" onkeypress="return hanyaHuruf(event)" value="{{$bpws -> nm_pic}}" required autocomplete="off" />
                             @error('nm_pic')
                             <span class="invalid-feedback text-danger" role="alert">
                                 Nama PIC terdiri dari 6-50 karakter.
@@ -104,7 +104,7 @@
                         </div>
                         <div class="form-group col-md-6" style="padding: 0; margin-bottom: 25px;">
                             <label for="nm_pimpinan">Nama Pimpinan</label>
-                            <input name="nm_pimpinan" type="text" class="form-control" id="nm_pimpinan" value="{{$bpws -> nm_pimpinan}}" required autocomplete="off" />
+                            <input name="nm_pimpinan" type="text" class="form-control" id="nm_pimpinan" onkeypress="return hanyaHuruf(event)" value="{{$bpws -> nm_pimpinan}}" required autocomplete="off" />
                             @error('nm_pimpinan')
                             <span class="invalid-feedback text-danger" role="alert">
                                 Nama Pimpinan terdiri dari 6-50 karakter.
@@ -152,7 +152,7 @@
                         <div class="form-group col-md-6" style="padding: 0; margin-bottom: 25px;">
                             <label for="status">Status</label>
                             <select name="status" class="form-control" id="status" value="{{$bpws -> status}}" required autocomplete="off">
-                                <option disabled="" selected>-- Pilih Status --</option>
+                                <option disabled selected>-- Pilih Status --</option>
                                 <option value="1" @if($bpws -> status == "1") selected @endif>Aktif</option>
                                 <option value="0" @if($bpws -> status == "0") selected @endif>Tidak Aktif</option>
                             </select>
@@ -167,4 +167,26 @@
         </div>
     </section>
 </form>
+@endsection
+
+@section('js')
+<script type="text/javascript">
+    @if($errors->any())
+      $('#exampleModal').modal();
+    @endif
+
+    function hanyaAngka(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+
+    function hanyaHuruf(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return true;
+        return false;
+    }
+</script>
 @endsection

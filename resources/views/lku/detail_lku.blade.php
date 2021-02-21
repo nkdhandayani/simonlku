@@ -1,5 +1,6 @@
-@extends('layouts.master') @section('content')
+@extends('layouts.master')
 
+@section('content')
 <section class="content-header">
     <h1>
         Detail Laporan Kegiatan Usaha
@@ -29,12 +30,12 @@
                     <td>{{$lkus->bpw->nm_bpw}}</td>
                 </tr>
                 <tr>
-                    <td>No. Surat Pengantar</td>
+                    <td>Nomor Surat Pengantar</td>
                     <td>:</td>
                     <td>{{$lkus->no_surat}}</td>
                 </tr>
                 <tr>
-                    <td>Tahun</td>
+                    <td>Tahun LKU</td>
                     <td>:</td>
                     <td>{{$lkus->tahun}}</td>
                 </tr>
@@ -48,6 +49,13 @@
                     <td>:</td>
                     <td>
                         <a href="{{ asset('file_lku/' . $lkus->file_lku) }}" target="_blank">{{ $lkus->file_lku }}</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>File Tanda Daftar Usaha Pariwisata</td>
+                    <td>:</td>
+                    <td>
+                        <a href="{{ asset('file_tdup/' . $lkus->tdup->file_tdup) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_tdup/' . $lkus->tdup->file_tdup) }}" /></a>
                     </td>
                 </tr>
                 <tr>
@@ -70,14 +78,14 @@
                         ?>
                     </td>
                 </tr>
+
                 <tr>
-                    <td>File Tanda Daftar Usaha Pariwisata</td>
+                    <td>File Izin Operasional</td>
                     <td>:</td>
                     <td>
-                        <a href="{{ asset('file_tdup/' . $lkus->tdup->file_tdup) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_tdup/' . $lkus->tdup->file_tdup) }}" /></a>
+                        <a href="{{ asset('file_izin/' . $lkus->izin->file_izin) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_izin/' . $lkus->izin->file_izin) }}" /></a>
                     </td>
                 </tr>
-
                 <tr>
                     <td>Status Izin Operasional</td>
                     <td>:</td>
@@ -96,13 +104,6 @@
                                 echo "Disetujui";
                             }
                         ?>
-                    </td>
-                </tr>
-                <tr>
-                    <td>File Izin Operasional</td>
-                    <td>:</td>
-                    <td>
-                        <a href="{{ asset('file_izin/' . $lkus->izin->file_izin) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_izin/' . $lkus->izin->file_izin) }}" /></a>
                     </td>
                 </tr>
 

@@ -20,14 +20,14 @@ class AuthController extends Controller
         if($request->login_as == "jasa_pariwisata"){
             if (Auth::guard('user')->attempt(['username' => $request->username, 'password' => $request->password, 'status' => 1])) {
                 $user = \App\Models\User::where('username', $request->username)->first();
-                return redirect('/dashboard')->with('success', 'Selamat Anda berhasil login!');
+                return redirect('/dashboard')->with('success', 'Selamat Anda berhasil login.');
             }
         }
 
         else if($request->login_as == "biro_perjalanan_wisata"){
             if (Auth::guard('bpw')->attempt(['username' => $request->username, 'password' => $request->password, 'status' => 1])) {
                 $bpw = \App\Models\BPW::where('username', $request->username)->first();
-                return redirect('/dashboard')->with('success', 'Selamat Anda berhasil login!');
+                return redirect('/dashboard')->with('success', 'Selamat Anda berhasil login.');
             }
         }
 

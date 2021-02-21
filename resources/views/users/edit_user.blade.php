@@ -1,7 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
 <section class="content-header">
     <h1>
         Data Pengguna
@@ -30,34 +29,34 @@
 
                     <div class="form-row">
                         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 5px;">
-                            <label for="form_nm_user">Nama Pengguna</label>
-                            <input name="nm_user" type="text" class="form-control" id="input_nm_user" value="{{$users -> nm_user}}" required autocomplete="off" />
+                            <label for="form_nm_user">Nama Pegawai</label>
+                            <input name="nm_user" type="text" class="form-control" id="input_nm_user" onkeypress="return hanyaHuruf(event)" value="{{$users -> nm_user}}" required autocomplete="off" />
                             @error('nm_user')
-                                <span class="invalid-feedback text-danger" role="alert">
-                                    Nama Pegawai terdiri dari 6-50 karakter.
-                                </span>
-                                @enderror
+                            <span class="invalid-feedback text-danger" role="alert">
+                                Nama Pegawai terdiri dari 6-50 karakter.
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group col-md-6" style="padding: 0; margin-bottom: 25px;">
                             <label for="form_username">Username</label>
                             <input name="username" type="username" class="form-control" id="input_username" value="{{$users -> username}}" required autocomplete="off" />
                             @error('username')
-                                    <span class="invalid-feedback text-danger" role="alert">
-                                        Username bersifat unik dari 6-20 karakter.
-                                    </span>
-                                    @enderror
+                            <span class="invalid-feedback text-danger" role="alert">
+                                Username bersifat unik dari 6-20 karakter.
+                            </span>
+                            @enderror
                         </div>
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-6" style="padding: 0; padding-right: 10px;margin-bottom: 5px;">
+                        <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 5px;">
                             <label for="form_nik">NIK</label>
-                            <input name="nik" type="text" class="form-control" id="input_nik" value="{{$users -> nik}}" required autocomplete="off" />
+                            <input name="nik" type="text" class="form-control" id="input_nik" onkeypress="return hanyaAngka(event)" value="{{$users -> nik}}" required autocomplete="off" />
                             @error('nik')
-                                    <span class="invalid-feedback text-danger" role="alert">
-                                        NIK terdiri dari 16-20 karakter.
-                                    </span>
-                                    @enderror
+                            <span class="invalid-feedback text-danger" role="alert">
+                                NIK terdiri dari 16-20 karakter.
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group col-md-6" style="padding: 0; margin-bottom: 25px;">
                             <label for="form_Email">E-mail</label>
@@ -68,12 +67,12 @@
                     <div class="form-row">
                         <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 5px;">
                             <label for="form_no_telp">Nomor Telepon</label>
-                            <input name="no_telp" type="text" class="form-control" id="input_no_telp" value="{{$users -> no_telp}}" required autocomplete="off" />
+                            <input name="no_telp" type="text" class="form-control" id="input_no_telp" onkeypress="return hanyaAngka(event)" value="{{$users -> no_telp}}" required autocomplete="off" />
                             @error('no_telp')
-                                    <span class="invalid-feedback text-danger" role="alert">
-                                        Nomor Telepon terdiri dari 7-15 karakter.
-                                    </span>
-                                    @enderror
+                            <span class="invalid-feedback text-danger" role="alert">
+                                Nomor Telepon terdiri dari 7-15 karakter.
+                            </span>
+                            @enderror
                         </div>
                         <div class="form-group col-md-6" style="padding: 0; margin-bottom: 25px;">
                             <label for="form_jns_kelamin">Jenis Kelamin</label>
@@ -92,7 +91,6 @@
                                 <option selected disabled="">-- Pilih Level --</option>
                                 <option value="0" @if($users -> level == "0") selected @endif>Administrator</option>
                                 <option value="1" @if($users -> level == "1") selected @endif>Staf Jasa Pariwisata</option>
-                                <option value="2" @if($users -> level == "2") selected @endif>Kepala Seksi Jasa</option>
                             </select>
                         </div>
                         <div class="form-group col-md-6" style="padding: 0;">
@@ -120,5 +118,19 @@
     @if($errors->any())
       $('#exampleModal').modal();
     @endif
+
+    function hanyaAngka(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+
+    function hanyaHuruf(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return true;
+        return false;
+    }
 </script>
 @endsection
