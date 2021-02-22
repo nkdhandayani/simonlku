@@ -32,7 +32,7 @@
                         <input name="no_surat" type="text" class="form-control" id="no_surat" value="{{$lku -> no_surat}}" required autocomplete="off" />
                         @error('no_surat')
                         <span class="invalid-feedback text-danger" role="alert">
-                            Nomor Surat Pengantar terdiri dari 4-20 karakter.
+                            Nomor Surat Pengantar terdiri dari 4-50 karakter.
                         </span>
                         @enderror
                     </div>
@@ -231,7 +231,7 @@
 
                         <div class="form-group col-md-6" style="padding: 0px; margin-bottom: 35px;">
                             <label for="tgl_verifikasi">Tanggal Verifikasi</label>
-                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" @if($lku - /> tgl_verifikasi == null) value="{{$lku -> tgl_verifikasi}}" @else value="{{$lku -> tgl_verifikasi ->
+                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" @if($lku -> tgl_verifikasi == null) value="{{$lku -> tgl_verifikasi}}" @else value="{{$lku -> tgl_verifikasi ->
                             format('Y-m-d')}}" @endif required autocomplete="off" />
                         </div>
                     </div>

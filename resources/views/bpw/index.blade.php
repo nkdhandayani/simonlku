@@ -40,7 +40,7 @@
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama Biro</th>
+                                            <th style="width: 120px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama Biro</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Kabupaten</th>
                                             <th style="width: 200px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
                                                 Alamat
@@ -237,7 +237,7 @@
                                         <option selected disabled>-- Pilih Kabupaten/Kota --</option>
                                         <option value="Kota Denpasar"{{ old('kabupaten') == 'Kota Denpasar' ? 'selected' : '' }}>Kota Denpasar</option>
                                         <option value="Badung"{{ old('kabupaten') == 'Badung' ? 'selected' : '' }}>Badung</option>
-                                        <option value="Gianyar"{{ old('kabupaten') == 'Badung' ? 'selected' : '' }}>Gianyar</option>
+                                        <option value="Gianyar"{{ old('kabupaten') == 'Gianyar' ? 'selected' : '' }}>Gianyar</option>
                                         <option value="Bangli"{{ old('kabupaten') == 'Bangli' ? 'selected' : '' }}>Bangli</option>
                                         <option value="Tabanan"{{ old('kabupaten') == 'Tabanan' ? 'selected' : '' }}>Tabanan</option>
                                         <option value="Jembrana"{{ old('kabupaten') == 'Jembrana' ? 'selected' : '' }}>Jembrana</option>

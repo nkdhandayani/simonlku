@@ -39,7 +39,7 @@
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama Biro</th>
+                                            <th style="width: 150px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama Biro</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No. Surat Pengantar</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tahun LKU</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Periode</th>
@@ -113,7 +113,7 @@
                                 <input name="no_surat" id="no_surat" type="text" class="form-control" required="required" autocomplete="off" placeholder="Masukkan Nomor Surat Pengantar" value="{{ old('no_surat') }}" />
                                 @error('no_surat')
                                 <span class="invalid-feedback text-danger" role="alert">
-                                    Nomor Surat Pengantar terdiri dari 4-20 karakter.
+                                    Nomor Surat Pengantar terdiri dari 4-50 karakter.
                                 </span>
                                 @enderror
                             </div>

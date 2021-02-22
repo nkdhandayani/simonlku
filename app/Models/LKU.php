@@ -23,7 +23,7 @@ class LKU extends Model
     	'id_izin',
         'no_surat',
         'tahun',
-        'periode_lku',
+        'periode',
         'file_lku',
         'sts_verifikasi',
         'keterangan',

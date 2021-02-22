@@ -115,7 +115,7 @@
                                     <input name="no_izin" type="text" class="form-control" required autocomplete="off" placeholder="Masukkan Nomor Izin Operasional" value="{{ old('no_izin') }}" />
                                     @error('no_izin')
                                     <span class="invalid-feedback text-danger" role="alert">
-                                        Nomor Izin terdiri dari 4-10 karakter.
+                                        Nomor Izin terdiri dari 4-50 karakter.
                                     </span>
                                     @enderror
                                 </div>

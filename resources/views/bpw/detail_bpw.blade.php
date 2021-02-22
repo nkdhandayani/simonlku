@@ -79,7 +79,7 @@
                                         <td>{{$bpws->kabupaten}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Nomor Telp</td>
+                                        <td>Nomor Telepon</td>
                                         <td>:</td>
                                         <td>{{$bpws->no_telp}}</td>
                                     </tr>
@@ -143,7 +143,7 @@
                     @if(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 0)
                     <div style="float: right;">
                         <div style="clear: both;"></div>
-                        <a href="/bpw/reset/{{$bpws -> id_bpw}}"><button class="btn btn-primary btn-sm">Reset Password?</button></a>
+                        <a href="#" class="btn btn-default btn-sm reset" bpw-id="{{$bpws -> id_bpw}}">Reset Password?</a>
                     </div>
                     @endif
                 </div>
@@ -151,4 +151,24 @@
         </div>
     </div>
 </section>
+@endsection
+
+@section('js')
+<script type="text/javascript">
+$('.reset').click(function(){
+  var id_bpw = $(this).attr('bpw-id');
+  swal({
+    title: "Yakin?",
+    text: "Apakah anda yakin ingin me-reset password akun ini?",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willReset) => {
+    if (willReset) {
+      window.location = "/bpw/reset/"+id_bpw;
+    }
+  });
+});
+</script>
 @endsection

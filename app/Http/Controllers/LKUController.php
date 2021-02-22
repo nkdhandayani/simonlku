@@ -49,7 +49,7 @@ class LKUController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'no_surat' => 'required|min:4|max:20',
+            'no_surat' => 'required|min:4|max:50',
             'tahun' => 'required|min:4|max:4',
             'periode' => 'required',
             'file_lku' => 'required|mimes:pdf'
@@ -124,7 +124,7 @@ class LKUController extends Controller
     {
         if(auth()->guard('bpw')->user()) {
         $this->validate($request, [
-            'no_surat' => 'min:4|max:20',
+            'no_surat' => 'min:4|max:50',
             'tahun' => 'min:4|max:4',
             'file_lku' => 'mimes:pdf'
         ]);
@@ -166,7 +166,7 @@ class LKUController extends Controller
         return redirect('/lku');
     }
 
-    public function cetakFilter($tahun)
+    public function cetakFilter(Request $request,$tahun)
     {   
         $lku = LKU::where('tahun', $tahun)->pluck('id_bpw')->toArray();
         $bpw = BPW::whereNotIn('id_bpw', collect($lku))->get();

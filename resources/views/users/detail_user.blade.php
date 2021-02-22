@@ -131,11 +131,31 @@
 
                     <div style="float: right;">
                         <div style="clear: both;"></div>
-                        <a href="/user/reset/{{$users -> id_user}}"><button class="btn btn-primary btn-sm">Reset Password?</button></a>
+                        <a href="#" class="btn btn-primary btn-sm reset" user-id="{{$users -> id_user}}">Reset Password?</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+@endsection
+
+@section('js')
+<script type="text/javascript">
+$('.reset').click(function(){
+  var id_user = $(this).attr('user-id');
+  swal({
+    title: "Yakin?",
+    text: "Apakah anda yakin ingin me-reset password akun ini?",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  })
+  .then((willReset) => {
+    if (willReset) {
+      window.location = "/user/reset/"+id_user;
+    }
+  });
+});
+</script>
 @endsection

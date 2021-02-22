@@ -17,7 +17,7 @@ class CreateIzinTable extends Migration
             $table->increments('id_izin')->unsigned();;
             $table->unsignedInteger('id_bpw');
             $table->unsignedInteger('id_user');
-            $table->string('no_izin', 20);
+            $table->string('no_izin', 50);
             $table->date('tgl_izin');
             $table->string('file_izin', 100);
             $table->integer('sts_verifikasi')->unsigned();

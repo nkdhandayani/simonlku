@@ -122,6 +122,7 @@
 <script src="{{url('adminLTE/dist/js/demo.js')}}"></script>
 <!-- Toast js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" type="text/javascript"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <script>
   $(document).ready(function () {

@@ -34,7 +34,7 @@
                             <input name="no_izin" type="text" class="form-control" id="no_izin" value="{{$izin -> no_izin}}" required autocomplete="off" />
                             @error('no_izin')
                             <span class="invalid-feedback text-danger" role="alert">
-                                Nomor Izin terdiri dari 4-10 karakter.
+                                Nomor Izin terdiri dari 4-50 karakter.
                             </span>
                             @enderror
                         </div>
@@ -128,7 +128,7 @@
 
                         <div class="form-group col-md-6" style="padding: 0px; margin-bottom: 35px;">
                             <label for="tgl_verifikasi">Tanggal Verifikasi</label>
-                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" @if($izin - /> tgl_verifikasi == null) value="{{$izin -> tgl_verifikasi}}" @else value="{{$izin -> tgl_verifikasi ->
+                            <input name="tgl_verifikasi" type="date" class="form-control" id="tgl_verifikasi" @if($izin -> tgl_verifikasi == null) value="{{$izin -> tgl_verifikasi}}" @else value="{{$izin -> tgl_verifikasi ->
                             format('Y-m-d')}}" @endif required autocomplete="off" />
                         </div>
                     </div>

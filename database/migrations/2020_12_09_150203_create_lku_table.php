@@ -19,7 +19,7 @@ class CreateLkuTable extends Migration
             $table->unsignedInteger('id_user');
             $table->unsignedInteger('id_tdup');
             $table->unsignedInteger('id_izin');
-            $table->string('no_surat', 20);
+            $table->string('no_surat', 50);
             $table->string('tahun', 4);
             $table->enum('periode', ["I", "II"]);
             $table->string('file_lku', 100);

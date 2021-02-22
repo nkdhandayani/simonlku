@@ -41,7 +41,7 @@ class IzinController extends Controller
         }
 
         $this->validate($request, [
-            'no_izin' => 'required|min:4|max:10',
+            'no_izin' => 'required|min:4|max:50',
             'tgl_izin' => 'required|date',
             'file_izin' => 'required|mimes:jpg,jpeg,png'
         ]); 
@@ -92,7 +92,7 @@ class IzinController extends Controller
     {
         if(auth()->guard('bpw')->user()) {
         $this->validate($request, [
-            'no_izin' => 'min:4|max:10',
+            'no_izin' => 'min:4|max:50',
             'tgl_izin' => 'date',
             'file_izin' => 'mimes:jpg,jpeg,png',
         ]);
