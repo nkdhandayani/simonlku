@@ -61,14 +61,10 @@
                     {{ \Auth::guard('bpw')->user()->nm_bpw }}
                   @endif
                   <small>
-                    @if(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '0')
-                    Administrator
-                    @elseif(\Auth::guard('user')->user() && \Auth::guard('user')->user()->level == '1')
-                    Staf Jasa Pariwisata
-                    @endif
-
-                    @if(\Auth::guard('bpw')->user())
-                    Biro Perjalanan Wisata
+                    @if(\Auth::guard('user')->check())
+                       {{ \Auth::guard('user')->user()->username }}
+                    @elseif(\Auth::guard('bpw')->check())
+                      {{ \Auth::guard('bpw')->user()->username }}
                     @endif
                   </small>
                 </p>

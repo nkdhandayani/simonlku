@@ -22,8 +22,9 @@
                     <span class="info-box-icon bg-red"><i class="fa fa-files-o"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text" style="color: black; font-size: 25px;">VERIFIKASI TDUP</span>
-                        <span class="info-box-number" style="color: black; font-size: 25px;">{{$tdup_verif}}</span>
+                        <span class="info-box-text" style="color: black; font-size: 17px;">DATA TDUP YANG</span>
+                        <span class="info-box-text" style="color: black; font-size: 17px;"> BELUM DIVERIFIKASI</span>
+                        <span class="info-box-number" style="color: black; font-size: 23px;">{{$tdup_verif}}</span>
                     </div>
                 </div>
             </a>
@@ -35,8 +36,9 @@
                     <span class="info-box-icon bg-yellow"><i class="fa fa-files-o"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text" style="color: black; font-size: 25px;">VERIFIKASI IZIN</span>
-                        <span class="info-box-number" style="color: black; font-size: 25px;">{{$izin_verif}}</span>
+                        <span class="info-box-text" style="color: black; font-size: 17px;">DATA IZIN YANG</span>
+                        <span class="info-box-text" style="color: black; font-size: 17px;"> BELUM DIVERIFIKASI</span>
+                        <span class="info-box-number" style="color: black; font-size: 23px;">{{$izin_verif}}</span>
                     </div>
                 </div>
             </a>
@@ -48,8 +50,9 @@
                     <span class="info-box-icon bg-green"><i class="fa fa-files-o"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text" style="color: black; font-size: 25px;">VERIFIKASI LKU</span>
-                        <span class="info-box-number" style="color: black; font-size: 25px;">{{$lku_verif}}</span>
+                        <span class="info-box-text" style="color: black; font-size: 17px;">DATA LKU YANG</span>
+                        <span class="info-box-text" style="color: black; font-size: 17px;"> BELUM DIVERIFIKASI</span>
+                        <span class="info-box-number" style="color: black; font-size: 23px;">{{$lku_verif}}</span>
                     </div>
                 </div>
             </a>
