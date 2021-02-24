@@ -143,7 +143,7 @@
                     @if(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 0)
                     <div style="float: right;">
                         <div style="clear: both;"></div>
-                        <a href="#" class="btn btn-default btn-sm reset" bpw-id="{{$bpws -> id_bpw}}">Reset Password?</a>
+                        <a href="#" class="btn btn-primary btn-sm reset" bpw-id="{{$bpws -> id_bpw}}">Reset Password?</a>
                     </div>
                     @endif
                 </div>
