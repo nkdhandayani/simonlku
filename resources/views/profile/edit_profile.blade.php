@@ -3,13 +3,14 @@
 @section('content')
 <section class="content-header">
     <h1>
-        Profile Pengguna
+        Ubah Profile
     </h1>
     <ol class="breadcrumb">
         <li>
             <a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
         </li>
-        <li class="active"><a href="#">Profile Pengguna</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li class="active"><a href="/profile/edit">Ubah Profile</a></li>
     </ol>
 </section>
 
@@ -30,7 +31,7 @@
 
                             @if(\Auth::guard('bpw')->user())
                             <div class="form-group" style="padding: 0; margin-bottom: 5px;">
-                                <label for="nm_bpw">Nama BPW</label>
+                                <label for="nm_bpw">Nama Biro Perjalanan Wisata</label>
                                 <input name="nm_bpw" type="text" class="form-control" id="nm_bpw" onkeypress="return hanyaHuruf(event)" value="{{$bpws -> nm_bpw}}" required autocomplete="off" />
                                 @error('nm_bpw')
                                 <span class="invalid-feedback text-danger" role="alert">
@@ -104,9 +105,9 @@
 
                             <div class="form-row">
                                 <div class="form-group col-md-6" style="padding: 0; padding-right: 10px; margin-bottom: 5px;">
-                                    <label for="jns_BPW">Jenis BPW</label>
+                                    <label for="jns_BPW">Jenis Biro Perjalanan Wisata</label>
                                     <select name="jns_bpw" class="form-control" id="jns_bpw" value="{{$bpws -> jns_bpw}}" required autocomplete="off">
-                                        <option selected>-- Pilih Jenis BPW --</option>
+                                        <option selected>-- Pilih Jenis Biro --</option>
                                         <option value="BPW" @if($bpws -> jns_bpw == "BPW") selected @endif>BPW</option>
                                         <option value="MICE" @if($bpws -> jns_bpw == "MICE") selected @endif>MICE</option>
                                         <option value="Lanjut Usia" @if($bpws -> jns_bpw == "Lanjut Usia") selected @endif>Lanjut Usia</option>

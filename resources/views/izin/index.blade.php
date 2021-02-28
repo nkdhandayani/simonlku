@@ -7,10 +7,9 @@
     </h1>
     <ol class="breadcrumb">
         <li>
-            <a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+            <a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
         </li>
-        <li>Kelola Data</li>
-        <li class="active"><a href="/izin"> Izin Operasional</a></li>
+        <li class="active"><a href="/izin">Izin Operasional</a></li>
     </ol>
 </section>
 
@@ -38,10 +37,10 @@
                                 <table id="example1" class="table table-hover table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                     <thead>
                                         <tr role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
-                                            <th style="width: 200px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama Biro</th>
-                                            <th style="width: 100px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No. Izin Operasional</th>
-                                            <th style="width: 130px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tanggal Izin Operasional</th>
+                                            <th style="width: 10px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
+                                            <th style="width: 170px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama Biro</th>
+                                            <th style="width: 130px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No. Izin Operasional</th>
+                                            <th style="width: 170px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tanggal Izin Operasional</th>
                                             <th style="width: 130px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">File Izin Operasional</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Status Verifikasi</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Aksi</th>
@@ -56,7 +55,7 @@
                                             <td>{{ $izin->tgl_izin->isoFormat('dddd, DD MMMM Y') }}</td>
                                             <td>
                                                 @if($izin->file_izin)
-                                                    <a href="{{ asset('file_izin/' . $izin->file_izin) }}" target="_blank">Lihat Gambar Izin Operasional</a>
+                                                    <a href="{{ asset('file_izin/' . $izin->file_izin) }}" target="_blank">Lihat Izin Operasional</a>
                                                 @else
                                                     -
                                                 @endif

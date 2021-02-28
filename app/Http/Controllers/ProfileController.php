@@ -58,7 +58,7 @@ class ProfileController extends Controller
                     }
                 }
                 $users->save();
-                return redirect('/profile')->with('success', 'Data berhasil dirubah!');
+                return redirect('/profile')->with('success', 'Data berhasil diubah.');
         }
         elseif (auth()->guard('bpw')->user())
         {
@@ -94,7 +94,7 @@ class ProfileController extends Controller
                     }
                 }
                 $bpws->save();
-                return redirect('/profile')->with('success', 'Data berhasil dirubah!');
+                return redirect('/profile')->with('success', 'Data berhasil diubah.');
         }
     }
 
@@ -127,7 +127,7 @@ class ProfileController extends Controller
                     'password' => $password_baru
                 ]);
 
-                return redirect('/profile')->with('success', 'Password telah berhasil diubah.');
+                return redirect('/profile')->with('success', 'Password berhasil diubah.');
             } else {
                 // Jika password baru dan password konfirmasi tidak sama maka kembalikan ke halaman ganti password dengan error 
                 return redirect('/profile/ganti_pass')->with('error', 'Password baru dan password konfirmasi yang Anda masukkan tidak sama, silahkan coba lagi.');

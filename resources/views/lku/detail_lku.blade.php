@@ -3,14 +3,20 @@
 @section('content')
 <section class="content-header">
     <h1>
-        Detail Laporan Kegiatan Usaha
+        Detail LKU
     </h1>
     <ol class="breadcrumb">
         <li>
             <a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
         </li>
-        <li>Kelola Data</li>
-        <li class="active"><a href="/lku"> Detail LKU</a></li>
+        @if (auth()->guard('user')->user())
+        <li>Laporan Kegiatan Usaha</li>
+        <li class="active"><a href="/lku"> Pengumpulan LKU</a></li>
+        <li>Detail LKU</li>
+        @else
+        <li class="active"><a href="/lku">LKU</a></li>
+        <li>Detail LKU</li>
+        @endif
     </ol>
 </section>
 
@@ -40,7 +46,7 @@
                     <td>{{$lkus->tahun}}</td>
                 </tr>
                 <tr>
-                    <td>Periode</td>
+                    <td>Periode LKU</td>
                     <td>:</td>
                     <td>{{$lkus->periode}}</td>
                 </tr>

@@ -87,7 +87,7 @@ class LKUController extends Controller
             'tgl_verifikasi' => request('tgl_verifikasi'),
         ]);
 
-        return redirect('/lku');
+        return redirect('/lku')->with('success', 'Data berhasil ditambahkan.');;
     }
 
 
@@ -163,7 +163,7 @@ class LKUController extends Controller
         $lkus->keterangan = $request->keterangan;
         $lkus->tgl_verifikasi = $request->tgl_verifikasi;
         $lkus->save();
-        return redirect('/lku');
+        return redirect('/lku')->with('success', 'Data berhasil diubah.');;
     }
 
     public function cetakFilter(Request $request,$tahun)

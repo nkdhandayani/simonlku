@@ -2,15 +2,20 @@
 
 <section class="content-header">
     <h1>
-        Edit Laporan Kegiatan Usaha
+        Ubah LKU
     </h1>
     <ol class="breadcrumb">
         <li>
             <a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
         </li>
-        <li>Kelola Data</li>
-        <li><a href="/lku"> Laporan Kegiatan Usaha</a></li>
-        <li class="active"><a href="#"> Edit LKU</a></li>
+        @if (auth()->guard('user')->user())
+        <li>Laporan Kegiatan Usaha</li>
+        <li class="active"><a href="/lku"> Pengumpulan LKU</a></li>
+        <li>Ubah LKU</li>
+        @else
+        <li class="active"><a href="/lku">LKU</a></li>
+        <li>Ubah LKU</li>
+        @endif
     </ol>
 </section>
 
@@ -48,7 +53,7 @@
                             @enderror
                         </div>
                         <div class="form-group col-md-6" style="padding: 0px;">
-                            <label for="periode">Periode</label>
+                            <label for="periode">Periode LKU</label>
                             <select name="periode" class="form-control" id="periode" value="{{$lku -> periode}}" required autocomplete="off">
                                 <option value="I" @if($lku -> periode == "I") selected @endif>I</option>
                                 <option value="II" @if($lku -> periode == "II") selected @endif>II</option>

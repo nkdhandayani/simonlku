@@ -41,7 +41,7 @@ class TDUPController extends Controller
         }
 
         $this->validate($request, [
-            'no_tdup' => 'required|min:4|max:10',
+            'no_tdup' => 'required|min:4|max:50',
             'tgl_tdup' => 'required|date',
             'file_tdup' => 'required|mimes:jpg,jpeg,png'
         ]);
@@ -92,7 +92,7 @@ class TDUPController extends Controller
     {
         if(auth()->guard('bpw')->user()) {
         $this->validate($request, [
-            'no_tdup' => 'min:4|max:10',
+            'no_tdup' => 'min:4|max:50',
             'tgl_tdup' => 'date',
             'file_tdup' => 'mimes:jpg,jpeg,png',
         ]);

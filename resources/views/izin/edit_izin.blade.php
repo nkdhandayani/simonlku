@@ -3,15 +3,14 @@
 @section('content')
 <section class="content-header">
     <h1>
-        Edit Izin Operasional
+        Ubah Izin Operasional
     </h1>
     <ol class="breadcrumb">
         <li>
             <a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
         </li>
-        <li>Kelola Data</li>
-        <li><a href="/izin"> Izin Operasional</a></li>
-        <li class="active"><a href="#"> Edit Izin Operasional</a></li>
+        <li><a href="/izin">Izin Operasional</a></li>
+        <li class="active"><a href="#">Ubah Izin Operasional</a></li>
     </ol>
 </section>
 

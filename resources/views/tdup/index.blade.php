@@ -7,10 +7,9 @@
     </h1>
     <ol class="breadcrumb">
         <li>
-            <a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+            <a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
         </li>
-        <li>Kelola Data</li>
-        <li class="active"><a href="/tdup"> Tanda Daftar Usaha Pariwisata</a></li>
+        <li class="active"><a href="/tdup">TDUP</a></li>
     </ol>
 </section>
 
@@ -38,8 +37,8 @@
                                 <table id="example1" class="table table-hover table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                                     <thead>
                                         <tr role="row">
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
-                                            <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama Biro</th>
+                                            <th style="width: 10px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">No.</th>
+                                            <th style="width: 170px;" class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nama Biro</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Nomor TDUP</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">Tanggal TDUP</th>
                                             <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">File TDUP</th>
@@ -54,7 +53,7 @@
                                             <td>{{ $tdup->bpw->nm_bpw }}</td>
                                             <td>{{ $tdup->no_tdup }}</td>
                                             <td>{{ $tdup->tgl_tdup->isoFormat('dddd, DD MMMM Y') }}</td>
-                                            <td>@if($tdup->file_tdup) <a href="{{ asset('file_tdup/' . $tdup->file_tdup) }}" target="_blank">Lihat Gambar TDUP</a> @else - @endif</td>
+                                            <td>@if($tdup->file_tdup) <a href="{{ asset('file_tdup/' . $tdup->file_tdup) }}" target="_blank">Lihat TDUP</a> @else - @endif</td>
                                             <td>
                                                 <?php
                                                 if($tdup->sts_verifikasi == 0)
@@ -111,7 +110,7 @@
                                     <input name="no_tdup" type="text" class="form-control" placeholder="Masukkan Nomor TDUP" required autocomplete="off" value="{{ old('no_tdup') }}" />
                                     @error('no_tdup')
                                     <span class="invalid-feedback text-danger" role="alert">
-                                        Nomor TDUP terdiri dari 4-10 karakter.
+                                        Nomor TDUP terdiri dari 4-50 karakter.
                                     </span>
                                     @enderror
                                 </div>

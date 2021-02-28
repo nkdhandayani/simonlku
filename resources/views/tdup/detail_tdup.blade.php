@@ -3,15 +3,14 @@
 @section('content')
 <section class="content-header">
     <h1>
-        Detail Tanda Daftar Usaha Pariwisata
+        Detail TDUP
     </h1>
     <ol class="breadcrumb">
         <li>
             <a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
         </li>
-        <li>Kelola Data</li>
-        <li><a href="/tdup"> Tanda Daftar Usaha Pariwisata</a></li>
-        <li class="active"><a href="#"> Detail TDUP</a></li>
+        <li><a href="/tdup">TDUP</a></li>
+        <li class="active"><a href="#">Detail TDUP</a></li>
     </ol>
 </section>
 

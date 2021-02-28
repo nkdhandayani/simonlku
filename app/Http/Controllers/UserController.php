@@ -47,7 +47,7 @@ class UserController extends Controller
             'level' => request('level'),
             'status' => request('status'),
         ]);
-        return redirect('/user')->with('success', 'Data berhasil ditambahkan!');
+        return redirect('/user')->with('success', 'Data berhasil ditambahkan.');
     }
     
 
@@ -96,7 +96,7 @@ class UserController extends Controller
         $users->status = $request->status;
         $users->save();
         
-        return redirect('/user')->with('success', 'Data berhasil dirubah!');
+        return redirect('/user')->with('success', 'Data berhasil dirubah.');
     }
 
     public function reset($id)
@@ -105,6 +105,6 @@ class UserController extends Controller
         $users->password = bcrypt('disparbali');
         $users->update();
 
-        return redirect()->back()->with('success', 'Password berhasil direset!');
+        return redirect()->back()->with('success', 'Password berhasil direset.');
     }
 }

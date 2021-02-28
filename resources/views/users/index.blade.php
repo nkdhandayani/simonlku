@@ -9,7 +9,7 @@
         <li>
             <a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
         </li>
-        <li class="active"><a href="/user">Kelola Pengguna</a></li>
+        <li class="active"><a href="/user">Pegawai Jasa Pariwisata</a></li>
     </ol>
 </section>
  

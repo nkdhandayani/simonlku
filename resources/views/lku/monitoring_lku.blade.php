@@ -3,14 +3,14 @@
 @section('content')
 <section class="content-header">
     <h1>
-        Data Monitoring Laporan Kegiatan Usaha
+        Data Monitoring LKU
     </h1>
     <ol class="breadcrumb">
         <li>
             <a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
         </li>
-        <li>Kelola Data</li>
-        <li class="active"><a href="/monitoring_lku"> Monitoring Laporan Kegiatan Usaha</a></li>
+        <li>Laporan Kegiatan Usaha</li>
+        <li class="active"><a href="/monitoring_lku"> Monitoring LKU</a></li>
     </ol>
 </section>
 

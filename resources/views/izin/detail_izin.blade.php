@@ -9,9 +9,8 @@
         <li>
             <a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
         </li>
-        <li>Kelola Data</li>
-        <li><a href="/izin"> Izin Operasional</a></li>
-        <li class="active"><a href="#"> Detail Izin Operasional</a></li>
+        <li><a href="/izin">Izin Operasional</a></li>
+        <li class="active"><a href="#">Detail Izin Operasional</a></li>
     </ol>
 </section>
 

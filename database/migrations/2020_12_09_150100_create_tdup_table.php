@@ -17,7 +17,7 @@ class CreateTdupTable extends Migration
             $table->increments('id_tdup')->unsigned();;
             $table->unsignedInteger('id_bpw');
             $table->unsignedInteger('id_user');
-            $table->string('no_tdup', 10);
+            $table->string('no_tdup', 50);
             $table->date('tgl_tdup');
             $table->string('file_tdup', 100);
             $table->integer('sts_verifikasi')->unsigned();

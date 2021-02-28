@@ -62,7 +62,7 @@ class BPWController extends Controller
             'status' => request('status'),
         ]);
 
-        return redirect('/bpw')->with('success', 'Data berhasil ditambahkan!');
+        return redirect('/bpw')->with('success', 'Data berhasil ditambahkan.');
     }
 
 
@@ -118,7 +118,7 @@ class BPWController extends Controller
         $bpws->status = $request->status;
         $bpws->save();
 
-        return redirect('/bpw')->with('success', 'Data berhasil dirubah!');
+        return redirect('/bpw')->with('success', 'Data berhasil diubah.');
     }
     
     public function cetak(Request $request)
@@ -144,6 +144,6 @@ class BPWController extends Controller
         $bpws->password = bcrypt('disparbali');
         $bpws->update();
 
-        return redirect()->back()->with('success', 'Password berhasil direset!');
+        return redirect()->back()->with('success', 'Password berhasil direset.');
     }
 }

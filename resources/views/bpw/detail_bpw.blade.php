@@ -9,8 +9,7 @@
         <li>
             <a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
         </li>
-        <li>Kelola Data</li>
-        <li><a href="/bpw"> Biro Perjalanan Wisata</a></li>
+        <li><a href="/bpw">Biro Perjalanan Wisata</a></li>
         <li class="active"><a href="#">Detail Biro Perjalanan Wisata</a></li>
     </ol>
 </section>
@@ -143,7 +142,7 @@
                     @if(auth()->guard('user')->user() && auth()->guard('user')->user()->level == 0)
                     <div style="float: right;">
                         <div style="clear: both;"></div>
-                        <a href="#" class="btn btn-primary btn-sm reset" bpw-id="{{$bpws -> id_bpw}}">Reset Password?</a>
+                        <a href="#" class="btn btn-primary btn-sm reset" bpw-id="{{$bpws -> id_bpw}}">Reset Password</a>
                     </div>
                     @endif
                 </div>

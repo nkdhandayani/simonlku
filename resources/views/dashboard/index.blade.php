@@ -5,10 +5,7 @@
 <section class="content-header">
     <h1>Format Pengumpulan Laporan</h1>
     <ol class="breadcrumb">
-        <li>
-            <a href="#"><i class="fa fa-home"></i>Home</a>
-        </li>
-        <li class="active"><a href="/dashboard">Dashboard</a></li>
+    <li class="active"><a href="/dashboard"><i class="fa fa-home"></i>Dashboard</a></li>
     </ol>
 </section>
 @endif

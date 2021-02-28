@@ -3,14 +3,14 @@
 @section('content')
 <section class="content-header">
     <h1>
-        Data Pengguna
+        Ubah Data Pegawai
     </h1>
     <ol class="breadcrumb">
         <li>
-            <a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
+            <a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
         </li>
-        <li><a href="/user"> Kelola Pengguna</a></li>
-        <li class="active"><a href="#"> Edit Pengguna</a></li>
+        <li><a href="/user">Pegawai Jasa Pariwisata</a></li>
+        <li class="active"><a href="#">Ubah Data Pegawai</a></li>
     </ol>
 </section>
 

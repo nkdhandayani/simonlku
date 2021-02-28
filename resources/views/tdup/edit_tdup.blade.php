@@ -3,15 +3,14 @@
 @section('content')
 <section class="content-header">
     <h1>
-        Edit Tanda Daftar Usaha Pariwisata
+        Ubah TDUP
     </h1>
     <ol class="breadcrumb">
         <li>
             <a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
         </li>
-        <li>Kelola Data</li>
-        <li><a href="/tdup"> Tanda Daftar Usaha Pariwisata</a></li>
-        <li class="active"><a href="#"> Edit TDUP</a></li>
+        <li><a href="/tdup">TDUP</a></li>
+        <li class="active"><a href="#">Ubah TDUP</a></li>
     </ol>
 </section>
 
@@ -34,7 +33,7 @@
                             <input name="no_tdup" type="text" class="form-control" id="no_tdup" value="{{$tdup -> no_tdup}}" required autocomplete="off" />
                             @error('no_tdup')
                             <span class="invalid-feedback text-danger" role="alert">
-                                Nomor TDUP terdiri dari 4-10 karakter.
+                                Nomor TDUP terdiri dari 4-50 karakter.
                             </span>
                             @enderror
                         </div>

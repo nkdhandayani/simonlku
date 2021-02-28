@@ -1,13 +1,13 @@
 @extends('layouts.master') @section('content')
 <section class="content-header">
     <h1>
-        Profile Pengguna
+        Profile
     </h1>
     <ol class="breadcrumb">
         <li>
             <a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
         </li>
-        <li class="active"><a href="#">Profile Pengguna</a></li>
+        <li class="active"><a href="/profile">Profile</a></li>
     </ol>
 </section>
 
@@ -51,7 +51,7 @@
                                                 Biro Perjalanan Wisata
                                             @endif
                                         </h5>
-                                        <a href="/profile/edit"><button class="btn btn-warning btn-sm">Edit</button></a>
+                                        <a href="/profile/edit"><button class="btn btn-warning btn-sm">Ubah</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@
                                 <table class="table">
                                     @if(\Auth::guard('bpw')->user())
                                     <tr>
-                                        <td width="150">Nama Biro</td>
+                                        <td width="150">Nama Pengguna</td>
                                         <td width="10px">:</td>
                                         <td>{{$bpws->nm_bpw}}</td>
                                     </tr>
@@ -74,7 +74,7 @@
                                         <td>{{$bpws->username}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Email</td>
+                                        <td>E-mail</td>
                                         <td>:</td>
                                         <td>{{$bpws->email}}</td>
                                     </tr>
@@ -96,7 +96,13 @@
                                     <tr>
                                         <td>Nomor Fax</td>
                                         <td>:</td>
-                                        <td>{{$bpws->no_fax}}</td>
+                                        <td>
+                                            @if($bpws->no_fax != null)
+                                                {{$bpws->no_fax}}
+                                            @else
+                                                -
+                                            @endif
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Nama PIC</td>
@@ -143,7 +149,7 @@
 
                                     @if(\Auth::guard('user')->user())
                                     <tr>
-                                        <td width="150px">Nama Pegawai</td>
+                                        <td width="150px">Nama Pengguna</td>
                                         <td width="10px">:</td>
                                         <td>{{$users->nm_user}}</td>
                                     </tr>
@@ -158,12 +164,12 @@
                                         <td>{{$users->nik}}</td>
                                     </tr>
                                     <tr>
-                                        <td>Email</td>
+                                        <td>E-mail</td>
                                         <td>:</td>
                                         <td>{{$users->email}}</td>
                                     </tr>
                                     <tr>
-                                        <td>No. Telp</td>
+                                        <td>Nomor Telepon</td>
                                         <td>:</td>
                                         <td>{{$users->no_telp}}</td>
                                     </tr>
@@ -212,7 +218,7 @@
 
                     <div style="float: right;">
                         <div style="clear: both;"></div>
-                        <a href="/profile/ganti_pass"><button class="btn btn-primary btn-sm">Ganti Password?</button></a>
+                        <a href="/profile/ganti_pass"><button class="btn btn-primary btn-sm">Ganti Password</button></a>
                     </div>
                 </div>
             </div>

@@ -4,15 +4,14 @@
 
 <section class="content-header">
     <h1>
-        Edit Biro Perjalanan Wisata
+        Ubah Biro Perjalanan Wisata
     </h1>
     <ol class="breadcrumb">
         <li>
             <a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
         </li>
-        <li>Kelola Data</li>
-        <li><a href="/bpw"> Biro Perjalanan Wisata</a></li>
-        <li class="active"><a href="#">Edit Biro Perjalanan Wisata</a></li>
+        <li><a href="/bpw">Biro Perjalanan Wisata</a></li>
+        <li class="active"><a href="#">Ubah Biro Perjalanan Wisata</a></li>
     </ol>
 </section>
 

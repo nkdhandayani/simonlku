@@ -3,14 +3,14 @@
 @section('content')
 <section class="content-header">
     <h1>
-        Detail Pengguna
+        Detail Data Pegawai
     </h1>
     <ol class="breadcrumb">
         <li>
             <a href="/dashboard"><i class="fa fa-dashboard"></i> Dashboard</a>
         </li>
-        <li><a href="/user"> Kelola Pengguna</a></li>
-        <li class="active"><a href="#"> Detail Pengguna</a></li>
+        <li><a href="/user">Pegawai Jasa Pariwisata</a></li>
+        <li class="active"><a href="#">Detail Pegawai</a></li>
     </ol>
 </section>
 
@@ -131,7 +131,7 @@
 
                     <div style="float: right;">
                         <div style="clear: both;"></div>
-                        <a href="#" class="btn btn-primary btn-sm reset" user-id="{{$users -> id_user}}">Reset Password?</a>
+                        <a href="#" class="btn btn-primary btn-sm reset" user-id="{{$users -> id_user}}">Reset Password</a>
                     </div>
                 </div>
             </div>

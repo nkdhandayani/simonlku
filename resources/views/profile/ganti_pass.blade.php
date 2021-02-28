@@ -3,13 +3,14 @@
 @section('content')
 <section class="content-header">
     <h1>
-        Profile Pengguna
+        Ganti Password
     </h1>
     <ol class="breadcrumb">
         <li>
             <a href="/dashboard"><i class="fa fa-dashboard"></i>Dashboard</a>
         </li>
-        <li class="active"><a href="#">Profile Pengguna</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li class="active"><a href="/profile/ganti_pass">Ganti Password</a></li>
     </ol>
 </section>
 

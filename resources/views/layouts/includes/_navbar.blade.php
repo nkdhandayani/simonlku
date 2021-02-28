@@ -79,7 +79,7 @@
                 <div class="pull-right">
                   <form action="{{ route('logout') }}" method="POST">
                     @csrf
-                    <button type="submit" class="btn btn-default btn-flat">Sign out</button>
+                    <button type="submit" class="btn btn-default btn-flat">Log Out</button>
                   </form>
                 </div>
               </li>
