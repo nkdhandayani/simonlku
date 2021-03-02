@@ -44,7 +44,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="file_izin">File izin</label>
+                        <label for="file_izin">File Izin <small style="color: red;"> *Dalam Format JPG/JPEG/PNG</small></label>
                         <br />
                         <a href="{{ asset('file_izin/' . $izin->file_izin) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_izin/' . $izin->file_izin) }}" /></a>
                         <br />
@@ -95,7 +95,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="file_izin">File izin</label>
+                        <label for="file_izin">File Izin <small style="color: red;"> *Dalam Format JPG/JPEG/PNG</small></label>
                         <br />
                         <a href="{{ asset('file_izin/' . $izin->file_izin) }}" target="_blank"><img width="200px" height="200px" src="{{ asset('file_izin/' . $izin->file_izin) }}" /></a>
                     </div>

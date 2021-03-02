@@ -194,7 +194,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-md-6" style="padding: 0; margin-bottom: 30px;">
-                                    <label for="foto_user">Foto Pegawai</label>
+                                    <label for="foto_user">Foto Pengguna</label>
                                     <input name="foto_user" type="file" class="form-control-file" id="foto_user" value="{{$users -> foto_user}}" autocomplete="off" />
                                     @error('foto_user')
                                     <span class="invalid-feedback text-danger" role="alert">

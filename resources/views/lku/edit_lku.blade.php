@@ -67,7 +67,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="file_lku">File LKU</label>
+                        <label for="file_lku">File LKU <small style="color: red;"> *Dalam Format PDF</small></label>
                         <br />
                         <a href="{{ asset('file_lku/' . $lku->file_lku) }}" target="_blank">{{ $lku->file_lku }}</a>
                         <br />
@@ -108,7 +108,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="sts_verifikasi">Status Izin</label>
+                        <label for="sts_verifikasi">Status Izin Operasional</label>
                         <select disabled="true" name="sts_verifikasi" class="form-control" id="sts_verifikasi" value="{{$lku -> izin -> sts_verifikasi}}" required autocomplete="off" readonly>
                             <option value="0" @if($lku -> izin -> sts_verifikasi == "0") selected @endif>Sedang Diproses</option>
                             <option value="2" @if($lku -> izin -> sts_verifikasi == "2") selected @endif>Disetujui</option>
@@ -174,7 +174,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="file_lku">File LKU</label>
+                        <label for="file_lku">File LKU <small style="color: red;"> *Dalam Format PDF</small></label>
                         <br />
                         <a href="{{ asset('file_lku/' . $lku->file_lku) }}" target="_blank">{{ $lku->file_lku }}</a>
                     </div>
@@ -206,7 +206,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="sts_verifikasi">Status Izin</label>
+                        <label for="sts_verifikasi">Status Izin Operasional</label>
                         <select disabled="true" name="sts_verifikasi" class="form-control" id="sts_verifikasi" value="{{$lku -> izin -> sts_verifikasi}}" required autocomplete="off" readonly>
                             <option value="0" @if($lku -> izin -> sts_verifikasi == "0") selected @endif>Sedang Diproses</option>
                             <option value="2" @if($lku -> izin -> sts_verifikasi == "2") selected @endif>Disetujui</option>
